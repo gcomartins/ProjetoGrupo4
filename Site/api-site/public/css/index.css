@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat";
+}
+
+a {
+    text-decoration: none;
+    color: rgb(253, 237, 213);
+}
+.header {
+    background-color: rgb(19, 19, 19);
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+.header img {
+    width: 70px;
+}
+.header .container {
+    display: flex;
+    width:90%;
+    height: 100%;
+    justify-content: space-between;
+}
+.header .container .icon {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 120px;
+    height: 100%;
+}
+.header .container .icon img {
+    width: 50px;
+    border-radius: 2500px;
+}
+.header .container .call {
+    margin: auto auto;
+    width: 30%;
+    font-size: 42px;
+    height: 90%;
+    text-align: center;
+    align-items: center;
+}
+.header .container .navbar {
+    display: flex;
+    justify-content: end;
+    color: #ffffff;
+    font-size: 16px;
+    display: flex;
+    width: 230px;
+}
+.header .container .navbar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.header .container .navbar ul li {
+    display: flex;
+    flex-direction: column;
+}
+.header .container .navbar button {
+    background-color: rgb(221, 178, 35);
+    width: 110px;
+    height: 35px;
+    border-radius: 15px;
+    color: white;
+    font-size: 16px;
+}
+.header .container .navbar .login .botoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.botoes {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .container .navbar .login .botoes button {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.formulario {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tela1 {
+    background-color: rgb(170, 131, 131);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: url("../assets/Imgs/daVinci/homemVitruviano1.png");
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    background-repeat: no-repeat;
+}
+.tela1 h1{
+    margin-left: 25px;
+    margin-top: 250px;
+    color: white;
+    font-size: 80px;
+    font-family: "montserrat";
+    font-weight: 600;
+}
+.tela2 {
+    background-color: rgb(19,19,19);
+    width: 100%;
+    height: 140vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.tela2 .container {
+    width: 80%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+}
+.tela2 h1 {
+    display: flex;
+    color: white;
+    font-size: 26px;
+    justify-content: center;
+    align-items: center;
+}
+.tela2 article {
+    margin: 15vh 0 15vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: rgb(221, 178, 35);
+}
+.tela2 .imagem {
+    background-color: rgb(221, 178, 35) ;
+    background-image: url("../assets/Imgs/daVinci/Mona\ Lisa.png");
+    background-size: 100% 100%;
+    border-radius: 45px;
+    width: 40%;
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.tela3 {
+    display: none;
+    background-image: url("../assets/Imgs/daVinci/Anotacoes.png");
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 120vh;
+}
+.tela3 h1 {
+    margin-right: 25px;
+    margin-top: 450px;
+    color: white;
+    font-size: 80px;
+    font-family: "montserrat";
+    font-weight: 600;
+}
+.tela4 {
+    background-color: rgb(19, 19, 19);
+    width: 100%;
+    height: 100vh;
+}
+.tela4 .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tela4 .container .fotoG{
+    background-image: url("../assets/Imgs/daVinci/daVinci.png");
+    background-size: 100% 100%;
+    border-radius: 25000px;
+    width: 50vh;
+    height: 50vh;
+    background-color: rgb(221, 178, 35);
+}
+.tela4 .container .visualizer {
+    border-radius: 25px;
+    padding: 15px;
+    width: 50%;
+    height: 60%;
+    background-color: rgb(221, 178, 35);
+    display: flex;
+    justify-content: space-evenly;
+}
+.tela4 .container .anotacao {
+    width: 33%;
+    height: 100%;
+}
+.tela4 .container .anota1 {
+    background-image: url("../assets/Imgs/daVinci/besta.png");
+    background-size: 100% 100%;
+    filter: blur(4px);
+    transition: 1s ease-out;
+}
+.tela4 .container .anota1:hover{
+    margin-top: -7vh;
+    filter: blur(0);
+    transition-duration: 1s;
+    width: 100%;
+    height: 130%;
+}
+.tela4 .container .anota2 {
+    background-image: url("../assets/Imgs/daVinci/homemVitruviano.png");
+    background-size: 100% 100%;
+    filter: blur(4px);
+    transition: 1s ease-out;
+}
+.tela4 .container .anota2:hover{
+    margin-top: -7vh;
+    width: 130%;
+    height: 130%;
+    filter: blur(0);
+    transition-duration: 1s;
+}
+.tela4 .container .anota3 {
+    background-image: url("../assets/Imgs/daVinci/mecanismo.png");
+    background-size: 100% 100%;
+    filter: blur(4px);
+    transition: 1s ease-out;
+}
+.tela4 .container .anota3:hover{
+    margin-top: -7vh;
+    width: 100%;
+    height: 130%;
+    filter: blur(0);
+    transition-duration: 1s;
+}

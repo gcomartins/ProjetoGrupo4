@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/Imgs/Icon.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomoUniversalis | Quiz</title>
+
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="mural.css">
+    <script src="../js/funcoes.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao()" style="background-color: #161618;">
+    <!-- <body onload="validarSessao()"> -->
+
+    <div class="janela">
+
+
+        <div class="header-left">
+
+            <h1>HomoUniversalis</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="cards.html">
+                    <h3>Artigos</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Ranking</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Quiz</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./convite.html">
+                    <h3>Indicar</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+
+        <div class="dash-right">
+
+            <div class="quiz">
+                <h1>Comece o Quiz!</h1>
+                <div class="container">
+                    <div id="imagem" class="imagem">
+                        <img src="../assets/Imgs/Quiz/quiz1.Jpg">
+                    </div>
+                    <div id="pergunta">Onde Leonardo da Vinci nasceu?</div>
+                    <div id="respostas" class="respostas">
+                        <div id="start">
+                            <button onclick="comecar()">COMEÇAR!</button>
+                        </div>
+                        <!-- Primeiro Quiz -->
+                        <button id="resp1a" onclick="responder(1), mudarQuiz12()" class="resp resp1">Madrid</button>
+                        <button id="resp1b" onclick="responder(2), mudarQuiz12()" class="resp resp1">Vinci</button>
+                        <button id="resp1c" onclick="responder(3), mudarQuiz12()" class="resp resp1">Milão</button>
+                        <button id="resp1d" onclick="responder(4), mudarQuiz12()" class="resp resp1">Genebra</button>
+                        <!-- Segundo Quiz -->
+                        <button id="resp2a" onclick="responder(1), mudarQuiz23()" class="resp resp2">Verrocchio</button>
+                        <button id="resp2b" onclick="responder(2), mudarQuiz23()" class="resp resp2">Filipo
+                            Lippo</button>
+                        <button id="resp2c" onclick="responder(3), mudarQuiz23()" class="resp resp2">Piero da
+                            Vinci</button>
+                        <button id="resp2d" onclick="responder(4), mudarQuiz23()"
+                            class="resp resp2">Michelangelo</button>
+                        <!-- Terceiro Quiz -->
+                        <button id="resp3a" onclick="responder(1), mudarQuiz34()" class="resp resp3">A Última
+                            Ceia</button>
+                        <button id="resp3b" onclick="responder(2), mudarQuiz34()" class="resp resp3">Mona Lisa</button>
+                        <button id="resp3c" onclick="responder(3), mudarQuiz34()" class="resp resp3">O Batismo de
+                            Cristo</button>
+                        <button id="resp3d" onclick="responder(4), mudarQuiz34()" class="resp resp3">Salvator
+                            Mundi</button>
+                        <!-- Quarto Quiz -->
+                        <button id="resp4a" onclick="responder(1), finalizarQuiz(), ranquear()"
+                            class="resp resp4">Sfumato</button>
+                        <button id="resp4b" onclick="responder(2), finalizarQuiz(), ranquear()"
+                            class="resp resp4">Chiaroscuro</button>
+                        <button id="resp4c" onclick="responder(3), finalizarQuiz(), ranquear()"
+                            class="resp resp4">Perspectiva</button>
+                        <button id="resp4d" onclick="responder(4), finalizarQuiz(), ranquear()" class="resp resp4">Todas
+                            as alternativas</button>
+                    </div>
+                    <div id="div_resultado"></div>
+                </div>
+            </div>
+
+
+
+
+            <!-- MODAL -->
+            <!-- <div id="div_modal" class="div-modal">
+                <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
+                </div>
+                <div id="modal_container" class="modal-container">
+                    <button class="btn-fechar-modal" onclick="fecharModal()">X</button>
+                </div>
+            </div> -->
+
+            <!-- AGUARDAR -->
+            <!-- <div id="div_aguardar" class="div-aguardar">
+                <img src="./assets/aguarde-pink3.gif" id="img_aguarde">
+            </div>  -->
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+    let RespostasCertas = [2, 1, 4, 4];
+    let RespostasQuiz = [];
+    let contarPontos = 0;
+
+    function comecar() {
+        start.style.display = "none";
+        imagem.style.display = "flex";
+        pergunta.style.display = "block";
+        respostas.style.display = "flex";
+        resp1a.style.display = "block";
+        resp1b.style.display = "block";
+        resp1c.style.display = "block";
+        resp1d.style.display = "block";
+    }
+
+    function responder(resposta) {
+        RespostasQuiz.push(resposta);
+        console.log(RespostasQuiz);
+    }
+    function mudarQuiz12() {
+        resp1a.style.display = "none";
+        resp1b.style.display = "none";
+        resp1c.style.display = "none";
+        resp1d.style.display = "none";
+        resp2a.style.display = "block";
+        resp2b.style.display = "block";
+        resp2c.style.display = "block";
+        resp2d.style.display = "block";
+        resp3a.style.display = "none";
+        resp3b.style.display = "none";
+        resp3c.style.display = "none";
+        resp3d.style.display = "none";
+        resp4a.style.display = "none";
+        resp4b.style.display = "none";
+        resp4c.style.display = "none";
+        resp4d.style.display = "none";
+
+        pergunta.innerHTML = `
+        Quem foi o mestre de da Vinci dos 14 aos 20 anos?
+        `
+        imagem.innerHTML = `
+        <img src="../assets/Imgs/Quiz/quiz2.Jpg">
+        `
+    }
+    function mudarQuiz23() {
+        resp1a.style.display = "none";
+        resp1b.style.display = "none";
+        resp1c.style.display = "none";
+        resp1d.style.display = "none";
+        resp2a.style.display = "none";
+        resp2b.style.display = "none";
+        resp2c.style.display = "none";
+        resp2d.style.display = "none";
+        resp3a.style.display = "block";
+        resp3b.style.display = "block";
+        resp3c.style.display = "block";
+        resp3d.style.display = "block";
+        resp4a.style.display = "none";
+        resp4b.style.display = "none";
+        resp4c.style.display = "none";
+        resp4d.style.display = "none";
+
+        pergunta.innerHTML = `
+        Qual a obra mais cara de da Vinci?
+        `
+        imagem.innerHTML = `
+        <img src="../assets/Imgs/Quiz/quiz3.Jpg">
+        `
+    }
+    function mudarQuiz34() {
+        resp1a.style.display = "none";
+        resp1b.style.display = "none";
+        resp1c.style.display = "none";
+        resp1d.style.display = "none";
+        resp2a.style.display = "none";
+        resp2b.style.display = "none";
+        resp2c.style.display = "none";
+        resp2d.style.display = "none";
+        resp3a.style.display = "none";
+        resp3b.style.display = "none";
+        resp3c.style.display = "none";
+        resp3d.style.display = "none";
+        resp4a.style.display = "block";
+        resp4b.style.display = "block";
+        resp4c.style.display = "block";
+        resp4d.style.display = "block";
+
+        pergunta.innerHTML = `
+        Qual técnica de pintura/desenho da Vinci desenvolveu?
+        `
+        imagem.innerHTML = `
+        <img src="../assets/Imgs/Quiz/quiz4.Jpg">
+        `
+    }
+    function finalizarQuiz() {
+        for (let index = 0; index < RespostasCertas.length; index++) {
+            const respCerta = RespostasCertas[index];
+            const respQuiz = RespostasQuiz[index];
+            pontos = 0;
+            if (respCerta == respQuiz) {
+                contarPontos++
+            }
+        }
+        imagem.style.display = "none";
+        pergunta.style.display = "none";
+        respostas.style.display = "none";
+
+        div_resultado.innerHTML = `
+        Você conseguiu ${contarPontos} pontos!
+        `
+    }
+
+    function ranquear() {
+
+        pontosVar = contarPontos;
+        fetch("/usuarios/ranquear", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: sessionStorage.getItem("ID_USUARIO"),
+                pontos: pontosVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+</script>
