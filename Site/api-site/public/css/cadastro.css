@@ -1,0 +1,25 @@
+main {
+    width: 100%;
+    height: 69.8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/Site/api-site/public/assets/Imgs/bgLogin.jpg");
+    background-size: 100%;
+}
+
+section {
+    background-color: #a4161bc9;
+    border-radius: 25px;
+    width: 30%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}

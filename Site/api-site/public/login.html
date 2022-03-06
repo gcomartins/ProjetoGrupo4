@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/header_footer.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <header>
@@ -17,7 +18,23 @@
                 <i><a href="">Serviços</a></i>
                 <i><a href="">Sobre</a></i>
             </ul>
+            <ul>
+                <i><a href="login.html">Entrar</a></i>
+                <i><a href="cadastro.html">Cadastrar-se</a></i>
+            </ul>
         </nav>
     </header>
+    <main>
+        <section>
+            <form action="entrar">
+                <label for="email">Email:</label>
+                <input name="email" placeholder="Digite seu email">
+                <label for="senha">Senha:</label>
+                <input name="senha" placeholder="Digite sua senha">
+                <button type="submit" >Entrar</button>
+            </form>
+        </section>
+    </main>
+    <footer></footer>
 </body>
 </html>
