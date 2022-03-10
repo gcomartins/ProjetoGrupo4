@@ -13,7 +13,7 @@ body {
   /* font-style: normal; */
   /* font-weight: 400; */
   /* letter-spacing: 0; */
-  padding: 1rem;
+  padding: 0rem;
   margin: 0rem;
   /* text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -168,9 +168,12 @@ img {
   transition: all 1s ease;
 }
 .card__title {
-  color: #696969;
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  color: #A4161A;
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
