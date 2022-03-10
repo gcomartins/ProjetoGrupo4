@@ -6,20 +6,46 @@
 }
 html {
   background-color: #f0f0f0;
-}
+}*/
 body {
-  color: #999999;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
+  /* color: #999999; */
+  /* font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  /* font-style: normal; */
+  /* font-weight: 400; */
+  /* letter-spacing: 0; */
   padding: 1rem;
-  text-rendering: optimizeLegibility;
+  margin: 0rem;
+  /* text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga" on;
+  -moz-osx-font-smoothing: grayscale;  */
+} 
 
-} */
+/* servicos */
+
+.servicos{
+  display: flex;
+  justify-content: center;
+
+}
+
+.servicos h2 {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px black solid ;
+  width: 25%;
+  font-size: 28px;
+  padding-bottom: 1%;
+}
+
+.boxs div{
+  color: red;
+  width: 20%;
+  height: 20%;
+}
+
+
+
+/* CARDS */
 img {
   height: auto;
   max-width: 100%;
@@ -45,7 +71,8 @@ img {
     flex-direction: row;
     justify-content: space-around;
     align-items: stretch;
-
+    margin-top: 5%;
+    padding: 0% 7% 7% 7%  ;
 
 }
 .cards__item {
@@ -61,6 +88,15 @@ img {
   .cards__item {
     width: 23%;
   }
+}
+
+.cards h2{
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px black solid ;
+  width: 20%;
+  font-size: 30px;
+  padding-bottom: 1%;
 }
 .card {
   background-color: white;
@@ -118,8 +154,9 @@ img {
   transition: all 1s ease;
 }
 .card__image--Lara {
-  background-image: url(../assets/Imgs/Lari.jfif);
+  background-image: url(../assets/Imgs/Lara.jpg);
   transition: all 1s ease;
+  background-position-y: 0;
 }
 .card__image--record {
   background-image: url(../assets/Imgs/lee.jfif);
