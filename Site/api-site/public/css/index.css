@@ -1,41 +1,63 @@
+body{
+  margin: 0px;
+  height: 0px;
+}
 
-/* *,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-html {
-  background-color: #f0f0f0;
-}
-body {
-  color: #999999;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  padding: 1rem;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: "liga" on;
+/* Sobre nos */
 
-} */
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
-.btn {
-  background-color: white;
-  border: 1px solid #cccccc;
-  color: #696969;
-  padding: 0.5rem;
-  text-transform: lowercase;
-}
-.btn--block {
-  display: block;
+.nos {
+  display: flex;
+  margin-top: 0px;
+  height: 100vh;
   width: 100%;
+  background-color:rgba(22, 26, 29, 0.63);
+  justify-content: space-around;
 }
+.nos img{
+  image-rendering: optimizeQuality;
+  height: 40rem;
+  width: 27rem;
+  margin-top: 4rem;
+}
+
+.nos h2{
+  margin-top: 5rem;
+  font-size: 3rem;
+  color: white;
+}
+
+.nos .conteudo{
+  margin-top: 3rem;
+  font-size: 2rem;
+  color: white;
+}
+
+/* servicos */
+
+.servicos{
+  display: flex;
+  justify-content: center;
+}
+
+.servicos h2 {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px black solid ;
+  width: 25%;
+  font-size: 28px;
+  padding-bottom: 1%;
+}
+
+.boxs div{
+  color: red;
+  width: 20%;
+  height: 20%;
+}
+
+
+
+/* CARDS */
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -43,24 +65,24 @@ img {
     margin: 0;
     padding: 0;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: stretch;
-
-
+    margin-top: 5%;
+    padding: 0% 10% 10% 10%  ;
 }
+
 .cards__item {
   display: flex;
   padding: 1rem;
 }
-@media (min-width: 0rem) {
-  .cards__item {
-    width: 50%;
-  }
-}
-@media (min-width: 0rem) {
-  .cards__item {
-    width: 23%;
-  }
+
+.cards h2{
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px black solid ;
+  width: 20%;
+  font-size: 30px;
+  padding-bottom: 1%;
 }
 .card {
   background-color: white;
@@ -69,12 +91,15 @@ img {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  width: 15vw;
 }
 .card:hover .card__image {
-  filter: contrast(90%);
+  filter: contrast(100%);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  transition: all 0.5s ease;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  transition: all 1s ease;
 }
 .card__content {
   display: flex;
@@ -83,27 +108,21 @@ img {
   padding: 1rem;
 }
 .card__image {
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-top-left-radius: 15rem;
-  border-top-right-radius: 15rem;
+  border-top-left-radius: 10rem;
+  border-top-right-radius: 10rem;
+  border-bottom-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
   filter: contrast(50%);
   overflow: hidden;
   position: relative;
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  height: 26vh; 
+  width: 13vw;
 }
-  
-.card__image::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%;
-}
-@media (min-width: 40rem) {
-  .card__image::before {
-    padding-top: 66.6%;
-  }
-}
+
 .card__image--Lucas {
   background-image: url(../assets/Imgs/Lucas.jpg);
   transition: all 1s ease;
@@ -112,13 +131,14 @@ img {
 .card__image--river {
   background-image: url(../assets/Imgs/gui.jfif);
   transition: all 1s ease;
+  
 }
 .card__image--Lari {
   background-image: url(../assets/Imgs/Lari.jfif);
   transition: all 1s ease;
 }
 .card__image--Lara {
-  background-image: url(../assets/Imgs/Lari.jfif);
+  background-image: url(../assets/Imgs/Lara.jpg);
   transition: all 1s ease;
 }
 .card__image--record {
@@ -131,9 +151,12 @@ img {
   transition: all 1s ease;
 }
 .card__title {
-  color: #696969;
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  color: #A4161A;
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -142,4 +165,17 @@ img {
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
+}
+.carrossel li{
+  width: 100px;
+  height: 600px;
+}
+.carrossel ul{
+  width: 100px;
+  height: 250px;
+
+}
+.carrossel img{
+  width: 1905px;
+  /* height: 250px; */
 }
