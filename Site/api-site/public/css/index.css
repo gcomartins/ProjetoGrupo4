@@ -166,3 +166,16 @@ body{
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
+.carrossel li{
+  width: 100px;
+  height: 600px;
+}
+.carrossel ul{
+  width: 100px;
+  height: 250px;
+
+}
+.carrossel img{
+  width: 1905px;
+  /* height: 250px; */
+}
