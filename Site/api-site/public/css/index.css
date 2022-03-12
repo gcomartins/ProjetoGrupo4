@@ -166,16 +166,69 @@ body{
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
+.carrossel{
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+ 
+}
 .carrossel li{
-  width: 100px;
-  height: 600px;
+  position: relative;
+  animation: slide 15s infinite ease-in-out;
 }
 .carrossel ul{
-  width: 100px;
+  width: 5715px;
   height: 250px;
-
+  list-style: none;
+  display: flex;
 }
 .carrossel img{
   width: 1905px;
-  /* height: 250px; */
+  opacity: .10px;
+  /* height: 1050; */
+
+}
+.ultima-img img{
+  width: 2200px;
+}
+.navigation{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+.bar{
+  width: 70px;
+  height: 17px;
+  border: 2px solid #BA181B;
+  border-radius: 30px;
+  margin: 6px;
+  cursor: pointer;
+  transition: .4s;
+}
+.bar:hover{
+  background-color: rgba(255, 255, 255, 0.801);
+  
+}
+input{
+  display: none;
+}
+.slide1:checked ˜ ul{
+margin-left: 0%;
+}
+.slide2:checked ˜ ul{
+  margin-left: -1905px;
+}
+@keyframes slide{
+  0%{left: 0px;}
+  20%{left: 0px;}
+
+  30%{left: -1905px ;}
+  50%{left: -1905px;}
+
+  60%{left: -4000px;}
+  90%{left: -4000px;}
+
+  100%{left: 0px;}
 }
