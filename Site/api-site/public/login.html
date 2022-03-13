@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
+    <link rel="shortcut icon" href="./assets/Imgs/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" type="image/x-icon">
     <link rel="stylesheet" href="css/header_footer.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -14,27 +14,42 @@
         <nav>
             <ul>
                 <strong>DataCat</strong>
-                <i><a href="index.html">Início</a></i>
-                <i><a href="">Serviços</a></i>
-                <i><a href="">Sobre</a></i>
+                <i><a href="index.html"></a></i>
+                <i><a href=""></a></i>
+                <i><a href=""></a></i>
             </ul>
             <ul>
-                <i><a href="login.html">Entrar</a></i>
-                <i><a href="cadastro.html">Cadastrar-se</a></i>
+                <i><a href="login.html"></a></i>
+                <i><a href="cadastro.html"></a></i>
             </ul>
         </nav>
     </header>
     <main>
         <section>
-            <form action="entrar">
-                <label for="email">Email:</label>
-                <input name="email" placeholder="Digite seu email">
-                <label for="senha">Senha:</label>
-                <input name="senha" placeholder="Digite sua senha">
-                <button type="submit" >Entrar</button>
+            <form class="container" action="cadastrar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="./assets/Imgs/kisspng-whiskers-whitw-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" alt="">
+                    </a>
+                </div>
+                
+                <div class="inputs">
+                    <input name="email"id="inp_email" type="email"autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="inputs">
+                    <input name="senha"id="inp_senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <label for="senha">Senha</label>
+                </div>
+                
+
+                <button class="btn" type="submit" >Logar</button>
+            
+                <div class="texto_login">Ainda não é cadastrado? <a href="cadastro.html">Então vá para o cadastro</a></div>
             </form>
         </section>
     </main>
-    <footer></footer>
+
 </body>
 </html>
