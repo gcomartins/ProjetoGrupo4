@@ -36,13 +36,8 @@ body{
 
 .servicos{
   display: flex;
+  justify-content: center;
   height: 50rem;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: space-around;
-  justify-content: space-between;
-  
 }
 
 .servicos .titulo {
@@ -58,16 +53,8 @@ body{
 .servicos ul{
   display:flex;
   list-style: none;
-  height: 89%;
-  width: 95rem;
-  color: #A4161A;
-}
 
-/* .servicos ul li{
-  height: 10rem;
-  width: 10rem;
-  color: #A4161A;
-} */
+}
 
 
 
@@ -82,7 +69,7 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: stretch;
-    margin-top: 2%;
+    margin-top: 5%;
     padding: 0% 10% 10% 10%  ;
 }
 
@@ -181,17 +168,15 @@ body{
   line-height: 1.5;
   margin-bottom: 1.25rem;
 }
-
-/* carrossel */
 .carrossel{
   width: 100%;
-  height: 670px;
+  height: 800px;
   overflow: hidden;
+ 
 }
 .carrossel li{
   position: relative;
   animation: slide 15s infinite ease-in-out;
-  
 }
 .carrossel ul{
   width: 5715px;
@@ -200,15 +185,14 @@ body{
   display: flex;
 }
 .carrossel img{
-  width: 97rem;
+  width: 1905px;
   opacity: .10px;
   /* height: 1050; */
-}
 
-.carrossel .concerto{
-  height: 50rem;
 }
-
+.ultima-img img{
+  width: 2200px;
+}
 .navigation{
   position: absolute;
   bottom: 20px;
@@ -242,11 +226,11 @@ margin-left: 0%;
   0%{left: 0px;}
   20%{left: 0px;}
 
-  30%{left: -1360px ;}
-  50%{left: -1360px;}
+  30%{left: -1905px ;}
+  50%{left: -1905px;}
 
-  60%{left: -2720px;}
-  90%{left: -2720px;}
+  60%{left: -4000px;}
+  90%{left: -4000px;}
 
   100%{left: 0px;}
 }
