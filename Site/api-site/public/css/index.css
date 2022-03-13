@@ -3,6 +3,32 @@ body{
   height: 0px;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+/* ScrollBar */
+/* Fundo que corre */
+::-webkit-scrollbar-track{
+
+  background-color: #F5F3F4;
+  
+}
+/* Fundo que corre */
+
+::-webkit-scrollbar{
+  background:#F5F3F4 ;
+  width: 6px;
+}
+/* Linha que desce */
+::-webkit-scrollbar-thumb{
+  background-color:#660708 ;
+  border-radius: 15px;
+}
+/* Linha que desce */
+
+/* ScrollBar */
+
+
 /* Sobre nos */
 
 .nos {
@@ -36,7 +62,7 @@ body{
 
 .servicos{
   display: flex;
-  height: 50rem;
+  height: 40rem;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
@@ -69,7 +95,95 @@ body{
   color: #A4161A;
 } */
 
+.grid {
+  display: grid;
 
+}
+
+
+
+.grid-template-columns-3 {
+	grid-template-columns: 1fr 2fr 1fr;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+.grid-template-columns-3 i{
+  font-size: 100px;
+  margin-top: 50px;
+}
+.grid-template-columns-3 span.servico-texto1{
+  font-size: 50px;
+  margin-top: 10px;
+  color: #F5F3F4;
+}
+.grid-template-columns-3 span.servico-texto2{
+  font-size: 45px;
+  margin-top: 10px;
+  color: #F5F3F4;
+}
+.grid-template-columns-3 span.servico-texto3{
+  font-size: 45px;
+  margin-top: 10px;
+  color: #F5F3F4;
+}.grid-template-columns-3 span.servico-texto5{
+  font-size: 50px;
+  margin-top: 10px;
+  color: #F5F3F4;
+}
+.item1 {
+  text-align: center;
+  color: #F5F3F4;
+  width: 315px;
+  height: 500px;
+  margin: 5px;
+  margin-left: 63%;
+  background: #A4161A;
+  font-size: 1.5em;
+  border-radius: 7px;
+}
+.item2 {
+  text-align: center;
+  color: #F5F3F4;
+  width: 324px;
+  height: 250px;
+  margin: 5px;
+  margin-left: 201px;
+  background: #660708;
+  font-size: 1.5em;
+  border-radius: 7px;
+}
+.item3 {
+  text-align: center;
+  color: #F5F3F4;
+  width: 324px;
+  height: 250px;
+  margin: 5px;
+  margin-left: -54%;
+  background: #0B090A;
+  font-size: 1.5em;
+  border-radius: 7px;
+}
+.item5 {
+  text-align: center;
+  color: #F5F3F4;
+  width: 500px;
+  height: 245px;
+  margin: 5px;
+  margin-left: 202px;
+  margin-top: -250px;
+  background: #B1A7A6;
+  font-size: 1.5em;
+  border-radius: 7px;
+}
+.item6 {
+  width: 179px;
+  height: 245px;
+  margin: 5px;
+  margin-left: -32px;
+  margin-top: -250px;
+  background: #B1A7A6;
+  font-size: 1.5em;
+  border-radius: 7px;
+}
 
 /* CARDS */
 
@@ -134,8 +248,8 @@ body{
   overflow: hidden;
   position: relative;
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
-  height: 26vh; 
-  width: 13vw;
+  height: 31vh;
+  width: 15vw;
 }
 
 .card__image--Lucas {
@@ -187,6 +301,7 @@ body{
   width: 100%;
   height: 670px;
   overflow: hidden;
+  box-shadow: 0px 5px 8px -4px #161A1D;
 }
 .carrossel li{
   position: relative;
@@ -211,14 +326,14 @@ body{
 
 .navigation{
   position: absolute;
-  bottom: 20px;
+  bottom: -200px;
   left: 50%;
   transform: translate(-50%);
   display: flex;
 }
 .bar{
-  width: 70px;
-  height: 17px;
+  width: 300px;
+  height: 5px;
   border: 2px solid #BA181B;
   border-radius: 30px;
   margin: 6px;
@@ -246,11 +361,11 @@ margin-left: 0%;
   0%{left: 0px;}
   20%{left: 0px;}
 
-  30%{left: -1360px ;}
-  50%{left: -1360px;}
+  30%{left: -1560px ;}
+  50%{left: -1560px;}
 
-  60%{left: -2720px;}
-  90%{left: -2720px;}
+  60%{left: -3120px;}
+  90%{left: -3120px;}
 
   100%{left: 0px;}
 }
