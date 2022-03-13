@@ -238,6 +238,10 @@ margin-left: 0%;
 .slide2:checked ˜ ul{
   margin-left: -1905px;
 }
+.bar {
+  position: relative;
+  bottom: 145px;
+}
 @keyframes slide{
   0%{left: 0px;}
   20%{left: 0px;}
