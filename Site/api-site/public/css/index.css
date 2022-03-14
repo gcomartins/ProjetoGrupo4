@@ -47,12 +47,14 @@ html{
 }
 
 .nos h2{
+  margin-left: 2rem;
   margin-top: 5rem;
   font-size: 3rem;
   color: white;
 }
 
 .nos .conteudo{
+  margin-left: 2rem;
   margin-top: 3rem;
   font-size: 2rem;
   color: white;
@@ -62,7 +64,7 @@ html{
 
 .servicos{
   display: flex;
-  height: 40rem;
+  height: 44rem;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
@@ -196,7 +198,7 @@ html{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: stretch;
-    margin-top: 2%;
+    margin-top: 5%;
     padding: 0% 10% 10% 10%  ;
 }
 
@@ -370,17 +372,17 @@ margin-left: 0%;
   100%{left: 0px;}
 }
 #link-topo{
- text-decoration: none;
- background-color: #A4161A;
-padding:10px ;
-position: fixed;
-right: 10px;
-bottom: 10px;
-box-shadow: 3px 3px 10px #161A1D;
-border-radius:50% ;
+  text-decoration: none;
+  background-color: #A4161A;
+  padding:10px ;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  box-shadow: 3px 3px 10px #161A1D;
+  border-radius:50% ;
 }
 .links-nav:hover{
-background-color: #A4161A;
-color: #F5F3F4;
-transition: 0.7s ease;
+  background-color: #A4161A;
+  color: #F5F3F4;
+  transition: 0.7s ease;
 }
