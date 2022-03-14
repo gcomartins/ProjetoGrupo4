@@ -56,8 +56,20 @@ html{
 .nos .conteudo{
   margin-left: 2rem;
   margin-top: 3rem;
-  font-size: 2rem;
+  margin-bottom: 15rem;
+  font-size: 1.5rem;
   color: white;
+  width: 50rem;
+}
+
+.button {
+  padding: 1rem;
+  background-color: #660708;
+  color: #0B090A;
+  font-size: 1rem;
+  border: none;
+  border-radius: .5rem;
+  margin-top: 3rem;
 }
 
 /* servicos */
@@ -301,7 +313,7 @@ html{
 /* carrossel */
 .carrossel{
   width: 100%;
-  height: 670px;
+  height: 570px;
   overflow: hidden;
   box-shadow: 0px 5px 8px -4px #161A1D;
 }
