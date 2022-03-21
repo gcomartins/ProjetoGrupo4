@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="css/header_footer.css">
     <link rel="stylesheet" href="css/index.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="shortcut icon" href="./assets/Imgs/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="./assets/Imgs/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png"
+        type="image/x-icon">
 </head>
 
 <body>
-    <header>
+    <header id="topo">
         <nav>
             <ul>
                 <strong>DataCat</strong>
-                <i><a href="index.html">Início</a></i>
+                <i><a href="#nos">Somos</a></i>
                 <i><a href="#servicos">Serviços</a></i>
                 <i><a href="#cards">Sobre</a></i>
             </ul>
@@ -29,6 +31,7 @@
             </ul>
         </nav>
     </header>
+    <a id="link-topo" href="#topo"><i class='bx bxs-up-arrow' style='color:#fffbfb'></i></a>
     <section class="carrossel">
         <input type="radio" name="slide" id="slide1">
         <input type="radio" name="slide" id="slide2">
@@ -46,17 +49,22 @@
         </ul>
     </section>
     <section class="navigation">
-        <label class="bar" for="slide1"></label>
-        <label class="bar" for="slide2"></label>
-        <label class="bar" for="slide3"></label>
+
     </section>
 
-    <section class="nos">
+    <section id="nos" class="nos">
 
         <div class="texto_nos">
             <h2>QUEM SOMOS...</H2>
             <div class="conteudo">
-                EXPLICAR SOBRE A EMPRESA E FALAR O OBJETIVO DELA
+                <p>Somos uma empresa nova que se especializou em monitoramento de sistemas de caixas eletrônicos com a
+                    finalidade de: <br><br>
+                    <li>identificar os problemas de hardware;</li><br>
+                    <li>armazenar e extruturar esses dados;</li><br>
+                    <li>facilitar a leitura e identificação do problema;</li><br>
+                    <li>conceder um sistema em perfeito funcionamento para seus clientes</li>
+                </p>
+                    <button class="button"><a href="cadastro.html">Saiba Mais</a></button>
             </div>
         </div>
 
@@ -66,27 +74,28 @@
     <section class="servicos" id="servicos">
         <h2 class="titulo">NOSSOS SERVIÇOS</h2>
         <div>
-        <section class="container grid grid-template-columns-3">
-            <div class="item1">
-                <i class='bx bxs-news' style='color:#ffffff'  ></i><br> 
-                <span class="servico-texto1">Serviço 1</span> 
-            </div>
-            <div class="item2">
-                <i class='bx bxs-news' style='color:#ffffff'></i>
-                <span class="servico-texto2">Serviço 2</span> 
-            </div>
-            <div class="item3">
-                <i class='bx bxs-news' style='color:#ffffff'  ></i> 
-                <span class="servico-texto3">Serviço 3</span> 
-            </div>
-            <div class="item4"></div>
-            <div class="item5">
-                <i class='bx bxs-news' style='color:#ffffff'  ></i> 
-                <span class="servico-texto5">Serviço 4</span> 
-            </div>
-            <div class="item6"></div>
-        </section>
-    </div>
+            <section class="container grid grid-template-columns-3">
+                <div class="item1">
+                    <i class='bx bxs-news' style='color:#ffffff'></i><br>
+                    <span class="servico-texto1">Serviço 1</span>
+                </div>
+                <div class="item2">
+                    <i class='bx bxs-news' style='color:#ffffff'></i>
+                    <span class="servico-texto2">Serviço 2</span>
+                </div>
+                <div class="item3">
+                    <i class='bx bxs-news' style='color:#ffffff'></i>
+                    <span class="servico-texto3">Serviço 3</span>
+                </div>
+                <div class="item4"></div>
+                <div class="item5">
+                    <i class='bx bxs-news' style='color:#ffffff'></i>
+                    <span class="servico-texto5">Serviço 4</span>
+                </div>
+                <div class="item6"></div>
+            </section>
+        </div>
+        <button class="button"><a href="cadastro.html">Saiba Mais</a></button>
     </section>
     <section class="cards" id="cards">
         <H2>SOBRE NÓS</H2>
@@ -96,10 +105,7 @@
                     <div class="card__image card__image--vini"></div>
                     <div class="card__title">Vinicius</div>
                     <div class="card__content">
-                        <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
-                            The
-                            second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto.
-                        </p>
+                        <p class="card__text">Atuo na área de análise do projeto e ofereço suporte no desenvolvimento</p>
 
                     </div>
                 </div>
@@ -119,8 +125,9 @@
                     <div class="card__image card__image--record"></div>
                     <div class="card__title">Leticia</div>
                     <div class="card__content">
-                        <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative
-                            numbers are invalid.</p>
+                        <p class="card__text">Trabalho com Mobile iOS e amo desenhar. Utilizar do front para ilustrar o que as pessoas gostariam
+                             de ver é algo prazeroso pra mim.
+                        </p>
 
                     </div>
                 </div>
@@ -130,9 +137,7 @@
                     <div class="card__image card__image--Lucas"></div>
                     <div class="card__title">Lucas</div>
                     <div class="card__content">
-                        <p class="card__text">This defines the default size of an element before the remaining space is
-                            distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means
-                            "look at my width or height property."</p>
+                        <p class="card__text">Faço parte principalmente dos processos de desenvolvimento do projeto</p>
 
                     </div>
                 </div>
@@ -142,9 +147,7 @@
                     <div class="card__image card__image--Lari"></div>
                     <div class="card__title">Larissa</div>
                     <div class="card__content">
-                        <p class="card__text">This defines the default size of an element before the remaining space is
-                            distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means
-                            "look at my width or height property."</p>
+                        <p class="card__text">A persistência é o caminho do êxito</p>
 
                     </div>
                 </div>
@@ -154,14 +157,16 @@
                     <div class="card__image card__image--Lara"></div>
                     <div class="card__title">Lara</div>
                     <div class="card__content">
-                        <p class="card__text">Eu gosto de animes e jogos, amo a área de Security, gosto de fazer coisas novas, e gosto de mudanças no meu dia a dia "</p>
+                        <p class="card__text">Eu gosto de animes e jogos, amo a área de Security, gosto de fazer coisas
+                            novas, e gosto de mudanças no meu dia a dia </p>
                     </div>
                 </div>
             </li>
         </ul>
     </section>
-    <footer>
 
+    <footer>
+        
     </footer>
 
 </body>
