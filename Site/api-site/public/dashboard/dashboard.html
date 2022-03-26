@@ -225,47 +225,23 @@
 </body>
 </html>
 <script>
- 
-const config = {
-    type: 'line',
-    data: data,
-};
-
-const labels = Utils.months({count: 7});
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First Dataset',
-    data: [65, 59, 80, 81, 56, 55, 40],
-    fill: false,
-    borderColor: 'rgb(75, 192, 192)',
-    tension: 0.1
-  }]
-}
 
 function plotarGrafico(idGrafico) {
     
     const ctx = document.getElementById(idGrafico).getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'line',
+
         data: {
-            labels: ['0 acertos','1 acertos','2 acertos','3 acertos','4 acertos'],
+            labels: gerarDatas(),
             datasets: [{
-                label: 'Acertos',
-                data: [5,5,5,5,5],
+                label: 'Desempenho',
+                data: gerarDados(),
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.12)',
-                    'rgba(54, 162, 235, 0.12)',
-                    'rgba(255, 206, 86, 0.12)',
-                    'rgba(75, 192, 192, 0.12)',
-                    'rgba(153, 102, 255, 0.12)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -278,6 +254,21 @@ function plotarGrafico(idGrafico) {
             }
         }
     });
+}
+
+function gerarDados() {
+    dados = [];
+    for (let index = 0; index < 30; index++) {
+        dados.push((Math.random() * 100).toFixed(0));
+    }
+    return dados;
+}
+function gerarDatas() {
+    datas = [];
+    for (let index = 0; index < 30; index++) {
+        datas.push((Math.random() * 23).toFixed(0) + ':' + (Math.random() * 59).toFixed(0) + ':' + (Math.random() * 59).toFixed(0));
+    }
+    return datas.sort();
 }
 
 </script>
