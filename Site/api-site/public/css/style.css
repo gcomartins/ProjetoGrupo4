@@ -417,6 +417,7 @@ main .recent-order a {
     margin: 1rem auto;
 }
 /* ===================== MEDIA QUERIES ====================== */
+
 @media screen and (max-width: 1200px) {
    .container{
        width: 94%;
@@ -434,7 +435,61 @@ main .recent-order a {
     width: 5.6rem;
    }
 
-   /* aside .sidebar a:last-child{
-       posit
-   } */
+   aside .sidebar a:last-child{
+       position: relative;
+       margin-top: 1.8rem;
+   }
+
+   main .insights{
+       grid-template-columns:1fr ;
+       gap: 0;
+   }
+   main .recent-order{
+   width: 94%;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   margin: 2rem 0 0 8.8rem;
+}
+    main .recent-order table{
+        width: 83vw;
+
+    }
+
+    main table tbody td th:last-child,
+    main table tbody tr th:first-child{
+        display: none;
+    }
+    
+}
+
+/* ======================== MEDIA QUERIES MOBILE ========================== */
+@media screen and (max-width: 768px) {
+    .container{
+        width: 100%;
+    }
+
+    aside {
+        position: fixed;
+        left: 0;
+        background: var(--color-white);
+        width: 18rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light);
+        height: 100vh;
+        padding-right: var(--card-padding);
+    }
+
+    aside h2{
+        display: inline;
+    }
+
+    aside .sidebar h3{
+        display: inline;
+    }
+
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
 }
