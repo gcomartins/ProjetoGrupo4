@@ -1,148 +1,243 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-    <link rel="shortcut icon" href="../assets/Imgs/Icon.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomoUniversalis | Ranking</title>
-
-    <link rel="stylesheet" href="dashboards.css">
-    <link rel="stylesheet" href="header.css">
-    <script src="../js/funcoes.js"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-    <!-- scripts do Chart.js -->
-    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
-
-</head>
-
-<body onload="validarSessao()">
-    <!-- <body onload="validarSessao()"> -->
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>HomoUniversalis</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Artigos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Ranking</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Quiz</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./convite.html">
-                    <h3>Indicar</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash">
-            <h1>Quantidade de Acertos</h1>
-            <div class="btns-dash">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                <button class="btn-chart" onclick="obterDadosGrafico(1)">
-                    <h3>Gerar informações</h3>
-                </button>
-            </div>
-            <div class="graph">
-                <canvas id="canvas_grafico"></canvas>
-            </div>
-        </div>
-    </div>
-
-
-</body>
-
-</html>
-
-<script>
-    let dados = [];
-function obterDadosGrafico() {
-        
-        fetch(`/usuarios/graficar`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    
-                    for (let i = 0; i < resposta.length; i++) {
-                        
-                        dados.push(resposta[i].QtdUsuarios);
-                        
-                    }
-                    // resposta.reverse();
-
-                    plotarGrafico();
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
-function plotarGrafico() {
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
     
-    const ctx = document.getElementById('canvas_grafico').getContext('2d');
-    let myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['0 acertos','1 acertos','2 acertos','3 acertos','4 acertos'],
-            datasets: [{
-                label: 'Acertos',
-                data: [dados[0], dados[1], dados[2], dados[3], dados[4]],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.12)',
-                    'rgba(54, 162, 235, 0.12)',
-                    'rgba(255, 206, 86, 0.12)',
-                    'rgba(75, 192, 192, 0.12)',
-                    'rgba(153, 102, 255, 0.12)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-}
-</script>
+    
+  
+<body>
+    <div class="container">
+       <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2 class="text-muted"> Data <span class="cat">Cat</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+                <div class="sidebar">
+                    <a href="#" class="active">
+                        <span class="material-icons-sharp">person_outline</span> 
+                        <h3>Custumers</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">dashboard</span> 
+                        <h3>Dashboard</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">insights</span> 
+                        <h3>Analitics</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">mail_outline</span> 
+                        <h3>Mensagens</h3>
+                        <span class="message-count">13</span>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">inventory</span> 
+                        <h3>Reports</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-icons-sharp">settings</span> 
+                        <h3>Settings</h3>
+                    </a> <a href="#">
+                        <span class="material-icons-sharp">add</span> 
+                        <h3>Add Product</h3>
+                    </a>
+                </a> <a href="#">
+                    <span class="material-icons-sharp">logout</span> 
+                    <h3>Logout</h3>
+                </a>
+                </div>
+       </aside> 
+       <!-- -------------------- ACABA AQUI A TAG ASIDE --------------------- -->
+       <main>
+           <h1>Dashboard</h1>
+           <div class="date">
+               <input type="date">
+           </div>
+
+           <div class="insights">
+                <div class="memory-ram">
+                    <span class="material-icons-sharp">memory</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Memória Ram</h3>
+                            <h1>teste</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Monitoramento 24 horas</small>
+                </div>
+           
+           <!-- ------------------AQUI ACABA MEMORIA RAM -------------------- -->
+        
+                <div class="disc">
+                    <span class="material-icons-sharp"> signal_cellular_alt</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Disco</h3>
+                            <h1>teste</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>62%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Monitoramento 24 horas</small>
+                </div>
+           
+           <!-- ------------------AQUI ACABA DISCO -------------------- -->
+           
+          
+                <div class="cpu">
+                    <span class="material-icons-sharp">dns</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>CPU</h3>
+                            <h1>teste</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Monitoramento 24 horas</small>
+                </div>
+           
+           <!-- ------------------AQUI ACABA MEMORIA CPU -------------------- -->
+           
+            <div class="temperatura">
+                <span class="material-icons-sharp">thermostat</span>
+                    
+                <div class="middle">
+                    <div class="left">
+                        <h3>Temperatura</h3>
+                        <h1>teste</h1>
+                    </div>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p>64%</p>
+                        </div>
+                    </div>
+              </div>
+              <small class="text-muted">Monitoramento 24 horas</small>
+       </div>
+           </div>
+       <!-- ---------------------AQUI ACABA OS CARDS ------------------------- -->
+       <div class="recent-order">
+        <h2>Recent Orders</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Id do Produto</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Foldable Mini Drone</td>
+                    <td>85631</td>
+                    <td class="warning">Peding</td>
+                     <td class="primary">Details</td>
+                </tr>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Id do Produto</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Foldable Mini Drone</td>
+                    <td>85631</td>
+                    <td class="warning">Peding</td>
+                     <td class="primary">Details</td>
+                </tr>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Id do Produto</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Foldable Mini Drone</td>
+                    <td>85631</td>
+                    <td class="warning">Peding</td>
+                     <td class="primary">Details</td>
+                </tr>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Id do Produto</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Foldable Mini Drone</td>
+                    <td>85631</td>
+                    <td class="warning">Peding</td>
+                     <td class="primary">Details</td>
+                </tr>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Id do Produto</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Foldable Mini Drone</td>
+                    <td>85631</td>
+                    <td class="warning">Peding</td>
+                     <td class="primary">Details</td>
+                </tr>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Id do Produto</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            
+            
+        </table>
+        <a href="#">Show All</a>
+   </div>
+       </main>
+       
+    </div>
+   
+</body>
+</html>
