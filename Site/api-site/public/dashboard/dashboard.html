@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +7,10 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
     
   
-<body>
+<body onload='plotarGrafico("graficoRam"),plotarGrafico("graficoDisco"),plotarGrafico("graficoCpu"),plotarGrafico("graficoTemp")'>
     <div class="container">
        <aside>
             <div class="top">
@@ -65,20 +65,12 @@
 
            <div class="insights">
                 <div class="memory-ram">
-                    <span class="material-icons-sharp">memory</span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Memória Ram</h3>
-                            <h1>teste</h1>
+                            <span class="material-icons-sharp">memory</span>
+                            <h2>Memória Ram</h2>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>81%</p>
-                            </div>
-                        </div>
+                            <canvas id="graficoRam"></canvas>
                     </div>
                     <small class="text-muted">Monitoramento 24 horas</small>
                 </div>
@@ -86,20 +78,12 @@
            <!-- ------------------AQUI ACABA MEMORIA RAM -------------------- -->
         
                 <div class="disc">
-                    <span class="material-icons-sharp"> signal_cellular_alt</span>
                     <div class="middle">
                         <div class="left">
-                            <h3>Disco</h3>
-                            <h1>teste</h1>
+                            <span class="material-icons-sharp">memory</span>
+                            <h2>Disco Rigido</h2>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>62%</p>
-                            </div>
-                        </div>
+                            <canvas id="graficoDisco"></canvas>
                     </div>
                     <small class="text-muted">Monitoramento 24 horas</small>
                 </div>
@@ -108,20 +92,12 @@
            
           
                 <div class="cpu">
-                    <span class="material-icons-sharp">dns</span>
                     <div class="middle">
                         <div class="left">
-                            <h3>CPU</h3>
-                            <h1>teste</h1>
+                            <span class="material-icons-sharp">memory</span>
+                            <h2>CPU</h2>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>50%</p>
-                            </div>
-                        </div>
+                            <canvas id="graficoCpu"></canvas>
                     </div>
                     <small class="text-muted">Monitoramento 24 horas</small>
                 </div>
@@ -129,23 +105,14 @@
            <!-- ------------------AQUI ACABA MEMORIA CPU -------------------- -->
            
             <div class="temperatura">
-                <span class="material-icons-sharp">thermostat</span>
-                    
                 <div class="middle">
                     <div class="left">
-                        <h3>Temperatura</h3>
-                        <h1>teste</h1>
+                        <span class="material-icons-sharp">memory</span>
+                        <h2>Temperatura</h2>
                     </div>
-                    <div class="progress">
-                        <svg>
-                            <circle cx="38" cy="38" r="36"></circle>
-                        </svg>
-                        <div class="number">
-                            <p>64%</p>
-                        </div>
-                    </div>
-              </div>
-              <small class="text-muted">Monitoramento 24 horas</small>
+                        <canvas id="graficoTemp"></canvas>
+                </div>
+                <small class="text-muted">Monitoramento 24 horas</small>
        </div>
            </div>
        <!-- ---------------------AQUI ACABA OS CARDS ------------------------- -->
@@ -241,3 +208,60 @@
    
 </body>
 </html>
+<script>
+ 
+const config = {
+    type: 'line',
+    data: data,
+};
+
+const labels = Utils.months({count: 7});
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'My First Dataset',
+    data: [65, 59, 80, 81, 56, 55, 40],
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+}
+
+function plotarGrafico(idGrafico) {
+    
+    const ctx = document.getElementById(idGrafico).getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['0 acertos','1 acertos','2 acertos','3 acertos','4 acertos'],
+            datasets: [{
+                label: 'Acertos',
+                data: [5,5,5,5,5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.12)',
+                    'rgba(54, 162, 235, 0.12)',
+                    'rgba(255, 206, 86, 0.12)',
+                    'rgba(75, 192, 192, 0.12)',
+                    'rgba(153, 102, 255, 0.12)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+</script>

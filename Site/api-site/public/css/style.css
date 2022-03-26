@@ -206,6 +206,13 @@ main{
     margin-top: 1.4rem;
    
 }
+
+main .left{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
 main .date{
     display: inline-block;
     background-color: var(--color-light);
@@ -236,6 +243,11 @@ main .insights > div{
 
 main .insights >div:hover{
    box-shadow: none;
+}
+
+main .progress #chart_div{
+    width: 100%;
+
 }
 
 main .insights > div span{
@@ -289,7 +301,7 @@ main .insights .progress{
 }
 
 main .insights > div .middle{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: space-between;
 }
@@ -387,4 +399,26 @@ main .recent-order a {
     text-align: center ;
     display: block;
     margin: 1rem auto;
+}
+/* ===================== MEDIA QUERIES ====================== */
+@media screen and (max-width: 1200px) {
+   .container{
+       width: 94%;
+       grid-template-columns: 7rem auto 2rem ;
+   }
+
+   aside h2 {
+       display: none;
+   }
+
+   aside .sidebar h3{
+       display: none;
+   }
+   aside .sidebar a{
+    width: 5.6rem;
+   }
+
+   /* aside .sidebar a:last-child{
+       posit
+   } */
 }
