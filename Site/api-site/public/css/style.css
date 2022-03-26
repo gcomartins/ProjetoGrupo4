@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,800;1,400;1,700&display=swap');
 
 :root {
+--color-urgente: #ff0000;
  --color-primary: #7380ec;
  --color-danger: #ff7782;
  --color-seccess: #41f1b6;
@@ -57,7 +58,9 @@ body{
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
 }
-
+.urgente{
+    color: #ff0000
+}
 a{
     color: var(--color-dark);
 }
@@ -212,6 +215,10 @@ main .left{
     justify-content: space-between;
     width: 70%;
 }
+main .buttons{
+    display: flex;
+    
+}
 
 main .date{
     display: inline-block;
@@ -219,6 +226,15 @@ main .date{
     border-radius: var(--border-radius-1);
     margin-top: 1rem;
     padding: 0.5rem 1.6rem;
+    margin-left: 2rem;
+}
+main .drop-down{
+    display: inline-block;
+    background-color: var(--color-light);
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+    
 }
 main .date input[type="date"]{
     background: transparent;
