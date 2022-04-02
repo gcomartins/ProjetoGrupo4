@@ -145,7 +145,7 @@ body {
 }
 
 .section2 {
-  background:url(./assets/imagens/pexels-christina-morillo-1181343.jpg);
+  background:url(./assets/imagens/wallpaperflare.com_wallpaper.jpg);
   background-repeat:no-repeat ;
   background-size:cover ;
   padding: calc(5rem + var(--header-height)) 0; 
