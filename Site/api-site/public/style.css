@@ -101,11 +101,12 @@ body {
 
 .circulo{
   border: 0.8vh solid #a4161a;
-  width: 57%;
-  height: 39%;
-  padding-top: 3rem;
   border-radius: 50%;
-  margin-left: 20%;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 100%;
+  background: black;
 }
 
 .estatistica{
