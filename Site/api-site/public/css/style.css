@@ -207,7 +207,7 @@ aside .sidebar a:last-child{
 /* =========================== MAIN ======================= */
 main{
     margin-top: 1.4rem;
-    width: 95%;
+    width: 100%;
 }
 
 
@@ -255,7 +255,7 @@ main .insights > div{
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
-    width: 380px;
+    width: 280px;
 }
 
 main .insights >div:hover{
@@ -416,6 +416,15 @@ main .recent-order a {
     text-align: center ;
     display: block;
     margin: 1rem auto;
+}
+
+#menu{
+    background-color: var(--color-backgroud);
+}
+img{
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
 }
 /* ===================== MEDIA QUERIES ====================== */
 
