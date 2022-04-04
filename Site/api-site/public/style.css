@@ -101,12 +101,11 @@ body {
 
 .circulo{
   border: 0.8vh solid #a4161a;
-  border-radius: 50%;
+  border-radius: 47%;
   position: relative;
   width: 100%;
   height: auto;
   padding-top: 100%;
-  background: black;
 }
 
 .estatistica{
@@ -146,7 +145,6 @@ body {
 }
 
 .section2 {
-  background:url(./assets/imagens/wallpaperflare.com_wallpaper.jpg);
   background-repeat:no-repeat ;
   background-size:cover ;
   padding: calc(5rem + var(--header-height)) 0; 
