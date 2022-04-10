@@ -78,14 +78,12 @@
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
 
         var nome = formulario.get("nome");
-        var sobrenome = formulario.get("sobrenome");
-        var nascimento = formulario.get("nascimento");
         var email = formulario.get("email");
         var senha = formulario.get("senha");
         var confirmacaoSenha = formulario.get("confirmacao-senha");
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (nome == "" || sobrenome == "" || nascimento == "" || email == "" || senha == "" || confirmacaoSenha == "") {
+        if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
 
             window.alert("Preencha todos os campos para prosseguir!");
             if (nome == "") {
