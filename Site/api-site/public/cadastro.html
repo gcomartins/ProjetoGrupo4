@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cadastro</title>
+
     <link rel="shortcut icon" href="./assets/imagens/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" type="image/x-icon">
     <link rel="stylesheet" href="css/header_footer.css">
     <link rel="stylesheet" href="css/cadastro.css">
+
+    <script src="./js/funcoes.js"></script>
 </head>
 <body>
     <header>
@@ -26,29 +30,29 @@
     </header>
     <main>
         <section>
-            <form class="container" action="cadastrar">
+            <form class="container" action="cadastrar" id="form_cadastro" method="post" onsubmit="cadastrar()">
                 <div class="logo">
                     <a href="index.html">
                         <img src="./assets/imagens/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" alt="">
                     </a>
                 </div>
                 <div class="inputs">
-                    <input name="nome"id="inp_nome" type="text"autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <input name="nome"id="nome" type="text"autocomplete="off"required maxlength="22"required minlength="4" required>
                     <label for="nome">Nome</label>
                 </div>
                 
                 <div class="inputs">
-                    <input name="email"id="inp_email" type="email"autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <input name="email"id="email" type="email"autocomplete="off"required maxlength="22"required minlength="4" required>
                     <label for="email">Email</label>
                 </div>
 
                 <div class="inputs">
-                    <input name="senha"id="inp_senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <input name="senha"id="senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
                     <label for="senha">Senha</label>
                 </div>
 
                 <div class="inputs">
-                    <input name="conf_senha"id="inp_confirmar_senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <input name="conf_senha"id="confirmacaoSenha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
                     <label for="conf_senha">Confirme sua senha</label>
                 </div>
                 
@@ -62,3 +66,75 @@
 
 </body>
 </html>
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_cadastro").reset();
+    }
+
+    function cadastrar() {
+        aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
+
+        var nome = formulario.get("nome");
+        var email = formulario.get("email");
+        var senha = formulario.get("senha");
+        var confirmacaoSenha = formulario.get("confirmacao-senha");
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
+
+            window.alert("Preencha todos os campos para prosseguir!");
+            if (nome == "") {
+                console.log('nome está em branco')
+            }
+            if (email == "") {
+                console.log('email está em branco')
+            }
+            if (senha == "") {
+                console.log('senha está em branco')
+            }
+            if (confirmacaoSenha == "") {
+                console.log('confirmacaoSenha está em branco')
+            }
+            finalizarAguardar();
+            return false;
+        }
+
+        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            finalizarAguardar();
+            return false;
+        }
+
+        if (senha != confirmacaoSenha) {
+            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+            finalizarAguardar();
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "login.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+</script>
