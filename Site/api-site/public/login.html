@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login</title>
+
     <link rel="shortcut icon" href="./assets/imagens/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" type="image/x-icon">
     <link rel="stylesheet" href="css/header_footer.css">
     <link rel="stylesheet" href="css/login.css">
+
+    <script src="./js/funcoes.js"></script>
 </head>
 <body>
     <header>
@@ -26,7 +30,7 @@
     </header>
     <main>
         <section>
-            <form class="container" action="cadastrar">
+            <form class="container" action="cadastrar" id="form_login" method="post" onsubmit="entrar()">
                 <div class="logo">
                     <a href="index.html">
                         <img src="./assets/imagens/logo/kisspng-whiskers-whitw-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" alt="">
@@ -34,12 +38,12 @@
                 </div>
                 
                 <div class="inputs">
-                    <input name="email"id="inp_email" type="email"autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <input name="email"id="email" type="email"autocomplete="off"required maxlength="22"required minlength="4" required>
                     <label for="email">Email</label>
                 </div>
 
                 <div class="inputs">
-                    <input name="senha"id="inp_senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
+                    <input name="senha"id="senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
                     <label for="senha">Senha</label>
                 </div>
                 
@@ -53,3 +57,74 @@
 
 </body>
 </html>
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_login").reset();
+    }
+
+    function entrar() {
+        aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+
+        var email = formulario.get("email");
+        var senha = formulario.get("senha");
+
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (email == "" || senha == "") {
+            window.alert("Preencha todos os campos para prosseguir!");
+            finalizarAguardar();
+            return false;
+        }
+
+        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            finalizarAguardar();
+            return false;
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.Nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>
