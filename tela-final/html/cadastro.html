@@ -8,7 +8,7 @@
   <title>OriginSix</title>
 
   <!-- Icones -->
-  <link rel="stylesheet" href="../assets/fonts/style.css" />
+  <link rel="stylesheet" href="assets/fonts/style.css" />
 
   <!-- Barra do sobre nós-->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -47,29 +47,29 @@
     </nav>
   </header>
 
-  <div class="main">
+        <h1>Cria sua conta gratuitamente na <span> <br><h2>DataCat!</h2> </span></h1>
+  <main class="main">
+    <div>
     <div class="container">
-        <h3>Cria sua conta gratuitamente na <span> DataCat!</span></h3>
-        <form action="">
-            <label for="">Lorem</label>
-            <input type="text">
-            <label for="">Lorem</label>
-            <input type="text">
-            <label for="">Lorem</label>
-            <input type="text">
-            <label for="">Lorem</label>
-            <input type="text">
-            <div class="btn">
-                <h3>Criar conta</h3>
+        <form action=""id="form_cadastro" method="post" onsubmit="cadastrar()">
+            <label for="">Nome</label>
+            <input name="nome"id="nome" type="text" required maxlength="45">
+            <label for="">CNPJ</label>
+            <input name="cpnj"id="cnpj" type="" required maxlength="45" minlength="14">
+            <label class="label_Epl" for="">Representante</label>
+            <input name="representante"id="representante" type="text" required>
+            <label for="">Email</label>
+            <input name="email"id="email" type="email" required>
+            <label for="">Senha</label>
+            <input name="senha"id="senha" type="password" required>
+            <div class="btn" type="submit">
+                <h3>Cadastrar</h3>
             </div>
             <p>Já possui conta? <a href="./login.html"><i>Entre!</i></a> </p>
         </form>
     </div>
-</div>
-
-  <div class="divider-1"></div>
-
-
+  </div>
+</main>
 
 
   <!-- If we need pagination -->
@@ -79,7 +79,7 @@
   </section>
 
 
-  </main>
+ 
 
 
   <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
@@ -99,3 +99,75 @@
 </body>
 
 </html>
+
+<script>
+
+  function limparFormulario() {
+      document.getElementById("form_cadastro").reset();
+  }
+
+  function cadastrar() {
+      aguardar();
+
+      var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
+
+      var nome = formulario.get("nome");
+      var email = formulario.get("email");
+      var senha = formulario.get("senha");
+      var nome = formulario.get("cnpj");
+      var email = formulario.get("representante");
+     
+
+      // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+      if (nome == "" || email == "" || senha == "" || cnpj == "" || representante == "") {
+
+          window.alert("Preencha todos os campos para prosseguir!");
+          if (nome == "") {
+              console.log('nome está em branco')
+          }
+          if (email == "") {
+              console.log('email está em branco')
+          }
+          if (senha == "") {
+              console.log('senha está em branco')
+          }
+          if (cnpj == "") {
+              console.log('CNPJ está em branco')
+          }
+          if (representante == "") {
+              console.log('representante está em branco')
+          }
+          finalizarAguardar();
+          return false;
+      }
+
+      if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+          window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+          finalizarAguardar();
+          return false;
+      }
+
+      fetch("/usuarios/cadastrar", {
+          method: "POST",
+          body: formulario
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+              window.alert("Cadastro realizado com sucesso!");
+              window.location = "login.html";
+              limparFormulario();
+              finalizarAguardar();
+          } else {
+              throw ("Houve um erro ao tentar realizar o cadastro!");
+          }
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+      });
+
+      return false;
+  }
+
+</script>
