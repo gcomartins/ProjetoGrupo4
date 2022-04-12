@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+  <!-- PAGE INFO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OriginSix</title>
+
+  <!-- Icones -->
+  <link rel="stylesheet" href="assets/fonts/style.css" />
+
+  <!-- Barra do sobre nós-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <link rel="stylesheet" href="../css/login.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <header id="header">
+    <nav class="container">
+      <a class="logo" href="#">Data<span>Cat</span>.</a>
+      <!-- menu -->
+      <div class="menu">
+        <ul class="grid">
+          <li><a class="title" href="../html/index.html">Início</a></li>
+          <li><a class="title" href="../html/index.html">Curiosidades</a></li>
+          <li><a class="title" href="../html/index.html">Sobre</a></li>
+          <li><a class="title" href="../html/index.html">Quem somos</a></li>
+          <li><a class="title" href="../html/index.html">Contato</a></li>
+          <li><a class="title" href="../html/login.html">Login</a></li>
+          <li><a class="title" href="../html/cadastro.html">Cadastro</a></li>
+        </ul>
+      </div>
+      <!-- /menu -->
+      <div class="toggle icon-menu"></div>
+      <div class="toggle icon-close"></div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div>
+      <div class="container">
+        <h3>Entre na sua conta na<span> DataCat!</span></h3>
+        <form action="" id="form_login" method="post" onsubmit="entrar()">
+          <label for="">Email</label>
+          <input name="email"id="email" type="email" required maxlength="45">
+          <label for="">Senha</label>
+          <input name="senha"id="senha" type="password" required maxlength="45">
+          <div class="btn" type="submit">
+            <h3>Entrar</h3>
+          </div>
+          <p>Não possui conta? <a href="./cad.html"><i>Criar uma</i></a> </p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+  </div>
+  </div>
+  </section>
+
+
+ 
+
+
+  <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
+
+  <!-- swiper -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- scrollreveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!-- main.js -->
+  <script src="main.js"></script>
+
+  <!-- icon -->
+  <script src="https://kit.fontawesome.com/099953fb5d.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+<script>
+
+  function limparFormulario() {
+      document.getElementById("form_login").reset();
+  }
+
+  function entrar() {
+      aguardar();
+
+      var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+
+      var email = formulario.get("email");
+      var senha = formulario.get("senha");
+
+      console.log("FORM LOGIN: ", email);
+      console.log("FORM SENHA: ", senha);
+
+      // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+      if (email == "" || senha == "") {
+          window.alert("Preencha todos os campos para prosseguir!");
+          finalizarAguardar();
+          return false;
+      }
+
+      if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+          window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+          finalizarAguardar();
+          return false;
+      }
+
+      fetch("/usuarios/autenticar", {
+          method: "POST",
+          body: formulario
+      }).then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!")
+
+          if (resposta.ok) {
+              console.log(resposta);
+
+              resposta.json().then(json => {
+                  console.log(json);
+                  console.log(JSON.stringify(json));
+
+                  sessionStorage.EMAIL_USUARIO = json.email;
+                  sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                  sessionStorage.ID_USUARIO = json.idUsuario;
+
+                  setTimeout(function () {
+                      window.location = "./dashboard/dashboard.html";
+                  }, 1000); // apenas para exibir o loading
+
+              });
+
+          } else {
+
+              console.log("Houve um erro ao tentar realizar o login!");
+
+              resposta.text().then(texto => {
+                  console.error(texto);
+                  finalizarAguardar(texto);
+              });
+          }
+
+      }).catch(function (erro) {
+          console.log(erro);
+      })
+
+      return false;
+  }
+
+</script>

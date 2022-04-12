@@ -255,7 +255,7 @@ main .insights > div{
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
-    width: 280px;
+    /* width: 300px; */
 }
 
 main .insights >div:hover{
@@ -265,6 +265,15 @@ main .insights >div:hover{
 main .progress #chart_div{
     width: 100%;
 
+}
+main .insights .memory-ram h2{
+position: relative;
+left: 10px;
+}
+
+main .insights .memory-ram h2{
+    position: relative;
+    left: 10px;
 }
 
 main .insights > div span{
@@ -421,11 +430,89 @@ main .recent-order a {
 #menu{
     background-color: var(--color-backgroud);
 }
+
 img{
-    width: 20%;
-    height: 20%;
+    width: 10%;
+    height: 10%;
     border-radius: 50%;
 }
+
+.message span {
+    color: #ff0000;
+}
+
+.right {
+    margin-top: 1.4rem;
+}
+
+.right .top {
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+    height: 4.5%;
+}
+
+.right .top button{
+    display: none;
+}
+
+.right .theme-toggler{
+    background: var(--color-light) ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 7.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.right .theme-toggler span {
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .theme-toggler span.active{
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+
+}
+
+.right .top .profile{
+   display: flex;
+    gap: 2rem;
+    text-align: right;
+}
+
+ .profile-photo-user img{
+    width:100%;
+    height: 80%;
+ }
+
+.top {
+    height: 10%;
+    width: 80%;
+ }
+ .profile-photo img {
+    width: 100%;
+    height: 30%;
+ }
+ .profile-photo-larissa img{
+    width: 100%;
+    height: 40%;
+ }
+/* .profile-photo-user {
+    width: 10%;
+   height: 100%;    
+} */
+/* .update{
+    display: flex;
+} */
 /* ===================== MEDIA QUERIES ====================== */
 
 @media screen and (max-width: 1200px) {
@@ -472,7 +559,46 @@ img{
     }
     
 }
+/* ---------------------- ULTIMAS OPERAÇÕES ---------------------------- */
+.right .recent-update {
+    margin-top: 1rem;
 
+}
+
+.right .recent-update h2 {
+    margin-bottom: 0.8rem;
+} 
+
+.right .recent-update .updates {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .recent-update .updates:hover {
+    box-shadow: none;
+}
+
+.right .recent-update .updates .update {
+    display: grid;
+    grid-template-columns: 2.6rem auto;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.right-add-product{
+    background: transparent ;
+    border: 2px dashed var(--color-primary);
+    color: var(--color-primary);
+    border-radius: var(--border-radius-2);
+    margin-top: 2rem;
+    text-align: center;
+}
+.right-add-product h2{
+    margin-top: 0.8rem;
+}
 /* ======================== MEDIA QUERIES MOBILE ========================== */
 @media screen and (max-width: 768px) {
     .container{
