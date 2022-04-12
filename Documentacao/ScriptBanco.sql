@@ -2,6 +2,9 @@ create database Grupo4;
 
 use Grupo4;
 
+select * from tbMaquinas;
+
+
 create table tbEmpresas (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 nomeEmpresa VARCHAR(45),
@@ -14,11 +17,15 @@ senha VARCHAR(45)
 
 create table tbMaquinas (
 idMaquina INT PRIMARY KEY AUTO_iNCREMENT,
+hostName varchar(45),
 grupo VARCHAR(45),
 fkEmpresa INT,
 constraint FKEmpresa
 foreign key (fkEmpresa) references tbEmpresas (idEmpresa));
 
+
+select M.*, C.nome, C.capacidade, C.limiteAlerta, C.limiteTemperatura from tbMaquinas as M 
+inner join tbComponentes as C on M.idmaquina =  C.fkMaquina where hostName = "Lucas";
 
 create table tbUsuarios (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
@@ -35,6 +42,7 @@ usuario TINYINT
 );
 
 
+
 CREATE TABLE tbComponentes (
 idComponentes INT PRIMARY KEY AUTO_INCREMENT, 
 nome VARCHAR(45)
@@ -47,6 +55,11 @@ constraint fkMaquina
 foreign key (fkMaquina) references tbMaquinas (idMaquina)
 );
 
+-- Limites dos Componentes pelo Hostname
+
+
+-- DashCards
+select M.idMaquina , M. C.* from tbMaquinas as M  inner join tbComponentes as C on C.fkMaquina = C.fkMaquina;
 
 Create table tbLogs (
 idLog INT PRIMARY KEY AUTO_INCREMENT, 
@@ -70,6 +83,8 @@ check(categoria = "Moderado"  or categoria = "Alto" or categoria = "Severo" ),
 descrição varchar(255)
 );
 
+
+
 insert into tbEmpresas (nomeEmpresa, cnpj, representante, email, senha)values 
 ("Bradesco","45245213652148","Guilherme","bradesco@email.com.br","1234"),
 ("Santander","41256913652148","Leticia","santander@email.com.br","4321"),
@@ -77,15 +92,15 @@ insert into tbEmpresas (nomeEmpresa, cnpj, representante, email, senha)values
 ("Banco do Brasil","4124563254862","Lucas","bdrasil@email.com.br","4532");
 
 
-insert into tbMaquinas (grupo, fkEmpresa) values 
-("GrupoA", 1),
-("GrupoA",4),
-("grupoB",2),
-("GrupoA",3),
-("grupoB",1),
-("GrupoB",3),
-("GrupoB",4),
-("GrupoB",2);
+insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
+("Lucas","GrupoA", 1),
+("Mari","GrupoA",4),
+("Pieroni","grupoB",2),
+("Leticia","GrupoA",3),
+("Lara","grupoB",1),
+("Larissa","GrupoB",3),
+("Gulherme","GrupoB",4),
+("Algusto","GrupoB",2);
 
 insert into tbUsuarios (nomeUsuario, sobrenome, email, senha, fkempresa, sudo, administrador, usuario) values 
 ("Guilherme","Pereira","guilherme@email.com","1234", 1,true,true,true),
@@ -122,6 +137,7 @@ insert into tbAlertas (fkLog, categoria, descrição) values
 (4, "Severo", "********"),
 (5, "Severo", "*******"),
 (6, "Moderado", "******");
+
 
 
 
