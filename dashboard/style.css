@@ -156,9 +156,9 @@ body {
 	color: var(--primary);
 	
 }
-#sidebar .side-menu.top li.active span{
+/* #sidebar .side-menu.top li.active span{
 	margin-left: 1rem;
-}
+} */
 #sidebar.hide .side-menu li a {
 	width: calc(48px - (4px * 2));
 	transition: width .3s ease;
