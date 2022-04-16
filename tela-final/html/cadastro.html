@@ -1,28 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
+<html lang="en">
 
 <head>
-  <!-- PAGE INFO -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OriginSix</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../Site/api-site/public/style.css">
+  <link rel="stylesheet" href="/tela-final/css/cadastro.css">
 
-  <!-- Icones -->
-  <link rel="stylesheet" href="assets/fonts/style.css" />
-
-  <!-- Barra do sobre nós-->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-  <!-- STYLES -->
-  <link rel="stylesheet" href="../css/style.css" />
-
-  <link rel="stylesheet" href="../css/cadastro.css">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
-    rel="stylesheet" />
+  <title>Document</title>
 </head>
 
 <body>
@@ -47,127 +33,127 @@
     </nav>
   </header>
 
-        <h1>Cria sua conta gratuitamente na <span> <br><h2>DataCat!</h2> </span></h1>
-  <main class="main">
-    <div>
-    <div class="container">
-        <form action=""id="form_cadastro" method="post" onsubmit="cadastrar()">
-            <label for="">Nome</label>
-            <input name="nome"id="nome" type="text" required maxlength="45">
-            <label for="">CNPJ</label>
-            <input name="cpnj"id="cnpj" type="" required maxlength="45" minlength="14">
-            <label class="label_Epl" for="">Representante</label>
-            <input name="representante"id="representante" type="text" required>
-            <label for="">Email</label>
-            <input name="email"id="email" type="email" required>
-            <label for="">Senha</label>
-            <input name="senha"id="senha" type="password" required>
-            <div class="btn" type="submit">
-                <h3>Cadastrar</h3>
-            </div>
-            <p>Já possui conta? <a href="./login.html"><i>Entre!</i></a> </p>
-        </form>
+  
+
+  <form action="" class="main-login">
+    <div class="left-login">
+      <h1>Bem Vindo ao DataCat <br> <span class="span_crie"> Crie Sua Conta</span> </h1>
+      <img class="left-login-image" src="../assets/imagens/Subscriber-bro.png" alt="">
     </div>
-  </div>
-</main>
+    
+    <div class="right_login">
+      <div class="card-login">
+        <div class="textfield">
+          <h1>Cadastro</h1>
 
+          <label for="usuario">Usuário</label>
+          <span>Usuário</span>
+          <input type="text" name="usuario" id="" placeholder="Usuário">
+        </div>
 
-  <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
-  </div>
-  </div>
-  </section>
+        <div class="textfield">
+          <label for="senha">CNPJ</label>
+          <Span>CNPJ</Span>
+          <input type="text" name="senha" id="" placeholder="CNPJ">
+        </div>
 
+        <div class="textfield">
+          <label for="senha">Representante</label>
+          <Span>Representante</Span>
+          <input type="text" name="senha" id="" placeholder="Representante">
+        </div>
 
- 
+        
+        <div class="textfield">
+          <label for="email">E-mail</label>
+          <Span>E-mail</Span>
+          <input type="text" name="senha" id="" placeholder="E-mail">
+        </div>
+        
+        <div class="textfield">
+          <label for="senha">Senha</label>
+          <Span>Senha</Span>
+          <input type="password" name="senha" id="" placeholder="Senha">
+        </div>
 
+        <button class="btn-login">Login</button>
 
-  <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
+      </div>
+    </div>
+  </form>
 
-  <!-- swiper -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- scrollreveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-
-  <!-- main.js -->
-  <script src="../js/main.js"></script>
-
-  <!-- icon -->
-  <script src="https://kit.fontawesome.com/099953fb5d.js" crossorigin="anonymous"></script>
 
 </body>
 
 </html>
-
 <script>
 
   function limparFormulario() {
-      document.getElementById("form_cadastro").reset();
+    document.getElementById("form_cadastro").reset();
   }
 
   function cadastrar() {
-      aguardar();
+    aguardar();
 
-      var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
+    var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
 
-      var nome = formulario.get("nome");
-      var email = formulario.get("email");
-      var senha = formulario.get("senha");
-      var nome = formulario.get("cnpj");
-      var email = formulario.get("representante");
-     
+    var nome = formulario.get("nome");
+    var email = formulario.get("email");
+    var senha = formulario.get("senha");
+    var nome = formulario.get("cnpj");
+    var email = formulario.get("representante");
 
-      // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-      if (nome == "" || email == "" || senha == "" || cnpj == "" || representante == "") {
 
-          window.alert("Preencha todos os campos para prosseguir!");
-          if (nome == "") {
-              console.log('nome está em branco')
-          }
-          if (email == "") {
-              console.log('email está em branco')
-          }
-          if (senha == "") {
-              console.log('senha está em branco')
-          }
-          if (cnpj == "") {
-              console.log('CNPJ está em branco')
-          }
-          if (representante == "") {
-              console.log('representante está em branco')
-          }
-          finalizarAguardar();
-          return false;
+    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+    if (nome == "" || email == "" || senha == "" || cnpj == "" || representante == "") {
+
+      window.alert("Preencha todos os campos para prosseguir!");
+      if (nome == "") {
+        console.log('nome está em branco')
       }
-
-      if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-          window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-          finalizarAguardar();
-          return false;
+      if (email == "") {
+        console.log('email está em branco')
       }
-
-      fetch("/usuarios/cadastrar", {
-          method: "POST",
-          body: formulario
-      }).then(function (resposta) {
-
-          console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
-              window.alert("Cadastro realizado com sucesso!");
-              window.location = "login.html";
-              limparFormulario();
-              finalizarAguardar();
-          } else {
-              throw ("Houve um erro ao tentar realizar o cadastro!");
-          }
-      }).catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-          finalizarAguardar();
-      });
-
+      if (senha == "") {
+        console.log('senha está em branco')
+      }
+      if (cnpj == "") {
+        console.log('CNPJ está em branco')
+      }
+      if (representante == "") {
+        console.log('representante está em branco')
+      }
+      finalizarAguardar();
       return false;
+    }
+
+    if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+      window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+      finalizarAguardar();
+      return false;
+    }
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formulario
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        window.alert("Cadastro realizado com sucesso!");
+        window.location = "login.html";
+        limparFormulario();
+        finalizarAguardar();
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      finalizarAguardar();
+    });
+
+    return false;
   }
 
 </script>
