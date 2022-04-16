@@ -1,30 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
-
+<html lang="en">
 <head>
-  <!-- PAGE INFO -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OriginSix</title>
-
-  <!-- Icones -->
-  <link rel="stylesheet" href="assets/fonts/style.css" />
-
-  <!-- Barra do sobre nós-->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-  <!-- STYLES -->
-  <link rel="stylesheet" href="../css/style.css" />
-
-  <link rel="stylesheet" href="../css/login.css">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
-    rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<link rel="stylesheet" href="/tela-final/css/login.css">
+<link rel="stylesheet" href="../../Site/api-site/public/style.css">
 </head>
-
 <body>
   <header id="header">
     <nav class="container">
@@ -47,52 +30,34 @@
     </nav>
   </header>
 
-  <main class="main">
-    <div>
-      <div class="container">
-        <h3>Entre na sua conta na<span> DataCat!</span></h3>
-        <form action="" id="form_login" method="post" onsubmit="entrar()">
-          <label for="">Email</label>
-          <input name="email"id="email" type="email" required maxlength="45">
-          <label for="">Senha</label>
-          <input name="senha"id="senha" type="password" required maxlength="45">
-          <div class="btn" type="submit">
-            <h3>Entrar</h3>
-          </div>
-          <p>Não possui conta? <a href="./cad.html"><i>Criar uma</i></a> </p>
-        </form>
+  <form action="" class="main-login">
+    <div class="left-login">
+      <h1>Bem Vindo de volta ao DataCat <br><span class="span_crie">Entre na sua conta</span></h1>
+      <img class="left-login-image" src="../assets/imagens/Sign up-amico.png" alt="">
+    </div>
+    
+    <div class="right_login">
+      <div class="card-login">
+        <div class="textfield">
+          <h1>LOGIN</h1>
+
+          <label for="usuario">Usuário</label>
+          <span>Usuário</span>
+          <input type="text" name="usuario" id="" placeholder="Usuário">
+        </div>
+
+        <div class="textfield">
+          <label for="senha">Senha</label>
+          <Span>Senha</Span>
+          <input type="password" name="senha" id="" placeholder="Senha">
+        </div>
+
+        <button class="btn-login">Login</button>
+
       </div>
     </div>
-  </main>
+  </form>
 
-
-
-
-
-
-  <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
-  </div>
-  </div>
-  </section>
-
-
- 
-
-
-  <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
-
-  <!-- swiper -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- scrollreveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-
-  <!-- main.js -->
-  <script src="main.js"></script>
-
-  <!-- icon -->
-  <script src="https://kit.fontawesome.com/099953fb5d.js" crossorigin="anonymous"></script>
 
 </body>
 
@@ -101,71 +66,72 @@
 <script>
 
   function limparFormulario() {
-      document.getElementById("form_login").reset();
+    document.getElementById("form_login").reset();
   }
 
   function entrar() {
-      aguardar();
+    aguardar();
 
-      var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+    var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
 
-      var email = formulario.get("email");
-      var senha = formulario.get("senha");
+    var email = formulario.get("email");
+    var senha = formulario.get("senha");
 
-      console.log("FORM LOGIN: ", email);
-      console.log("FORM SENHA: ", senha);
+    console.log("FORM LOGIN: ", email);
+    console.log("FORM SENHA: ", senha);
 
-      // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-      if (email == "" || senha == "") {
-          window.alert("Preencha todos os campos para prosseguir!");
-          finalizarAguardar();
-          return false;
-      }
-
-      if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-          window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-          finalizarAguardar();
-          return false;
-      }
-
-      fetch("/usuarios/autenticar", {
-          method: "POST",
-          body: formulario
-      }).then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!")
-
-          if (resposta.ok) {
-              console.log(resposta);
-
-              resposta.json().then(json => {
-                  console.log(json);
-                  console.log(JSON.stringify(json));
-
-                  sessionStorage.EMAIL_USUARIO = json.email;
-                  sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                  sessionStorage.ID_USUARIO = json.idUsuario;
-
-                  setTimeout(function () {
-                      window.location = "./dashboard/dashboard.html";
-                  }, 1000); // apenas para exibir o loading
-
-              });
-
-          } else {
-
-              console.log("Houve um erro ao tentar realizar o login!");
-
-              resposta.text().then(texto => {
-                  console.error(texto);
-                  finalizarAguardar(texto);
-              });
-          }
-
-      }).catch(function (erro) {
-          console.log(erro);
-      })
-
+    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+    if (email == "" || senha == "") {
+      window.alert("Preencha todos os campos para prosseguir!");
+      finalizarAguardar();
       return false;
+    }
+
+    if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+      window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+      finalizarAguardar();
+      return false;
+    }
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      body: formulario
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nomeUsuario;
+          sessionStorage.ID_USUARIO = json.idUsuario;
+
+          setTimeout(function () {
+            window.location = "./dashboard/dashboard.html";
+          }, 1000); // apenas para exibir o loading
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardar(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
   }
 
 </script>
+  

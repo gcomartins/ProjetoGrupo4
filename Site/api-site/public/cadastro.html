@@ -1,140 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastro</title>
+  <title>Cadastro</title>
 
-    <link rel="shortcut icon" href="./assets/imagens/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/header_footer.css">
-    <link rel="stylesheet" href="css/cadastro.css">
+  <link rel="shortcut icon"
+    href="./assets/imagens/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png"
+    type="image/x-icon">
 
-    <script src="./js/funcoes.js"></script>
+  <!-- Icones -->
+  <link rel="stylesheet" href="./assets/fonts/style.css">
+
+  <!-- Barra do sobre nós-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/cadastro.css">
+
+
+
+  <script src="./js/funcoes.js"></script>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <ul>
-                <strong>DataCat</strong>
-                <i><a href="index.html"></a></i>
-                <i><a href=""></a></i>
-                <i><a href=""></a></i>
-            </ul>
-            <ul>
-                <i><a href="login.html"></a></i>
-                <i><a href="cadastro.html"></a></i>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <form class="container" action="cadastrar" id="form_cadastro" method="post" onsubmit="cadastrar()">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="./assets/imagens/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" alt="">
-                    </a>
-                </div>
-                <div class="inputs">
-                    <input name="nome"id="nome" type="text"autocomplete="off"required maxlength="22"required minlength="4" required>
-                    <label for="nome">Nome</label>
-                </div>
-                
-                <div class="inputs">
-                    <input name="email"id="email" type="email"autocomplete="off"required maxlength="22"required minlength="4" required>
-                    <label for="email">Email</label>
-                </div>
+  <header id="header">
+    <nav class="container">
+      <a class="logo" href="#">Data<span>Cat</span>.</a>
+      <!-- menu -->
+      <div class="menu">
+        <ul class="grid">
+          <li><a class="title" href="./index.html">Início</a></li>
+          <li><a class="title" href="./index.html">Curiosidades</a></li>
+          <li><a class="title" href="./index.html">Sobre</a></li>
+          <li><a class="title" href="./index.html">Quem somos</a></li>
+          <li><a class="title" href="./index.html">Contato</a></li>
+          <li><a class="title" href="./login.html">Login</a></li>
+          <li><a class="title" href="./cadastro.html">Cadastro</a></li>
+        </ul>
+      </div>
+      <!-- /menu -->
+      <div class="toggle icon-menu"></div>
+      <div class="toggle icon-close"></div>
+    </nav>
+  </header>
 
-                <div class="inputs">
-                    <input name="senha"id="senha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
-                    <label for="senha">Senha</label>
-                </div>
 
-                <div class="inputs">
-                    <input name="conf_senha"id="confirmacaoSenha" type="password" autocomplete="off"required maxlength="22"required minlength="4" required>
-                    <label for="conf_senha">Confirme sua senha</label>
-                </div>
-                
 
-                <button class="btn" type="submit" >Cadastrar</button>
-            
-                <div class="texto_login">Já é cadastrado? <a href="login.html">Então vá para o Login</a></div>
-            </form>
-        </section>
-    </main>
+  <form action="" class="main-login">
+    <div class="left-login">
+      <h1>Bem Vindo ao DataCat <br> <span class="span_crie"> Crie Sua Conta</span> </h1>
+      <img class="left-login-image" src="./assets/imagens/Filing system-amico.png" alt="">
+    </div>
+
+    <div class="right_login">
+      <div class="card-login">
+        <div class="textfield">
+          <h1>Cadastro</h1>
+
+          <label for="usuario">Usuário</label>
+          <input type="text" name="usuario" id="" placeholder="Usuário">
+        </div>
+
+        <div class="textfield">
+          <label for="senha">CNPJ</label>
+          <input type="text" name="senha" id="" placeholder="CNPJ">
+        </div>
+
+        <div class="textfield">
+          <label for="senha">Representante</label>
+          <input type="text" name="senha" id="" placeholder="Representante">
+        </div>
+
+
+        <div class="textfield">
+          <label for="email">E-mail</label>
+          <input type="text" name="senha" id="" placeholder="E-mail">
+        </div>
+
+        <div class="textfield">
+          <label for="senha">Senha</label>
+          <input type="password" name="senha" id="" placeholder="Senha">
+        </div>
+
+        <button class="btn-login">Login</button>
+
+      </div>
+    </div>
+  </form>
 
 </body>
+
 </html>
+<!-- swiper -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- scrollreveal -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- main.js -->
+<script src="./main.js"></script>
+
+<!-- icon -->
+<script src="https://kit.fontawesome.com/099953fb5d.js" crossorigin="anonymous"></script>
+
 <script>
 
-    function limparFormulario() {
-        document.getElementById("form_cadastro").reset();
+  function limparFormulario() {
+    document.getElementById("form_cadastro").reset();
+  }
+
+  function cadastrar() {
+    aguardar();
+
+    var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
+
+    var nome = formulario.get("nome");
+    var email = formulario.get("email");
+    var senha = formulario.get("senha");
+    var confirmacaoSenha = formulario.get("confirmacao-senha");
+
+    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+    if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
+
+      window.alert("Preencha todos os campos para prosseguir!");
+      if (nome == "") {
+        console.log('nome está em branco')
+      }
+      if (email == "") {
+        console.log('email está em branco')
+      }
+      if (senha == "") {
+        console.log('senha está em branco')
+      }
+      if (confirmacaoSenha == "") {
+        console.log('confirmacaoSenha está em branco')
+      }
+      finalizarAguardar();
+      return false;
     }
 
-    function cadastrar() {
-        aguardar();
-
-        var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
-
-        var nome = formulario.get("nome");
-        var email = formulario.get("email");
-        var senha = formulario.get("senha");
-        var confirmacaoSenha = formulario.get("confirmacao-senha");
-
-        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
-
-            window.alert("Preencha todos os campos para prosseguir!");
-            if (nome == "") {
-                console.log('nome está em branco')
-            }
-            if (email == "") {
-                console.log('email está em branco')
-            }
-            if (senha == "") {
-                console.log('senha está em branco')
-            }
-            if (confirmacaoSenha == "") {
-                console.log('confirmacaoSenha está em branco')
-            }
-            finalizarAguardar();
-            return false;
-        }
-
-        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            finalizarAguardar();
-            return false;
-        }
-
-        if (senha != confirmacaoSenha) {
-            window.alert("As senhas inseridas devem ser iguais para prosseguir!");
-            finalizarAguardar();
-            return false;
-        }
-
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            body: formulario
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                window.alert("Cadastro realizado com sucesso!");
-                window.location = "login.html";
-                limparFormulario();
-                finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        });
-
-        return false;
+    if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+      window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+      finalizarAguardar();
+      return false;
     }
+
+    if (senha != confirmacaoSenha) {
+      window.alert("As senhas inseridas devem ser iguais para prosseguir!");
+      finalizarAguardar();
+      return false;
+    }
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formulario
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        window.alert("Cadastro realizado com sucesso!");
+        window.location = "login.html";
+        limparFormulario();
+        finalizarAguardar();
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      finalizarAguardar();
+    });
+
+    return false;
+  }
 
 </script>
