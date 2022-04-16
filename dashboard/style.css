@@ -393,7 +393,7 @@ body {
 	padding: 24px;
 	background: var(--light);
 	border-radius: 20px;
-	display: flex;
+	/* display: flex; */
 	align-items: center;
 	grid-gap: 24px;
 }
@@ -606,6 +606,11 @@ body {
 	#content nav .nav-link {
 		display: none;
 	}
+
+	#content main .box-info #grficoCpu{
+		width: 100px;
+	}
+	
 }
 
 
@@ -646,6 +651,9 @@ body {
 	#content main .box-info {
 		grid-template-columns: 1fr;
 		
+	}
+	#content main .box-info #grficoCpu{
+		width: 100px;
 	}
 
 	#content main .table-data .head {
