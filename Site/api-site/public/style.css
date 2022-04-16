@@ -1,3 +1,6 @@
+/*==== Scrollbar ========================= */
+body { overflow-x: hidden; }
+
 /*====  RESET ============================ */
 * {
   margin: 0;
@@ -23,16 +26,15 @@ img {
   --header-height: 4.5rem;
 
   /* colors */
-  --hue: 1;
+  --hue: 159;
   /* HSL color mode */
-  --base-color: #a4161a;
-  --base-color-second: hsl(var(--hue) 65% 88%);
-  --base-color-alt: hsl(var(--hue) 57% 53%);
-  --base-color-light: hsl(0 0% 98%);
+  --base-color: #A4161A;
+  --base-color-second: black;
+  --base-color-alt: #E5383B;
   --title-color: hsl(var(--hue) 41% 10%);
-  --text-color: hsl(0 0% 46%);
-  --text-color-light: hsl(0 0% 98%);
-  --body-color: hsl(0 0% 98%);
+  --text-color: black;
+  --text-color-light: white;
+  --body-color: #F9F9F9;
 
   /* fonts */
   --title-font-size: 1.875rem;
@@ -73,46 +75,23 @@ body {
 }
 
 .button:hover {
-  background: var(--base-color-light);
-  color: var(--base-color);
-  border: 1px solid var(--base-color);
+  background: var(--base-color-alt);
 }
 
 .divider-1 {
   height: 1px;
-  background: linear-gradient(
-    270deg,
-    hsla(var(--hue), 36%, 57%, 1)
-    hsla(var(--hue), 65%, 88%, 0.34),
-  );
+  background: linear-gradient(270deg,
+      #A4161A,
+      #A4161A);
 }
 
 .divider-2 {
   height: 1px;
-  background: linear-gradient(
-    270deg,
-    hsla(var(--hue), 65%, 88%, 0.34),
-    hsla(var(--hue), 36%, 57%, 1)
-  );
-}
-/*====  VOCÊ SABIA ======================== */
-
-
-
-.circulo{
-  border: 0.8vh solid #a4161a;
-  border-radius: 47%;
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding-top: 100%;
+  background: linear-gradient(270deg,
+      #A4161A,
+      #A4161A);
 }
 
-.estatistica{
-  font-size: 7vh;
-  padding: 4vh;
-  padding-top: 6vh;
-}
 /*====  LAYOUT ============================ */
 .container {
   margin-left: 1.5rem;
@@ -125,7 +104,7 @@ body {
 }
 
 .section {
-  padding: calc(5rem + var(--header-height)) 0; 
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
@@ -144,32 +123,8 @@ body {
   color: var(--base-color);
 }
 
-.section2 {
-  background-repeat:no-repeat ;
-  background-size:cover ;
-  padding: calc(5rem + var(--header-height)) 0; 
-  box-shadow: 0vh 0vh 1vh 0.1vh black;
-
-}
-
-.section2 .title {
-  margin-bottom: 1rem;
-}
-
-.section2 .subtitle {
-  font-size: var(--subtitle-font-size);
-}
-
-.section2 header {
-  margin-bottom: 4rem;
-}
-
-.section2 header strong {
-  color: var(--base-color);
-}
-
 #header {
-  border-bottom: 1px solid #a4161a;
+  border-bottom: 1px solid #e4e4e4;
   margin-bottom: 2rem;
   display: flex;
 
@@ -304,6 +259,7 @@ nav.show div.icon-close {
 /*====  HOME ============================ */
 #home {
   overflow: hidden;
+
 }
 
 #home .container {
@@ -318,7 +274,7 @@ nav.show div.icon-close {
   content: '';
   height: 100%;
   width: 100%;
-  background: var(--base-color-second);
+  background: #F9F9F9;
   position: absolute;
   top: -16.8%;
   left: 16.7%;
@@ -327,7 +283,8 @@ nav.show div.icon-close {
 
 #home .image img {
   position: relative;
-  right: 2.93rem;
+  right: 2.50rem;
+  margin-left: 100px;
 }
 
 #home .image img,
@@ -349,9 +306,107 @@ nav.show div.icon-close {
   margin-bottom: 2rem;
 }
 
-/*====  ABOUT ============================ */
-#about {
+
+
+
+/*====  CARDS VOCÊ SABIA ============================ */
+section#testimonials.section {
+  background-color: #A4161A;
+  
+}
+
+.cards.grid {
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 3.625rem 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0;
+  text-align: center;
+  margin: 0;
+}
+
+.card i {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  color: var(--base-color);
+}
+
+.card .title {
+  font-size: 1.5rem;
+
+}
+
+/* CIRCULOS DE PROGRESSO*/
+
+.circular {
+  height: 100px;
+  width: 100px;
+  margin: 100px;
+  position: relative;
+  transform: scale(2);
+}
+
+.circular .inner {
+  position: absolute;
+  z-index: 6;
+  top: 6;
+  top: 50%;
+  left: 50%;
+  height: 80px;
+  width: 80px;
+  margin: -40px 0 0 -40px;
   background: white;
+  border-radius: 100%;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.circular .numb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+}
+
+.circular .bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #B1A7A6;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 100px, 100px, 50px);
+}
+
+.circle .bar .progress {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 50px, 100px, 0px);
+  background: #a4161a;
+}
+
+.circle .left .progress {
+  z-index: 1;
+  animation: left 4s linear both;
+}
+
+/*====  SOBRE NÓS ============================ */
+#about {
+  background: #A4161A;
+  color: white;
+}
+
+#about .title {
+  color: white;
 }
 
 #about .container {
@@ -366,10 +421,10 @@ nav.show div.icon-close {
   content: '';
   height: 100%;
   width: 100%;
-  background: var(--base-color);
+  background: #F2CCCC;
   position: absolute;
   top: -8.3%;
-  left: -33%;
+  right: -5%;
   z-index: 0;
 }
 
@@ -387,35 +442,14 @@ nav.show div.icon-close {
   margin-right: 1.5rem;
 }
 
-/*====  SERVICES ============================ */
-.cards.grid {
-  gap: 1.5rem;
-}
 
-.card {
-  padding: 3.625rem 2rem;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
-  border-bottom: 0.25rem solid var(--base-color);
-  border-radius: 0.25rem 0.25rem 0 0;
-  text-align: center;
-  align-items: center;
-}
-
-.card i {
-  display: block;
-  margin-bottom: 1.5rem;
-  font-size: 5rem;
-  color: var(--base-color);
-}
-
-.card .title {
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-
-/*====  TESTIMONIALS ============================ */
+/*====  CONHEÇA NOSSO TIME ============================ */
 #testimonials {
   background: white;
+}
+
+#testimonials .title {
+  color: white;
 }
 
 #testimonials .container {
@@ -428,13 +462,15 @@ nav.show div.icon-close {
 #testimonials header {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  margin-bottom: 0;
+  
 }
 
 #testimonials blockquote {
   padding: 2rem;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
   border-radius: 0.25rem;
+  background-color: #e4e4e4;
+  height: 200px;
 }
 
 #testimonials blockquote p {
@@ -478,10 +514,10 @@ nav.show div.icon-close {
 }
 
 .swiper-pagination-bullet-active {
-  background: var(--base-color);
+  background: white;
 }
 
-/*====  CONTACT ============================ */
+/*==== ENTRE EM CONTATO ============================ */
 #contact .grid {
   gap: 4rem;
 }
@@ -511,7 +547,7 @@ nav.show div.icon-close {
 
 /*====  FOOTER ============================ */
 footer {
-  background: var(--base-color);
+  background: #A4161A;
 }
 
 footer.section {
@@ -578,6 +614,7 @@ footer .social a:hover {
 /*========= MEDIA QUERIES =========*/
 /* extra large devices: 1200 > */
 @media (min-width: 1200px) {
+
   /* reusable classes */
   .container {
     max-width: 1120px;
@@ -696,6 +733,7 @@ footer .social a:hover {
     font-size: 2.25rem;
   }
 }
+
 /* large devices: 1023 > */
 /* large devices: 992 > */
 @media (min-width: 992px) {
@@ -704,4 +742,28 @@ footer .social a:hover {
     --subtitle-font-size: 1.125rem;
   }
 }
+
 /* medium devices: 767 > */
+
+/* RESPONSIVIDADE DOS CIRCULOS */
+@keyframes left {
+  100% {
+      transform: rotate(180deg);
+  }
+}
+.circle .right {
+  z-index: 3;
+  transform: rotate(180deg);
+}
+
+.circle .right .progress {
+  animation: right 4s linear both;
+  animation-delay: 4s;
+}
+
+
+@keyframes right {
+  100% {
+      transform: rotate(180deg);
+  }
+}

@@ -5,17 +5,22 @@
   <!-- PAGE INFO -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DataCat</title>
+  <title>OriginSix</title>
 
   <!-- Icones -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./assets/fonts/style.css">
 
-  <!-- Swiper -->
+  <!-- Barra do sobre nós-->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -26,7 +31,7 @@
       <div class="menu">
         <ul class="grid">
           <li><a class="title" href="#home">Início</a></li>
-          <li><a class="title" href="#Curiosidades">Curiosidades</a></li>
+          <li><a class="title" href="#services">Curiosidades</a></li>
           <li><a class="title" href="#about">Sobre</a></li>
           <li><a class="title" href="#testimonials">Quem somos</a></li>
           <li><a class="title" href="#contact">Contato</a></li>
@@ -40,10 +45,17 @@
     </nav>
   </header>
 
-  <main>
+ 
+
     <!-- HOME -->
-    <section class="section2" id="home">
+    <section class="section" id="home">
+      
       <div class="container grid">
+        <div class="image">
+          <img
+            src="./assets/imagens/monitoramento.png"
+            alt="Monitoramentor" />
+        </div>
         <div class="text">
           <h2 class="title">Monitoramento de Servidores Bancários</h2>
           <p>
@@ -51,83 +63,117 @@
             monitoramento de servidor. Monitore toda a sua infraestrutura de servidor e tenha visibilidade aprofundada
             dos principais indicadores de desempenho dos servidores Windows e Linux.
           </p>
-          <a class="button" href="#">Saiba Mais</a>
-        </div>
-        <img src="assets/imagens/monitoramento.png" alt="">
-      </div>
-    </section>
-
-
-    <div class="divider-1" id="Curiosidades"></div>
-    <!-- VOCÊ SABIA?-->
-    <section class="section" id="services">
-      <div class="container grid">
-        <div class="cards grid">
-          <div class="card">
-            <div class="circulo">
-              <h3 class="title">676</h3>
-            </div>
-            <p>
-              <br>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              distinctio neque blanditiis, dolorem aperiam nulla explicabo
-              asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Incidunt cumque est minus quisquam mollitia iusto provident deserunt
-              nam accusamus, modi quas eaque officiis soluta quos ratione quidem harum?
-              Reprehenderit, laborum.
-              <br>
-            </p>
-          </div>
-          <div class="card">
-            <div class="circulo">
-              <h3 class="title">54</h3>
-            </div>
-            <p>
-              <br>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              distinctio neque blanditiis, dolorem aperiam nulla explicabo
-              asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Incidunt cumque est minus quisquam mollitia iusto provident deserunt
-              nam accusamus, modi quas eaque officiis soluta quos ratione quidem harum?
-              Reprehenderit, laborum.
-              <br>
-            </p>
-          </div>
-          <div class="card">
-            <div class="circulo">
-              <h3 class="title">8</h3>
-            </div>
-            <p>
-              <br>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              distinctio neque blanditiis, dolorem aperiam nulla explicabo
-              asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Incidunt cumque est minus quisquam mollitia iusto provident deserunt
-              nam accusamus, modi quas eaque officiis soluta quos ratione quidem harum?
-              Reprehenderit, laborum.
-              <br>
-            </p>
-          </div>
+          <a class="button" href="#">Entre em Contato</a>
         </div>
       </div>
     </section>
 
     <div class="divider-1"></div>
+    <!-- VOCÊ SABIA?-->
+    <section class="section" id="services">
+      <h3 class="title" style="display: flex; justify-content: center;
+      margin-bottom: 60px; margin-top: 0px;">Você Sabia?</h3>
+
+      <div class="container grid">
+
+        <div class="cards grid">
+          <div class="card">
+            <div class="circular">
+              <div class="inner"></div>
+              <div class="numb">0%</div>
+              <div class="circle">
+                  <div class="bar left">
+                      <div class="progress"></div>
+                  </div>
+                  <div class="bar right">
+                      <div class="progress"></div>
+                  </div>
+              </div>
+          </div>
+
+            <p>
+              <br>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+              distinctio neque blanditiis, dolorem aperiam nulla explicabo
+              asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Incidunt cumque est minus quisquam mollitia iusto provident deserunt
+              nam accusamus, modi quas eaque officiis soluta quos ratione quidem harum?
+              Reprehenderit, laborum.
+              <br>
+            </p>
+          </div>
+       
+          <div class="cards grid">
+            <div class="card">
+              <div class="circular">
+                <div class="inner"></div>
+                <div class="numb">54,33%</div>
+                <div class="circle">
+                    <div class="bar left">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="bar right">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+  
+              <p>
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+                distinctio neque blanditiis, dolorem aperiam nulla explicabo
+                asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Incidunt cumque est minus quisquam mollitia iusto provident deserunt
+                nam accusamus, modi quas eaque officiis soluta quos ratione quidem harum?
+                Reprehenderit, laborum.
+                <br>
+              </p>
+            </div>
+            <div class="cards grid">
+              <div class="card">
+                <div class="circular">
+                  <div class="inner"></div>
+                  <div class="numb">70%</div>
+                  <div class="circle">
+                      <div class="bar left">
+                          <div class="progress"></div>
+                      </div>
+                      <div class="bar right">
+                          <div class="progress"></div>
+                      </div>
+                  </div>
+              </div>
+    
+                <p>
+                  <br>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+                  distinctio neque blanditiis, dolorem aperiam nulla explicabo
+                  asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Incidunt cumque est minus quisquam mollitia iusto provident deserunt
+                  nam accusamus, modi quas eaque officiis soluta quos ratione quidem harum?
+                  Reprehenderit, laborum.
+                  <br>
+                </p>
+              </div>
+       
+        </div>
+      </div>
+    </section>
 
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container grid">
         <div class="image">
           <img
-            src="assets/imagens/negocio2.jpg"
-            alt="3 mulheres sorrindo" />
+            src="./assets/imagens/sobre.jpg"
+            alt="Homem segurando o celular" />
         </div>
         <div class="text">
           <h2 class="title">Sobre nós</h2>
           <p>
-            Monitoramento do desempenho do servidor usando métricas importantes, incluindo uso da CPU por processador ou
-            por núcleo, memória usada e memória livre, e muito mais em uma dashboard unificada. Planeje o uso ideal de
-            cada componente.
+            Quando 6 pessoas percebem um problema no mercado eles se reunem 
+            e pensam em um meio para resolvê-lo, juntos os analistas e desenvolvedores
+            acharam a solução para esses problemas e assim fundam uma empresa a <strong>DataCat</strong> 
           </p>
           <br />
           <p>
@@ -145,17 +191,19 @@
           </p>
         </div>
       </div>
+      
     </section>
+
 
     <div class="divider-2"></div>
 
-    <!-- SERVICES -->
+    <!-- ABOUT -->
     <section class="section" id="services">
       <div class="container grid">
         <header>
           <h2 class="title">Serviços</h2>
           <p class="subtitle">
-            Com mais de 10 anos no mercado, a <strong>DataCat</strong> já
+            Mesmo estando apenas 6 meses no mercado, a <strong>DataCat</strong> já
             conquistou clientes de inúmeros países. Venha conhecer alguns dos nossos serviços!
           </p>
         </header>
@@ -164,39 +212,42 @@
             <i class="fa-solid fa-memory"></i>
             <h3 class="title">Monitoramento de RAM</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              distinctio neque blanditiis, dolorem aperiam nulla explicabo
-              asperiores
+              Responsável pelo armazenamento de informações 
+              necessárias para a execução de aplicativos em 
+              uso e para o funcionamento do próprio sistema operacional. 
+              Visando isso desenvolvemos uma solução unica apartir da nossa 
+              aplicação Java para sempre te informar como esta seu uso e se está
+              com o funcionamento adequado.
             </p>
           </div>
           <div class="card">
-            <i class="fa-solid fa-temperature-high"></i>
-            <h3 class="title">Monitoramento De Temperatura</h3>
+            <i class="fa-solid fa-hard-drive"></i>
+            <h3 class="title">Monitoramento De CPU</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              distinctio neque blanditiis, dolorem aperiam nulla explicabo
-              asperiores
+              Responsável pelo processamento de todos os tipos de dados e pela 
+              apresentação do resultado do processamento. Visando isso desenvolvemos
+               uma solução unica apartir da nossa aplicação Java para sempre te 
+               informar como esta seu uso e se está com o funcionamento adequado.
             </p>
           </div>
           <div class="card">
             <i class="fa-solid fa-compact-disc"></i>
             <h3 class="title">Monitoramento de Disco</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              distinctio neque blanditiis, dolorem aperiam nulla explicabo
-              asperiores
+              Responsável por armazenar arquivos, programas, jogos e todo tipo 
+              de conteúdo que se deseja manter no computador. Visando isso desenvolvemos 
+              uma solução unica apartir da noss aplicação Java para sempre te 
+              informar como esta seu uso e se está com o funcionamento adequado.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+
     <div class="divider-1"></div>
 
-    <!-- TESTIMONIALS -->
-    <div class="divider-1"></div>
-    <div class="divider-2"></div>
-
+    <!-- NOSSO TIME -->
     <section class="section" id="testimonials">
       <div class="container">
         <header>
@@ -208,38 +259,15 @@
               <blockquote>
                 <p>
                   <span>&ldquo;</span>
-                  Faço parte principalmente dos processos de desenvolvimento do projeto
-                </p>
-                <cite>
-                  <img src="assets/fotos/10.jpeg" alt="Foto de Wanessa Souza" />
-                  Lucas
-                </cite>
-              </blockquote>
-            </div>
-            <div class="testimonial swiper-slide">
-              <blockquote>
-                <p>
-                  <span>&ldquo;</span>
-                  Atuo na área de análise do projeto e ofereço suporte no desenvolvimento
-                </p>
-                <cite>
-                  <img src="assets/fotos/10.jpeg" alt="Foto de Wanessa Souza" />
-                  Vinicius
-                </cite>
-              </blockquote>
-            </div>
-            <div class="testimonial swiper-slide">
-              <blockquote>
-                <p>
-                  <span>&ldquo;</span>
                   Participo ativamente em todos ambientes de desenvolvimento.
                 </p>
                 <cite>
-                  <img src="assets/fotos/10.jpeg" alt="Foto de Wanessa Souza" />
-                  Guilherme
+                  <img src="./assets/fotos/gui.jfif" alt="Foto de Guilherme Carneiro" />
+                  Guilherme Carneiro
                 </cite>
               </blockquote>
             </div>
+
             <div class="testimonial swiper-slide">
               <blockquote>
                 <p>
@@ -249,32 +277,8 @@
                   pessoas gostariamde ver é algo prazeroso pra mim.
                 </p>
                 <cite>
-                  <img src="assets/fotos/10.jpeg" alt="Foto de Wanessa Souza" />
-                  Leticia
-                </cite>
-              </blockquote>
-            </div>
-            <div class="testimonial swiper-slide">
-              <blockquote>
-                <p>
-                  <span>&ldquo;</span>
-                  Faço parte principalmente dos processos de desenvolvimento do projeto
-                </p>
-                <cite>
-                  <img src="assets/fotos/10.jpeg" alt="Foto de Wanessa Souza" />
-                  Lucas
-                </cite>
-              </blockquote>
-            </div>
-            <div class="testimonial swiper-slide">
-              <blockquote>
-                <p>
-                  <span>&ldquo;</span>
-                  A persistência é o caminho do êxito
-                </p>
-                <cite>
-                  <img src="assets/fotos/56.jpeg" alt="Foto de Franciele Venega" />
-                  Larissa
+                  <img src="./assets/fotos/leticia.jfif" alt="Leticia Marques" />
+                  Leticia Marques
                 </cite>
               </blockquote>
             </div>
@@ -287,13 +291,55 @@
                   novas, e gosto de mudanças no meu dia a dia
                 </p>
                 <cite>
-                  <img src="assets/fotos/26.jpeg" alt="Fotos de Valeska Fabris" />
-                  Lara
+                  <img src="./assets/fotos/Lara.jpg" alt="Lara Regina" />
+                  Lara Regina
                 </cite>
               </blockquote>
             </div>
-          </div>
 
+            <div class="testimonial swiper-slide">
+              <blockquote>
+                <p>
+                  <span>&ldquo;</span>
+                  A persistência é o caminho do êxito.
+                </p>
+                <cite>
+                  <img src="./assets/fotos/larissa.jpg" alt="Foto de Larissa Alves" />
+                  Larissa Alves
+                </cite>
+              </blockquote>
+            </div>
+
+
+            <div class="testimonial swiper-slide">
+              <blockquote>
+                <p>
+                  <span>&ldquo;</span>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Rerum blanditiis saepe nam excepturi explicabo ipsa error
+                  ipsam neque
+                </p>
+                <cite>
+                  <img src="../assets/fotos/26.jpeg" alt="Fotos de   Vinicius Pieroni" />
+                  Vinicius Pieroni
+                </cite>
+              </blockquote>
+            </div>
+
+            <div class="testimonial swiper-slide">
+              <blockquote>
+                <p>
+                  <span>&ldquo;</span>
+                  Faço parte principalmente dos processos de desenvolvimento do projeto.
+                </p>
+                <cite>
+                  <img src="./assets/fotos/Lucas.jpg" alt="Foto de Lucas Mastelini" />
+                  Lucas Mastelini
+                </cite>
+              </blockquote>
+            </div>
+
+          </div>
 
           <!-- If we need pagination -->
           <div class="swiper-pagination"></div>
@@ -329,6 +375,7 @@
     <div class="divider-1"></div>
   </main>
 
+
   <footer class="section">
     <div class="container grid">
       <div class="brand">
@@ -339,28 +386,28 @@
 
       <div class="social grid">
         <a href="https://instagram.com" target="_blank">
-          <i class="icon-instagram"></i>
+          <i class="fa-brands fa-instagram-square"></i>
         </a>
         <a href="https://facebook.com" target="_blank">
-          <i class="icon-facebook"></i></a>
-        <a href="https://youtube.com" target="_blank"><i class="icon-youtube"></i></a>
+          <i class="fa-brands fa-facebook"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-  </footer>
 
-  <a href="#home" class="back-to-top"><i class="fa-solid fa-bars"></i></a>
+    <a href="#home" class="back-to-top"><i class="fa-solid fa-circle-minus"></i></a>
 
-  <!-- swiper -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <!-- scrollreveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- scrollreveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-  <!-- icon -->
-  <script src="https://kit.fontawesome.com/099953fb5d.js" crossorigin="anonymous"></script>
+    <!-- main.js -->
+    <script src="./main.js"></script>
 
-  <!-- main.js -->
-  <script src="main.js"></script>
+    <!-- icon -->
+    <script src="https://kit.fontawesome.com/099953fb5d.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

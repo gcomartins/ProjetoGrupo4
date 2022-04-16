@@ -1,5 +1,3 @@
-const { url } = require("wd/lib/commands")
-
 /*  abre e fecha o menu quando clicar no icone: hamburguer e x */
 const nav = document.querySelector('#header nav')
 const toggle = document.querySelectorAll('nav .toggle')
@@ -111,4 +109,17 @@ window.addEventListener('scroll', function () {
   activateMenuAtCurrentSection()
 })
 
-/* Muda o fundo do background-img*/
+/* When Scroll */
+
+
+const numb = document.querySelector(".numb");
+let counter = 0;
+setInterval(()=>{
+    if (counter == 100){
+        clearInterval();
+        }else{
+            counter+=1;
+            numb.textContent = counter + "%";
+        }
+    }, 80);
+
