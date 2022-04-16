@@ -10,6 +10,11 @@
       background-position-y: 116%;
       background-color: #A4161A;
   }
+  html, body 
+{ 
+ height: 100%;
+ overflow: hidden
+}
   
   :root {
     --header-height: 4.5rem;
@@ -89,15 +94,18 @@ p{
     color: var(--vinho);
 }
 label{
-    margin-right: 54%;
+    margin-right: 56%;
+    margin-bottom: -10%;
     color: black;
 }
 input{
-    width: 67%;
-    background-color: white;
-    border-radius: 5px;
+    width: 65%;
+    background-color: #f9f9f9;
     padding: 2%;
     outline: 0;
     color: black;
-    border: 1.6px solid black;
+    border-bottom: 1.4px solid black;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
 }

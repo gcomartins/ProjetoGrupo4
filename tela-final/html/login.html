@@ -51,12 +51,12 @@
     <div>
       <div class="container">
         <h3>Entre na sua conta na<span> DataCat!</span></h3>
-        <form action="">
-          <label for="">Lorem</label>
-          <input type="text">
-          <label for="">Lorem</label>
-          <input type="text">
-          <div class="btn">
+        <form action="" id="form_login" method="post" onsubmit="entrar()">
+          <label for="">Email</label>
+          <input name="email"id="email" type="email" required maxlength="45">
+          <label for="">Senha</label>
+          <input name="senha"id="senha" type="password" required maxlength="45">
+          <div class="btn" type="submit">
             <h3>Entrar</h3>
           </div>
           <p>Não possui conta? <a href="./cad.html"><i>Criar uma</i></a> </p>
@@ -65,7 +65,7 @@
     </div>
   </main>
 
-  <div class="divider-1"></div>
+
 
 
 
@@ -77,7 +77,7 @@
   </section>
 
 
-  </main>
+ 
 
 
   <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
@@ -97,3 +97,75 @@
 </body>
 
 </html>
+
+<script>
+
+  function limparFormulario() {
+      document.getElementById("form_login").reset();
+  }
+
+  function entrar() {
+      aguardar();
+
+      var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+
+      var email = formulario.get("email");
+      var senha = formulario.get("senha");
+
+      console.log("FORM LOGIN: ", email);
+      console.log("FORM SENHA: ", senha);
+
+      // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+      if (email == "" || senha == "") {
+          window.alert("Preencha todos os campos para prosseguir!");
+          finalizarAguardar();
+          return false;
+      }
+
+      if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+          window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+          finalizarAguardar();
+          return false;
+      }
+
+      fetch("/usuarios/autenticar", {
+          method: "POST",
+          body: formulario
+      }).then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!")
+
+          if (resposta.ok) {
+              console.log(resposta);
+
+              resposta.json().then(json => {
+                  console.log(json);
+                  console.log(JSON.stringify(json));
+
+                  sessionStorage.EMAIL_USUARIO = json.email;
+                  sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                  sessionStorage.ID_USUARIO = json.idUsuario;
+
+                  setTimeout(function () {
+                      window.location = "./dashboard/dashboard.html";
+                  }, 1000); // apenas para exibir o loading
+
+              });
+
+          } else {
+
+              console.log("Houve um erro ao tentar realizar o login!");
+
+              resposta.text().then(texto => {
+                  console.error(texto);
+                  finalizarAguardar(texto);
+              });
+          }
+
+      }).catch(function (erro) {
+          console.log(erro);
+      })
+
+      return false;
+  }
+
+</script>
