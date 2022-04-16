@@ -123,11 +123,12 @@ aside{
 }
 
 aside .top{
-    background: white;
+    /* background: white; */
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top:  1.4rem;
+    margin-left: 1.4rem;
 }
 
 aside .close{
@@ -242,7 +243,7 @@ main .date input[type="date"]{
     color: var(--color-dark);
 }
 main .insights{
-    display: flex;
+    display:flex;
     grid-template-columns: repeat(3,1fr);
     gap:1.6rem;
 }
@@ -267,14 +268,22 @@ main .progress #chart_div{
 
 }
 main .insights .memory-ram h2{
-position: relative;
+text-align: center;
 left: 10px;
 }
 
-main .insights .memory-ram h2{
-    position: relative;
-    left: 10px;
+main .insights .cpu h2{
+   position: relative;
+   right: 30px;
+    
 }
+
+
+main .insights .temperatura h2{
+    position: relative;
+   left: 10px;
+     
+ }
 
 main .insights > div span{
     background-color: coral;
@@ -295,24 +304,24 @@ main .insights > div.CPU span{
     background: var(--color-dark-variant);
 }
 
-/* main .insights .memory-ram{
-    width: 400px;
+main .insights .memory-ram{
+    width: 350px;
     height: 300px;
 }
 
 main .insights .disc{
-    width: 400px;
+    width: 350px;
     height: 300px;
 }
 main .insights .cpu{
-    width: 400px;
+    width: 350px;
     height: 300px;
 }
 
 main .insights .temperatura{
-    width: 400px;
+    width: 350px;
     height: 300px;
-} */
+}
 
 main .insights h3{
     margin: 1rem 0 0.5rem;
@@ -513,54 +522,8 @@ img{
 /* .update{
     display: flex;
 } */
-/* ===================== MEDIA QUERIES ====================== */
-
-@media screen and (max-width: 1200px) {
-   .container{
-       width: 94%;
-       grid-template-columns: 7rem auto 2rem ;
-   }
-
-   aside h2 {
-       display: none;
-   }
-
-   aside .sidebar h3{
-       display: none;
-   }
-   aside .sidebar a{
-    width: 5.6rem;
-   }
-
-   aside .sidebar a:last-child{
-       position: relative;
-       margin-top: 1.8rem;
-   }
-
-   main .insights{
-       grid-template-columns:1fr ;
-       gap: 0;
-   }
-   main .recent-order{
-   width: 94%;
-   position: absolute;
-   left: 50%;
-   transform: translateX(-50%);
-   margin: 2rem 0 0 8.8rem;
-}
-    main .recent-order table{
-        width: 83vw;
-
-    }
-
-    main table tbody td th:last-child,
-    main table tbody tr th:first-child{
-        display: none;
-    }
-    
-}
-/* ---------------------- ULTIMAS OPERAÇÕES ---------------------------- */
-.right .recent-update {
+/* ---------------------- ULTIMAS OPERAÇÕES ---------------------------- */ 
+ .right .recent-update {
     margin-top: 1rem;
 
 }
@@ -599,43 +562,55 @@ img{
 .right-add-product h2{
     margin-top: 0.8rem;
 }
-/* ======================== MEDIA QUERIES MOBILE ========================== */
-@media screen and (max-width: 768px) {
-    .container{
-        width: 100%;
-    }
 
-    aside {
-        position: fixed;
-        left: 0;
-        background: var(--color-white);
-        width: 18rem;
-        z-index: 3;
-        box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
-        padding-right: var(--card-padding);
-    }
+/* ===================== MEDIA QUERIES ====================== */
 
-    aside h2{
-        display: inline;
-    }
+@media screen and (max-width: 1200px) {
+   .container{
+       width: 94%;
+       grid-template-columns: 7rem auto 2rem ;
+   }
 
-    aside .sidebar h3{
-        display: inline;
-    }
+   aside .logo h2 {
+       display: none;
+   }
 
-    aside .sidebar a{
-        width: 100%;
-        height: 3.4rem;
-    }
+   aside .sidebar h3{
+       display: none;
+   }
+   aside .sidebar a{
+    width: 5.6rem;
+   }
 
-    aside .sidebar a:last-child{
-        position: absolute;
-        bottom: 5rem;
-    }
+   aside .sidebar a:last-child{
+       position: relative;
+       margin-top: 1.8rem;
+   }
 
-    aside .close{
-        display: inline-block;
-        cursor: pointer;
-    }
+   main .insights{
+       display: inline;
+       gap: 0;
+   }
+   main .recent-order{
+   width: 94%;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   margin: 2rem 0 0 8.8rem;
 }
+    main .recent-order table{
+        width: 83vw;
+
+    }
+
+    main table tbody td th:last-child,
+    main table tbody tr th:first-child{
+        display: none;
+    }
+
+   
+    
+}
+
+
+
