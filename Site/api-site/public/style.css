@@ -316,11 +316,11 @@ section#testimonials.section {
 }
 
 .cards.grid {
-  gap: 1.5rem;
+  gap: 1.0rem;
 }
 
 .card {
-  padding: 3.625rem 2rem;
+  padding: 3.400rem 2rem;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
   border-bottom: 0.25rem solid var(--base-color);
   border-radius: 0.25rem 0.25rem 0 0;
@@ -345,7 +345,7 @@ section#testimonials.section {
 .circular {
   height: 100px;
   width: 100px;
-  margin: 100px;
+  margin: 90px;
   position: relative;
   transform: scale(2);
 }
@@ -760,7 +760,6 @@ footer .social a:hover {
   animation: right 4s linear both;
   animation-delay: 4s;
 }
-
 
 @keyframes right {
   100% {
