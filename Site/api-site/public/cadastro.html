@@ -50,43 +50,48 @@
 
 
 
-  <form action="" class="main-login">
+<<<<<<< HEAD
+  <form action="" class="main-cadastro">
+    <div class="left-cadastro">
+=======
+  <form action="" id="form_cadastro" class="main-login">
     <div class="left-login">
+>>>>>>> 33f294cf4775115d0e9b038827bd0588d65e5b8a
       <h1>Bem Vindo ao DataCat <br> <span class="span_crie"> Crie Sua Conta</span> </h1>
-      <img class="left-login-image" src="./assets/imagens/Filing system-amico.png" alt="">
+      <img class="left-cadastro-image" src="./assets/imagens/filing-system-amico.png" alt="">
     </div>
 
-    <div class="right_login">
-      <div class="card-login">
+    <div class="right_cadastro">
+      <div class="card-cadastro">
         <div class="textfield">
           <h1>Cadastro</h1>
 
-          <label for="usuario">Usuário</label>
-          <input type="text" name="usuario" id="" placeholder="Usuário">
+          <label for="empresa">Empresa</label>
+          <input type="text" name="empresa" id="" required placeholder="Usuário">
         </div>
 
         <div class="textfield">
-          <label for="senha">CNPJ</label>
-          <input type="text" name="senha" id="" placeholder="CNPJ">
+          <label for="cnpj">CNPJ</label>
+          <input type="text" name="cnpj" id=""  required placeholder="CNPJ">
         </div>
 
         <div class="textfield">
-          <label for="senha">Representante</label>
-          <input type="text" name="senha" id="" placeholder="Representante">
+          <label for="representante">Representante</label>
+          <input type="text" name="senha" id="" required placeholder="Representante">
         </div>
 
 
         <div class="textfield">
           <label for="email">E-mail</label>
-          <input type="text" name="senha" id="" placeholder="E-mail">
+          <input type="text" name="senha" id="" required placeholder="E-mail">
         </div>
 
         <div class="textfield">
           <label for="senha">Senha</label>
-          <input type="password" name="senha" id="" placeholder="Senha">
+          <input type="password" name="senha" id="" required placeholder="Senha">
         </div>
 
-        <button class="btn-login">Login</button>
+        <button class="btn-cadastro">Cadastrar</button>
 
       </div>
     </div>
@@ -117,40 +122,19 @@
     aguardar();
 
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
-
-    var nome = formulario.get("nome");
+  
+    var empresa = formulario.get("empresa");
+    var cnpj = formulario.get("cnpj");
+    var representante = formulario.get("representante");
     var email = formulario.get("email");
     var senha = formulario.get("senha");
-    var confirmacaoSenha = formulario.get("confirmacao-senha");
+    
 
-    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-    if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
-
-      window.alert("Preencha todos os campos para prosseguir!");
-      if (nome == "") {
-        console.log('nome está em branco')
-      }
-      if (email == "") {
-        console.log('email está em branco')
-      }
-      if (senha == "") {
-        console.log('senha está em branco')
-      }
-      if (confirmacaoSenha == "") {
-        console.log('confirmacaoSenha está em branco')
-      }
-      finalizarAguardar();
-      return false;
-    }
+    //  VALIDAÇÕES 
+    
 
     if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
       window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-      finalizarAguardar();
-      return false;
-    }
-
-    if (senha != confirmacaoSenha) {
-      window.alert("As senhas inseridas devem ser iguais para prosseguir!");
       finalizarAguardar();
       return false;
     }
