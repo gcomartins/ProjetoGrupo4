@@ -102,8 +102,7 @@ body {
 
 .grid {
   display: grid;
-  gap: 2rem;
-}
+margin:m}
 
 .section {
   padding: calc(5rem + var(--header-height)) 0;
@@ -129,7 +128,6 @@ body {
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 2rem;
   display: flex;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -167,6 +165,7 @@ nav {
 
 nav ul li {
   text-align: center;
+  margin: 1rem;
 }
 
 nav ul li a {
@@ -230,9 +229,7 @@ nav.show .menu ul {
   display: grid;
 }
 
-nav.show ul.grid {
-  gap: 4rem;
-}
+
 
 /* toggle menu */
 .toggle {
@@ -684,6 +681,7 @@ footer .social a:hover {
   nav .menu ul {
     display: flex;
     gap: 2rem;
+   
   }
 
   nav .menu ul li a.title {

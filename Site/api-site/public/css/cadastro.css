@@ -11,7 +11,7 @@ body * {
 
 }
 
-.main-login {
+.main-cadastro {
     width: 100vw;
     height: auto;
     margin-top: 6rem;
@@ -23,7 +23,7 @@ body * {
 
 }
 
-.left-login {
+.left-cadastro {
     width: 50vw;
     height: 100vh;
     display: flex;
@@ -33,17 +33,17 @@ body * {
 
 }
 
-.left-login>h1 {
+.left-cadastro>h1 {
     font-size: 3vw;
     color: #F9F9F9;
 }
 
-.left-login-image{
+.left-cadastro-image{
     width: 35vw;
  
 }
 
-.rigth-login {
+.rigth-cadastro {
     width: 30vw;
     height: 100vh;
     display: flex;
@@ -51,7 +51,7 @@ body * {
     align-items: center;
 }
 
-.card-login {
+.card-cadastro {
     width: 30rem;
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@ body * {
     color: black;
 }
 
-.card-login>h1 {
+.card-cadastro>h1 {
     color: black;
     font-weight: 800;
     margin: 0;
@@ -113,7 +113,7 @@ body * {
     color: black;
 }
 
-.btn-login {
+.btn-cadastro {
     width: 100%;
     padding: 16px;
     margin: 25px;
@@ -131,34 +131,34 @@ body * {
 }
 
 @media only screen and (max-width:950px){
-    .card-login{
+    .card-cadastro{
         width: 85%;
     }
 }
 
 @media only screen and (max-width: 600px){
-.main-login{
+.main-cadastro{
     flex-direction: column;
 }
 .left-login > h1{
     display: none;
 }
-.left-login{
+.left-cadastro{
     width: 100%;
     height: auto;
 }
 
-.right-login{
+.right-cadastro{
     width: 100%;
     height: auto;
 }
 
-.left-login-image{
+.left-cadastro-image{
     width: 50vw;
 }
 
-.card-login{
-    width: 90%;
+.card-cadastro{
+    width: 22rem;
 }
 
 
