@@ -1,5 +1,7 @@
 /*==== Scrollbar ========================= */
-body { overflow-x: hidden; }
+body {
+  overflow-x: hidden;
+}
 
 /*====  RESET ============================ */
 * {
@@ -312,15 +314,15 @@ nav.show div.icon-close {
 /*====  CARDS VOCÊ SABIA ============================ */
 section#testimonials.section {
   background-color: #A4161A;
-  
+
 }
 
 .cards.grid {
-  gap: 1.5rem;
+  gap: 1.0rem;
 }
 
 .card {
-  padding: 3.625rem 2rem;
+  padding: 3.400rem 2rem;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
   border-bottom: 0.25rem solid var(--base-color);
   border-radius: 0.25rem 0.25rem 0 0;
@@ -345,7 +347,7 @@ section#testimonials.section {
 .circular {
   height: 100px;
   width: 100px;
-  margin: 100px;
+  margin: 90px;
   position: relative;
   transform: scale(2);
 }
@@ -442,6 +444,40 @@ section#testimonials.section {
   margin-right: 1.5rem;
 }
 
+/* Media query visão*/
+
+.box {
+
+  background-color: #A4161A;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.box img {
+  height: 180px;
+
+}
+
+
+.box-item {
+  text-align: center;
+  display: inline-block;
+  width: 27%;
+  height: 350px;
+  padding: 2%;
+  background-color: #A4161A;
+  margin: 10px 10px 10px 10px;
+  border-radius: 4px;
+  color: white;
+}
+
+.box-item h3 {
+  text-align: center;
+  font-size: 30px;
+  margin: 0 0 20px;
+}
+
 
 /*====  CONHEÇA NOSSO TIME ============================ */
 #testimonials {
@@ -462,7 +498,7 @@ section#testimonials.section {
 #testimonials header {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  
+
 }
 
 #testimonials blockquote {
@@ -748,9 +784,10 @@ footer .social a:hover {
 /* RESPONSIVIDADE DOS CIRCULOS */
 @keyframes left {
   100% {
-      transform: rotate(180deg);
+    transform: rotate(180deg);
   }
 }
+
 .circle .right {
   z-index: 3;
   transform: rotate(180deg);
@@ -761,9 +798,28 @@ footer .social a:hover {
   animation-delay: 4s;
 }
 
-
 @keyframes right {
   100% {
-      transform: rotate(180deg);
+    transform: rotate(180deg);
   }
+}
+
+/* Media query visão*/
+
+@media only screen and (max-width: 1020px) {
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+.box-item{
+  flex: 1 1 150px;
+  margin: 5px;
+}
+
+
+
+
 }
