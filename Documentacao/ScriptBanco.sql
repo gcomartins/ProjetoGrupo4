@@ -2,6 +2,8 @@ create database Grupo4;
 
 use Grupo4;
 
+drop database grupo4;
+
 select * from tbMaquinas;
 
 
@@ -23,14 +25,13 @@ fkEmpresa INT,
 constraint FKEmpresa
 foreign key (fkEmpresa) references tbEmpresas (idEmpresa));
 
-
+-- Select por HostName 
 select M.*, C.nome, C.capacidade, C.limiteAlerta, C.limiteTemperatura from tbMaquinas as M 
 inner join tbComponentes as C on M.idmaquina =  C.fkMaquina where hostName = "Lucas";
 
 create table tbUsuarios (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nomeUsuario VARCHAR(45),
-sobrenome VARCHAR(45),
 email VARCHAR(45) unique,
 senha VARCHAR(45),
 fkEmpresa INT,
@@ -55,11 +56,14 @@ constraint fkMaquina
 foreign key (fkMaquina) references tbMaquinas (idMaquina)
 );
 
--- Limites dos Componentes pelo Hostname
+
 
 
 -- DashCards
-select M.idMaquina , M. C.* from tbMaquinas as M  inner join tbComponentes as C on C.fkMaquina = C.fkMaquina;
+select M.idMaquina , M.hostName, C.nome, L.leituraDesempenho, L.dataHora
+, A.idAlerta, A.categoria, A.descrição  from tbMaquinas as M  inner join tbComponentes as C on C.fkMaquina = C.fkMaquina
+inner join tbLogs as L on L.fkComponente = C.idComponentes 
+inner join tbAlertas as A on A.fkLog = L.idLog Where hostName = "Lucas" ;
 
 Create table tbLogs (
 idLog INT PRIMARY KEY AUTO_INCREMENT, 
@@ -102,15 +106,15 @@ insert into tbMaquinas (hostName,grupo, fkEmpresa) values
 ("Gulherme","GrupoB",4),
 ("Algusto","GrupoB",2);
 
-insert into tbUsuarios (nomeUsuario, sobrenome, email, senha, fkempresa, sudo, administrador, usuario) values 
-("Guilherme","Pereira","guilherme@email.com","1234", 1,true,true,true),
-("Lara","Regina","lara@email.com","1234", 2,true,true,true),
-("Leticia","Marques","leticia@email.com","1234", 3,true,true,true),
-("Larissa","Santos","larissa@email.com","1234", 4,true,true,true),
-("Lucas","Mastelini","lucas@email.com","1234", 3,false,true,true),
-("Vinicius","Pieroni","vinicius@email.com","1234", 2,false,false,true),
-("Danilo","Kovaks","danilo@email.com","1234", 1,false,true,true),
-("Vinicius","Cavalcante","cavalcante@email.com","1234", 4,false,false,true);
+insert into tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) values 
+("Guilherme","guilherme@email.com","1234", 1,true,true,true),
+("Lara","lara@email.com","1234", 2,true,true,true),
+("Leticia","leticia@email.com","1234", 3,true,true,true),
+("Larissa","larissa@email.com","1234", 4,true,true,true),
+("Lucas","lucas@email.com","1234", 3,false,true,true),
+("Vinicius","vinicius@email.com","1234", 2,false,false,true),
+("Danilo","danilo@email.com","1234", 1,false,true,true),
+("Vinicius","cavalcante@email.com","1234", 4,false,false,true);
 
 
 insert into tbComponentes (nome, capacidade, limiteAlerta, limiteTemperatura, fkMaquina) values 
