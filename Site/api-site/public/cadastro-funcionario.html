@@ -26,7 +26,7 @@
 			<span class="text">DataCat</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="#">
 					<span class="material-icons-sharp">
 						grid_view
@@ -34,7 +34,7 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
+			<li  class="active">
 				<a href="#">
 					<span class="material-icons-sharp">
 						perm_identity
@@ -109,7 +109,7 @@
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="./assets/fotos/lee.jfif">
+				<img src="./assets/fotos/leticia.jfif">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -118,14 +118,14 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Cadastro Funcionário</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right'></i></li>
 						<li>
-							<a class="active" href="#">Home</a>
+							<a class="active" href="#">Cadastro Funcionário</a>
 						</li>
 					</ul>
 				</div>
@@ -137,19 +137,37 @@
 
 
 			<div>
-				<div class="box-info">
-					<h3>Entre na sua conta na<span> DataCat!</span></h3>
-
-					<form action="" id="form_login" method="post" onsubmit="entrar()">
-						<label for="">Email</label>
-						<input name="email" id="email" type="email" required maxlength="45">
-						<label for="">Senha</label>
-						<input name="senha" id="senha" type="password" required maxlength="45">
-						<div class="btn" type="submit">
-							<h3>Entrar</h3>
-						</div>
-						<p>Não possui conta? <a href="./cad.html"><i>Criar uma</i></a> </p>
-					</form>
+				<div class="box-subscribe">
+					<div class="subscribe-left">
+						<h3>Faça o cadastro do seu time e deixe todos infomados</h3>
+						<i>Cadastre agora</i>
+						<img src="./assets/imagens/filing-system-amico.png" alt="">
+					</div>
+					
+					<div class = "subscribe-right">
+						<form action="" id="form_login" method="post" onsubmit="entrar()">
+							<label for="">Nome</label>
+							<input name="nome" id="nome" type="nome" required maxlength="15">
+							<label for="">Sobrenome</label>
+							<input name="sobrenome" id="sobrenome" type="sobrenome" required maxlength="15">
+							<label for="">Permissão</label>
+							<select name="senha" id="senha" type="password" required maxlength="45">
+								<option value="">Técnico de Infraestrutura</option>
+								<option value="">Gerente de Infraestrutura</option>
+								<option value="">Gerente Bancário</option>
+								<option value="">Bancário</option>
+							</select>
+							<label for="">Email</label>
+							<input name="email" id="email" type="email" required maxlength="45">
+							<label for="">Senha</label>
+							<input name="senha" id="senha" type="password" required maxlength="45">
+							<div class="btn" type="submit">
+								<h3><a>Novo</a></h3>
+								<h3><a>Editar</a></h3>
+								<h3><a>Cadastrar</a></h3>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 			<!-- <ul class="box-info">
