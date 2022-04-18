@@ -56,13 +56,13 @@ function entrar(req, res) {
                 }
             );
     }
-
 }
 
 function cadastrar(req, res) {
-    var nome = req.body.nome;
-    var sobrenome = req.body.sobrenome;
-    var nascimento = req.body.nascimento;
+    
+    var empresa = req.body.empresa;
+    var cnpj = req.body.cnpj;
+    var representante = req.body.representante;
     var email = req.body.email;
     var senha = req.body.senha;
 
@@ -73,7 +73,7 @@ function cadastrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-        usuarioModel.cadastrar(nome, sobrenome, nascimento, email, senha)
+        usuarioModel.cadastrar(empresa, cnpj, representante, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
