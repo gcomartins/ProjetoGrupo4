@@ -378,19 +378,17 @@ body {
 }
 
 #content main .box-subscribe {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	grid-gap: 24px;
 	margin-top: 36px;
-	height: 95vh;
-
+	height: 110vh;
 }
 
 #content main .box-subscribe {
 	padding: 24px;
 	background: var(--light);
 	border-radius: 20px;
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	align-items: center;
 	grid-gap: 24px;
 }
@@ -398,12 +396,20 @@ body {
 #content main .box-subscribe .subscribe-left {
     height: 100vh;
     display: flex;
-    justify-content: center;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     align-items: center;
     flex-direction: column;
 }
 
+#content main .box-subscribe .subscribe-left .title-subscribe {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 #content main .box-subscribe .subscribe-left h3 {
+	text-align: center;
 	color: var(--primary);
 }
 
@@ -419,8 +425,9 @@ body {
 
 #content main .box-subscribe .subscribe-right {
 	height: 100vh;
-	width: 80vh;
-    display: flex;
+	width: 100%;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     justify-content: center;
     align-items: center;
 }
@@ -431,7 +438,7 @@ body {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
-	padding: 20px;
+	padding: 0px, 0px, 0px, 30px;
 }
 
 #content main .box-subscribe .subscribe-right form .btn {
@@ -439,7 +446,7 @@ body {
 	align-items: center;
 	flex-direction: row;
 	justify-content: space-evenly;
-	width: 70vh;
+	width: 100%;
 	padding-top: 30px;
 }
 
@@ -451,6 +458,7 @@ body {
 }
 
 #content main .box-subscribe .subscribe-right form label {
+	color: var(--dark);
 	font-size: larger;
 	font-weight: 600;
     margin-top: 16px;
@@ -458,12 +466,12 @@ body {
 }
 
 #content main .box-subscribe .subscribe-right form input {
-	width: 100%;
+	width: 90%;
     border: none;
     border-radius: 10px;
     padding: 10px;
     background-color: #F9F9F9;
-    color: black;
+    color: var(--dark);
     font-size: 12pt;
     box-shadow: 0px 10px 40px #00000056;
     outline: none;
@@ -471,11 +479,12 @@ body {
 }
 
 #content main .box-subscribe .subscribe-right form select {
-	width: 100%;
+	width: 90%;
     border: none;
     border-radius: 10px;
     padding: 10px;
     background-color: #F9F9F9;
+	color: var(--dark);
     font-size: 12pt;
 	font-style: italic;
     box-shadow: 0px 10px 40px #00000056;
@@ -496,6 +505,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 #content main .box-subscribe li:nth-child(1) .bx {
 	background: var(--light-blue);
 	color: var(--primary);
@@ -704,7 +714,16 @@ body {
 }
 
 
+@media screen and (max-width: 768px) {
+	#content main .box-subscribe{
+		grid-template-columns: 1fr;
+		height: 140vh;
+	}
 
+	#content main .box-subscribe .subscribe-right {
+		margin-top: -70vh;
+	}
+}
 
 
 
@@ -754,6 +773,37 @@ body {
 	}
 	#content main .table-data .todo .todo-list {
 		min-width: 420px;
+	}
+
+	#content main .box-subscribe{
+		grid-template-columns: 1fr;
+		height: 150vh;
+	}
+
+	#content main .box-subscribe .subscribe-left {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	#content main .box-subscribe .subscribe-left .title-subscribe {
+		width: 100%;
+	}
+
+	#content main .box-subscribe .subscribe-right {
+		margin-top: -80vh;
+	}
+
+	#content main .box-subscribe .subscribe-right form input {
+		width: 100%;
+	}
+
+	#content main .box-subscribe .subscribe-right form select {
+		width: 100%;
+	}
+
+	#content main .box-subscribe .subscribe-right form .btn {
+		width: 100%;
 	}
 }
 /* =========================MEDIA QUERIE MOBILE ========================= */
