@@ -124,6 +124,18 @@ body * {
     background-color: #A4161A;
 
 }
+.loading-div {
+    width: 50px;
+    /* border: 3px solid pink; */
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
+  
 
 @media only screen and (max-width:950px){
     .card-login{

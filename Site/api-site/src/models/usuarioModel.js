@@ -18,10 +18,30 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 
+function deletar(nomeUsuario,email) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar(): ", nomeUsuario, email)
+    var instrucao = `
+    DELETE FROM tbUsuarios WHERE nomeUsuario = '${nomeUsuario}' AND email = '${email}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+
 function cadastrar(nomeEmpresa, cnpj, representante, email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nomeEmpresa, cnpj, representante, email, senha);
     var instrucao = `
         INSERT INTO tbEmpresas (nomeEmpresa, cnpj, representante, email, senha) VALUES ('${nomeEmpresa}', '${cnpj}', '${representante}', '${email}', '${senha}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function cadastrarUsuario(nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarUsuario():", nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario);
+    var instrucao = `
+        INSERT INTO tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) VALUES ('${nomeUsuario}', '${email}', '${senha}', '${fkempresa}', '${sudo}' , '${administrador}', '${usuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -58,6 +78,8 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
+    deletar,
+    cadastrarUsuario,
     // ranquear,
     // cadastrarConvite,
     // graficar,

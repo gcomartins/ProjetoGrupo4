@@ -14,6 +14,13 @@ router.get("/listar", function (req, res) {
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
+router.post("/cadastrarUsuario", function (req, res) {
+    usuarioController.cadastrarUsuario(req, res);
+})
+
+router.post("/deletar", function (req, res) {
+    usuarioController.deletar(req, res);
+});
 
 // router.post("/cadastrarConvite", function (req, res) {
 //     usuarioController.cadastrarConvite(req, res);

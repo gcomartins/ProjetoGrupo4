@@ -11,6 +11,7 @@
     <script src="./js/funcoes.js"></script>
 
     <link rel="icon" href="./assets/imagens/logo/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png">
+    <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/cadastro.css">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -36,49 +37,62 @@
           <div class="toggle icon-close"></div>
         </nav>
       </header>
-      <div class="backgrandef">
-          <br>
-          <div class="left-cadastro">
-            Bem Vindo de volta ao DataCat <br><span class="span_crie">Entre na sua conta</span>
-            <img src="./assets/imagens/atm_line_png.png" alt="">
-        </div>
-                    <form id="form_cadastro" class="main-cadastro" method="post" onsubmit="return cadastrar()">
-                        
-                        <div class="right_cadastro">
-                            <div class="card-cadastro">
-                              <div class="textfield">
-                        <Label>Nome da empresa</Label>
-                        <input name="nomeEmpresa" type="text" required >
-                        <br>
-                        <Label>CNPJ</Label>
-                        <input name="cnpj" type="text" required len>
-                        <br>
-                        <Label>Representante</Label>
-                        <input name="representante" type="text">
-                        <br>
-                        <Label>Email</Label>
-                        <input name="email" type="text" >
-                        <br>
-                        <Label>Senha</Label>
-                        <input name="senha" type="password" >
-                        <br>
-
-                        <button class=".btn-cadastro ">Cadastrar</button>
-                             </div>
-                           </div>
+                   
+                    <form action="" class="main-cadastro"id="form_cadastro" class="main-cadastro" method="post" onsubmit="return cadastrar()">
+                        <div class="left-login">
+                          <h1>Bem Vindo ao DataCat <br> <span class="span_crie"> Crie Sua Conta</span> </h1>
+                          <img class="left-login-image" src="./assets/imagens/Filing system-amico.png" alt="">
                         </div>
-                    </form>
+                    
+                        <div class="right_login">
+                          <div class="card-login">
+                            <div class="textfield">
+                              <h1>Cadastro</h1>
+                    
+                              <Label>Nome da empresa</Label>
+                              <input name="nomeEmpresa" type="text" required >
+                            </div>
+                    
+                            <div class="textfield">
+                                <Label>CNPJ</Label>
+                                <input name="cnpj" type="number" required len>
+                            </div>
+                    
+                            <div class="textfield">
+                                <Label>Representante</Label>
+                                <input name="representante" type="text"  required >
+                            </div>
+                    
+                    
+                            <div class="textfield">
+                                <Label>Email</Label>
+                                <input name="email" type="text"  required >
+                            </div>
+                    
+                            <div class="textfield">
+                                <Label>Senha</Label>
+                                <input name="senha" type="password"  required  >
+                            </div>
+                    
+                            <button class="btn-login">cadastar</button>
+                    
+                          </div>
+                        </div>
+                      </form>
 
                 </div>
                 </div>
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/imagens/aguarde-orange.gif" id="loading-gif">
+                    <img src="./assets/imagens/loading-13.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login">
 
                 </div>
+                
 </div>
+
+
 </body>
 
 </html>
@@ -151,5 +165,7 @@
 
         return false;
     }
+
+
 
 </script>

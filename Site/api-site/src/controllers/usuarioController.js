@@ -91,6 +91,48 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrarUsuario(req, res) {
+    var nomeUsuario = req.body.nomeUsuario;
+    var email = req.body.email;
+    var senha = req.body.senha;
+    var fkempresa = req.body.fkempresa;
+    var sudo = req.body.sudo;
+    var administrador = req.body.administrador;
+    var usuario = req.body.usuario;
+    
+    
+
+    if (nomeUsuario == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (fkempresa == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (administrador == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (usuario == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    }else {
+        usuarioModel.cadastrarUsuario(nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 // function cadastrarConvite(req, res) {
 //     var email = req.body.email;
 //     var fkanfitriao = req.body.fkanfitriao;
@@ -160,11 +202,34 @@ function cadastrar(req, res) {
 
 // }
 
+function deletar(req, res) {
+    var nomeUsuario= req.body.nomeUsuario;
+    var email = req.body.email;
+    usuarioModel.deletar(nomeUsuario, email)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao Deletar o usuário! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
+    deletar,
+    cadastrarUsuario,
     // ranquear,
     // cadastrarConvite,
     // graficar,
