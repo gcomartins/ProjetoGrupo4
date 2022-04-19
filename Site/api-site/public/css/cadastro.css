@@ -8,47 +8,19 @@ body {
 
 body * {
     box-sizing: border-box;
-
 }
-
+.backgrandef{
+    background-color: #A4161A;
+}
 .main-cadastro {
     width: 100vw;
     height: auto;
-    margin-top: 6rem;
-    margin-bottom: 10rem;
-    background-color: #A4161A;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
 }
-
-.left-cadastro {
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
-
-.left-cadastro>h1 {
-    font-size: 3vw;
-    color: #F9F9F9;
-}
-
-.left-cadastro-image{
-    width: 35vw;
- 
-}
-
-.rigth-cadastro {
-    width: 30vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.left-cadastro{
+    width: 40%;
+    margin-top: 4rem;
+    margin-left: 4rem;
 }
 
 .card-cadastro {
@@ -99,15 +71,6 @@ body * {
     margin-bottom: 10px;
 }
 
-.span_crie{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    font-size: 16px;
-    font: italic;
-    opacity: 1;
-    
-}
 
 .textfield>input::placeholder {
     color: black;
@@ -129,6 +92,45 @@ body * {
     background-color: #A4161A;
 
 }
+/* FORMULARIO */
+
+input {
+    margin-top: 5%;
+    height: 30px;
+    border: 2px solid #e6005a;
+    border-radius: 10px;
+  }
+  
+  .btn {
+    font-family: "Exo 2", sans-serif;
+    border: 0;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: white;
+    background-color: #e6005a;
+    width: 120px;
+    align-self: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .loading-div {
+    width: 50px;
+    /* border: 3px solid pink; */
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
+  
 
 @media only screen and (max-width:950px){
     .card-cadastro{
