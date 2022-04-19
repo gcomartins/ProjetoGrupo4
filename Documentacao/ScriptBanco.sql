@@ -2,10 +2,6 @@ create database Grupo4;
 
 use Grupo4;
 
-drop database grupo4;
-
-select * from tbMaquinas;
-
 
 create table tbEmpresas (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -147,4 +143,6 @@ insert into tbAlertas (fkLog, categoria, descrição) values
 
 
 select * from tbLogs;
+select * from tbMaquinas;
+select * from tbEmpresas;
 
