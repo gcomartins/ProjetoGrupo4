@@ -20,9 +20,10 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<img id="img_logo" src="./assets/imagens/logo/logo-black.png"
+		<a id="img_logo" href="#" class="brand">
+			<img src="./assets/imagens/logo/logo-black.png"
 				alt="">
+
 			<span class="text">DataCat</span>
 		</a>
 		<ul class="side-menu top">
@@ -271,7 +272,7 @@
 	switchMode.addEventListener('change', function () {
 		if (this.checked) {
 			document.body.classList.add('dark');
-			// document.getElementById("img_logo").style.backgroundImage = "url(./assets/imagens/logo/logo-ligth.png)"
+			document.getElementById('img_logo').src="./assets/imagens/logo/logo-ligth.png"
 		} else {
 			document.body.classList.remove('dark');
 		}

@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Looca looca = new Looca();
         List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
-        List<Processo> processos = looca.getGrupoDeProcessos().getProcessos();
+//        List<Processo> processos = looca.getGrupoDeProcessos().getPr?ocessos();
         
         looca.getProcessador().getNome();
         System.out.println("--------Uso de Memória--------");
