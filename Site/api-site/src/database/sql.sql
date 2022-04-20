@@ -57,6 +57,16 @@ administrador TINYINT,
 usuario TINYINT
 );
 
+create table tbfuncionarios (
+idfuncionario INT PRIMARY KEY AUTO_INCREMENT,
+nomefuncionario VARCHAR(45),
+email VARCHAR(45) unique,
+senha VARCHAR(45),
+fkEmpresa INT,
+constraint EmpresaUsuario 
+foreign key (fkEmpresa) references tbEmpresas (idEmpresa),
+cargo VARCHAR(45)
+);
 
 
 CREATE TABLE tbComponentes (

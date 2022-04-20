@@ -22,6 +22,11 @@ router.post("/deletar", function (req, res) {
     usuarioController.deletar(req, res);
 });
 
+router.post("/upDate", function (req, res) {
+    usuarioController.upDate(req, res);
+});
+
+
 // router.post("/cadastrarConvite", function (req, res) {
 //     usuarioController.cadastrarConvite(req, res);
 // })

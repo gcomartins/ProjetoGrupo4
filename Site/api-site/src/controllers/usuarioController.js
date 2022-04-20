@@ -223,6 +223,32 @@ function deletar(req, res) {
 
 }
 
+function upDate(req, res) {
+    
+    var idfuncionario= req.body.idfuncionario;
+    var nomefuncionario= req.body.nomefuncionario;
+    var cargo= req.body.cargo;
+    var email = req.body.email;
+    var senha = req.body.senha;
+
+    usuarioModel.upDate(idfuncionario,nomefuncionario,cargo,email,senha)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao fazer o upDate do funcionario! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -230,6 +256,7 @@ module.exports = {
     testar,
     deletar,
     cadastrarUsuario,
+    upDate,
     // ranquear,
     // cadastrarConvite,
     // graficar,

@@ -13,6 +13,17 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
+function buscarFuncionario() {
+    instrucaoSql = ` SELECT idUsuario, 
+                          nomeUsuario, 
+                          email, 
+                          administrador 
+                          FROM tbUsuarios;
+                        `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function buscarMedidasEmTempoReal(idAquario) {
     instrucaoSql = `select 
                         temperatura, 
@@ -28,5 +39,6 @@ function buscarMedidasEmTempoReal(idAquario) {
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarFuncionario
 }
