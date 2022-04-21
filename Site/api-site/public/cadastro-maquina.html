@@ -148,24 +148,30 @@
 					
 					<div class = "subscribe-right">
 						<form action="" id="form_login" method="post" onsubmit="entrar()">
-							<label for="">Nome</label>
-							<input name="nome" id="nome" type="nome" required maxlength="15">
-							<label for="">Sobrenome</label>
-							<input name="sobrenome" id="sobrenome" type="sobrenome" required maxlength="15">
-							<label for="">Permissão</label>
-							<select name="senha" id="senha" type="password" required maxlength="45">
-								<option value="">Técnico de Infraestrutura</option>
-								<option value="">Gerente de Infraestrutura</option>
-								<option value="">Gerente Bancário</option>
-								<option value="">Bancário</option>
+							<label for="">Identificador Máquina</label>
+							<input name="identmaquina" id="identmaquina" type="text" required maxlength="15">
+							<label for="">Componente</label>
+							<select name="componente" id="componente"  required maxlength="3">
+								<option value="ram"></option>
+								<option value="ram">RAM</option>
+								<option value="cpu">CPU</option>
+								<option value="disco">DISCO</option>
 							</select>
-							<label for="">Email</label>
-							<input name="email" id="email" type="email" required maxlength="45">
-							<label for="">Senha</label>
-							<input name="senha" id="senha" type="password" required maxlength="45">
+							<label for="">Capacidade</label>
+							<input name="capacidade" id="capacidade" type="number" required maxlength="45">
+							<label for="">Limite Alerta</label>
+							<select name="alerta" id="alerta" type="" required maxlength="15">
+								<option value=""></option>
+								<option value="">50%</option>
+								<option value="">60%</option>
+								<option value="">70%</option>
+								<option value="">80%</option>
+								<option value="">90%</option>
+								<option value="">100%</option>
+							</select>
+							<label for="">Grupo</label>
+							<input name="grupo" id="grupo" type="text" required maxlength="45">
 							<div class="btn" type="submit">
-								<h3><a>Novo</a></h3>
-								<h3><a>Editar</a></h3>
 								<h3><a>Cadastrar</a></h3>
 							</div>
 						</form>
