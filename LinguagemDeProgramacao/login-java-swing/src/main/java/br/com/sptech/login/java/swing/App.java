@@ -57,8 +57,11 @@ public class App extends javax.swing.JFrame {
         pnlGeral = new javax.swing.JPanel();
         btnFinalizar = new javax.swing.JButton();
         pnlRam = new javax.swing.JPanel();
+        lblRam = new javax.swing.JLabel();
         pnlCpu = new javax.swing.JPanel();
         pnlDisco = new javax.swing.JPanel();
+        lblDisco = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
@@ -92,15 +95,25 @@ public class App extends javax.swing.JFrame {
         pnlRam.setBackground(new java.awt.Color(164, 22, 26));
         pnlRam.setPreferredSize(new java.awt.Dimension(230, 230));
 
+        lblRam.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblRam.setForeground(new java.awt.Color(249, 249, 249));
+        lblRam.setText("10");
+
         javax.swing.GroupLayout pnlRamLayout = new javax.swing.GroupLayout(pnlRam);
         pnlRam.setLayout(pnlRamLayout);
         pnlRamLayout.setHorizontalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRamLayout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(lblRam)
+                .addGap(63, 63, 63))
         );
         pnlRamLayout.setVerticalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(pnlRamLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(lblRam)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pnlCpu.setBackground(new java.awt.Color(164, 22, 26));
@@ -110,16 +123,31 @@ public class App extends javax.swing.JFrame {
         pnlDisco.setBackground(new java.awt.Color(164, 22, 26));
         pnlDisco.setPreferredSize(new java.awt.Dimension(230, 230));
 
+        lblDisco.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblDisco.setForeground(new java.awt.Color(249, 249, 249));
+        lblDisco.setText("40");
+
         javax.swing.GroupLayout pnlDiscoLayout = new javax.swing.GroupLayout(pnlDisco);
         pnlDisco.setLayout(pnlDiscoLayout);
         pnlDiscoLayout.setHorizontalGroup(
             pnlDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(pnlDiscoLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(lblDisco)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         pnlDiscoLayout.setVerticalGroup(
             pnlDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(pnlDiscoLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(lblDisco)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
+
+        jButton1.setBackground(new java.awt.Color(25, 164, 22));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(249, 249, 249));
+        jButton1.setText("Iniciar Aplicação");
 
         javax.swing.GroupLayout pnlGeralLayout = new javax.swing.GroupLayout(pnlGeral);
         pnlGeral.setLayout(pnlGeralLayout);
@@ -127,16 +155,18 @@ public class App extends javax.swing.JFrame {
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGeralLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
-                .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(131, 131, 131)
-                .addComponent(pnlCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlGeralLayout.createSequentialGroup()
+                        .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlGeralLayout.createSequentialGroup()
+                        .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131)
+                        .addComponent(pnlCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                        .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(113, 113, 113))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(397, 397, 397))
         );
         pnlGeralLayout.setVerticalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,9 +176,11 @@ public class App extends javax.swing.JFrame {
                     .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(139, 139, 139)
-                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132))
+                .addGap(133, 133, 133)
+                .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(138, 138, 138))
         );
 
         menu.setBackground(new java.awt.Color(164, 22, 26));
@@ -164,7 +196,6 @@ public class App extends javax.swing.JFrame {
         menu.add(jMenu2);
 
         menuSair.setText("Sair");
-        menuSair.setActionCommand("Sair");
         menuSair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -267,9 +298,12 @@ public class App extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JLabel lblDisco;
+    private javax.swing.JLabel lblRam;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuSair;
     private javax.swing.JPanel pnlCpu;
