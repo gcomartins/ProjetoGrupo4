@@ -38,7 +38,7 @@
         </nav>
       </header>
                    
-                    <form action="" class="main-cadastro"id="form_cadastro" class="main-cadastro" method="post" onsubmit="return cadastrar()">
+                    <form action="" class="main-cadastro"id="form_upDate" class="main-cadastro" method="post" onsubmit="return upDate()">
                         <div class="left-login">
                           <h1>Bem Vindo ao DataCat <br> <span class="span_crie"> Crie Sua Conta</span> </h1>
                           <img class="left-login-image" src="./assets/imagens/Filing system-amico.png" alt="">
@@ -48,19 +48,19 @@
                           <div class="card-login">
                             <div class="textfield">
                               <h1>Cadastro</h1>
-                    
-                              <Label>Nome da empresa</Label>
-                              <input name="nomeEmpresa" type="text" required >
+                              
+                              <Label> idfuncionario</Label>
+                              <input name="idfuncionario" type="text" required >
                             </div>
                     
                             <div class="textfield">
-                                <Label>CNPJ</Label>
-                                <input name="cnpj" type="number" required len>
+                                <Label>nomefuncionario</Label>
+                                <input name="nomefuncionario" type="text" required len>
                             </div>
                     
                             <div class="textfield">
-                                <Label>Representante</Label>
-                                <input name="representante" type="text"  required >
+                                <Label>cargo</Label>
+                                <input name="cargo" type="text"  required >
                             </div>
                     
                     
@@ -73,25 +73,17 @@
                                 <Label>Senha</Label>
                                 <input name="senha" type="password"  required  >
                             </div>
+
+
                     
-                            <button class="btn-login">cadastar</button>
+                            <button class="btn-login">Editar</button>
                     
                           </div>
                         </div>
                       </form>
 
-                </div>
-                </div>
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/imagens/loading-13.gif" id="loading-gif">
-                </div>
 
-                <div id="div_erros_login">
-
-                </div>
                 
-</div>
-
 
 </body>
 
@@ -99,51 +91,46 @@
 
 <script>
 
-    function limparFormulario() {
-        document.getElementById("form_cadastro").reset();
-    }
 
-    function cadastrar() {
-        aguardar();
 
-        var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
+    function upDate() {
 
-        var nomeEmpresa = formulario.get("nome");
-        var cnpj = formulario.get("sobrenome");
-        var representante = formulario.get("nascimento");
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_upDate")));
+
+        var idfuncionario = formulario.get("idfuncionario");
+        var nomefuncionario = formulario.get("nomefuncionario");
+        var cargo = formulario.get("cargo");
         var email = formulario.get("email");
-        var senha = formulario.get("senha");
+        var senha = formulario.get("senha");       
+
+
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (nomeEmpresa == "" || cnpj == "" || representante == "" || email == "" || senha == "" ) {
+        if (idfuncionario == "" || nomefuncionario == "" || cargo == "" || email == "" || senha == "") {
 
             window.alert("Preencha todos os campos para prosseguir!");
-            if (nomeEmpresa == "") {
+            if (idfuncionario == "") {
+                console.log('id está em branco')
+            }
+            if (nomefuncionario == "") {
                 console.log('nome está em branco')
             }
-            if (cnpj == "") {
-                console.log('nome está em branco')
-            }
-            if (email == "") {
+            if (cargo == "") {
                 console.log('email está em branco')
             }
             if (senha == "") {
                 console.log('senha está em branco')
             }
-            if (representante == "") {
-                console.log('confirmacaoSenha está em branco')
-            }
-            finalizarAguardar();
             return false;
         }
 
         if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
             window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            finalizarAguardar();
             return false;
         }
 
-        fetch("/usuarios/cadastrar", {
+        fetch("/usuarios/upDate", {
             method: "POST",
             body: formulario
         }).then(function (resposta) {
@@ -151,16 +138,12 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Cadastro realizado com sucesso!");
-                window.location = "login.html";
-                limparFormulario();
-                finalizarAguardar();
+                window.alert("upDate realizado com sucesso!");
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                throw ("Houve um erro ao tentar realizar o upDate!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
         });
 
         return false;

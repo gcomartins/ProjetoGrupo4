@@ -20,10 +20,9 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a id="img_logo" href="#" class="brand">
+		<a href="#" class="brand">
 			<img src="./assets/imagens/logo/logo-black.png"
 				alt="">
-
 			<span class="text">DataCat</span>
 		</a>
 		<ul class="side-menu top">
@@ -119,14 +118,14 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Cadastro Funcionário</h1>
+					<h1>Cadastro Máquina / Servidor</h1>
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
 						</li>
 						<li><i class='bx bx-chevron-right'></i></li>
 						<li>
-							<a class="active" href="#">Cadastro Funcionário</a>
+							<a class="active" href="#">Cadastro Máquina / Servidor</a>
 						</li>
 					</ul>
 				</div>
@@ -141,10 +140,10 @@
 				<div class="box-subscribe">
 					<div class="subscribe-left">
 						<div class="title-subscribe">
-							<h3>Faça o cadastro do seu time e deixe todos infomados</h3>
+							<h3>Faça o cadastro das suas máquinas e servidores e receba seus dados dinâmicamente onde estiver</h3>
 							<i>Cadastre agora</i>
 						</div>
-						<img src="./assets/imagens/filing-system-amico.png" alt="">
+						<img src="./assets/imagens/atm_single_png.png" alt="">
 					</div>
 					
 					<div class = "subscribe-right">
@@ -269,10 +268,11 @@
 
 
 	const switchMode = document.getElementById('switch-mode');
+
 	switchMode.addEventListener('change', function () {
 		if (this.checked) {
 			document.body.classList.add('dark');
-			document.getElementById('img_logo').src="./assets/imagens/logo/logo-ligth.png"
+
 		} else {
 			document.body.classList.remove('dark');
 		}

@@ -69,13 +69,13 @@ scrollReveal.reveal(
 /* Botão voltar para o topo */
 const backToTopButton = document.querySelector('.back-to-top')
 
-function backToTop() {
-  if (window.scrollY >= 560) {
-    backToTopButton.classList.add('show')
-  } else {
-    backToTopButton.classList.remove('show')
-  }
-}
+// function backToTop() {
+//   if (window.scrollY >= 560) {
+//     backToTopButton.classList.add('show')
+//   } else {
+//     backToTopButton.classList.remove('show')
+//   }
+// }
 
 /* Menu ativo conforme a seção visível na página */
 const sections = document.querySelectorAll('main section[id]')
