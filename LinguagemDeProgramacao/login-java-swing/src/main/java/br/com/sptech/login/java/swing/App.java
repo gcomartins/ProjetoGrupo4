@@ -19,7 +19,7 @@ public class App extends javax.swing.JFrame {
      */
     
     public App() {
-        initComponents();
+        
         
         Looca looca = new Looca();
         List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
@@ -38,6 +38,8 @@ public class App extends javax.swing.JFrame {
             System.out.println(e);
             System.out.println("------------------------");
         });
+        
+        initComponents();
     }
 
     /**
