@@ -147,26 +147,17 @@
 					</div>
 					
 					<div class = "subscribe-right">
-						<form action="" id="form_login" method="post" onsubmit="entrar()">
-							<label for="">Nome</label>
-							<input name="nome" id="nome" type="nome" required maxlength="15">
-							<label for="">Sobrenome</label>
-							<input name="sobrenome" id="sobrenome" type="sobrenome" required maxlength="15">
-							<label for="">Permissão</label>
-							<select name="senha" id="senha" type="password" required maxlength="45">
-								<option value="">Técnico de Infraestrutura</option>
-								<option value="">Gerente de Infraestrutura</option>
-								<option value="">Gerente Bancário</option>
-								<option value="">Bancário</option>
-							</select>
-							<label for="">Email</label>
-							<input name="email" id="email" type="email" required maxlength="45">
-							<label for="">Senha</label>
-							<input name="senha" id="senha" type="password" required maxlength="45">
+						<form action="" id="form_cadastroMaquina" method="post" onsubmit="return cadastrarMaquina()">
+							<label for="">Host Name</label>
+							<input name="hostName" id="hostName" type="text" required maxlength="15">
+							<label for="">Grupo</label>
+							<input name="grupo" id="grupo" type="text" required maxlength="15">
+							
 							<div class="btn" type="submit">
 								<h3><a>Novo</a></h3>
 								<h3><a>Editar</a></h3>
 								<h3><a>Cadastrar</a></h3>
+								<h3><a><button class="btn">cadastrar</button></a></h3>
 							</div>
 						</form>
 					</div>
@@ -322,4 +313,47 @@
 		}
 		return datas.sort();
 	}
+
+	function cadastrarMaquina() {
+
+var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
+
+var hostName = formulario.get("hostName");
+var grupo = formulario.get("grupo");
+
+
+
+// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+if (hostName == "" || grupo == "" ) {
+
+	window.alert("Preencha todos os campos para prosseguir!");
+	if (hostName == "") {
+		console.log('hostName está em branco')
+	}
+	if (grupo == "") {
+		console.log('grupo está em branco')
+	}
+	
+	return false;
+}
+
+
+fetch("/usuarios/cadastrarMaquina", {
+	method: "POST",
+	body: formulario
+}).then(function (resposta) {
+
+	console.log("resposta: ", resposta);
+
+	if (resposta.ok) {
+		window.alert("Cadastro realizado com sucesso!");
+	} else {
+		throw ("Houve um erro ao tentar realizar o cadastro!");
+	}
+}).catch(function (resposta) {
+	console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
 </script>

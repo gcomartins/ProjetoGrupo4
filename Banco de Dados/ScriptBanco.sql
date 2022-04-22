@@ -25,18 +25,20 @@ foreign key (fkEmpresa) references tbEmpresas (idEmpresa));
 select M.*, C.nome, C.capacidade, C.limiteAlerta, C.limiteTemperatura from tbMaquinas as M 
 inner join tbComponentes as C on M.idmaquina =  C.fkMaquina where hostName = "Lucas";
 
+
+
 create table tbUsuarios (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nomeUsuario VARCHAR(45),
+sobrenomeUsuario VARCHAR(45),
 email VARCHAR(45) unique,
 senha VARCHAR(45),
+cargo VARCHAR(45),
 fkEmpresa INT,
 constraint EmpresaUsuario 
-foreign key (fkEmpresa) references tbEmpresas (idEmpresa),
-sudo TINYINT,
-administrador TINYINT,
-usuario TINYINT
+foreign key (fkEmpresa) references tbEmpresas (idEmpresa)
 );
+
 
 
 
@@ -145,4 +147,5 @@ insert into tbAlertas (fkLog, categoria, descrição) values
 select * from tbLogs;
 select * from tbMaquinas;
 select * from tbEmpresas;
+select * from tbUsuarios;
 
