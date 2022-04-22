@@ -15,6 +15,7 @@ senha VARCHAR(45)
 
 create table tbMaquinas (
 idMaquina INT PRIMARY KEY AUTO_iNCREMENT,
+identPessoal varchar(15),
 hostName varchar(45),
 grupo VARCHAR(45),
 fkEmpresa INT,
@@ -48,7 +49,6 @@ nome VARCHAR(45)
 check( nome = "Cpu" or nome = "Disco" or nome = "Ram"),
 capacidade DOUBLE,
 limiteAlerta DOUBLE,
-limiteTemperatura DOUBLE,
 fkMaquina INT,
 constraint fkMaquina 
 foreign key (fkMaquina) references tbMaquinas (idMaquina)
@@ -115,13 +115,13 @@ insert into tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrado
 ("Vinicius","cavalcante@email.com","1234", 4,false,false,true);
 
 
-insert into tbComponentes (nome, capacidade, limiteAlerta, limiteTemperatura, fkMaquina) values 
-("Disco",1000,70,70,1),
-("Ram", 16,70,70,1),
-("Cpu", 64, 70,70,1),
-("Ram",8,70,70,3),
-("Disco",3000,85,85,3),
-("Cpu",64,70,55,3);
+insert into tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) values 
+("Disco",1000,70,1),
+("Ram", 16,70,1),
+("Cpu", 64, 70,1),
+("Ram",8,70,3),
+("Disco",3000,85,3),
+("Cpu",64,70,3);
 
 insert into tbLogs (leituraDesempenho, leituraTemperatura, dataHora, fkComponente) values 
 (100, 22.5, now(),1),
@@ -147,5 +147,9 @@ insert into tbAlertas (fkLog, categoria, descrição) values
 select * from tbLogs;
 select * from tbMaquinas;
 select * from tbEmpresas;
+<<<<<<< HEAD
 select * from tbUsuarios;
+=======
+truncate table tbMaquinas;
+>>>>>>> a77dc08548e0760115f7b0c2753fabbdd783c6d7
 
