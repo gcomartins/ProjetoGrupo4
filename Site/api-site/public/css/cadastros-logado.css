@@ -683,6 +683,93 @@ body {
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+
+#content .box-info-funcionario {
+	/* background-color: #A4161A; */
+	width: 80%;
+	height: 100%;
+	border-radius: 15px;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#content .box-informacoes-cadastradas{
+	background-color: white;
+	width: 100%;
+	height: 100px;
+	border-radius: 15px;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	/* margin-left: 2rem; */
+}
+
+#content .container-box-info-funcionario{
+	position: relative;
+	right: 3rem;
+	/* background-color: white; */
+}
+
+#content .box-informacoes-cadastradas span{
+	/* background-color: #A4161A; */
+	border-radius: 50%;
+	color: white;
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+}
+#content .icon-delete{
+	background-color: #A4161A;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	left: 4rem;
+}
+#content .titulos{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+}
+#content .title-two{
+     position: relative;
+	 left: 10.5rem;
+}
+#content .title-three{
+	position: relative;
+	 left: 10rem;
+}
+/* #content .title-one{
+	position: relative;
+	 left: 6.5rem;
+} */
+#content .img-edit{
+	width: 35px;
+	position: relative;
+	left: 6rem;
+}
+
+#content .title-componente{
+	position: relative;
+	right: 4rem;
+}
+#content .title-ram{
+	position: relative;
+	left: 0.2rem;
+}
+
+#content .title-capacidade{
+	position: relative;
+	left: 7rem;
+}
+
+#content .title-alerta{
+	position: relative;
+	left: 12rem;
+}
 /* MAIN */
 /* CONTENT */
 
