@@ -65,13 +65,13 @@
 			<li>
 				<a href="#">
 					<span class="material-icons-sharp">settings</span> 
-					<span class="text">Settings</span>
+					<span class="text">Configurações</span>
 				</a>
 			</li>
 			<li>
 				<a href="#" class="logout">
 					<span class="material-icons-sharp">logout</span> 
-					<span class="text">Logout</span>
+					<span class="text">Sair</span>
 				</a>
 			</li>
 		</ul>
@@ -150,7 +150,7 @@
 					<span class="text">
 						<div class="div-title">
 						<span class="material-icons-sharp">	memory</span>
-						<h3>CPU</h3>
+						<h3 class="cpuTitle">CPU</h3>
 						</div>
 					</span>
 					<canvas id="graficoCpu"></canvas>
@@ -443,6 +443,7 @@ function plotarGrafico(idGrafico) {
 				data: gerarDados(),
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.12)',
+					
 				],
 				borderColor: [
 					'rgba(255, 99, 132, 1)',
@@ -458,6 +459,10 @@ function plotarGrafico(idGrafico) {
 			}
 		}
 	});
+
+
+
+	
 }
 
 function gerarDados() {
@@ -474,6 +479,7 @@ function gerarDatas() {
 	}
 	return datas.sort();
 }
+
 </script>
 
 
