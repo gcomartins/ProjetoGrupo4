@@ -47,14 +47,13 @@ foreign key (fkEmpresa) references tbEmpresas (idEmpresa));
 create table tbUsuarios (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nomeUsuario VARCHAR(45),
+sobrenomeUsuario VARCHAR(45),
 email VARCHAR(45) unique,
 senha VARCHAR(45),
+cargo VARCHAR(45),
 fkEmpresa INT,
 constraint EmpresaUsuario 
-foreign key (fkEmpresa) references tbEmpresas (idEmpresa),
-sudo TINYINT,
-administrador TINYINT,
-usuario TINYINT
+foreign key (fkEmpresa) references tbEmpresas (idEmpresa)
 );
 
 create table tbfuncionarios (

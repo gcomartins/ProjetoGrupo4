@@ -93,12 +93,11 @@ function cadastrar(req, res) {
 
 function cadastrarUsuario(req, res) {
     var nomeUsuario = req.body.nomeUsuario;
+    var sobrenomeUsuario = req.body.sobrenomeUsuario;
     var email = req.body.email;
     var senha = req.body.senha;
-    var fkempresa = req.body.fkempresa;
-    var sudo = req.body.sudo;
-    var administrador = req.body.administrador;
-    var usuario = req.body.usuario;
+    var cargo = req.body.cargo;
+    
     
     
 
@@ -106,16 +105,45 @@ function cadastrarUsuario(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (fkempresa == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (administrador == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (usuario == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+    } else if (sobrenomeUsuario == undefined) {
+        res.status(400).send("Sua sobrenome está undefined!");
+    } else if (cargo == undefined) {
+        res.status(400).send("Sua cargo está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     }else {
-        usuarioModel.cadastrarUsuario(nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario)
+        usuarioModel.cadastrarUsuario(nomeUsuario, sobrenomeUsuario, email, senha, cargo)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrarMaquina(req, res) {
+    var hostName = req.body.hostName;
+    var grupo = req.body.grupo;
+    
+    
+    
+    
+
+    if (hostName == undefined) {
+        res.status(400).send("Seu hostName está undefined!");
+    } else if (grupo == undefined) {
+        res.status(400).send("Seu grupo está undefined!");
+    } else {
+        usuarioModel.cadastrarMaquina(hostName, grupo)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -223,6 +251,27 @@ function deletar(req, res) {
 
 }
 
+function promover(req, res) {
+    var nomeUsuario= req.body.nomeUsuario;
+    var email = req.body.email;
+    usuarioModel.promover(nomeUsuario, email)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao Deletar o usuário! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 function upDate(req, res) {
     
     var idfuncionario= req.body.idfuncionario;
@@ -257,6 +306,8 @@ module.exports = {
     deletar,
     cadastrarUsuario,
     upDate,
+    promover,
+    cadastrarMaquina,
     // ranquear,
     // cadastrarConvite,
     // graficar,

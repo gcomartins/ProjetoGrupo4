@@ -57,11 +57,18 @@
                                 <Label>nomefuncionario</Label>
                                 <input name="nomefuncionario" type="text" required len>
                             </div>
-                    
-                            <div class="textfield">
-                                <Label>cargo</Label>
-                                <input name="cargo" type="text"  required >
+                           <div class="textfield">
+
+                            </div> <select name="cargo" id="cargo" type="password" required maxlength="45">
+								<option value="1">Técnico de Infraestrutura</option>
+								<option value="2">Gerente de Infraestrutura</option>
+								<option value="3">Gerente Bancário</option>
+								<option value="4">Bancário</option>
+							</select>
                             </div>
+                                <Label>cargo</Label>
+                                <input  type="text"  required >
+                            
                     
                     
                             <div class="textfield">
@@ -94,7 +101,6 @@
 
 
     function upDate() {
-
 
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_upDate")));
 
@@ -149,6 +155,6 @@
         return false;
     }
 
-
+}
 
 </script>
