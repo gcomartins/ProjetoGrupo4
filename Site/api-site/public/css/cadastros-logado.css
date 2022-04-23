@@ -520,7 +520,7 @@ body {
 #content main .box-subscribe-machine {
 	grid-gap: 24px;
 	margin-top: 36px;
-	height: 150vh;
+	height: 100vh;
 }
 
 #content main .box-subscribe-machine {
@@ -862,12 +862,12 @@ body {
 #content .box-informacoes-cadastradas span{
 	/* background-color: #A4161A; */
 	border-radius: 50%;
-	color: white;
+	color: black;
 	margin-top: 0.5rem;
 	margin-left: 0.5rem;
 }
 #content .icon-delete{
-	background-color: #A4161A;
+	/* background-color: #A4161A; */
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
@@ -920,7 +920,53 @@ body {
 /* CONTENT */
 
 
+@media screen and (max-width: 1600px){
 
+	#content .box-info-funcionario h1{
+		font-size: 20px;
+		
+	} 
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 13px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 7.7rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 13rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		width: 35px;
+		margin-left: 5rem;
+
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+}
 
 @media screen and (max-width: 1535px) { 
 	#content main .box-subscribe-machine{
@@ -929,6 +975,60 @@ body {
 
 	#content main .box-subscribe{
 		height: 90vh;
+	}
+	
+	#content .box-info-funcionario h1{
+		font-size: 100%;
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		
+	} 
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 7.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 11rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-left: 0.1rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		left: 0rem;
+	}
+	#content .box-informacoes-cadastradas .titulo .icon-delete{
+		display: none;
 	}
 }
 
@@ -949,6 +1049,10 @@ body {
 
 	#content main .box-subscribe-machine .subscribe-right {
 		margin-top: -60vh;
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
 	}
 }
 
@@ -991,9 +1095,71 @@ body {
 	#content main .box-subscribe-machine .subscribe-right {
 		margin-top: -60vh;
 	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		
+	} 
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 6rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+	#content .box-informacoes-cadastradas .titulo .icon-delete{
+		display: none;
+	}
+	/* #content .titulos .title-componente{
+		position: relative;
+		left: 0.1rem;
+	}
+
+	#content .titulos .title-ram{
+		text-align: center;
+		position: relative;
+		left: 1rem;
+	}
+	#content .titulos .title-alerta{
+		position: relative;
+		right: 10rem;
+	} */
 }
-
-
 
 @media screen and (max-width: 576px) {
 	#content nav form .form-input input {
@@ -1104,45 +1270,153 @@ body {
 	#content main .box-subscribe-machine .subscribe-right form .btn {
 		width: 100%;
 	}
+
+	#content .box-info-funcionario h1{
+		font-size: 80%;
+	}
+
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 6rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+	
 }
-/* =========================MEDIA QUERIE MOBILE ========================= */
 
-/* @media screen and (max-width: 768px) {
-    .container{
-        width: 9;
-    }
+@media screen and (max-width:900px){
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		position: relative;
+		left: 3rem;
+	}
 
-    aside {
-        position: fixed;
-        left: 0;
-        background: var(--color-white);
-        width: 18rem;
-        z-index: 3;
-        box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
-        padding-right: var(--card-padding);
-    }
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
 
-    aside h2{
-        display: inline;
-    }
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
 
-    aside .sidebar h3{
-        display: inline;
-    }
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 3rem;
+	}
 
-    aside .sidebar a{
-        width: 100%;
-        height: 3.4rem;
-    }
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 5rem;
+	}
 
-    aside .sidebar a:last-child{
-        position: absolute;
-        bottom: 5rem;
-    }
+	#content .box-informacoes-cadastradas .title-ram{
+		margin-left: 3rem;
+	}
 
-    aside .close{
-        display: inline-block;
-        cursor: pointer;
-    }
-} */
+	
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 20px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 30%;
+		position: relative;
+		right: 1rem;
+	}
+}
+@media screen and (maz-width: 980px) {
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		
+	} 
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 6rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+	#content .box-informacoes-cadastradas .titulo .icon-delete{
+		display: none;
+	}
+
+   }
