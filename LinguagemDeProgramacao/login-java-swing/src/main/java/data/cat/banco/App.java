@@ -4,6 +4,7 @@
  */
 package data.cat.banco;
 
+import br.com.sptech.login.java.swing.ConexaoBanco;
 import java.util.List;
 import java.util.Map;
 
