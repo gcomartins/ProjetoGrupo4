@@ -378,6 +378,8 @@ body {
 	font-weight: 500;
 }
 
+/*Inicio Cadastro Funcionário*/
+
 #content main .box-subscribe {
 	grid-gap: 24px;
 	margin-top: 36px;
@@ -430,7 +432,8 @@ body {
     display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+	padding-top: 5px;
 }
 
 #content main .box-subscribe .subscribe-right form {
@@ -442,13 +445,16 @@ body {
 	padding: 0px, 0px, 0px, 30px;
 }
 
-#content main .box-subscribe .subscribe-right form .btn {
+#content main .box-subscribe .subscribe-right form .space-btn {
 	display: flex;
-	align-items: center;
-	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: center;
 	width: 100%;
 	padding-top: 30px;
+}
+
+#content main .box-subscribe .subscribe-right form .space-btn .btn {
+	width: 50%;
+	border-style: none;
 }
 
 #content main .box-subscribe .subscribe-right form .btn h3 {
@@ -506,6 +512,146 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+/*Fim Cadastro Funcionario*/
+
+/*Inicio Cadastro Máquina*/
+
+#content main .box-subscribe-machine {
+	grid-gap: 24px;
+	margin-top: 36px;
+	height: 150vh;
+}
+
+#content main .box-subscribe-machine {
+	padding: 24px;
+	background: var(--light);
+	border-radius: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	align-items: center;
+	grid-gap: 24px;
+}
+
+#content main .box-subscribe-machine .subscribe-left {
+    height: 100vh;
+    display: flex;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: center;
+    flex-direction: column;
+}
+
+#content main .box-subscribe-machine .subscribe-left .title-subscribe {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#content main .box-subscribe-machine .subscribe-left h3 {
+	text-align: center;
+	color: var(--primary);
+}
+
+#content main .box-subscribe-machine .subscribe-left i {
+	margin: 15px;
+	color: var(--primary);
+}
+
+#content main .box-subscribe-machine .subscribe-left img {
+	width: 35vw;
+	font-size: large;
+}
+
+#content main .box-subscribe-machine .subscribe-right {
+	height: 100vh;
+	width: 100%;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
+    align-items: flex-start;
+	padding-top: 5px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form {
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 0px, 0px, 0px, 30px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form .space-btn {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 30px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form .space-btn .btn {
+	width: 50%;
+	border-style: none;
+}
+
+#content main .box-subscribe-machine .subscribe-right form .btn h3 {
+	background-color: var(--primary);
+	color: var(--light);
+	padding: 15px;
+	border-radius: 10px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form label {
+	color: var(--dark);
+	font-size: larger;
+	font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form input {
+	width: 90%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F9F9F9;
+    color: var(--dark);
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#content main .box-subscribe-machine .subscribe-right form select {
+	width: 90%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F9F9F9;
+	color: var(--dark);
+    font-size: 12pt;
+	font-style: italic;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+	appearance: none;
+	background: url(../assets/imagens/seta.svg) no-repeat center right;
+    font-size: 15px;
+    padding-right: 30px;
+}
+
+#content main .box-subscribe-machine li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Fim Cadastro Máquina*/
+
 
 #content main .box-subscribe li:nth-child(1) .bx {
 	background: var(--light-blue);
@@ -776,10 +922,35 @@ body {
 
 
 
+@media screen and (max-width: 1535px) { 
+	#content main .box-subscribe-machine{
+		height: 90vh;
+	}
 
+	#content main .box-subscribe{
+		height: 90vh;
+	}
+}
 
+@media screen and (max-width: 884px) { 
+	#content main .box-subscribe{
+		grid-template-columns: 1fr;
+		height: 130vh;
+	}
 
+	#content main .box-subscribe .subscribe-right {
+		margin-top: -60vh;
+	}
 
+	#content main .box-subscribe-machine{
+		grid-template-columns: 1fr;
+		height: 130vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right {
+		margin-top: -60vh;
+	}
+}
 
 @media screen and (max-width: 768px) {
 	#sidebar {
@@ -805,11 +976,20 @@ body {
 @media screen and (max-width: 768px) {
 	#content main .box-subscribe{
 		grid-template-columns: 1fr;
-		height: 140vh;
+		height: 130vh;
 	}
 
 	#content main .box-subscribe .subscribe-right {
-		margin-top: -70vh;
+		margin-top: -60vh;
+	}
+
+	#content main .box-subscribe-machine{
+		grid-template-columns: 1fr;
+		height: 130vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right {
+		margin-top: -60vh;
 	}
 }
 
@@ -865,7 +1045,7 @@ body {
 
 	#content main .box-subscribe{
 		grid-template-columns: 1fr;
-		height: 150vh;
+		height: 125vh;
 	}
 
 	#content main .box-subscribe .subscribe-left {
@@ -879,7 +1059,7 @@ body {
 	}
 
 	#content main .box-subscribe .subscribe-right {
-		margin-top: -80vh;
+		margin-top: -65vh;
 	}
 
 	#content main .box-subscribe .subscribe-right form input {
@@ -891,6 +1071,37 @@ body {
 	}
 
 	#content main .box-subscribe .subscribe-right form .btn {
+		width: 100%;
+	}
+/**/
+	#content main .box-subscribe-machine{
+		grid-template-columns: 1fr;
+		height: 125vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-left {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	#content main .box-subscribe-machine .subscribe-left .title-subscribe {
+		width: 100%;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right {
+		margin-top: -65vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right form input {
+		width: 100%;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right form select {
+		width: 100%;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right form .btn {
 		width: 100%;
 	}
 }

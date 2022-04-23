@@ -58,10 +58,14 @@ public class App extends javax.swing.JFrame {
         btnFinalizar = new javax.swing.JButton();
         pnlRam = new javax.swing.JPanel();
         lblRam = new javax.swing.JLabel();
-        pnlCpu = new javax.swing.JPanel();
         pnlDisco = new javax.swing.JPanel();
-        lblDisco = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        pnlCpu1 = new javax.swing.JPanel();
+        lblCpu = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
@@ -116,31 +120,34 @@ public class App extends javax.swing.JFrame {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        pnlCpu.setBackground(new java.awt.Color(164, 22, 26));
-        pnlCpu.setPreferredSize(new java.awt.Dimension(230, 230));
-        pnlCpu.setLayout(new java.awt.BorderLayout());
-
         pnlDisco.setBackground(new java.awt.Color(164, 22, 26));
         pnlDisco.setPreferredSize(new java.awt.Dimension(230, 230));
+        pnlDisco.setLayout(new java.awt.BorderLayout());
 
-        lblDisco.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
-        lblDisco.setForeground(new java.awt.Color(249, 249, 249));
-        lblDisco.setText("40");
+        jLabel1.setText("jLabel1");
+        pnlDisco.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout pnlDiscoLayout = new javax.swing.GroupLayout(pnlDisco);
-        pnlDisco.setLayout(pnlDiscoLayout);
-        pnlDiscoLayout.setHorizontalGroup(
-            pnlDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDiscoLayout.createSequentialGroup()
+        pnlCpu1.setBackground(new java.awt.Color(164, 22, 26));
+        pnlCpu1.setPreferredSize(new java.awt.Dimension(230, 230));
+
+        lblCpu.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblCpu.setForeground(new java.awt.Color(249, 249, 249));
+        lblCpu.setText("40");
+
+        javax.swing.GroupLayout pnlCpu1Layout = new javax.swing.GroupLayout(pnlCpu1);
+        pnlCpu1.setLayout(pnlCpu1Layout);
+        pnlCpu1Layout.setHorizontalGroup(
+            pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCpu1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addComponent(lblDisco)
+                .addComponent(lblCpu)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
-        pnlDiscoLayout.setVerticalGroup(
-            pnlDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDiscoLayout.createSequentialGroup()
+        pnlCpu1Layout.setVerticalGroup(
+            pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCpu1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(lblDisco)
+                .addComponent(lblCpu)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
@@ -148,6 +155,15 @@ public class App extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(249, 249, 249));
         jButton1.setText("Iniciar Aplicação");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel2.setText("DISCO");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel3.setText("CPU");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel4.setText("RAM");
 
         javax.swing.GroupLayout pnlGeralLayout = new javax.swing.GroupLayout(pnlGeral);
         pnlGeral.setLayout(pnlGeralLayout);
@@ -163,19 +179,32 @@ public class App extends javax.swing.JFrame {
                     .addGroup(pnlGeralLayout.createSequentialGroup()
                         .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(131, 131, 131)
-                        .addComponent(pnlCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                        .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnlCpu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(113, 113, 113))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(325, 325, 325)
+                .addComponent(jLabel3)
+                .addGap(211, 211, 211))
         );
         pnlGeralLayout.setVerticalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGeralLayout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlCpu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(133, 133, 133)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,14 +328,18 @@ public class App extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JLabel lblDisco;
+    private javax.swing.JLabel lblCpu;
     private javax.swing.JLabel lblRam;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuSair;
-    private javax.swing.JPanel pnlCpu;
+    private javax.swing.JPanel pnlCpu1;
     private javax.swing.JPanel pnlDisco;
     private javax.swing.JPanel pnlGeral;
     private javax.swing.JPanel pnlRam;
