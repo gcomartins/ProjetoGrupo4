@@ -47,10 +47,21 @@ function cadastrar(nomeEmpresa, cnpj, representante, email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrarUsuario(nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarUsuario():", nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario);
+
+
+function cadastrarUsuario(nomeUsuario, sobrenomeUsuario, email, senha, cargo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarUsuario():", nomeUsuario, sobrenomeUsuario, email, senha, cargo);
     var instrucao = `
-        INSERT INTO tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) VALUES ('${nomeUsuario}', '${email}', '${senha}', '${fkempresa}', '${sudo}' , '${administrador}', '${usuario}');
+        INSERT INTO tbUsuarios (nomeUsuario, sobrenomeUsuario, email, senha, cargo) VALUES ('${nomeUsuario}', '${sobrenomeUsuario}', '${email}', '${senha}', '${cargo}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function cadastrarMaquina(hostName, grupo) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, grupo);
+    var instrucao = `
+        INSERT INTO tbMaquinas (hostName, grupo) VALUES ('${hostName}', '${grupo}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -90,6 +101,7 @@ module.exports = {
     deletar,
     cadastrarUsuario,
     upDate,
+    cadastrarMaquina,
     // ranquear,
     // cadastrarConvite,
     // graficar,

@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="./css/cadastros-logado.css">
+	<link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"/>
 	<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 	<title>DataCat</title>
@@ -137,7 +138,7 @@
 
 
 			<div>
-				<div class="box-subscribe">
+				<div class="box-subscribe-machine">
 					<div class="subscribe-left">
 						<div class="title-subscribe">
 							<h3>Faça o cadastro das suas máquinas e servidores e receba seus dados dinâmicamente onde estiver</h3>
@@ -147,12 +148,13 @@
 					</div>
 					
 					<div class = "subscribe-right">
-						<form action="" id="form_login" method="post" onsubmit="entrar()">
+						<form action="" id="form_cadastroMaquina" method="post" onsubmit="cadastrarMaquina()">
 							<label for="">Identificador Máquina</label>
 							<input name="identmaquina" id="identmaquina" type="text" required maxlength="15">
+							<label for="">Grupo</label>
+							<input name="grupo" id="grupo" type="text" required maxlength="15">
 							<label for="">Componente</label>
 							<select name="componente" id="componente"  required maxlength="3">
-								<option value="ram"></option>
 								<option value="ram">RAM</option>
 								<option value="cpu">CPU</option>
 								<option value="disco">DISCO</option>
@@ -161,22 +163,43 @@
 							<input name="capacidade" id="capacidade" type="number" required maxlength="45">
 							<label for="">Limite Alerta</label>
 							<select name="alerta" id="alerta" type="" required maxlength="15">
-								<option value=""></option>
-								<option value="">50%</option>
-								<option value="">60%</option>
-								<option value="">70%</option>
-								<option value="">80%</option>
-								<option value="">90%</option>
-								<option value="">100%</option>
+								<option value="50">50%</option>
+								<option value="60">60%</option>
+								<option value="70">70%</option>
+								<option value="80">80%</option>
+								<option value="90">90%</option>
+								<option value="100">100%</option>
 							</select>
 							<label for="">Grupo</label>
 							<input name="grupo" id="grupo" type="text" required maxlength="45">
-							<div class="btn" type="submit">
-								<h3><a>Cadastrar</a></h3>
+
+							<div class="space-btn" type="submit">
+								<button class="btn"><h3><a>Cadastrar</a></h3></button>
 							</div>
 						</form>
 					</div>
 				</div>
+			</div>
+
+			<div class="box-info-funcionario">
+				<h1 class="identificacao">Identificação</h1>
+				<h1>Componente</h1>
+				<h1>Capacidade</h1>
+				<h1>Alerta</h1>
+				
+			</div>
+			<div class="box-informacoes-cadastradas">
+			
+				<div class="titulos">
+				<h4 class="title-componente" >VMMac12</h4>
+				<h4 class="title-ram">RAM</h4>
+				<h4 class="title-capacidade">128 GB</h4>
+				<h4 class="title-alerta">60 %</h4>
+				<img class="img-edit" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAT9JREFUSEvFlcFNw0AQRZ8POUMqgHsckekgdAIdQAfQAR0QKgkdTKKYO+kgdyMtGsuObMder40t9mStd+f9+TPaiZh4RRPHZxRAovrkwP3Ah4icyqIrgIPqOoJ34NaXWQSPC5GNql7PYAus8vO7FO7LkAogUf0GbgYE3+d37oAKpA5wdjAW8VpXU75PYW33ZvAJGOQ5Fnmzvd6ANltyQGaXg9elyEtvQF152Zb822qRZVTUITiDAFuMUQkenEFTcFPYtt/aponqRZH7Bv9SXS1EdgXEa9GQ4A62scg8CJComhJru7O3PlsOqqcIrspt7s2gsCyFeYjnTRYHAUxRSEEHA2pPx0UrFv/HALQGN0hvQN9Z8f+Aos36Kq+dP8Yi53nSNHA2XTPBI+Do4GEpYs92tkYZmR0D6o+GdFyfPINfYhwMKDF0VFsAAAAASUVORK5CYII="/>
+				<div class="icon-delete">
+					<span class="material-symbols-sharp">delete</span>
+				</div>
+			  </div>
 			</div>
 			<!-- <ul class="box-info">
 				<li>
@@ -328,4 +351,47 @@
 		}
 		return datas.sort();
 	}
+
+	function cadastrarMaquina() {
+
+var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
+
+var hostName = formulario.get("hostName");
+var grupo = formulario.get("grupo");
+
+
+
+// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+if (hostName == "" || grupo == "" ) {
+
+	window.alert("Preencha todos os campos para prosseguir!");
+	if (hostName == "") {
+		console.log('hostName está em branco')
+	}
+	if (grupo == "") {
+		console.log('grupo está em branco')
+	}
+	
+	return false;
+}
+
+
+fetch("/usuarios/cadastrarMaquina", {
+	method: "POST",
+	body: formulario
+}).then(function (resposta) {
+
+	console.log("resposta: ", resposta);
+
+	if (resposta.ok) {
+		window.alert("Cadastro realizado com sucesso!");
+	} else {
+		throw ("Houve um erro ao tentar realizar o cadastro!");
+	}
+}).catch(function (resposta) {
+	console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
 </script>

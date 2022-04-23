@@ -50,7 +50,6 @@ body {
 
 
 
-
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -378,6 +377,8 @@ body {
 	font-weight: 500;
 }
 
+/*Inicio Cadastro Funcionário*/
+
 #content main .box-subscribe {
 	grid-gap: 24px;
 	margin-top: 36px;
@@ -430,7 +431,8 @@ body {
     display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+	padding-top: 5px;
 }
 
 #content main .box-subscribe .subscribe-right form {
@@ -442,13 +444,16 @@ body {
 	padding: 0px, 0px, 0px, 30px;
 }
 
-#content main .box-subscribe .subscribe-right form .btn {
+#content main .box-subscribe .subscribe-right form .space-btn {
 	display: flex;
-	align-items: center;
-	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: center;
 	width: 100%;
 	padding-top: 30px;
+}
+
+#content main .box-subscribe .subscribe-right form .space-btn .btn {
+	width: 50%;
+	border-style: none;
 }
 
 #content main .box-subscribe .subscribe-right form .btn h3 {
@@ -506,6 +511,146 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+/*Fim Cadastro Funcionario*/
+
+/*Inicio Cadastro Máquina*/
+
+#content main .box-subscribe-machine {
+	grid-gap: 24px;
+	margin-top: 36px;
+	height: 100vh;
+}
+
+#content main .box-subscribe-machine {
+	padding: 24px;
+	background: var(--light);
+	border-radius: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	align-items: center;
+	grid-gap: 24px;
+}
+
+#content main .box-subscribe-machine .subscribe-left {
+    height: 100vh;
+    display: flex;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: center;
+    flex-direction: column;
+}
+
+#content main .box-subscribe-machine .subscribe-left .title-subscribe {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#content main .box-subscribe-machine .subscribe-left h3 {
+	text-align: center;
+	color: var(--primary);
+}
+
+#content main .box-subscribe-machine .subscribe-left i {
+	margin: 15px;
+	color: var(--primary);
+}
+
+#content main .box-subscribe-machine .subscribe-left img {
+	width: 35vw;
+	font-size: large;
+}
+
+#content main .box-subscribe-machine .subscribe-right {
+	height: 100vh;
+	width: 100%;
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
+    align-items: flex-start;
+	padding-top: 5px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form {
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 0px, 0px, 0px, 30px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form .space-btn {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 30px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form .space-btn .btn {
+	width: 50%;
+	border-style: none;
+}
+
+#content main .box-subscribe-machine .subscribe-right form .btn h3 {
+	background-color: var(--primary);
+	color: var(--light);
+	padding: 15px;
+	border-radius: 10px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form label {
+	color: var(--dark);
+	font-size: larger;
+	font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+#content main .box-subscribe-machine .subscribe-right form input {
+	width: 90%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F9F9F9;
+    color: var(--dark);
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#content main .box-subscribe-machine .subscribe-right form select {
+	width: 90%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F9F9F9;
+	color: var(--dark);
+    font-size: 12pt;
+	font-style: italic;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+	appearance: none;
+	background: url(../assets/imagens/seta.svg) no-repeat center right;
+    font-size: 15px;
+    padding-right: 30px;
+}
+
+#content main .box-subscribe-machine li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*Fim Cadastro Máquina*/
+
 
 #content main .box-subscribe li:nth-child(1) .bx {
 	background: var(--light-blue);
@@ -683,16 +828,264 @@ body {
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+
+#content .box-info-funcionario {
+	/* background-color: var(--light); */
+	width: 80%;
+	height: 100%;
+	border-radius: 15px;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: var(--dark);
+}
+
+
+#content .box-informacoes-cadastradas{
+	background-color: var(--light);
+	width: 100%;
+	height: 100px;
+	border-radius: 15px;
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: var(--dark);
+
+	/* margin-left: 2rem; */
+}
+
+#content .container-box-info-funcionario{
+	position: relative;
+	right: 3rem;
+	/* background-color: white; */
+}
+
+#content .box-informacoes-cadastradas span{
+	/* background-color: #A4161A; */
+	border-radius: 50%;
+	color: black;
+	margin-top: 0.5rem;
+	margin-left: 0.5rem;
+	width: 50px;
+	color: var(--dark);
+}
+#content .icon-delete{
+	/* background-color: #A4161A; */
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	left: 4rem;
+
+}
+#content .titulos{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	color: #A4161A;
+}
+#content .title-two{
+     position: relative;
+	 left: 10.5rem;
+}
+#content .title-three{
+	position: relative;
+	 left: 10rem;
+}
+/* #content .title-one{
+	position: relative;
+	 left: 6.5rem;
+} */
+#content .img-edit{
+	width: 30px;
+	position: relative;
+	left: 6rem;
+}
+
+#content .title-componente{
+	position: relative;
+	right: 4rem;
+}
+#content .title-ram{
+	position: relative;
+	left: 0.2rem;
+}
+
+#content .title-capacidade{
+	position: relative;
+	left: 7rem;
+}
+
+#content .title-alerta{
+	position: relative;
+	left: 12rem;
+}
 /* MAIN */
 /* CONTENT */
 
 
+@media screen and (max-width: 1600px){
 
+	#content .box-info-funcionario h1{
+		font-size: 20px;
+		text-align: left;
+	} 
 
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		color: #A4161A;
+	}
 
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 13px ;
+	}
 
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 7.7rem;
+	}
 
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 13rem;
+	}
 
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		width: 35px;
+		margin-left: 5rem;
+
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+}
+
+@media screen and (max-width: 1535px) { 
+	#content main .box-subscribe-machine{
+		height: 90vh;
+	}
+
+	#content main .box-subscribe{
+		height: 90vh;
+	}
+	
+	#content .box-info-funcionario h1{
+		font-size: 100%;
+		text-align: left;
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		text-align: left;
+	} 
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 7.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 11rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		/* margin-left: 0.1rem; */
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		/* left: 0rem; */
+	}
+	#content .box-informacoes-cadastradas .titulo .icon-delete{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 884px) { 
+	#content main .box-subscribe{
+		grid-template-columns: 1fr;
+		height: 130vh;
+	}
+
+	#content main .box-subscribe .subscribe-right {
+		margin-top: -60vh;
+	}
+
+	#content main .box-subscribe-machine{
+		grid-template-columns: 1fr;
+		height: 130vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right {
+		margin-top: -60vh;
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 100%;
+		text-align: left;
+		margin-left: 1rem;
+		
+	}
+	#content .box-informacoes-cadastradas .title-componente{
+		font-size: 15px;
+		text-align: center;
+	}
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		font-size: 15px;
+		position: relative;
+		right: 10rem;
+	}
+
+	/* #content .box-informacoes-cadastradas .title-capacidade{
+		font-size: 15px;
+		position: relative;
+		left: 10rem;
+	} */
+}
 
 @media screen and (max-width: 768px) {
 	#sidebar {
@@ -711,6 +1104,11 @@ body {
 	#content main .box-info #grficoCpu{
 		width: 100px;
 	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		text-align: left;
+	}
 	
 }
 
@@ -718,15 +1116,87 @@ body {
 @media screen and (max-width: 768px) {
 	#content main .box-subscribe{
 		grid-template-columns: 1fr;
-		height: 140vh;
+		height: 130vh;
 	}
 
 	#content main .box-subscribe .subscribe-right {
-		margin-top: -70vh;
+		margin-top: -60vh;
 	}
+
+	#content main .box-subscribe-machine{
+		grid-template-columns: 1fr;
+		height: 130vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right {
+		margin-top: -60vh;
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		text-align: left;
+		
+	} 
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 6rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+	#content .box-informacoes-cadastradas .titulo .icon-delete{
+		display: none;
+	}
+	/* #content .titulos .title-componente{
+		position: relative;
+		left: 0.1rem;
+	}
+
+	#content .titulos .title-ram{
+		text-align: center;
+		position: relative;
+		left: 1rem;
+	}
+	#content .titulos .title-alerta{
+		position: relative;
+		right: 10rem;
+	} */
 }
-
-
 
 @media screen and (max-width: 576px) {
 	#content nav form .form-input input {
@@ -778,7 +1248,7 @@ body {
 
 	#content main .box-subscribe{
 		grid-template-columns: 1fr;
-		height: 150vh;
+		height: 125vh;
 	}
 
 	#content main .box-subscribe .subscribe-left {
@@ -792,7 +1262,7 @@ body {
 	}
 
 	#content main .box-subscribe .subscribe-right {
-		margin-top: -80vh;
+		margin-top: -65vh;
 	}
 
 	#content main .box-subscribe .subscribe-right form input {
@@ -806,45 +1276,179 @@ body {
 	#content main .box-subscribe .subscribe-right form .btn {
 		width: 100%;
 	}
+/**/
+	#content main .box-subscribe-machine{
+		grid-template-columns: 1fr;
+		height: 125vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-left {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	#content main .box-subscribe-machine .subscribe-left .title-subscribe {
+		width: 100%;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right {
+		margin-top: -65vh;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right form input {
+		width: 100%;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right form select {
+		width: 100%;
+	}
+
+	#content main .box-subscribe-machine .subscribe-right form .btn {
+		width: 100%;
+	}
+
+	#content .box-info-funcionario h1{
+		font-size: 80%;
+		text-align: left;
+	}
+
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 6rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+	
 }
-/* =========================MEDIA QUERIE MOBILE ========================= */
 
-/* @media screen and (max-width: 768px) {
-    .container{
-        width: 9;
-    }
+@media screen and (max-width:900px){
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		text-align: left;
+	}
 
-    aside {
-        position: fixed;
-        left: 0;
-        background: var(--color-white);
-        width: 18rem;
-        z-index: 3;
-        box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
-        padding-right: var(--card-padding);
-    }
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
 
-    aside h2{
-        display: inline;
-    }
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
 
-    aside .sidebar h3{
-        display: inline;
-    }
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 6rem;
+	}
 
-    aside .sidebar a{
-        width: 100%;
-        height: 3.4rem;
-    }
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 8.5rem;
+	}
 
-    aside .sidebar a:last-child{
-        position: absolute;
-        bottom: 5rem;
-    }
+	
 
-    aside .close{
-        display: inline-block;
-        cursor: pointer;
-    }
-} */
+	
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		position: relative;
+		left: 4rem;
+		width: 20px;
+		
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 30%;
+		position: relative;
+		right: 1rem;
+	}
+}
+@media screen and (maz-width: 980px) {
+	#content .box-info-funcionario h1{
+		font-size: 90%;
+		text-align: left;
+	}
+
+	#content .box-info-funcionario .identificacao{
+		margin-left: 3rem;
+	}
+	#content .titulos h4{
+		font-size: 80%;
+		color: #A4161A;
+	}
+
+	#content .box-informacoes-cadastradas h4{
+		position: relative;
+		left: 0.1rem;
+		font-size: 15px ;
+	}
+
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 6rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 2rem;
+	}
+
+	#content .box-informacoes-cadastradas .titulos .img-edit{
+		/* position: relative;
+		left: 80%; */
+		width: 30px;
+		margin-right: 3rem;
+	}
+	
+	#content .box-informacoes-cadastradas .titulos .material-symbols-sharp{
+		width: 100px;
+		position: relative;
+		right: 2rem;
+	}
+	#content .box-informacoes-cadastradas .titulo .icon-delete{
+		display: none;
+	}
+
+   }
+
+ 

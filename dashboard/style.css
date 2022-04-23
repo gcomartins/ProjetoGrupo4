@@ -441,8 +441,9 @@ body {
     border-radius: 50%;
     font-size:2rem ;
 }
-
-
+/* .cpuTitle{
+	margin-left: 5rem;
+} */
 #content main .table-data {
 	display: flex;
 	flex-wrap: wrap;
@@ -652,10 +653,13 @@ body {
 		grid-template-columns: 1fr;
 		
 	}
-	#content main .box-info #grficoCpu{
+	/* #content main .box-info #grficoCpu{
 		width: 100px;
-	}
+	} */
 
+	/* #content main .table-data {
+		flex-direction: column;
+	} */
 	#content main .table-data .head {
 		min-width: 420px;
 	}
