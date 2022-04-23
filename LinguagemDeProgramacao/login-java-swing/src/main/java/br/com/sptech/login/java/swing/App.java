@@ -8,6 +8,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import java.awt.Color;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -19,27 +20,7 @@ public class App extends javax.swing.JFrame {
      * Creates new form App
      */
     
-    public App() {
-        
-        
-        Looca looca = new Looca();
-        List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
-//        List<Processo> processos = looca.getGrupoDeProcessos().getProcessos();
-        
-        looca.getProcessador().getNome();
-        System.out.println("--------Uso de Memória--------");
-        Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
-        Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
-        System.out.println(memoriaEmUso*100/memoriaTotal);
-        System.out.println("--------Processador Uso--------");
-        Double usoProcessador = looca.getProcessador().getUso().doubleValue();
-        System.out.println(usoProcessador);
-        System.out.println("--------Discos--------");
-        discos.forEach(e -> {
-            System.out.println(e);
-            System.out.println("------------------------");
-        });
-        
+    public App() {        
         initComponents();
     }
 
@@ -115,12 +96,12 @@ public class App extends javax.swing.JFrame {
             .addGroup(pnlRamLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblRam)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlRamLayout.setVerticalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRamLayout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(lblRam)
                 .addGap(73, 73, 73))
         );
@@ -148,7 +129,7 @@ public class App extends javax.swing.JFrame {
         pnlCpu1Layout.setHorizontalGroup(
             pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCpu1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCpu)
                 .addContainerGap())
         );
@@ -157,13 +138,18 @@ public class App extends javax.swing.JFrame {
             .addGroup(pnlCpu1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addComponent(lblCpu)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         btnIniciar.setBackground(new java.awt.Color(25, 164, 22));
         btnIniciar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnIniciar.setForeground(new java.awt.Color(249, 249, 249));
         btnIniciar.setText("Iniciar Aplicação");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -215,22 +201,22 @@ public class App extends javax.swing.JFrame {
                         .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlGeralLayout.createSequentialGroup()
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlRam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlRam, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(131, 131, 131)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblUsoDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                            .addComponent(pnlDisco, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlCpu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlCpu1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(133, 133, 133))
         );
         pnlGeralLayout.setVerticalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGeralLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -329,6 +315,14 @@ public class App extends javax.swing.JFrame {
         btnFinalizar.setForeground(new Color(164, 22, 26));
     }//GEN-LAST:event_menuSairMouseEntered
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        IniciarLeitura();
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,7 +357,58 @@ public class App extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void IniciarLeitura(){           
+            lerDados();        
+    }
+    
+    private void lerDados(){
+          
+        
+        Looca looca = new Looca();
+        Double discoDisponivel = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getDisponivel().doubleValue();
+        Double discoTotal = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getTotal().doubleValue();
+        Double usoDisco = discoDisponivel*100/discoTotal;
+        
+        Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
+        Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
+        Double memoriaUsada = memoriaEmUso*100/memoriaTotal;
+        
+        Double usoProcessador = looca.getProcessador().getUso().doubleValue();
+        
+        lblDisco.setText(String.format("%.2f%%", usoDisco));        
+        lblRam.setText(String.format("%.2f%%", memoriaUsada));        
+        lblCpu.setText(String.format("%.2f%%", usoProcessador));
+        
+        ConexaoBanco conexao = new ConexaoBanco();
+        
+        conexao.getConexao().execute("drop table if exists tbLogs");
+        
+        conexao.getConexao().execute("Create table tbLogs (" +
+            "idLog INT PRIMARY KEY AUTO_INCREMENT, " +
+            "leituraDesempenho DOUBLE," +
+//            "leituraTemperatura DOUBLE," +
+//            "dataHora DATETIME," +
+//            "fkComponente INT," +
+//            "constraint fkComponente " +
+//            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
+            ");");
+        
+        conexao.getConexao().update("insert into tbLogs "
+            +"values(null, ?)", usoDisco);
+        conexao.getConexao().update("insert into tbLogs "
+            +"values(null, ?)", memoriaUsada);
+        conexao.getConexao().update("insert into tbLogs "
+            +"values(null, ?)", usoProcessador);
+        
+        List<Map<String, Object>> tbLogs = conexao
+                .getConexao()
+                .queryForList("select * from tbLogs");
+        
+        System.out.println(tbLogs);
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnIniciar;
