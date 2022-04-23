@@ -59,15 +59,15 @@ public class App extends javax.swing.JFrame {
         pnlRam = new javax.swing.JPanel();
         lblRam = new javax.swing.JLabel();
         pnlDisco = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDisco = new javax.swing.JLabel();
         pnlCpu1 = new javax.swing.JPanel();
         lblCpu = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        menuDash = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -77,6 +77,7 @@ public class App extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlGeral.setBackground(new java.awt.Color(249, 249, 249));
+        pnlGeral.setPreferredSize(new java.awt.Dimension(1218, 680));
 
         btnFinalizar.setBackground(new java.awt.Color(164, 22, 26));
         btnFinalizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -99,70 +100,78 @@ public class App extends javax.swing.JFrame {
         pnlRam.setBackground(new java.awt.Color(164, 22, 26));
         pnlRam.setPreferredSize(new java.awt.Dimension(230, 230));
 
-        lblRam.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblRam.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
         lblRam.setForeground(new java.awt.Color(249, 249, 249));
-        lblRam.setText("10");
+        lblRam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRam.setText("10.00%");
 
         javax.swing.GroupLayout pnlRamLayout = new javax.swing.GroupLayout(pnlRam);
         pnlRam.setLayout(pnlRamLayout);
         pnlRamLayout.setHorizontalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRamLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+            .addGroup(pnlRamLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(lblRam)
-                .addGap(63, 63, 63))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         pnlRamLayout.setVerticalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRamLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRamLayout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(lblRam)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(73, 73, 73))
         );
 
         pnlDisco.setBackground(new java.awt.Color(164, 22, 26));
         pnlDisco.setPreferredSize(new java.awt.Dimension(230, 230));
         pnlDisco.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("jLabel1");
-        pnlDisco.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lblDisco.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
+        lblDisco.setForeground(new java.awt.Color(249, 249, 249));
+        lblDisco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDisco.setText("25.00%");
+        pnlDisco.add(lblDisco, java.awt.BorderLayout.CENTER);
 
         pnlCpu1.setBackground(new java.awt.Color(164, 22, 26));
         pnlCpu1.setPreferredSize(new java.awt.Dimension(230, 230));
 
-        lblCpu.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblCpu.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
         lblCpu.setForeground(new java.awt.Color(249, 249, 249));
-        lblCpu.setText("40");
+        lblCpu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCpu.setText("40.00%");
 
         javax.swing.GroupLayout pnlCpu1Layout = new javax.swing.GroupLayout(pnlCpu1);
         pnlCpu1.setLayout(pnlCpu1Layout);
         pnlCpu1Layout.setHorizontalGroup(
             pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCpu1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCpu1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lblCpu)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlCpu1Layout.setVerticalGroup(
             pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCpu1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(71, 71, 71)
                 .addComponent(lblCpu)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(25, 164, 22));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(249, 249, 249));
-        jButton1.setText("Iniciar Aplicação");
+        btnIniciar.setBackground(new java.awt.Color(25, 164, 22));
+        btnIniciar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnIniciar.setForeground(new java.awt.Color(249, 249, 249));
+        btnIniciar.setText("Iniciar Aplicação");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("DISCO");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("CPU");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("RAM");
 
         javax.swing.GroupLayout pnlGeralLayout = new javax.swing.GroupLayout(pnlGeral);
@@ -175,27 +184,27 @@ public class App extends javax.swing.JFrame {
                     .addGroup(pnlGeralLayout.createSequentialGroup()
                         .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlGeralLayout.createSequentialGroup()
                         .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(131, 131, 131)
                         .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                         .addComponent(pnlCpu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(113, 113, 113))
+                .addGap(133, 133, 133))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(185, 185, 185)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(240, 240, 240)
                 .addComponent(jLabel2)
-                .addGap(325, 325, 325)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addGap(211, 211, 211))
+                .addGap(185, 185, 185))
         );
         pnlGeralLayout.setVerticalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGeralLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -208,7 +217,7 @@ public class App extends javax.swing.JFrame {
                 .addGap(133, 133, 133)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(138, 138, 138))
         );
 
@@ -220,9 +229,9 @@ public class App extends javax.swing.JFrame {
         menu.setMinimumSize(new java.awt.Dimension(74, 70));
         menu.setPreferredSize(new java.awt.Dimension(74, 60));
 
-        jMenu2.setText("Dashboard");
-        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        menu.add(jMenu2);
+        menuDash.setText("Dashboard");
+        menuDash.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        menu.add(menuDash);
 
         menuSair.setText("Sair");
         menuSair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -255,8 +264,7 @@ public class App extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlGeral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(pnlGeral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -327,17 +335,17 @@ public class App extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblCpu;
+    private javax.swing.JLabel lblDisco;
     private javax.swing.JLabel lblRam;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu menuDash;
     private javax.swing.JMenu menuSair;
     private javax.swing.JPanel pnlCpu1;
     private javax.swing.JPanel pnlDisco;
