@@ -1060,7 +1060,7 @@ body {
 
 @media screen and (max-width: 1535px) { 
 	#content main .box-subscribe-machine{
-		/* height: 90vh; */
+		height: 800px;
 	}
 
 	#content main .box-subscribe{
