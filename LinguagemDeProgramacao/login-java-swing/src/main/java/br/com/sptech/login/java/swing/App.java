@@ -8,6 +8,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import java.awt.Color;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -362,25 +363,50 @@ public class App extends javax.swing.JFrame {
     }
     
     private void lerDados(){
+          
+        
         Looca looca = new Looca();
         Double discoDisponivel = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getDisponivel().doubleValue();
         Double discoTotal = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getTotal().doubleValue();
         Double usoDisco = discoDisponivel*100/discoTotal;
-        System.out.println(discoDisponivel);
-        System.out.println(discoTotal);
-        System.out.println(String.format("%.2f%%", usoDisco));
-        lblDisco.setText(String.format("%.2f%%", usoDisco));
+        
         Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
         Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
         Double memoriaUsada = memoriaEmUso*100/memoriaTotal;
+        
         Double usoProcessador = looca.getProcessador().getUso().doubleValue();
-        System.out.println("--------Uso de Memória--------");      
-        System.out.println(String.format("%.2f%%", memoriaUsada));
-        lblRam.setText(String.format("%.2f%%", memoriaUsada));
-        System.out.println("--------Uso do Processador--------");      
-        System.out.println(String.format("%.2f%%", usoProcessador));
+        
+        lblDisco.setText(String.format("%.2f%%", usoDisco));        
+        lblRam.setText(String.format("%.2f%%", memoriaUsada));        
         lblCpu.setText(String.format("%.2f%%", usoProcessador));
-        System.out.println("--------Discos--------");
+        
+        ConexaoBanco conexao = new ConexaoBanco();
+        
+        conexao.getConexao().execute("drop table if exists tbLogs");
+        
+        conexao.getConexao().execute("Create table tbLogs (" +
+            "idLog INT PRIMARY KEY AUTO_INCREMENT, " +
+            "leituraDesempenho DOUBLE," +
+//            "leituraTemperatura DOUBLE," +
+//            "dataHora DATETIME," +
+//            "fkComponente INT," +
+//            "constraint fkComponente " +
+//            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
+            ");");
+        
+        conexao.getConexao().update("insert into tbLogs "
+            +"values(null, ?)", usoDisco);
+        conexao.getConexao().update("insert into tbLogs "
+            +"values(null, ?)", memoriaUsada);
+        conexao.getConexao().update("insert into tbLogs "
+            +"values(null, ?)", usoProcessador);
+        
+        List<Map<String, Object>> tbLogs = conexao
+                .getConexao()
+                .queryForList("select * from tbLogs");
+        
+        System.out.println(tbLogs);
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
