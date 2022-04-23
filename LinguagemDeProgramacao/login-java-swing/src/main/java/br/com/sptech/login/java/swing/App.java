@@ -19,27 +19,7 @@ public class App extends javax.swing.JFrame {
      * Creates new form App
      */
     
-    public App() {
-        
-        
-        Looca looca = new Looca();
-        List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
-//        List<Processo> processos = looca.getGrupoDeProcessos().getProcessos();
-        
-        looca.getProcessador().getNome();
-        System.out.println("--------Uso de Memória--------");
-        Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
-        Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
-        System.out.println(memoriaEmUso*100/memoriaTotal);
-        System.out.println("--------Processador Uso--------");
-        Double usoProcessador = looca.getProcessador().getUso().doubleValue();
-        System.out.println(usoProcessador);
-        System.out.println("--------Discos--------");
-        discos.forEach(e -> {
-            System.out.println(e);
-            System.out.println("------------------------");
-        });
-        
+    public App() {        
         initComponents();
     }
 
@@ -95,7 +75,7 @@ public class App extends javax.swing.JFrame {
         pnlRam.setBackground(new java.awt.Color(164, 22, 26));
         pnlRam.setPreferredSize(new java.awt.Dimension(230, 230));
 
-        lblRam.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblRam.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblRam.setForeground(new java.awt.Color(249, 249, 249));
         lblRam.setText("10");
 
@@ -104,16 +84,16 @@ public class App extends javax.swing.JFrame {
         pnlRamLayout.setHorizontalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRamLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addComponent(lblRam)
-                .addGap(63, 63, 63))
+                .addContainerGap()
+                .addComponent(lblRam, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlRamLayout.setVerticalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRamLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(86, 86, 86)
                 .addComponent(lblRam)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pnlCpu.setBackground(new java.awt.Color(164, 22, 26));
@@ -123,7 +103,7 @@ public class App extends javax.swing.JFrame {
         pnlDisco.setBackground(new java.awt.Color(164, 22, 26));
         pnlDisco.setPreferredSize(new java.awt.Dimension(230, 230));
 
-        lblDisco.setFont(new java.awt.Font("Segoe UI", 1, 90)); // NOI18N
+        lblDisco.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lblDisco.setForeground(new java.awt.Color(249, 249, 249));
         lblDisco.setText("40");
 
@@ -132,22 +112,27 @@ public class App extends javax.swing.JFrame {
         pnlDiscoLayout.setHorizontalGroup(
             pnlDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDiscoLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(lblDisco)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         pnlDiscoLayout.setVerticalGroup(
             pnlDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDiscoLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDiscoLayout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(lblDisco)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(80, 80, 80))
         );
 
         jButton1.setBackground(new java.awt.Color(25, 164, 22));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(249, 249, 249));
         jButton1.setText("Iniciar Aplicação");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlGeralLayout = new javax.swing.GroupLayout(pnlGeral);
         pnlGeral.setLayout(pnlGeralLayout);
@@ -261,6 +246,10 @@ public class App extends javax.swing.JFrame {
         btnFinalizar.setForeground(new Color(164, 22, 26));
     }//GEN-LAST:event_menuSairMouseEntered
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        IniciarLeitura();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -295,7 +284,31 @@ public class App extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void IniciarLeitura(){           
+            lerDados();        
+    }
+    
+    private void lerDados(){
+        Looca looca = new Looca();
+        List<Disco> discos = looca.getGrupoDeDiscos().getDiscos();
+        Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
+        Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
+        Double memoriaUsada = memoriaEmUso*100/memoriaTotal;
+        Double usoProcessador = looca.getProcessador().getUso().doubleValue();
+        System.out.println("--------Uso de Memória--------");      
+        System.out.println(String.format("%.2f%%", memoriaUsada));
+        lblRam.setText(String.format("%.2f%%", memoriaUsada));
+        System.out.println("--------Uso do Processador--------");      
+        System.out.println(String.format("%.2f%%", usoProcessador));
+        lblDisco.setText(String.format("%.2f%%", usoProcessador));
+        System.out.println("--------Discos--------");
+        discos.forEach(e -> {
+            System.out.println(e);
+            System.out.println("------------------------");
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton jButton1;
