@@ -98,14 +98,14 @@ public class App extends javax.swing.JFrame {
         pnlRamLayout.setHorizontalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRamLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(32, 32, 32)
                 .addComponent(lblRam)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pnlRamLayout.setVerticalGroup(
             pnlRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRamLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(lblRam)
                 .addGap(73, 73, 73))
         );
@@ -133,16 +133,16 @@ public class App extends javax.swing.JFrame {
         pnlCpu1Layout.setHorizontalGroup(
             pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCpu1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(lblCpu)
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
         pnlCpu1Layout.setVerticalGroup(
             pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCpu1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addComponent(lblCpu)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         btnIniciar.setBackground(new java.awt.Color(25, 164, 22));
@@ -207,11 +207,11 @@ public class App extends javax.swing.JFrame {
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlRam, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(131, 131, 131)
+                        .addGap(86, 86, 86)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblUsoDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlDisco, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlCpu1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -220,7 +220,7 @@ public class App extends javax.swing.JFrame {
         pnlGeralLayout.setVerticalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGeralLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
