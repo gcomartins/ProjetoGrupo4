@@ -1232,6 +1232,21 @@ span #editar-div.icons{
 		right: 10rem;
 	}
 
+	#deletar{
+		width: 50%;
+		position: relative;
+		left: -0.200rem;
+	}
+
+	#editar{
+		width: 50%;
+		position: relative;
+		left: -0.200rem;
+	}
+
+	#content .box-informacoes-cadastradas span{
+		margin: 1rem;
+	}
 	/* #content .box-informacoes-cadastradas .title-capacidade{
 		font-size: 15px;
 		position: relative;
@@ -1261,6 +1276,23 @@ span #editar-div.icons{
 		font-size: 90%;
 		text-align: left;
 	}
+
+	#deletar{
+		width: 50%;
+		position: relative;
+		left: -0.200rem;
+	}
+
+	#editar{
+		width: 50%;
+		position: relative;
+		left: -0.200rem;
+	}
+
+	#content .box-informacoes-cadastradas span{
+		margin: 1.5rem;
+	}
+
 	
 }
 
@@ -1311,7 +1343,7 @@ span #editar-div.icons{
 
 	#content .box-informacoes-cadastradas .title-alerta{
 		position: relative;
-		left: 6rem;
+		left: 10rem;
 	}
 
 	#content .box-informacoes-cadastradas .title-ram{
@@ -1525,16 +1557,18 @@ span #editar-div.icons{
 
 	#content .box-informacoes-cadastradas .title-capacidade{
 		position: relative;
-		left: 6rem;
+		left: 8rem;
 	}
 
 	#content .box-informacoes-cadastradas .title-alerta{
 		position: relative;
-		left: 8.5rem;
+		left: 12rem;
 	}
 
-	
-
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		left: 3rem;
+	}
 	
 
 	#content .box-informacoes-cadastradas .titulos .img-edit{
