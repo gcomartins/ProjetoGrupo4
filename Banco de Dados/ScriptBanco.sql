@@ -66,7 +66,6 @@ inner join tbAlertas as A on A.fkLog = L.idLog Where hostName = "Lucas" ;
 Create table tbLogs (
 idLog INT PRIMARY KEY AUTO_INCREMENT, 
 leituraDesempenho DOUBLE,
-leituraTemperatura DOUBLE,
 dataHora DATETIME,
 fkComponente INT,
 constraint fkComponente 
@@ -123,13 +122,13 @@ insert into tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) values
 ("Disco",3000,85,3),
 ("Cpu",64,70,3);
 
-insert into tbLogs (leituraDesempenho, leituraTemperatura, dataHora, fkComponente) values 
-(100, 22.5, now(),1),
-(55, 30.25, now(),2),
-(100, 22.5, now(),3),
-(45, 50.0, now(),4),
-(20, 100.0, now(),5),
-(100, 22.0, now(),6);
+insert into tbLogs (leituraDesempenho, dataHora, fkComponente) values 
+(100, now(),1),
+(55, now(),2),
+(100, now(),3),
+(45, now(),4),
+(20, now(),5),
+(100, now(),6);
 
 
 insert into tbAlertas (fkLog, categoria, descrição) values
@@ -147,9 +146,7 @@ insert into tbAlertas (fkLog, categoria, descrição) values
 select * from tbLogs;
 select * from tbMaquinas;
 select * from tbEmpresas;
-<<<<<<< HEAD
 select * from tbUsuarios;
-=======
 truncate table tbMaquinas;
->>>>>>> a77dc08548e0760115f7b0c2753fabbdd783c6d7
+
 
