@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="dashboard.css">
+	<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<title>DataCat</title>
+</head>
+<body onload='plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp")'>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<img src="./img/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" alt="">
+			<span class="text">DataCat</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="./dashboard.html">
+					<span class="material-icons-sharp">
+						grid_view
+						</span>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="../cadastro-funcionario.html">
+					<span class="material-icons-sharp">
+						perm_identity
+						</span>
+					<span class="text">Cadastrar usuário</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span class="material-icons-sharp">
+						notifications
+						</span>
+					<span class="text">Notifições</span>
+				</a>
+			</li>
+			<li>
+				<a href="../cadastro-maquina.html">
+					<span class="material-icons-sharp">add_to_queue</span>
+				<span>Cadastrar máquina</span>	
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span class="material-icons-sharp">
+						groups
+						</span>
+					<span class="text">Team</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<span class="material-icons-sharp">settings</span> 
+					<span class="text">Configurações</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<span class="material-icons-sharp">logout</span> 
+					<span class="text">Sair</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<!-- <span class="material-icons-sharp"> -->
+				
+				
+			<a href="#" class="nav-link">Categorias</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+					
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<span class="material-icons-sharp">
+					notifications
+					</span>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="img/larissa.jpeg">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Download PDF</span>
+				</a>
+			</div>
+
+			<ul class="box-info">
+				<li>
+				
+					<span class="text">
+						<div class="div-title">
+							<div class="icon">
+						<span class="material-icons-sharp">	memory</span>
+					       </div>
+						   <h3>Memória ram</h3>
+					   </div>
+					  
+					</span>
+					<canvas id="graficoMemoria"></canvas>
+				</li>
+				<li>
+					
+					<span class="text">
+						<div class="div-title">
+						<span class="material-icons-sharp">	memory</span>
+						<h3 class="cpuTitle">CPU</h3>
+						</div>
+					</span>
+					<canvas id="graficoCpu"></canvas>
+				</li>
+				<li>
+				
+						
+					<span class="text">
+						<div class="div-title">
+						<span class="material-icons-sharp">	memory</span>
+						<h3>Disco rígido</h3>					
+					    </div>
+					</span>
+					<canvas id="graficoDisco"></canvas>
+				</li>
+				<li>
+				
+						
+				<span class="text">
+					<div class="div-title">
+					<span class="material-icons-sharp">	memory</span>
+					<h3>Temperatura</h3>					
+				    </div>
+				</span>
+				<canvas id="graficoTemp"></canvas>
+			</li>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Histórico de alertas</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Id do alerta</th>
+								<th>Descrição</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>
+									<h4>Id do alerta</h4>
+									<h4>0120</h4>
+									
+								</th>
+								<th style="color: grey;">seu armazenamento está critico! <br>
+									O seu sistema está em perigo</th>
+								<th><span class="status process">Urgente</span></th>
+							</tr>
+							<tr>
+								<th>
+									<h4>0120</h4>
+									<p>Id do alerta</p>
+								</th>
+								<th style="color: grey;">seu armazenamento está critico! <br>
+									O seu sistema está em perigo</th>
+								<th><span class="status process">Urgente</span></th>
+							</tr>
+							<tr>
+								<th>
+									<h4>0120</h4>
+									<p>Id do alerta</p>
+								</th>
+								<th style="color: grey;">seu armazenamento está critico! <br>
+									O seu sistema está em perigo</th>
+								<th><span class="status process"> Urgente </span></th>
+							</tr>
+							<tr>
+								<th>
+									<h4>0120</h4>
+									<p>Id do alerta</p>
+								</th>
+								<th style="color: grey;">seu armazenamento está critico! <br>
+									O seu sistema está em perigo</th>
+								<th><span class="status process">Urgente</span></th>
+							</tr>
+							<tr>
+								<th>
+									<h4>0120</h4>
+									<p>Id do alerta</p>
+								</th>
+								<th style="color: grey;">seu armazenamento está critico! <br>
+									O seu sistema está em perigo</th>
+								<th><span class="status process">Urgente</span></th>
+							</tr>
+							<tr>
+								<th>
+									<h4>0120</h4>
+									<p>Id do alerta</p>
+								</th>
+								<th style="color: grey;">seu armazenamento está critico! <br>
+									O seu sistema está em perigo</th>
+								<th><span class="status process"> Urgente </span></th>
+							</tr>
+						
+								<tr>
+									<th>
+										<h4>0120</h4>
+										<p>Id do alerta</p>
+									</th>
+									<th style="color: grey;">seu armazenamento está critico! <br>
+										O seu sistema está em perigo</th>
+									<th><span class="status process"> Urgente </span></th>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>Últimas operações</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<p><b>Larissa Alves</b></p>
+						<li class="completed">
+						
+							<img src="./img/larissa.jpeg" alt="">
+							<i class='bx bx-dots-vertical-rounded' ></i>
+							
+							<small>Componente: <br> Memoria Ram</small>	
+						<small>Categoria: <br> 
+							<span>Urgente</span></small>
+							<small>ID do alerta: <br> 0120</small>	
+							<small>Há 30 minutos <br> atrás</small>
+							<!--  Ultima opração</p>
+								
+									  <p>Categoria:<span>Urgente</span>
+									</p>
+									<p>ID do alerta: 0120</p> 
+									
+									<small>Há 30 minutos atrás</small> -->
+							
+						</li>
+						<p><b>Guilherme Carneiro</b></p>
+						<li class="completed">
+						
+							<img src="./img/gui.jpeg" alt="">
+							<i class='bx bx-dots-vertical-rounded' ></i>
+							
+							<small>Componente: <br> Memoria Ram</small>	
+						<small>Categoria: <br> 
+							<span>Urgente</span></small>
+							<small>ID do alerta: <br> 0120</small>	
+							<small>Há 30 minutos <br> atrás</small>
+						</li>
+						<p><b>Leticia Marques</b></p>
+						<li class="completed">
+						
+							<img src="./img/leticia.jpeg" alt="">
+							<i class='bx bx-dots-vertical-rounded' ></i>
+							
+							<small>Componente: <br> Memoria Ram</small>	
+						<small>Categoria: <br> 
+							<span>Urgente</span></small>
+							<small>ID do alerta: <br> 0120</small>	
+							<small>Há 30 minutos <br> atrás</small>
+						</li>
+						<p><b>Vinicius Pieroni</b></p>
+						<li class="completed">
+						
+							<img src="./img/vinicius.jpeg" alt="">
+							<i class='bx bx-dots-vertical-rounded' ></i>
+							
+							<small>Componente: <br> Memoria Ram</small>	
+						<small>Categoria: <br> 
+							<span>Urgente</span></small>
+							<small>ID do alerta: <br> 0120</small>	
+							<small>Há 30 minutos <br> atrás</small>
+						</li>
+						<p><b>Lucas Mastelini</b></p>
+						<li class="completed">
+						
+							<img src="./img/lucas.jpeg" alt="">
+							<i class='bx bx-dots-vertical-rounded' ></i>
+							
+							<small>Componente: <br> Memoria Ram</small>	
+						<small>Categoria: <br> 
+							<span>Urgente</span></small>
+							<small>ID do alerta: <br> 0120</small>	
+							<small>Há 30 minutos <br> atrás</small>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<!-- <script src="script.js"></script> -->
+</body>
+</html>
+<script>
+	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+
+allSideMenu.forEach(item=> {
+	const li = item.parentElement;
+
+	item.addEventListener('click', function () {
+		allSideMenu.forEach(i=> {
+			i.parentElement.classList.remove('active');
+		})
+		li.classList.add('active');
+	})
+});
+
+
+
+
+// TOGGLE SIDEBAR
+const menuBar = document.querySelector('#content nav .bx.bx-menu');
+const sidebar = document.getElementById('sidebar');
+
+menuBar.addEventListener('click', function () {
+	sidebar.classList.toggle('hide');
+})
+
+
+
+
+
+
+
+const searchButton = document.querySelector('#content nav form .form-input button');
+const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+const searchForm = document.querySelector('#content nav form');
+
+searchButton.addEventListener('click', function (e) {
+	if(window.innerWidth < 576) {
+		e.preventDefault();
+		searchForm.classList.toggle('show');
+		if(searchForm.classList.contains('show')) {
+			searchButtonIcon.classList.replace('bx-search', 'bx-x');
+		} else {
+			searchButtonIcon.classList.replace('bx-x', 'bx-search');
+		}
+	}
+})
+
+
+
+
+
+if(window.innerWidth < 768) {
+	sidebar.classList.add('hide');
+} else if(window.innerWidth > 576) {
+	searchButtonIcon.classList.replace('bx-x', 'bx-search');
+	searchForm.classList.remove('show');
+}
+
+
+window.addEventListener('resize', function () {
+	if(this.innerWidth > 576) {
+		searchButtonIcon.classList.replace('bx-x', 'bx-search');
+		searchForm.classList.remove('show');
+	}
+})
+
+
+
+const switchMode = document.getElementById('switch-mode');
+
+switchMode.addEventListener('change', function () {
+	if(this.checked) {
+		document.body.classList.add('dark');
+	
+	} else {
+		document.body.classList.remove('dark');
+	}
+})
+
+function plotarGrafico(idGrafico) {
+		
+	const ctx = document.getElementById(idGrafico).getContext('2d');
+	let myChart = new Chart(ctx, {
+		type: 'line',
+
+		data: {
+			labels: gerarDatas(),
+			datasets: [{
+				label: 'Desempenho',
+				data: gerarDados(),
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.12)',
+					
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+
+
+
+	
+}
+
+function gerarDados() {
+	dados = [];
+	for (let index = 0; index < 30; index++) {
+		dados.push((Math.random() * 100).toFixed(0));
+	}
+	return dados;
+}
+function gerarDatas() {
+	datas = [];
+	for (let index = 0; index < 30; index++) {
+		datas.push((Math.random() * 23).toFixed(0) + ':' + (Math.random() * 59).toFixed(0) + ':' + (Math.random() * 59).toFixed(0));
+	}
+	return datas.sort();
+}
+
+</script>
+
+
+
+	
+	
