@@ -858,7 +858,14 @@ body {
 .wrapper{
 	display: inline-flex;
 	position: relative;
+	left: 9.5rem;
+	
+}
 
+ #deletar-div{
+	position: relative;
+	right: 5rem;
+	bottom: 1rem;
 }
 
 .wrapper .icon{
@@ -906,12 +913,33 @@ body {
 	transition: all 0.4s cubic-bezier(0.68,-0.55, 0.265, 1.55);
 }
 
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip{
+	text-shadow: 0px -1px 0px rgba(0,0, 0, 0.4);
+}
 
+/* .wrapper .excluir:hover span,
+.wrapper .excluir:hover .tooltip,
+.wrapper .excluir:hover .tooltip::before {
+	background: #A4161A;
+	color: #ffff;
+} */
 
+span #editar-div.icons{
+	position: relative;
+	left: 10rem;
+}
 
 .wrapper .icon:hover .tooltip{
 	opacity: 1;
 	pointer-events: auto;
+}
+
+#tooltip-excluir{
+	position: relative;
+	right: 5rem;
+	top:-18%;
+;
 }
 
 .wrapper .icon .tooltip::before{
@@ -1008,17 +1036,17 @@ body {
 }
 #content .title-ram{
 	position: relative;
-	left: 0.2rem;
+	left: 1rem;
 }
 
 #content .title-capacidade{
 	position: relative;
-	left: 8rem;
+	left: 9.5rem;
 }
 
 #content .title-alerta{
 	position: relative;
-	left: 13rem;
+	left: 16rem;
 }
 /* MAIN */
 /* CONTENT */
@@ -1046,17 +1074,17 @@ body {
 
 	#content .box-informacoes-cadastradas .title-capacidade{
 		position: relative;
-		left: 7.7rem;
+		left: 10rem;
 	}
 
 	#content .box-informacoes-cadastradas .title-alerta{
 		position: relative;
-		left: 13rem;
+		left: 15rem;
 	}
 
 	#content .box-informacoes-cadastradas .title-ram{
 		position: relative;
-		left: 2rem;
+		left: 3rem;
 	}
 
 	#content .box-informacoes-cadastradas .titulos .img-edit{
@@ -1070,6 +1098,19 @@ body {
 		position: relative;
 		right: 2rem;
 	}
+
+	#deletar{
+		width: 50%;
+		position: relative;
+		left: -1.5rem;
+	}
+
+	#editar{
+		width: 50%;
+		position: relative;
+		left: -1.5rem;
+	}
+
 }
 
 @media screen and (max-width: 1535px) { 
@@ -1107,17 +1148,17 @@ body {
 
 	#content .box-informacoes-cadastradas .title-capacidade{
 		position: relative;
-		left: 7.5rem;
+		left: 9.5rem;
 	}
 
 	#content .box-informacoes-cadastradas .title-alerta{
 		position: relative;
-		left: 11rem;
+		left: 13rem;
 	}
 
 	#content .box-informacoes-cadastradas .title-ram{
 		position: relative;
-		left: 2.5rem;
+		left: 3rem;
 	}
 
 	#content .box-informacoes-cadastradas .titulos .img-edit{
@@ -1134,6 +1175,18 @@ body {
 	}
 	#content .box-informacoes-cadastradas .titulo .icon-delete{
 		display: none;
+	}
+
+	#deletar{
+		width: 50%;
+		position: relative;
+		left: -1.5rem;
+	}
+
+	#editar{
+		width: 50%;
+		position: relative;
+		left: -1.5rem;
 	}
 
 	
@@ -1548,5 +1601,22 @@ body {
 		display: none;
 	}
 
+   }
+
+   @media screen and (maz-width: 1500px){
+	#content .box-informacoes-cadastradas .title-capacidade{
+		position: relative;
+		left: 4.5rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-alerta{
+		position: relative;
+		left: 3rem;
+	}
+
+	#content .box-informacoes-cadastradas .title-ram{
+		position: relative;
+		right: 2rem;
+	}
    }
 
