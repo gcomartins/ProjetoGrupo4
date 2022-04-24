@@ -393,6 +393,7 @@ body {
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	align-items: center;
 	grid-gap: 24px;
+	height: 900px;
 }
 
 #content main .box-subscribe .subscribe-left {
@@ -867,7 +868,32 @@ body {
 	right: 5rem;
 	bottom: 1rem;
 }
+.nome{
+	position: relative;
+	right: 5rem;
+}
 
+.Email{
+	position: relative;
+	right: 7rem;
+}
+.funcao {
+	position: relative;
+	right: 8rem;
+}
+
+.title-email{
+	position: relative;
+	left: 4rem;
+}
+.title-nome{
+	position: relative;
+	right: 4rem;
+}
+.title-funcao{
+	position: relative;
+	left: 4rem;
+}
 .wrapper .icon{
 	margin: 0 20px;
 	align-items: center;
@@ -912,6 +938,20 @@ body {
 	pointer-events: none;
 	transition: all 0.4s cubic-bezier(0.68,-0.55, 0.265, 1.55);
 }
+.wrapper .icon .tooltip-editar{
+	position:absolute;
+	top: -30px;
+	background: var(--grey);
+	/* box-shadow: 0 3px 3px rgba(0,0,0,1); */
+	font-size: 15px;
+	border-radius: 25px;
+	padding: 10px 18px;
+	height: 30px;
+	font-size: 10px;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.4s cubic-bezier(0.68,-0.55, 0.265, 1.55);
+}
 
 .wrapper .icon:hover span,
 .wrapper .icon:hover .tooltip{
@@ -934,6 +974,10 @@ span #editar-div.icons{
 	opacity: 1;
 	pointer-events: auto;
 }
+.wrapper .icon:hover .tooltip-editar{
+	opacity: 1;
+	pointer-events: auto;
+}
 
 #tooltip-excluir{
 	position: relative;
@@ -943,6 +987,17 @@ span #editar-div.icons{
 }
 
 .wrapper .icon .tooltip::before{
+	position: absolute;
+	content: "";
+	height: 15px;
+	width: 15px;
+	background: var(--grey);
+	bottom: -8px;
+	left: 50%;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.wrapper .icon .tooltip-editar::before{
 	position: absolute;
 	content: "";
 	height: 15px;
@@ -982,6 +1037,11 @@ span #editar-div.icons{
 	width: 50px;
 	color: var(--dark);
 	cursor: pointer;
+}
+ #deletar-div-func{
+	position: relative;
+	right: 5rem;
+	bottom: 1rem;
 }
 #content .icon-delete{
 	background-color: #A4161A;
@@ -1111,6 +1171,11 @@ span #editar-div.icons{
 		left: -1.5rem;
 	}
 
+
+	.title-nome{
+		color: #060714;
+	}
+
 }
 
 @media screen and (max-width: 1535px) { 
@@ -1189,8 +1254,48 @@ span #editar-div.icons{
 		left: -1.5rem;
 	}
 
+	#content .box-informacoes-cadastradas .title-nome{
+		position: relative;
+		left: -4rem;
+	}
 	
-}
+	#content main .box-subscribe {
+		height: 620px;
+	}
+
+	 #editar-div-func{
+		position: relative;
+		right: 10rem;
+	} 
+	#deletar-div-func{
+		position: relative;
+		right: 10rem;
+		bottom: 1rem;
+	}
+	#tooltip-excluir{
+		position: relative;
+		right: 10rem;
+	}
+
+	.tooltip-editar{
+		position: relative;
+		right: 9.8rem;
+	} 
+
+	#content .box-informacoes-cadastradas .title-email{
+	  position: relative;
+	  left: -4rem;
+	}
+
+	.nome{
+		position: relative;
+		left: -1rem;
+	}
+	.Email{
+		position: relative;
+		left: -5rem;
+	}
+} 
 
 @media screen and (max-width: 884px) { 
 	#content main .box-subscribe{
@@ -1247,6 +1352,7 @@ span #editar-div.icons{
 	#content .box-informacoes-cadastradas span{
 		margin: 1rem;
 	}
+	
 	/* #content .box-informacoes-cadastradas .title-capacidade{
 		font-size: 15px;
 		position: relative;
