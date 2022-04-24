@@ -416,11 +416,11 @@ public class App extends javax.swing.JFrame {
 
         //AZURE
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 1)", usoDisco, dataHora);
+                + "values(?, ?, 9)", usoDisco, dataHora);
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 2)", memoriaUsada, dataHora);
+                + "values(?, ?, 10)", memoriaUsada, dataHora);
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 3)", usoProcessador, dataHora);
+                + "values(?, ?, 11)", usoProcessador, dataHora);
 
         List<Map<String, Object>> tbLogs = conexao
                 .getConexao()
