@@ -422,11 +422,11 @@ public class App extends javax.swing.JFrame {
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, 11)", usoProcessador, dataHora);
 
-        List<Map<String, Object>> tbLogs = conexao
-                .getConexao()
-                .queryForList("select * from tbLogs");
-
-        System.out.println(tbLogs);
+//        List<Map<String, Object>> tbLogs = conexao
+//                .getConexao()
+//                .queryForList("select * from tbLogs");
+//
+//        System.out.println(tbLogs);
 
     }
 
