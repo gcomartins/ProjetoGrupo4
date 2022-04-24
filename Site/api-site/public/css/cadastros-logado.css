@@ -1036,17 +1036,17 @@ span #editar-div.icons{
 }
 #content .title-ram{
 	position: relative;
-	left: 1rem;
+	left: 1.8rem;
 }
 
 #content .title-capacidade{
 	position: relative;
-	left: 9.5rem;
+	left: 10rem;
 }
 
 #content .title-alerta{
 	position: relative;
-	left: 16rem;
+	left: 17rem;
 }
 /* MAIN */
 /* CONTENT */
@@ -1603,20 +1603,4 @@ span #editar-div.icons{
 
    }
 
-   @media screen and (maz-width: 1500px){
-	#content .box-informacoes-cadastradas .title-capacidade{
-		position: relative;
-		left: 4.5rem;
-	}
-
-	#content .box-informacoes-cadastradas .title-alerta{
-		position: relative;
-		left: 3rem;
-	}
-
-	#content .box-informacoes-cadastradas .title-ram{
-		position: relative;
-		right: 2rem;
-	}
-   }
 
