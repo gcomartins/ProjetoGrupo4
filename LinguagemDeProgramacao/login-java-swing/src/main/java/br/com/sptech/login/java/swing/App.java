@@ -7,8 +7,12 @@ package br.com.sptech.login.java.swing;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import java.awt.Color;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,8 +23,7 @@ public class App extends javax.swing.JFrame {
     /**
      * Creates new form App
      */
-    
-    public App() {        
+    public App() {
         initComponents();
     }
 
@@ -316,7 +319,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -357,58 +360,64 @@ public class App extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void IniciarLeitura(){           
-            lerDados();        
+
+    public void IniciarLeitura() {
+        int periodo = 1000;   // tempo de espera antes da 1ï¿½ execuï¿½ï¿½o da tarefa.
+        int interval = 5000;  // intervalo no qual a tarefa serï¿½ executada.
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                lerDados();
+            }
+        }, periodo, interval);
     }
-    
-    private void lerDados(){
-          
-        
+
+    private void lerDados() {
+
         Looca looca = new Looca();
         Double discoDisponivel = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getDisponivel().doubleValue();
         Double discoTotal = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getTotal().doubleValue();
-        Double usoDisco = discoDisponivel*100/discoTotal;
-        
+        Double usoDisco = discoDisponivel * 100 / discoTotal;
+
         Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
         Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
-        Double memoriaUsada = memoriaEmUso*100/memoriaTotal;
-        
+        Double memoriaUsada = memoriaEmUso * 100 / memoriaTotal;
+
         Double usoProcessador = looca.getProcessador().getUso().doubleValue();
-        
-        lblDisco.setText(String.format("%.2f%%", usoDisco));        
-        lblRam.setText(String.format("%.2f%%", memoriaUsada));        
+
+        lblDisco.setText(String.format("%.2f%%", usoDisco));
+        lblRam.setText(String.format("%.2f%%", memoriaUsada));
         lblCpu.setText(String.format("%.2f%%", usoProcessador));
-        
+
         ConexaoBanco conexao = new ConexaoBanco();
-        
+
         conexao.getConexao().execute("drop table if exists tbLogs");
-        
-        conexao.getConexao().execute("Create table tbLogs (" +
-            "idLog INT PRIMARY KEY AUTO_INCREMENT, " +
-            "leituraDesempenho DOUBLE," +
-//            "leituraTemperatura DOUBLE," +
-//            "dataHora DATETIME," +
-//            "fkComponente INT," +
-//            "constraint fkComponente " +
-//            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
-            ");");
-        
+
+        conexao.getConexao().execute("Create table tbLogs ("
+                + "idLog INT PRIMARY KEY AUTO_INCREMENT, "
+                + "leituraDesempenho DOUBLE,"
+                + //            "leituraTemperatura DOUBLE," +
+                //            "dataHora DATETIME," +
+                //            "fkComponente INT," +
+                //            "constraint fkComponente " +
+                //            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
+                ");");
+
         conexao.getConexao().update("insert into tbLogs "
-            +"values(null, ?)", usoDisco);
+                + "values(null, ?)", usoDisco);
         conexao.getConexao().update("insert into tbLogs "
-            +"values(null, ?)", memoriaUsada);
+                + "values(null, ?)", memoriaUsada);
         conexao.getConexao().update("insert into tbLogs "
-            +"values(null, ?)", usoProcessador);
-        
+                + "values(null, ?)", usoProcessador);
+
         List<Map<String, Object>> tbLogs = conexao
                 .getConexao()
                 .queryForList("select * from tbLogs");
-        
+
         System.out.println(tbLogs);
-        
+
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnIniciar;
