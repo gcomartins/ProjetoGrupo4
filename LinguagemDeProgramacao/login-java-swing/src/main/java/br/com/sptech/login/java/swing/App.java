@@ -391,17 +391,17 @@ public class App extends javax.swing.JFrame {
 
         ConexaoBanco conexao = new ConexaoBanco();
 
-        conexao.getConexao().execute("drop table if exists tbLogs");
-
-        conexao.getConexao().execute("Create table tbLogs ("
-                + "idLog INT PRIMARY KEY AUTO_INCREMENT, "
-                + "leituraDesempenho DOUBLE,"
-                + //            "leituraTemperatura DOUBLE," +
-                //            "dataHora DATETIME," +
-                //            "fkComponente INT," +
-                //            "constraint fkComponente " +
-                //            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
-                ");");
+//        conexao.getConexao().execute("drop table if exists tbLogs");
+//
+//        conexao.getConexao().execute("Create table tbLogs ("
+//                + "idLog INT PRIMARY KEY AUTO_INCREMENT, "
+//                + "leituraDesempenho DOUBLE,"
+//                + //            "leituraTemperatura DOUBLE," +
+//                //            "dataHora DATETIME," +
+//                //            "fkComponente INT," +
+//                //            "constraint fkComponente " +
+//                //            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
+//                ");");
 
         conexao.getConexao().update("insert into tbLogs "
                 + "values(null, ?)", usoDisco);
