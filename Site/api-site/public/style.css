@@ -102,7 +102,8 @@ body {
 
 .grid {
   display: grid;
-margin:m}
+  margin: m
+}
 
 .section {
   padding: calc(5rem + var(--header-height)) 0;
@@ -305,9 +306,6 @@ nav.show div.icon-close {
   margin-bottom: 2rem;
 }
 
-
-
-
 /*====  CARDS VOCÊ SABIA ============================ */
 section#testimonials.section {
   background-color: #A4161A;
@@ -414,12 +412,14 @@ section#testimonials.section {
 
 #about .image {
   position: relative;
+  margin: 2rem;
 }
 
 #about .image::before {
   content: '';
   height: 100%;
   width: 100%;
+
   background: #F2CCCC;
   position: absolute;
   top: -8.3%;
@@ -444,7 +444,6 @@ section#testimonials.section {
 /* Media query visão*/
 
 .box {
-
   background-color: #A4161A;
   display: flex;
   justify-content: center;
@@ -508,7 +507,7 @@ section#testimonials.section {
 
 #testimonials blockquote p {
   position: relative;
-  text-indent: 1.875rem;
+  text-indent: 1.800rem;
   margin-bottom: 1.5rem;
   color: var(--title-color);
 }
@@ -681,7 +680,7 @@ footer .social a:hover {
   nav .menu ul {
     display: flex;
     gap: 2rem;
-   
+
   }
 
   nav .menu ul li a.title {
@@ -810,14 +809,18 @@ footer .social a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
   }
-.box-item{
-  flex: 1 1 150px;
-  margin: 5px;
-}
+  .box{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-
-
+  .box-item {
+    flex: 1 1 150px;
+    margin: 5px;
+    width: 80%;
+  }
 
 }
