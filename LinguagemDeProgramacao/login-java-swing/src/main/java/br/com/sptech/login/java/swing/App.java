@@ -8,6 +8,7 @@ import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
 import java.awt.Color;
 import java.net.UnknownHostException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -388,6 +389,8 @@ public class App extends javax.swing.JFrame {
         lblDisco.setText(String.format("%.2f%%", usoDisco));
         lblRam.setText(String.format("%.2f%%", memoriaUsada));
         lblCpu.setText(String.format("%.2f%%", usoProcessador));
+        
+        Date dataHora = new Date();
 
         ConexaoBanco conexao = new ConexaoBanco();
 
@@ -402,13 +405,22 @@ public class App extends javax.swing.JFrame {
 //                //            "constraint fkComponente " +
 //                //            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
 //                ");");
+        
+//        //H2
+//        conexao.getConexao().update("insert into tbLogs "
+//                + "values(null, ?)", usoDisco);
+//        conexao.getConexao().update("insert into tbLogs "
+//                + "values(null, ?)", memoriaUsada);
+//        conexao.getConexao().update("insert into tbLogs "
+//                + "values(null, ?)", usoProcessador);
 
-        conexao.getConexao().update("insert into tbLogs "
-                + "values(null, ?)", usoDisco);
-        conexao.getConexao().update("insert into tbLogs "
-                + "values(null, ?)", memoriaUsada);
-        conexao.getConexao().update("insert into tbLogs "
-                + "values(null, ?)", usoProcessador);
+        //AZURE
+        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, 1)", usoDisco, dataHora);
+        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, 2)", memoriaUsada, dataHora);
+        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, 3)", usoProcessador, dataHora);
 
         List<Map<String, Object>> tbLogs = conexao
                 .getConexao()
