@@ -17,8 +17,7 @@
 	<title>DataCat</title>
 </head>
 
-<body
-onload='listar("/usuarioController")'>
+<body onload='validarSessao()', >
 
 
 	<!-- SIDEBAR -->
@@ -77,7 +76,7 @@ onload='listar("/usuarioController")'>
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="login.html" class="logout" onclick="limparSessao()">
 					<span class="material-icons-sharp">logout</span>
 					<span class="text">Logout</span>
 				</a>
@@ -390,6 +389,8 @@ fetch("/usuarios/cadastrarUsuario", {
 
 return false;
 }
+
+
 function listar(){
 fetch(`/usuarios/listar`, {
     method: "GET",
@@ -444,3 +445,4 @@ fetch(`/usuarios/listar`, {
 
 
 </script>
+<script src="./js/funcoes.js"></script>

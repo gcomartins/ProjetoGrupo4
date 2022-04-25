@@ -16,10 +16,11 @@
 	
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>DataCat</title>
+	
 </head>
 
 <body
-	onload='plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp")'>
+	onload='validarSessao()'>
 	
 
 	<!-- SIDEBAR -->
@@ -38,7 +39,7 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li  class="active">
+			<li>
 				<a href="./cadastro-funcionario.html">
 					<span class="material-icons-sharp">
 						perm_identity
@@ -54,7 +55,7 @@
 					<span class="text">Notifições</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="./cadastro-maquina.html">
 					<span class="material-icons-sharp">add_to_queue</span>
 					<span>Cadastrar máquina</span>
@@ -77,7 +78,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="login.html" onclick="limparSessao()" class="logout">
 					<span class="material-icons-sharp">logout</span>
 					<span class="text">Logout</span>
 				</a>
@@ -133,7 +134,7 @@
 						</li>
 					</ul>
 				</div>
-				<a href="#" class="btn-download">
+				<a href="#" onclick="sair()" class="btn-download">
 					<i class='bx bxs-cloud-download'></i>
 					<span class="text">Download PDF</span>
 				</a>
@@ -406,4 +407,6 @@ fetch("/usuarios/cadastrarMaquina", {
 
 return false;
 }
+
 </script>
+<script src="./js/funcoes.js"></script>
