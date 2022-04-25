@@ -17,7 +17,7 @@
 	<title>DataCat</title>
 </head>
 
-<body onload='validarSessao()', >
+<body onload='listar("/usuarioController")' >
 
 
 	<!-- SIDEBAR -->
@@ -149,32 +149,40 @@
 						<img src="./assets/imagens/filing-system-amico.png" alt="">
 					</div>
 					
-					<div class = "subscribe-right">
-						<form action="" id="form_cadastroUsauario" method="post" onsubmit="cadastrarUsuario()">
+					<div id="cadastro" class = "subscribe-right">
+						<form action="" id="form_cadastroUsauario" method="post" onsubmit="return cadastrarUsuario()">
 							<label  for="">Nome</label>
-							<input name="nomeUsuario" name="nomeUsuario" type="text" required maxlength="15">
+							<input name="nomeUsuario" type="text"  maxlength="15">
 							<label for="">Sobrenome</label>
-							<input name="sobrenomeUsuario" id="sobrenomeUsuario" type="text" required maxlength="15">
+							<input name="sobrenomeUsuario" id="sobrenomeUsuario" type="text" maxlength="15">
 							<label for="">Permissão</label>
-							<select name="cargo" id="cargo"  required maxlength="45">
+							<select name="cargo" id="cargo"  maxlength="45">
 								<option value="Técnico de Infraestrutura">Técnico de Infraestrutura</option>
 								<option value="Gerente de Infraestrutura">Gerente de Infraestrutura</option>
 								<option value="Gerente Bancário">Gerente Bancário</option>
 								<option value="Bancário">Bancário</option>
 							</select> 
 							<label for="">Email</label>
-							<input name="email" id="email" type="email" required maxlength="45">
+							<input name="email" id="email" type="email"  maxlength="45">
 							<label for="">Senha</label>
-							<input name="senha" id="senha" type="password" required maxlength="45">
-							<div class="space-btn" type="submit">
-								<button class="btn"><h3><a>Cadastrar</a></h3></button>
+							<input name="senha" id="senha" type="password"  maxlength="45">
+							<div class="space-btn">
+							<button class="btn"><h3><a>Cadastrar</a></h3></button>
 							</div>
 						</form>
-					</div>
+						
+					
+				    </div>
 				</div>
+			</div>	
+			<div id="div_aguardar" class="loading-div">
+				<img src="./assets/imagens/loading-13.gif" id="loading-gif">
 			</div>
 
+<button class="btn" onclick="fromEditar()">editar</button> 
+
 			<div class="box-info-funcionario">
+				<h1 class="id" >Id</h1>
 				<h1 class="nome" >Nome</h1>
 				<h1 class="Email">Email</h1>
 				<h1 class="funcao">Função</h1>
@@ -209,6 +217,12 @@
 
 </html>
 <script>
+
+	function fromEditar(){
+		cadastro.staly.display = "none";
+
+	}
+
 	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 	allSideMenu.forEach(item => {
@@ -222,9 +236,6 @@
 		})
 	});
 
-
-
-
 	// TOGGLE SIDEBAR
 	const menuBar = document.querySelector('#content nav .bx.bx-menu');
 	const sidebar = document.getElementById('sidebar');
@@ -232,12 +243,6 @@
 	menuBar.addEventListener('click', function () {
 		sidebar.classList.toggle('hide');
 	})
-
-
-
-
-
-
 
 	const searchButton = document.querySelector('#content nav form .form-input button');
 	const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
@@ -254,8 +259,6 @@
 			}
 		}
 	})
-
-
 
 
 
@@ -341,54 +344,57 @@ var email = formulario.get("email");
 var senha = formulario.get("senha");
 var cargo = formulario.get("cargo");
 
-
-
 // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-if (nomeUsuario == "" || sobrenomeUsuario == ""  || email == "" || senha == ""|| cargo == "" ) {
+if (nomeUsuario == "" || sobrenomeUsuario == "" || cargo == "" || email == "" || senha == "" ) {
 
-	window.alert("Preencha todos os campos para prosseguir!");
-	if (nomeUsuario == "") {
-		console.log('nome está em branco')
-	}
-	if (sobrenomeUsuario == "") {
-		console.log('nome está em branco')
-	}
-	if (cargo == "") {
-		console.log('email está em branco')
-	}
-	if (senha == "") {
-		console.log('senha está em branco')
-	}
-	if (email == "") {
-		console.log('confirmacaoSenha está em branco')
-	}
-	return false;
+window.alert("Preencha todos os campos para prosseguir!");
+if (nomeUsuario == "") {
+	console.log('nome está em branco')
+}
+if (sobrenomeUsuario == "") {
+	console.log('nome está em branco')
+}
+if (email == "") {
+	console.log('email está em branco')
+}
+if (senha == "") {
+	console.log('senha está em branco')
+}
+if (cargo == "") {
+	console.log('confirmacaoSenha está em branco')
+}
+finalizarAguardar();
+return false;
 }
 
 if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-	window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-	finalizarAguardar();
-	return false;
+window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+finalizarAguardar();
+return false;
 }
 
 fetch("/usuarios/cadastrarUsuario", {
-	method: "POST",
-	body: formulario
+method: "POST",
+body: formulario
 }).then(function (resposta) {
 
-	console.log("resposnpm run evta: ", resposta);
+console.log("resposta: ", resposta);
 
-	if (resposta.ok) {
-		window.alert("Cadastro realizado com sucesso!");
-	} else {
-		throw ("Houve um erro ao tentar realizar o cadastro!");
-	}
+if (resposta.ok) {
+	window.alert("Cadastro realizado com sucesso!");
+	limparFormulario();
+	finalizarAguardar();
+} else {
+	throw ("Houve um erro ao tentar realizar o cadastro!");
+}
 }).catch(function (resposta) {
-	console.log(`#ERRO: ${resposta}`);
+console.log(`#ERRO: ${resposta}`);
+finalizarAguardar();
 });
 
 return false;
 }
+
 
 
 function listar(){
@@ -405,7 +411,7 @@ fetch(`/usuarios/listar`, {
 			<div class="box-informacoes-cadastradas">
 			
 			<div class="titulos">
-
+		    <h4 class="title-ram">${obj[i].idUsuario}</h4>
 			<h4 class="title-ram">${obj[i].nomeUsuario} ${obj[i].sobrenomeUsuario}</h4>
 			<h4 class="title-alerta">${obj[i].email}</h4>
 			<h4 class="title-alerta">${obj[i].cargo}</h4>
@@ -422,8 +428,8 @@ fetch(`/usuarios/listar`, {
 					<div  id="tooltip-excluir" class="tooltip">Excluir</div>
 					<span id="deletar-div" class="icons">
 					<i id="deletar" class="material-symbols-sharp">delete</i>
-				</span>
-				</div>
+				    </span>
+			    </div>
 			</div>
 		  </div>
 		</div>

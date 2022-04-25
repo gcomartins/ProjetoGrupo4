@@ -30,7 +30,7 @@ function deletar(nomeUsuario,email) {
 function upDate(idfuncionario,nomefuncionario,cargo,email,senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function upDate(): ",idfuncionario, nomefuncionario,cargo,email,senha)
     var instrucao = `
-    UPDATE tbfuncionarios SET nomefuncionario = '${nomefuncionario}', cargo = '${cargo}', email = '${email}',senha = '${senha}' WHERE idfuncionario = ${idfuncionario}; `
+    UPDATE tbUsuarios SET nomeUsuario = '${nomeUsuario}', sobrenomeUsuario = '${sobrenomeUsuario}', cargo = '${cargo}', email = '${email}',senha = '${senha}' WHERE nomeUsuario = ${nomeUsuario}; `
     ;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

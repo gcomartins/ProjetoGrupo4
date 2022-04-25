@@ -97,9 +97,6 @@ function cadastrarUsuario(req, res) {
     var email = req.body.email;
     var senha = req.body.senha;
     var cargo = req.body.cargo;
-    
-    
-    
 
     if (nomeUsuario == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -130,13 +127,10 @@ function cadastrarUsuario(req, res) {
     }
 }
 
+
 function cadastrarMaquina(req, res) {
     var hostName = req.body.hostName;
     var grupo = req.body.grupo;
-    
-    
-    
-    
 
     if (hostName == undefined) {
         res.status(400).send("Seu hostName está undefined!");
