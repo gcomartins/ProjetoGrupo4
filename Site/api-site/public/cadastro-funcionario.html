@@ -18,7 +18,7 @@
 </head>
 
 <body
-	onload='plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp")'>
+onload='listar("/usuarioController")'>
 
 
 	<!-- SIDEBAR -->
@@ -180,33 +180,8 @@
 				<h1 class="Email">Email</h1>
 				<h1 class="funcao">Função</h1>
 				<!-- <h1>Alerta</h1> -->
-				
 			</div>
-			<div class="box-informacoes-cadastradas">
-			
-				<div class="titulos">
-				<h4 class="title-nome" >Larissa Alves</h4>
-				<h4 class="title-email">larissa.santos@bandtec.com.br</h4>
-				<h4 class="title-funcao">Técnico de infra</h4>
-				<!-- <h4 class="title-alerta">60 %</h4> -->
-				<div class="wrapper">
-					<div class="icon editar">
-						<div  class="tooltip-editar">Editar</div>
-						<span id="editar-div-func" class="icons">
-						<i id="editar" class="material-symbols-sharp">border_color</i>
-					</span>
-					</div>
-				</div>
-				<div class="wrapper">
-					<div class="icon excluir">
-						<div  id="tooltip-excluir" class="tooltip">Excluir</div>
-						<span id="deletar-div-func" class="icons">
-						<i id="deletar" class="material-symbols-sharp">delete</i>
-					</span>
-					</div>
-				</div>
-			  </div>
-			</div>
+			<div id="lista"></div>
 			<!-- <ul class="box-info">
 				<li>
 					
@@ -415,7 +390,57 @@ fetch("/usuarios/cadastrarUsuario", {
 
 return false;
 }
+function listar(){
+fetch(`/usuarios/listar`, {
+    method: "GET",
+}).then(function (resposta) {
 
+    // console.log("resposta: ", resposta);
+    resposta.json().then((json) => {
+        var obj = (json);
+        console.log(obj)
+		for(var i = 0; i < 20; i++) {
+                    lista.innerHTML += `
+			<div class="box-informacoes-cadastradas">
+			
+			<div class="titulos">
+
+			<h4 class="title-ram">${obj[i].nomeUsuario} ${obj[i].sobrenomeUsuario}</h4>
+			<h4 class="title-alerta">${obj[i].email}</h4>
+			<h4 class="title-alerta">${obj[i].cargo}</h4>
+			<div class="wrapper">
+				<div class="icon editar">
+					<div  class="tooltip">Editar</div>
+					<span id="editar-div" class="icons">
+					<i id="editar" class="material-symbols-sharp">border_color</i>
+				</span>
+				</div>
+			</div>
+			<div class="wrapper">
+				<div class="icon excluir">
+					<div  id="tooltip-excluir" class="tooltip">Excluir</div>
+					<span id="deletar-div" class="icons">
+					<i id="deletar" class="material-symbols-sharp">delete</i>
+				</span>
+				</div>
+			</div>
+		  </div>
+		</div>
+
+                    `
+                }
+    }).catch((erro) => {
+
+    })
+
+}).catch(function (resposta) {
+    if (resposta.status == 406) {
+        alert('Oops!! Parece que você ja curtiu esse livro... que tal procurar um outro que tenha interesse? :)')
+    }
+    console.log(`#ERRO:${resposta}`);
+
+});
+}
 
 
 </script>
