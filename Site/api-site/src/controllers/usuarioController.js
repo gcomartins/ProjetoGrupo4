@@ -23,6 +23,22 @@ function listar(req, res) {
             }
         );
 }
+function listarMaquina(req, res) {
+    usuarioModel.listarMaquina()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 function entrar(req, res) {
     var email = req.body.email;
@@ -131,13 +147,11 @@ function cadastrarUsuario(req, res) {
 function cadastrarMaquina(req, res) {
     var hostName = req.body.hostName;
     var grupo = req.body.grupo;
+    var nome = req.body.nome;
+    var capacidade = req.body.capacidade;
+    var limiteAlerta = req.body.limiteAlerta;
 
-    if (hostName == undefined) {
-        res.status(400).send("Seu hostName está undefined!");
-    } else if (grupo == undefined) {
-        res.status(400).send("Seu grupo está undefined!");
-    } else {
-        usuarioModel.cadastrarMaquina(hostName, grupo)
+        usuarioModel.cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -152,7 +166,7 @@ function cadastrarMaquina(req, res) {
                     res.status(500).json(erro.sqlMessage);
                 }
             );
-    }
+    
 }
 
 // function cadastrarConvite(req, res) {
@@ -224,10 +238,30 @@ function cadastrarMaquina(req, res) {
 
 // }
 
-function deletar(req, res) {
+function deletarUsuario(req, res) {
     var nomeUsuario= req.body.nomeUsuario;
     var email = req.body.email;
-    usuarioModel.deletar(nomeUsuario, email)
+    usuarioModel.deletarUsuario(nomeUsuario, email)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao Deletar o usuário! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+function deletarMaquina(req, res) {
+    var idMaquinaComponentes= req.body.idMaquinaComponentes;
+    var nome = req.body.nome;
+    usuarioModel.deletarMaquina(idMaquinaComponentes, nome)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -245,36 +279,41 @@ function deletar(req, res) {
 
 }
 
-function promover(req, res) {
-    var nomeUsuario= req.body.nomeUsuario;
-    var email = req.body.email;
-    usuarioModel.promover(nomeUsuario, email)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao Deletar o usuário! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
 
-}
-
-function upDate(req, res) {
+function upDateUsuario(req, res) {
     
-    var idfuncionario= req.body.idfuncionario;
-    var nomefuncionario= req.body.nomefuncionario;
-    var cargo= req.body.cargo;
+    var idUsuario= req.body.idUsuario;
+    var nomeUsuario= req.body.nomeUsuario;
+    var sobrenomeUsuario= req.body.sobrenomeUsuario;
     var email = req.body.email;
     var senha = req.body.senha;
+    var cargo= req.body.cargo;
 
-    usuarioModel.upDate(idfuncionario,nomefuncionario,cargo,email,senha)
+    usuarioModel.upDateUsuario(idUsuario,nomeUsuario, sobrenomeUsuario,email,senha,cargo)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao fazer o upDate do funcionario! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+function upDateMaquina(req, res) {
+    
+    var idMaquinaComponentes= req.body.idMaquinaComponentes;
+    var nome= req.body.nome;
+    var capacidade = req.body.capacidade;
+    var limiteAlerta = req.body.limiteAlerta;
+
+    usuarioModel.upDateMaquina(idMaquinaComponentes, nome,capacidade,limiteAlerta)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -296,11 +335,13 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
+    listarMaquina,
     testar,
-    deletar,
+    deletarUsuario,
+    deletarMaquina,
     cadastrarUsuario,
-    upDate,
-    promover,
+    upDateUsuario,
+    upDateMaquina,
     cadastrarMaquina,
     // ranquear,
     // cadastrarConvite,

@@ -10,6 +10,9 @@ router.get("/", function (req, res) {
 router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
+router.get("/listarMaquina", function (req, res) {
+    usuarioController.listarMaquina(req, res);
+});
 
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
@@ -19,14 +22,20 @@ router.post("/cadastrarUsuario", function (req, res) {
     usuarioController.cadastrarUsuario(req, res);
 });
 
-router.post("/deletar", function (req, res) {
-    usuarioController.deletar(req, res);
+router.post("/deletarUsuario", function (req, res) {
+    usuarioController.deletarUsuario(req, res);
+});
+router.post("/deletarMaquina", function (req, res) {
+    usuarioController.deletarMaquina(req, res);
 });
 
-router.post("/upDate", function (req, res) {
-    usuarioController.upDate(req, res);
+router.post("/upDateUsuario", function (req, res) {
+    usuarioController.upDateUsuario(req, res);
 });
 
+router.post("/upDateMaquina", function (req, res) {
+    usuarioController.upDateMaquina(req, res);
+});
 router.post("/cadastrarMaquina", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 });

@@ -8,6 +8,7 @@
 	<!-- Boxicons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" rel='stylesheet'>
 	<!-- My CSS -->
+	<link rel="stylesheet" href="./css/modal.css">
 	<link rel="stylesheet" href="./css/cadastros-logado.css">
 	<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -179,16 +180,104 @@
 				<img src="./assets/imagens/loading-13.gif" id="loading-gif">
 			</div>
 
-<button class="btn" onclick="fromEditar()">editar</button> 
+
+<button class="btn-modal" id="myBtn">Editar</button>
+<button class="btn-modal" id="myBtn2">Deletar</button>
 
 			<div class="box-info-funcionario">
 				<h1 class="id" >Id</h1>
 				<h1 class="nome" >Nome</h1>
 				<h1 class="Email">Email</h1>
 				<h1 class="funcao">Função</h1>
-				<!-- <h1>Alerta</h1> -->
 			</div>
+
 			<div id="lista"></div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>
+		<div>
+			<div class="box-subscribe">
+				<div class="subscribe-left">
+					<div class="title-subscribe">
+						<h3>Altere os dados do seu time e deixe todos infomados</h3>
+					</div>
+					<img src="./assets/imagens/filing-system-amico.png" alt="">
+				</div>
+				
+				<div id="cadastro" class = "subscribe-right">
+					<form action="" id="form_upDateUsuario" method="post" onsubmit="return upDateUsuario()">
+						<label  for="">Coloque o Id do usuario que deseja editar</label>
+						<input name="idUsuario" type="text"  maxlength="15">
+						<label  for="">Nome</label>
+						<input name="nomeUsuario" type="text"  maxlength="15">
+						<label for="">Sobrenome</label>
+						<input name="sobrenomeUsuario" id="sobrenomeUsuario" type="text" maxlength="15">
+						<label for="">Permissão</label>
+						<select name="cargo" id="cargo"  maxlength="45">
+							<option value="Técnico de Infraestrutura">Técnico de Infraestrutura</option>
+							<option value="Gerente de Infraestrutura">Gerente de Infraestrutura</option>
+							<option value="Gerente Bancário">Gerente Bancário</option>
+							<option value="Bancário">Bancário</option>
+						</select> 
+						<label for="">Email</label>
+						<input name="email" id="email" type="email"  maxlength="45">
+						<label for="">Senha</label>
+						<input name="senha" id="senha" type="password"  maxlength="45">
+						<div class="space-btn">
+						<button class="btn"><h3><a>Editar</a></h3></button>
+						</div>
+					</form>
+					
+				
+				</div>
+			</div>
+		</div>	
+	</p>
+  </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="myModal2" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>
+		<div>
+			<div class="box-subscribe">
+				<div class="subscribe-left">
+					<div class="title-subscribe">
+						<h3>Delete um usuario do seu time </h3>
+					</div>
+					<img src="./assets/imagens/filing-system-amico.png" alt="">
+				</div>
+				
+				<div id="cadastro" class = "subscribe-right">
+					<form action="" id="form_deletar" method="post" onsubmit="return deletarUsuario()">
+						<label  for="">Nome</label>
+						<input name="nomeUsuario" type="text"  maxlength="15">
+						<label for="">Email</label>
+						<input name="email" id="email" type="email"  maxlength="45">
+						<div class="space-btn">
+						<button class="btn"><h3><a>Deletar usuario</a></h3></button>
+						</div>
+					</form>
+					
+				
+				</div>
+			</div>
+		</div>	
+	</p>
+  </div>
+
+</div>
 			<!-- <ul class="box-info">
 				<li>
 					
@@ -216,12 +305,44 @@
 </body>
 
 </html>
+
 <script>
 
-	function fromEditar(){
-		cadastro.staly.display = "none";
+// Get the modal
+var modal = document.getElementById("myModal");
+var modal2 = document.getElementById("myModal2");
 
-	}
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btn2 = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal || event.target == modal2 ) {
+    modal.style.display = "none";
+	modal2.style.display = "none";
+  }
+}
+
 
 	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
@@ -449,6 +570,125 @@ fetch(`/usuarios/listar`, {
 });
 }
 
+function upDateUsuario() {
+
+
+var formulario = new URLSearchParams(new FormData(document.getElementById("form_upDateUsuario")));
+
+var idUsuario = formulario.get("idUsuario");
+var nomeUsuario = formulario.get("nomeUsuario");
+var sobrenomeUsuario = formulario.get("sobrenomeUsuario");
+var cargo = formulario.get("cargo");
+var email = formulario.get("email");
+var senha = formulario.get("senha");       
+
+
+
+// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+if (idUsuario == "" || nomeUsuario == "" || sobrenomeUsuario == ""|| cargo == "" || email == "" || senha == "") {
+
+	window.alert("Preencha todos os campos para prosseguir!");
+	if (idUsuario == "") {
+		console.log('id está em branco')
+	}
+	if (nomeUsuario == "") {
+		console.log('nome está em branco')
+	}
+	if (sobrenomeUsuario == "") {
+		console.log('nome está em branco')
+	}
+	if (cargo == "") {
+		console.log('email está em branco')
+	}
+	if (senha == "") {
+		console.log('senha está em branco')
+	}
+	return false;
+}
+
+if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+	window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+	return false;
+}
+
+fetch("/usuarios/upDateUsuario", {
+	method: "POST",
+	body: formulario
+}).then(function (resposta) {
+
+	console.log("resposta: ", resposta);
+
+	if (resposta.ok) {
+		window.alert("upDate realizado com sucesso!");
+	} else {
+		throw ("Houve um erro ao tentar realizar o upDate!");
+	}
+}).catch(function (resposta) {
+	console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
+
+function deletarUsuario() {
+
+
+var formulario = new URLSearchParams(new FormData(document.getElementById("form_deletar")));
+
+var email = formulario.get("email");
+var nomeUsuario = formulario.get("nomeUsuario");
+
+console.log("FORM EMAIL: ", email);
+console.log("FORM NOME: ", nomeUsuario);
+
+// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+if (email == "" || nomeUsuario == "") {
+	window.alert("Preencha todos os campos para prosseguir!");
+
+	return false;
+}
+
+if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+	window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+
+	return false;
+}
+
+fetch("/usuarios/deletarUsuario", {
+	method: "POST",
+	body: formulario
+}).then(function (resposta) {
+	console.log("ESTOU NO THEN DO deletarUsuario()!")
+
+	if (resposta.ok) {
+		console.log(resposta);
+
+		resposta.json().then(json => {
+			console.log(json);
+			console.log(JSON.stringify(json));
+
+			sessionStorage.EMAIL_USUARIO = json.email;
+			sessionStorage.NOME_USUARIO = json.Nome;
+			sessionStorage.ID_USUARIO = json.idUsuario;
+			window.alert("Delete realizado com sucesso!");
+
+		});
+
+	} else {
+
+		console.log("Houve um erro ao tentar deletar usuário!");
+
+		resposta.text().then(texto => {
+			console.error(texto);
+		});
+	}
+
+}).catch(function (erro) {
+	console.log(erro);
+})
+
+return false;
+}
 
 </script>
 <script src="./js/funcoes.js"></script>
