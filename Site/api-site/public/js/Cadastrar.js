@@ -3,10 +3,10 @@ function cadastrarUsuario() {
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroUsauario")));
     
     var nomeUsuario = formulario.get("nomeUsuario");
-    var sobrenomeUsuario = formulario.get("sobrenomeUsuario");
     var email = formulario.get("email");
     var senha = formulario.get("senha");
     var cargo = formulario.get("cargo");
+    var nomeEmpresa = formulario.get("nomeEmpresa");
     
     // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
     if (nomeUsuario == "" || sobrenomeUsuario == "" || cargo == "" || email == "" || senha == "" ) {

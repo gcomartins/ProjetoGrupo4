@@ -109,10 +109,10 @@ function cadastrar(req, res) {
 
 function cadastrarUsuario(req, res) {
     var nomeUsuario = req.body.nomeUsuario;
-    var sobrenomeUsuario = req.body.sobrenomeUsuario;
     var email = req.body.email;
     var senha = req.body.senha;
     var cargo = req.body.cargo;
+    var nomeEmpresa = req.body.nomeEmpresa;
 
     if (nomeUsuario == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -125,7 +125,7 @@ function cadastrarUsuario(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     }else {
-        usuarioModel.cadastrarUsuario(nomeUsuario, sobrenomeUsuario, email, senha, cargo)
+        usuarioModel.cadastrarUsuario(nomeUsuario, email, senha, cargo, nomeEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
