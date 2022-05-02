@@ -210,7 +210,7 @@
 				  <div id="cadastro" class = "subscribe-right">
 					  <form action="" id="form_upDateUsuario" method="post" onsubmit="return upDateMaquina()">
 						  <label  for="">Coloque o Id da maquina que deseja editar</label>
-						  <input name="idMaquinaComponentes" type="text"  maxlength="15">
+						  <input name="idMaquinaComponentes" type="text" required maxlength="15">
 						  <label for="">Componente</label>
 							<select name="nome" id="nome"  required maxlength="3">
 								<option value="Ram">RAM</option>
@@ -218,9 +218,9 @@
 								<option value="Disco">DISCO</option>
 							</select>
 						  <label for="">Capacidade</label>
-						  <input name="capacidade" id="capacidade" type="text" maxlength="15">
+						  <input name="capacidade" id="capacidade" type="text" required maxlength="15">
 						  <label for="">Limite Alerta</label>
-						  <select name="limiteAlerta" id="limiteAlerta" type="" required maxlength="15">
+						  <select name="limiteAlerta" id="limiteAlerta" type="text" required maxlength="15">
 							  <option value="50">50%</option>
 							  <option value="60">60%</option>
 							  <option value="70">70%</option>
@@ -261,9 +261,9 @@
 				  <div id="cadastro" class = "subscribe-right">
 					  <form action="" id="form_deletarMaquina" method="post" onsubmit="return deletarMaquina()">
 						  <label  for="">Identificador</label>
-						  <input name="idMaquinaComponentes" type="text"  maxlength="15">
+						  <input name="idMaquinaComponentes" type="text" required maxlength="15">
 						  <label for="">Componente</label>
-						  <input name="nome" type="text"  maxlength="45">
+						  <input name="nome" type="text" required maxlength="45">
 						  <div class="space-btn">
 						  <button class="btn"><h3><a>Deletar usuario</a></h3></button>
 						  </div>
@@ -466,217 +466,14 @@ window.onclick = function(event) {
 		return datas.sort();
 	}
 
-	function cadastrarMaquina() {
-
-var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
-
-var hostName = formulario.get("hostName");
-var grupo = formulario.get("grupo");
-var nome = formulario.get("nome");
-var capacidade = formulario.get("capacidade");
-var limiteAlerta = formulario.get("limiteAlerta");
-
-
-
-// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-if (hostName == "" || grupo == "" || nome == "" || capacidade == "" || limiteAlerta == "" ) {
-
-window.alert("Preencha todos os campos para prosseguir!");
-    if (hostName == "" ) {
-		console.log("hostName está em branco!");
-	}
-	if (grupo == "") {
-		console.log('grupo está em branco')
-	}
-	if (nome == "") {
-		console.log("nome está em branco!");
-	}
-	if (capacidade == "") {
-		console.log('capacidade está em branco')
-	}
-	if (limiteAlerta == "" || grupo == "" ) {
-		console.log("limiteAlerta está em branco!");
-	}
-	
-		return false;
-	}
-
-fetch("/usuarios/cadastrarMaquina", {
-method: "POST",
-body: formulario,
-}).then(function (resposta) {
-
-console.log("resposta: ", resposta);
-
-if (resposta.ok) {
-	window.alert("Cadastro realizado com sucesso!");
-} else {
-	throw ("Houve um erro ao tentar realizar o cadastro!");
-}
-}).catch(function (resposta) {
-console.log(`#ERRO: ${resposta}`);
-});
-return false;
-}
-
-function listarMaquina(){
-fetch(`/usuarios/listarMaquina`, {
-    method: "GET",
-}).then(function (resposta) {
-
-    // console.log("resposta: ", resposta);
-    resposta.json().then((json) => {
-        var obj = (json);
-        console.log(obj)
-		for(var i = 0; i < 20; i++) {
-			    listaMaquina.innerHTML += `
-			<div class="box-informacoes-cadastradas">
-			
-			<div class="titulos">
-		    <h4 class="title-ram">${obj[i].idMaquinaComponentes}</h4>
-			<h4 class="title-alerta">${obj[i].nome}</h4>
-			<h4 class="title-alerta">${obj[i].capacidade}</h4>
-			<h4 class="title-alerta">${obj[i].limiteAlerta}%</h4>
-			<div class="wrapper">
-				<div class="icon editar">
-					<div  class="tooltip">Editar</div>
-					<span id="editar-div" class="icons">
-					<i id="editar" class="material-symbols-sharp">border_color</i>
-				</span>
-				</div>
-			</div>
-			<div class="wrapper">
-				<div class="icon excluir">
-					<div  id="tooltip-excluir" class="tooltip">Excluir</div>
-					<span id="deletar-div" class="icons">
-					<i id="deletar" class="material-symbols-sharp">delete</i>
-				    </span>
-			    </div>
-			</div>
-		  </div>
-		</div>
-
-                    `
-                }
-    }).catch((erro) => {
-
-    })
-
-}).catch(function (resposta) {
-    if (resposta.status == 406) {
-        alert('Oops!! Parece que você ja curtiu esse livro... que tal procurar um outro que tenha interesse? :)')
-    }
-    console.log(`#ERRO:${resposta}`);
-
-});
-}
-
-
-function deletarMaquina() {
-
-
-var formulario = new URLSearchParams(new FormData(document.getElementById("form_deletarMaquina")));
-
-var idMaquinaComponentes = formulario.get("idMaquinaComponentes");
-var nome= formulario.get("nome");
-
-
-// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-if (idMaquinaComponentes == "" || nome == "") {
-	window.alert("Preencha todos os campos para prosseguir!");
-
-	return false;
-}
-
-
-
-fetch("/usuarios/deletarMaquina", {
-	method: "POST",
-	body: formulario
-}).then(function (resposta) {
-	console.log("ESTOU NO THEN DO deletarMaquina()!")
-
-	if (resposta.ok) {
-		console.log(resposta);
-
-		resposta.json().then(json => {
-			console.log(json);
-			console.log(JSON.stringify(json));
-
-			sessionStorage.EMAIL_USUARIO = json.email;
-			sessionStorage.NOME_USUARIO = json.Nome;
-			sessionStorage.ID_USUARIO = json.idUsuario;
-			window.alert("Delete realizado com sucesso!");
-
-		});
-
-	} else {
-
-		console.log("Houve um erro ao tentar deletar usuário!");
-
-		resposta.text().then(texto => {
-			console.error(texto);
-		});
-	}
-
-}).catch(function (erro) {
-	console.log(erro);
-})
-
-return false;
-}
-
-function upDateMaquina() {
-
-
-var formulario = new URLSearchParams(new FormData(document.getElementById("form_upDateUsuario")));
-
-var idMaquinaComponentes = formulario.get("idMaquinaComponentes");
-var nome = formulario.get("nome");
-var capacidade = formulario.get("capacidade");
-var limiteAlerta = formulario.get("limiteAlerta");
-
-
-
-// TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-if (hostName == "" || grupo == "" || nome == "" || capacidade == "" || limiteAlerta == "" ) {
-
-window.alert("Preencha todos os campos para prosseguir!");
-    if (hostName == "" ) {
-		console.log("hostName está em branco!");
-	}
-	if (nome == "") {
-		console.log("nome está em branco!");
-	}
-	if (capacidade == "") {
-		console.log('capacidade está em branco')
-	}
-	if (limiteAlerta == "" || grupo == "" ) {
-		console.log("limiteAlerta está em branco!");
-	}
-	
-		return false;
-	}
-
-fetch("/usuarios/upDateMaquina", {
-	method: "POST",
-	body: formulario
-}).then(function (resposta) {
-
-	console.log("resposta: ", resposta);
-
-	if (resposta.ok) {
-		window.alert("upDate realizado com sucesso!");
-	} else {
-		throw ("Houve um erro ao tentar realizar o upDate!");
-	}
-}).catch(function (resposta) {
-	console.log(`#ERRO: ${resposta}`);
-});
-
-return false;
-}
-
-
 </script>
+
 <script src="./js/funcoes.js"></script>
+
+<script src="./js/Deletes.js"></script>
+
+<script src="./js/upDates.js"></script>
+
+<script src="./js/Cadastrar.js"></script>
+
+<script src="./js/Listar.js"></script>
