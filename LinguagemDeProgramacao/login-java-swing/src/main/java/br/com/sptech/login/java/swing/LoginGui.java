@@ -211,8 +211,6 @@ public class LoginGui extends javax.swing.JFrame {
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));
 
-           
-
         } catch (Exception e) {
 
             System.out.println(e.getMessage());
