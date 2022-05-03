@@ -22,8 +22,8 @@ public class Usuario {
     private Integer fkEmpresa;
 
     public Usuario() {
+        
     }
-    
     
 
     public Usuario(Integer idUsuario, String nomeUsuario, String sobreNome, String email, String senha, String cargo, Integer fkEmpresa) {

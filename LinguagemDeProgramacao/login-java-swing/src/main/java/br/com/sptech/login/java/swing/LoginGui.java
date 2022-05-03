@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 /**
@@ -205,34 +206,43 @@ public class LoginGui extends javax.swing.JFrame {
 
         List<Usuario> listaUsuarios = new ArrayList<>();
         
+
+        if (txtNome.getText().isEmpty()
+                    || txtSenha.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Os campos de Email ou "
+                        + "Senha não podem estar vazios",
+                        "Aviso",
+                        JOptionPane.WARNING_MESSAGE);
+            }
         try {
             listaUsuarios = conexao.getConexao().query(
                     String.format("select * from tbUsuarios where email = '%s'",
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));
 
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
 
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Não foi possivel conetar ao banco",
                     "Aviso",
                     JOptionPane.WARNING_MESSAGE);
         }
-         
+
         for (Usuario usuario : listaUsuarios) {
-                if (usuario.getEmail().equals(txtNome.getText())
-                        && usuario.getSenha().equals(txtSenha.getText())) {
-                    this.dispose();
-                    new App().setVisible(true);
-                } else {
-                    System.out.println(usuario.getEmail());
-                    System.out.println(usuario.getSenha());
-                    System.out.println(listaUsuarios);
-                    JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE);
-                }
+
+            if (usuario.getEmail().equals(txtNome.getText())
+                    && usuario.getSenha().equals(txtSenha.getText())) {
+                this.dispose();
+                new App().setVisible(true);
+            } else {
+                System.out.println(usuario.getEmail());
+                System.out.println(usuario.getSenha());
+                System.out.println(listaUsuarios);
+                JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
+                        "Aviso",
+                        JOptionPane.WARNING_MESSAGE);
             }
+        }
 
 
     }//GEN-LAST:event_btnEntrarActionPerformed
