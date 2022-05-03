@@ -2,6 +2,7 @@ package br.com.sptech.login.java.swing;
 
 import data.cat.modal.Usuario;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -202,26 +203,15 @@ public class LoginGui extends javax.swing.JFrame {
 
         ConexaoBanco conexao = new ConexaoBanco();
 
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        
         try {
-            List<Usuario> listaUsuarios = conexao.getConexao().query(
+            listaUsuarios = conexao.getConexao().query(
                     String.format("select * from tbUsuarios where email = '%s'",
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));
 
-            for (Usuario usuario : listaUsuarios) {
-                if (usuario.getEmail().equals(txtNome.getText())
-                        && usuario.getSenha().equals(txtSenha.getText())) {
-                    this.dispose();
-                    new App().setVisible(true);
-                } else {
-//                    System.out.println(usuario.getEmail());
-//                    System.out.println(usuario.getSenha());
-//                    System.out.println(listaUsuarios);
-                    JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE);
-                }
-            }
+           
 
         } catch (Exception e) {
 
@@ -230,6 +220,21 @@ public class LoginGui extends javax.swing.JFrame {
                     "Aviso",
                     JOptionPane.WARNING_MESSAGE);
         }
+         
+        for (Usuario usuario : listaUsuarios) {
+                if (usuario.getEmail().equals(txtNome.getText())
+                        && usuario.getSenha().equals(txtSenha.getText())) {
+                    this.dispose();
+                    new App().setVisible(true);
+                } else {
+                    System.out.println(usuario.getEmail());
+                    System.out.println(usuario.getSenha());
+                    System.out.println(listaUsuarios);
+                    JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
+                            "Aviso",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
 
 
     }//GEN-LAST:event_btnEntrarActionPerformed
