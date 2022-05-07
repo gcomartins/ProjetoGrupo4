@@ -4,6 +4,8 @@ package br.com.sptech.login.java.swing;
 import br.com.sptech.login.java.swing.ConexaoBanco;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
+import data.cat.service.MedidasServices;
+import data.cat.service.ModalServices;
 import java.awt.Color;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -373,25 +375,17 @@ public class App extends javax.swing.JFrame {
 
     private void lerDados() {
 
-        Looca looca = new Looca();
-        Double discoDisponivel = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getDisponivel().doubleValue();
-        Double discoTotal = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getTotal().doubleValue();
-        Double usoDisco = discoDisponivel * 100 / discoTotal;
+        MedidasServices medidasServices = new MedidasServices();
+        ModalServices modalServices = new ModalServices();
 
-        Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
-        Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
-        Double memoriaUsada = memoriaEmUso * 100 / memoriaTotal;
-
-        Double usoProcessador = looca.getProcessador().getUso().doubleValue();
-
-        lblDisco.setText(String.format("%.2f%%", usoDisco));
-        lblRam.setText(String.format("%.2f%%", memoriaUsada));
-        lblCpu.setText(String.format("%.2f%%", usoProcessador));
+        lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+        lblRam.setText(String.format("%.2f%%", medidasServices.getRAM()));
+        lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
         
-        Date dataHora = new Date();
-
-        ConexaoBanco conexao = new ConexaoBanco();
-
+        //Worbanch
+        modalServices.inserirDisco(medidasServices);
+        modalServices.inserirRAM(medidasServices);
+        modalServices.inserirProcessador(medidasServices);
 //        conexao.getConexao().execute("drop table if exists tbLogs");
 //
 //        conexao.getConexao().execute("Create table tbLogs ("
@@ -411,14 +405,6 @@ public class App extends javax.swing.JFrame {
 //                + "values(null, ?)", memoriaUsada);
 //        conexao.getConexao().update("insert into tbLogs "
 //                + "values(null, ?)", usoProcessador);
-
-        //AZURE
-        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 5)", usoDisco, dataHora);
-        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 4)", memoriaUsada, dataHora);
-        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 6)", usoProcessador, dataHora);
 
 //        List<Map<String, Object>> tbLogs = conexao
 //                .getConexao()
