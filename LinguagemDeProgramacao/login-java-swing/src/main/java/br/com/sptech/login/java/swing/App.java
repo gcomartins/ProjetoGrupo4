@@ -5,15 +5,16 @@
 package br.com.sptech.login.java.swing;
 
 import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.discos.Disco;
 import java.awt.Color;
-import java.net.UnknownHostException;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.LayoutManager;
+import java.awt.RenderingHints;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -41,11 +42,11 @@ public class App extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         pnlGeral = new javax.swing.JPanel();
         btnFinalizar = new javax.swing.JButton();
-        pnlRam = new javax.swing.JPanel();
+        pnlRam = new RoundedPanel(300, Color.YELLOW);
         lblRam = new javax.swing.JLabel();
         pnlDisco = new javax.swing.JPanel();
         lblDisco = new javax.swing.JLabel();
-        pnlCpu1 = new javax.swing.JPanel();
+        pnlCpu1 = new RoundedPanel(300, Color.getHSBColor(358, 86, 64));
         lblCpu = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -120,7 +121,7 @@ public class App extends javax.swing.JFrame {
         lblDisco.setText("25.00%");
         pnlDisco.add(lblDisco, java.awt.BorderLayout.CENTER);
 
-        pnlCpu1.setBackground(new java.awt.Color(164, 22, 26));
+        pnlCpu1.setBackground(new java.awt.Color(187, 187, 187));
         pnlCpu1.setPreferredSize(new java.awt.Dimension(230, 230));
 
         lblCpu.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
@@ -452,4 +453,55 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel pnlGeral;
     private javax.swing.JPanel pnlRam;
     // End of variables declaration//GEN-END:variables
+    
+    class RoundedPanel extends JPanel
+    {
+        private Color backgroundColor;
+        private int cornerRadius = 15;
+        public RoundedPanel(LayoutManager layout, int radius) {
+            super(layout);
+            cornerRadius = radius;
+        }
+        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
+            super(layout);
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+        }
+        public RoundedPanel(int radius) {
+            super();
+            cornerRadius = radius;
+            
+        }
+        public RoundedPanel(int radius, Color bgColor) {
+            super();
+            cornerRadius = radius;
+            backgroundColor = bgColor;
+            
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
+            int width = getWidth();
+            int height = getHeight();
+            Graphics2D graphics = (Graphics2D) g;
+            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            //Draws the rounded panel with borders.
+            if (backgroundColor != null) {
+                graphics.setColor(backgroundColor);
+            } else {
+                graphics.setColor(getBackground());
+            }
+            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
+            graphics.setColor(getForeground());
+//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+//             
+        }
+        
+        Color vinho = new Color(164, 22, 26);
+        
+        
+    }
+
+
 }
