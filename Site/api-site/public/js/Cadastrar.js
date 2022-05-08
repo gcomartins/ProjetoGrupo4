@@ -2,7 +2,7 @@ function cadastrarUsuario() {
 
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroUsauario")));
     
-    var nomeUsuario = formulario.get("nomeUsuario");
+    var nomeUsuario = formulario.get("representante");
     var email = formulario.get("email");
     var senha = formulario.get("senha");
     var cargo = formulario.get("cargo");
@@ -165,7 +165,6 @@ function cadastrar() {
             if (resposta.ok) {
                 window.alert("Cadastro realizado com sucesso!");
                 window.location = "login.html";
-                limparFormulario();
                 finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
