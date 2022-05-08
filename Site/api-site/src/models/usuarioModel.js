@@ -28,10 +28,10 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 
-function deletarUsuario(nomeUsuario,email) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletarUsuario(): ", nomeUsuario, email)
+function deletarUsuario(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletarUsuario(): ", idUsuario)
     var instrucao = `
-    DELETE FROM tbUsuarios WHERE nomeUsuario = '${nomeUsuario}' AND email = '${email}';
+    DELETE FROM tbUsuarios WHERE idUsuario = '${idUsuario}' ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -99,10 +99,10 @@ function cadastrarFuncionario(nomeUsuario, email, senha, cargo, idEmpresa) {
     return database.executar(instrucao);
 }
 
-function cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, grupo, nome, capacidade,limiteAlerta);
+function cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta, idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, grupo, nome, capacidade,limiteAlerta, idEmpresa);
     var instrucao = `
-        INSERT INTO tbMaquinasComponentes (hostName, grupo, nome, capacidade,limiteAlerta) VALUES ('${hostName}', '${grupo}', '${nome}', '${capacidade}', '${limiteAlerta}');
+        INSERT INTO tbMaquinasComponentes (hostName, grupo, nome, capacidade,limiteAlerta) VALUES ('${hostName}', '${grupo}', '${nome}', '${capacidade}', '${limiteAlerta}', '${idEmpresa}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

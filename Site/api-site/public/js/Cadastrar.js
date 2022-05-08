@@ -60,7 +60,8 @@ function cadastrarUsuario() {
 
 
 function cadastrarMaquina() {
-
+    var myInput = document.getElementById("idEmpresa");
+    myInput.value = sessionStorage.ID_EMPRESA;
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
         
         var hostName = formulario.get("hostName");
@@ -68,7 +69,7 @@ function cadastrarMaquina() {
         var nome = formulario.get("nome");
         var capacidade = formulario.get("capacidade");
         var limiteAlerta = formulario.get("limiteAlerta");
-        
+        var idEmpresa = sessionStorage.ID_EMPRESA;
         
         
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 

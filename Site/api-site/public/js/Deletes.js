@@ -1,31 +1,15 @@
-function deletarUsuario() {
-
-
-    var formulario = new URLSearchParams(new FormData(document.getElementById("form_deletar")));
-    
-    var email = formulario.get("email");
-    var nomeUsuario = formulario.get("nomeUsuario");
-    
-    console.log("FORM EMAIL: ", email);
-    console.log("FORM NOME: ", nomeUsuario);
-    
-    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-    if (email == "" || nomeUsuario == "") {
-        window.alert("Preencha todos os campos para prosseguir!");
-    
-        return false;
-    }
-    
-    if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
-        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-    
-        return false;
-    }
+function deletarUsuario(idUsuarioVar) {
     
     fetch("/usuarios/deletarUsuario", {
         method: "POST",
-        body: formulario
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idUsuario: idUsuarioVar,
+        })
     }).then(function (resposta) {
+        console.log(resposta.body);
         console.log("ESTOU NO THEN DO deletarUsuario()!")
     
         if (resposta.ok) {

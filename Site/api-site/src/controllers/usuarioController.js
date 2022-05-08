@@ -163,8 +163,9 @@ function cadastrarMaquina(req, res) {
     var nome = req.body.nome;
     var capacidade = req.body.capacidade;
     var limiteAlerta = req.body.limiteAlerta;
+    var idEmpresa = req.body.idEmpresa;
 
-        usuarioModel.cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta)
+        usuarioModel.cadastrarMaquina(hostName, grupo, nome, capacidade, limiteAlerta, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -252,9 +253,8 @@ function cadastrarMaquina(req, res) {
 // }
 
 function deletarUsuario(req, res) {
-    var nomeUsuario= req.body.nomeUsuario;
-    var email = req.body.email;
-    usuarioModel.deletarUsuario(nomeUsuario, email)
+    var idUsuario = req.body.idUsuario;
+    usuarioModel.deletarUsuario(idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);
