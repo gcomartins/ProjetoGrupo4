@@ -1,21 +1,20 @@
 function cadastrarUsuario() {
-
+    var myInput = document.getElementById("idEmpresa");
+    myInput.value = sessionStorage.ID_EMPRESA;
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroUsauario")));
     
-    var nomeUsuario = formulario.get("representante");
+    
+    var nomeUsuario = formulario.get("nomeUsuario");
     var email = formulario.get("email");
     var senha = formulario.get("senha");
     var cargo = formulario.get("cargo");
-    var nomeEmpresa = formulario.get("nomeEmpresa");
+    var idEmpresa = sessionStorage.ID_EMPRESA;
     
     // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-    if (nomeUsuario == "" || sobrenomeUsuario == "" || cargo == "" || email == "" || senha == "" ) {
+    if (nomeUsuario == "" || cargo == "" || email == "" || senha == "" ) {
     
     window.alert("Preencha todos os campos para prosseguir!");
     if (nomeUsuario == "") {
-        console.log('nome está em branco')
-    }
-    if (sobrenomeUsuario == "") {
         console.log('nome está em branco')
     }
     if (email == "") {

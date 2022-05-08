@@ -89,6 +89,16 @@ function cadastrarUsuario(nomeEmpresa, email, senha, nomeUsuario) {
     return database.executar(instrucao);
 }
 
+function cadastrarFuncionario(nomeUsuario, email, senha, cargo, idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarUsuario():", nomeUsuario, email, senha, cargo, idEmpresa);
+    var instrucao = `
+    INSERT INTO tbUsuarios (nomeUsuario, cargo,  email, senha, fkEmpresa) 
+    (select '${nomeUsuario}', '${cargo}', '${email}', '${senha}', '${idEmpresa}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, grupo, nome, capacidade,limiteAlerta);
     var instrucao = `
@@ -136,6 +146,7 @@ module.exports = {
     upDateUsuario,
     upDateMaquina,
     cadastrarMaquina,
+    cadastrarFuncionario,
     // ranquear,
     // cadastrarConvite,
     // graficar,
