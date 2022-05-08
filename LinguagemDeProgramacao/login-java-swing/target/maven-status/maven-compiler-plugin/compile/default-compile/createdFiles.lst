@@ -1,6 +1,7 @@
 br\com\sptech\login\java\swing\LoginGui$1.class
 br\com\sptech\login\java\swing\App$7.class
 data\cat\applicattion\Main.class
+slack\App.class
 br\com\sptech\login\java\swing\App$5.class
 br\com\sptech\login\java\swing\LoginGui$4.class
 br\com\sptech\login\java\swing\App$3.class
@@ -8,7 +9,9 @@ br\com\sptech\login\java\swing\LoginGui.class
 br\com\sptech\login\java\swing\LoginGui$3.class
 br\com\sptech\login\java\swing\ConexaoBanco.class
 br\com\sptech\login\java\swing\App.class
+data\cat\modal\Usuario.class
 br\com\sptech\login\java\swing\LoginGui$6.class
+.netbeans_automatic_build
 br\com\sptech\login\java\swing\App$6.class
 br\com\sptech\login\java\swing\JPassWordFieldHint.class
 br\com\sptech\login\java\swing\App$1.class

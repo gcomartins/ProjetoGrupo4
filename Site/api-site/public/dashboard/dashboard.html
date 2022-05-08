@@ -351,7 +351,7 @@
 	<!-- <script src="script.js"></script> -->
 </body>
 </html>
-<script>
+<script src="script.js">
 	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -418,17 +418,6 @@ window.addEventListener('resize', function () {
 })
 
 
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
 
 function plotarGrafico(idGrafico) {
 		

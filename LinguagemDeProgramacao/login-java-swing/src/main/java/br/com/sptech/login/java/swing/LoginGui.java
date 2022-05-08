@@ -1,7 +1,13 @@
 package br.com.sptech.login.java.swing;
 
+import data.cat.modal.Usuario;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 /**
  *
@@ -24,10 +30,10 @@ public class LoginGui extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         txtNome = new br.com.sptech.login.java.swing.JTextFieldHint(new JTextField(), "src\\main\\java\\icons\\user-icon", "Nome de Usúario");
-        txtSenha = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 410));
@@ -113,13 +119,17 @@ public class LoginGui extends javax.swing.JFrame {
             }
         });
 
-        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-icon.png"))); // NOI18N
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padlock.png"))); // NOI18N
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm_single_png.png"))); // NOI18N
+
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCorpoLayout = new javax.swing.GroupLayout(pnlCorpo);
         pnlCorpo.setLayout(pnlCorpoLayout);
@@ -138,15 +148,16 @@ public class LoginGui extends javax.swing.JFrame {
                     .addGroup(pnlCorpoLayout.createSequentialGroup()
                         .addGroup(pnlCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCredenciais, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(73, 73, 73))))
         );
 
-        pnlCorpoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnEntrar, btnSair, txtNome, txtSenha});
+        pnlCorpoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnEntrar, btnSair, txtNome});
 
         pnlCorpoLayout.setVerticalGroup(
             pnlCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,17 +170,17 @@ public class LoginGui extends javax.swing.JFrame {
                         .addGroup(pnlCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCorpoLayout.createSequentialGroup()
                                 .addGap(140, 140, 140)
-                                .addComponent(jLabel1)
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel2))
+                                .addComponent(jLabel1))
                             .addGroup(pnlCorpoLayout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(lblCredenciais)
                                 .addGap(48, 48, 48)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(91, 91, 91)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40)
+                        .addGroup(pnlCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -195,8 +206,49 @@ public class LoginGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        this.dispose();
-        new App().setVisible(true);
+
+        ConexaoBanco conexao = new ConexaoBanco();
+
+        List<Usuario> listaUsuarios = new ArrayList<>();
+
+        if (txtNome.getText().isEmpty()
+                || txtSenha.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email ou "
+                    + "Senha estão vazios",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        try {
+            listaUsuarios = conexao.getConexao().query(
+                    String.format("select * from tbUsuarios where email = '%s'",
+                            txtNome.getText()),
+                    new BeanPropertyRowMapper<>(Usuario.class));
+
+        } catch (DataAccessException e) {
+
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "Não foi possivel conetar ao banco",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+
+        for (Usuario usuario : listaUsuarios) {
+
+            if (usuario.getEmail().equals(txtNome.getText())
+                    && usuario.getSenha().equals(txtSenha.getText())) {
+                this.dispose();
+                new App().setVisible(true);
+            } else {
+                System.out.println(usuario.getEmail());
+                System.out.println(usuario.getSenha());
+                System.out.println(listaUsuarios);
+                JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
+                        "Aviso",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -227,6 +279,10 @@ public class LoginGui extends javax.swing.JFrame {
         btnSair.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnSairMouseExited
 
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,13 +300,17 @@ public class LoginGui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -273,6 +333,6 @@ public class LoginGui extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCorpo;
     private javax.swing.JPanel pnlTitulo;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

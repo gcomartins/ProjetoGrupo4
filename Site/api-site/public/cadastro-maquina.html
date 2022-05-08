@@ -305,7 +305,7 @@
 </body>
 
 </html>
-<script>
+<script src="dashboard/script.js">
 // Get the modal
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
@@ -410,16 +410,7 @@ window.onclick = function(event) {
 
 
 
-	const switchMode = document.getElementById('switch-mode');
-
-	switchMode.addEventListener('change', function () {
-		if (this.checked) {
-			document.body.classList.add('dark');
-
-		} else {
-			document.body.classList.remove('dark');
-		}
-	})
+	
 
 	function plotarGrafico(idGrafico) {
 
@@ -477,3 +468,4 @@ window.onclick = function(event) {
 <script src="./js/Cadastrar.js"></script>
 
 <script src="./js/Listar.js"></script>
+
