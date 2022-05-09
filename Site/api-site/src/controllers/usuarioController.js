@@ -183,6 +183,32 @@ function cadastrarMaquina(req, res) {
     
 }
 
+// function graficar(req, res){
+
+
+//     fetch(`/usuarios/graficar`, { cache: 'no-store' }).then(function (response) {
+//         if (response.ok) {
+//             response.json().then(function (resposta) {
+//                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                
+//                 for (let i = 0; i < resposta.length; i++) {
+                    
+//                     dados.push(resposta[i].leituraDesempenho);
+//                     datas.push(resposta[i].dataHora);
+//                 }
+//                 // resposta.reverse();
+
+//                 plotarGrafico();
+//             });
+//         } else {
+//             console.error('Nenhum dado encontrado ou erro na API');
+//         }
+//     })
+//         .catch(function (error) {
+//             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+//         });
+
+// }
 // function cadastrarConvite(req, res) {
 //     var email = req.body.email;
 //     var fkanfitriao = req.body.fkanfitriao;
@@ -232,25 +258,25 @@ function cadastrarMaquina(req, res) {
 
 // }
 
-// function graficar(req, res) {
+function graficar(req, res) {
     
-//     usuarioModel.graficar()
-//         .then(
-//             function (resultado) {
-//                 res.json(resultado);
-//             }
-//         ).catch(
-//             function (erro) {
-//                 console.log(erro);
-//                 console.log(
-//                     "\nHouve um erro ao realizar o cadastro! Erro: ",
-//                     erro.sqlMessage
-//                 );
-//                 res.status(500).json(erro.sqlMessage);
-//             }
-//         );
+    usuarioModel.graficar()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 
-// }
+}
 
 function deletarUsuario(req, res) {
     var idUsuario = req.body.idUsuario;
@@ -358,5 +384,5 @@ module.exports = {
     cadastrarMaquina,
     // ranquear,
     // cadastrarConvite,
-    // graficar,
+    graficar,
 }

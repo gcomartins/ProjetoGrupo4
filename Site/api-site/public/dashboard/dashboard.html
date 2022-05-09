@@ -420,16 +420,40 @@ window.addEventListener('resize', function () {
 
 
 function plotarGrafico(idGrafico) {
-		
+	
+	var dados = [];
+	var datas = [];
+
+	fetch(`/usuarios/graficar`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                
+                for (let i = 0; i < resposta.length; i++) {
+                    
+                    dados.push(resposta[i].leituraDesempenho);
+                    datas.push(resposta[i].dataHora);
+                }
+                // resposta.reverse();
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+
 	const ctx = document.getElementById(idGrafico).getContext('2d');
 	let myChart = new Chart(ctx, {
 		type: 'line',
 
 		data: {
-			labels: gerarDatas(),
+			labels: datas,
 			datasets: [{
 				label: 'Desempenho',
-				data: gerarDados(),
+				data: dados,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.12)',
 					
@@ -456,11 +480,14 @@ function plotarGrafico(idGrafico) {
 
 function gerarDados() {
 	dados = [];
-	for (let index = 0; index < 30; index++) {
-		dados.push((Math.random() * 100).toFixed(0));
-	}
+	
 	return dados;
 }
+
+function pegarDados(){
+	
+}
+
 function gerarDatas() {
 	datas = [];
 	for (let index = 0; index < 30; index++) {
