@@ -104,6 +104,21 @@ function cadastrar(req, res) {
                     res.status(500).json(erro.sqlMessage);
                 }
             );
+            usuarioModel.cadastrarUsuario(nomeEmpresa, email, senha, representante)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 }
 
@@ -112,20 +127,18 @@ function cadastrarUsuario(req, res) {
     var email = req.body.email;
     var senha = req.body.senha;
     var cargo = req.body.cargo;
-    var nomeEmpresa = req.body.nomeEmpresa;
+    var idEmpresa = req.body.idEmpresa;
 
     if (nomeUsuario == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (sobrenomeUsuario == undefined) {
-        res.status(400).send("Sua sobrenome está undefined!");
     } else if (cargo == undefined) {
         res.status(400).send("Sua cargo está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     }else {
-        usuarioModel.cadastrarUsuario(nomeUsuario, email, senha, cargo, nomeEmpresa)
+        usuarioModel.cadastrarFuncionario(nomeUsuario, email, senha, cargo, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -150,8 +163,9 @@ function cadastrarMaquina(req, res) {
     var nome = req.body.nome;
     var capacidade = req.body.capacidade;
     var limiteAlerta = req.body.limiteAlerta;
+    var idEmpresa = req.body.idEmpresa;
 
-        usuarioModel.cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta)
+        usuarioModel.cadastrarMaquina(hostName, grupo, nome, capacidade, limiteAlerta, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -239,9 +253,8 @@ function cadastrarMaquina(req, res) {
 // }
 
 function deletarUsuario(req, res) {
-    var nomeUsuario= req.body.nomeUsuario;
-    var email = req.body.email;
-    usuarioModel.deletarUsuario(nomeUsuario, email)
+    var idUsuario = req.body.idUsuario;
+    usuarioModel.deletarUsuario(idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);

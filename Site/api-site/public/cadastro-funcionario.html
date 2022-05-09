@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"/>
 	<title>DataCat</title>
+	<script src="./js/Cadastrar.js"></script>
 </head>
 
 <body onload='listar("/usuarioController")' >
@@ -154,8 +155,6 @@
 						<form action="" id="form_cadastroUsauario" method="post" onsubmit="return cadastrarUsuario()">
 							<label  for="">Nome</label>
 							<input name="nomeUsuario" type="text"  maxlength="15">
-							<label for="">Sobrenome</label>
-							<input name="sobrenomeUsuario" id="sobrenomeUsuario" type="text" maxlength="15">
 							<label for="">Permissão</label>
 							<select name="cargo" id="cargo"  maxlength="45">
 								<option value="Técnico de Infraestrutura">Técnico de Infraestrutura</option>
@@ -166,7 +165,8 @@
 							<label for="">Email</label>
 							<input name="email" id="email" type="email"  maxlength="45">
 							<label for="">Senha</label>
-							<input name="senha" id="senha" type="password"  maxlength="45">
+							<input name="senha" id="senha" type="password"  maxlength="45">							
+							<input name="idEmpresa" id="idEmpresa" style="visibility: hidden;" >
 							<div class="space-btn">
 							<button class="btn"><h3><a>Cadastrar</a></h3></button>
 							</div>
@@ -182,7 +182,6 @@
 
 
 <button class="btn-modal" id="myBtn">Editar</button>
-<button class="btn-modal" id="myBtn2">Deletar</button>
 
 			<div class="box-info-funcionario">
 				<h1 class="id" >Id</h1>
@@ -216,8 +215,6 @@
 						<input name="idUsuario" type="text"  maxlength="15">
 						<label  for="">Nome</label>
 						<input name="nomeUsuario" type="text"  maxlength="15">
-						<label for="">Sobrenome</label>
-						<input name="sobrenomeUsuario" id="sobrenomeUsuario" type="text" maxlength="15">
 						<label for="">Permissão</label>
 						<select name="cargo" id="cargo"  maxlength="45">
 							<option value="Técnico de Infraestrutura">Técnico de Infraestrutura</option>
@@ -243,41 +240,6 @@
 
 </div>
 
-<!-- The Modal -->
-<div id="myModal2" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>
-		<div>
-			<div class="box-subscribe">
-				<div class="subscribe-left">
-					<div class="title-subscribe">
-						<h3>Delete um usuario do seu time </h3>
-					</div>
-					<img src="./assets/imagens/filing-system-amico.png" alt="">
-				</div>
-				
-				<div id="cadastro" class = "subscribe-right">
-					<form action="" id="form_deletar" method="post" onsubmit="return deletarUsuario()">
-						<label  for="">Nome</label>
-						<input name="nomeUsuario" type="text"  maxlength="15">
-						<label for="">Email</label>
-						<input name="email" id="email" type="email"  maxlength="45">
-						<div class="space-btn">
-						<button class="btn"><h3><a>Deletar usuario</a></h3></button>
-						</div>
-					</form>
-					
-				
-				</div>
-			</div>
-		</div>	
-	</p>
-  </div>
-
-</div>
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -445,7 +407,5 @@ window.onclick = function(event) {
 <script src="./js/Deletes.js"></script>
 
 <script src="./js/upDates.js"></script>
-
-<script src="./js/Cadastrar.js"></script>
 
 <script src="./js/Listar.js"></script>
