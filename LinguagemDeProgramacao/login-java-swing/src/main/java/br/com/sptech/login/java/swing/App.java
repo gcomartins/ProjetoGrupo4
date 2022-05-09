@@ -1,4 +1,4 @@
-package br.com.sptech.login.java.swing;
+ package br.com.sptech.login.java.swing;
 
 
 import br.com.sptech.login.java.swing.ConexaoBanco;
@@ -12,6 +12,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.time.temporal.TemporalQueries;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -380,8 +381,9 @@ public class App extends javax.swing.JFrame {
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
 
+        
         lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
-        lblRam.setText(String.format("%.2f%%", medidasServices.getRAM()));
+        lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
         lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
         
         //Worbanch

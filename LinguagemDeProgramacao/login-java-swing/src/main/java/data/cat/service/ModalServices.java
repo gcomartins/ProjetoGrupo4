@@ -31,7 +31,7 @@ public class ModalServices {
     
     public void inserirRAM(MedidasServices medidasServices){
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 4)", medidasServices.getRAM(), dataHora);
+                + "values(?, ?, 4)", medidasServices.getRam(), dataHora);
     }
     
     public void inserirProcessador(MedidasServices medidasServices){

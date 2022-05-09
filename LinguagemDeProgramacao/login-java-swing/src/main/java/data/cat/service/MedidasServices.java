@@ -18,12 +18,12 @@ public class MedidasServices {
 
         Double discoDisponivel = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getDisponivel().doubleValue();
         Double discoTotal = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getTotal().doubleValue();
-        Double usoDisco = discoDisponivel * 100 / discoTotal;
+        Double usoDisco = discoDisponivel * 100 / discoTotal;        
 
         return usoDisco;
     }
 
-    public Double get() {
+    public Double getRam() {
         Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
         Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
         Double memoriaUsada = memoriaEmUso * 100 / memoriaTotal;
