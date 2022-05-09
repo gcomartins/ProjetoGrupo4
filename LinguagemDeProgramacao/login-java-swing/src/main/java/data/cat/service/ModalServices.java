@@ -26,17 +26,17 @@ public class ModalServices {
     
     public void inserirDisco(MedidasServices medidasServices){
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 5)", medidasServices.getDiscoEmUso(), dataHora);
+                + "values(?, ?, 7)", medidasServices.getDiscoEmUso(), dataHora);
     }
     
     public void inserirRAM(MedidasServices medidasServices){
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 4)", medidasServices.getRam(), dataHora);
+                + "values(?, ?, 8)", medidasServices.getRam(), dataHora);
     }
     
     public void inserirProcessador(MedidasServices medidasServices){
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 6)", medidasServices.getProcessador(), dataHora);
+                + "values(?, ?, 9)", medidasServices.getProcessador(), dataHora);
     }
     
     

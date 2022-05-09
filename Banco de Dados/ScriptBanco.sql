@@ -54,16 +54,7 @@ constraint fkMaquina
 foreign key (fkMaquina) references tbMaquinas (idMaquina)
 );
 
-create table  tbMaquinasComponentes (
-idMaquinaComponentes INT PRIMARY KEY AUTO_iNCREMENT,
-hostName varchar(45),
-grupo VARCHAR(45),
-nome VARCHAR(45)
-check( nome = "Cpu" or nome = "Disco" or nome = "Ram"),
-capacidade VARCHAR(45),
-limiteAlerta VARCHAR(45)
-);
-select*from tbMaquinasComponentes;
+
 
 
 
@@ -114,15 +105,15 @@ insert into tbMaquinas (hostName,grupo, fkEmpresa) values
 ("Gulherme","GrupoB",4),
 ("Algusto","GrupoB",2);
 
-insert into tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) values 
-("Guilherme","guilherme@email.com","1234", 1,true,true,true),
-("Lara","lara@email.com","1234", 2,true,true,true),
-("Leticia","leticia@email.com","1234", 3,true,true,true),
-("Larissa","larissa@email.com","1234", 4,true,true,true),
-("Lucas","lucas@email.com","1234", 3,false,true,true),
-("Vinicius","vinicius@email.com","1234", 2,false,false,true),
-("Danilo","danilo@email.com","1234", 1,false,true,true),
-("Vinicius","cavalcante@email.com","1234", 4,false,false,true);
+insert into tbUsuarios (nomeUsuario, email, senha, fkempresa) values 
+("Guilherme","guilherme@email.com","1234", 1),
+("Lara","lara@email.com","1234", 2),
+("Leticia","leticia@email.com","1234", 3),
+("Larissa","larissa@email.com","1234", 4),
+("Lucas","lucas@email.com","1234", 3),
+("Vinicius","vinicius@email.com","1234", 2),
+("Danilo","danilo@email.com","1234", 1),
+("Vinicius","cavalcante@email.com","1234", 4);
 
 
 insert into tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) values 
@@ -133,22 +124,22 @@ insert into tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) values
 ("Disco",3000,85,3),
 ("Cpu",64,70,3);
 
-insert into tbLogs (leituraDesempenho, leituraTemperatura, dataHora, fkComponente) values 
-(100, 22.5, now(),1),
-(55, 30.25, now(),2),
-(100, 22.5, now(),3),
-(45, 50.0, now(),4),
-(20, 100.0, now(),5),
-(100, 22.0, now(),6);
+insert into tbLogs (leituraDesempenho, dataHora, fkComponente) values 
+(100, now(),7),
+(55, now(),8),
+(100, now(),9),
+(45, now(),10),
+(20, now(),11),
+(100, now(),12);
 
 
 insert into tbAlertas (fkLog, categoria, descrição) values
-(1, "Moderado", "*******"),
-(2, "Alto", "**********"),
-(3,"Moderado", "********"),
-(4, "Severo", "********"),
-(5, "Severo", "*******"),
-(6, "Moderado", "******");
+(33, "Moderado", "*******"),
+(34, "Alto", "**********"),
+(35,"Moderado", "********"),
+(36, "Severo", "********"),
+(37, "Severo", "*******"),
+(38, "Moderado", "******");
 
 
 

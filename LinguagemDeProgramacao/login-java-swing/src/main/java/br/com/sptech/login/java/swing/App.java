@@ -4,6 +4,7 @@
 import br.com.sptech.login.java.swing.ConexaoBanco;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
+import data.cat.modal.TesteLog;
 import data.cat.service.MedidasServices;
 import data.cat.service.ModalServices;
 import java.awt.Color;
@@ -44,11 +45,11 @@ public class App extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         pnlGeral = new javax.swing.JPanel();
         btnFinalizar = new javax.swing.JButton();
-        pnlRam = new RoundedPanel(300, Color.YELLOW);
+        pnlRam = new javax.swing.JPanel();
         lblRam = new javax.swing.JLabel();
         pnlDisco = new javax.swing.JPanel();
         lblDisco = new javax.swing.JLabel();
-        pnlCpu1 = new RoundedPanel(300, Color.getHSBColor(358, 86, 64));
+        pnlCpu = new javax.swing.JPanel();
         lblCpu = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -123,29 +124,29 @@ public class App extends javax.swing.JFrame {
         lblDisco.setText("25.00%");
         pnlDisco.add(lblDisco, java.awt.BorderLayout.CENTER);
 
-        pnlCpu1.setBackground(new java.awt.Color(187, 187, 187));
-        pnlCpu1.setPreferredSize(new java.awt.Dimension(230, 230));
+        pnlCpu.setBackground(new java.awt.Color(164, 22, 26));
+        pnlCpu.setPreferredSize(new java.awt.Dimension(230, 230));
 
         lblCpu.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
         lblCpu.setForeground(new java.awt.Color(249, 249, 249));
         lblCpu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCpu.setText("40.00%");
 
-        javax.swing.GroupLayout pnlCpu1Layout = new javax.swing.GroupLayout(pnlCpu1);
-        pnlCpu1.setLayout(pnlCpu1Layout);
-        pnlCpu1Layout.setHorizontalGroup(
-            pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCpu1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlCpuLayout = new javax.swing.GroupLayout(pnlCpu);
+        pnlCpu.setLayout(pnlCpuLayout);
+        pnlCpuLayout.setHorizontalGroup(
+            pnlCpuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCpuLayout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(lblCpu)
                 .addGap(23, 23, 23))
         );
-        pnlCpu1Layout.setVerticalGroup(
-            pnlCpu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCpu1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+        pnlCpuLayout.setVerticalGroup(
+            pnlCpuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCpuLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
                 .addComponent(lblCpu)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         btnIniciar.setBackground(new java.awt.Color(25, 164, 22));
@@ -216,7 +217,7 @@ public class App extends javax.swing.JFrame {
                             .addComponent(pnlDisco, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlCpu1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(pnlCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(133, 133, 133))
         );
@@ -232,7 +233,7 @@ public class App extends javax.swing.JFrame {
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlCpu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsoDisco)
@@ -380,11 +381,55 @@ public class App extends javax.swing.JFrame {
 
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
-
+        Double limiteAlertaRam = 80.0;
+        Double limiteAlertaCpu = 80.0;
+        Double limiteAlertaDisco = 80.0;
         
-        lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
-        lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
-        lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+        if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
+            pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
+            pnlDisco.setBackground(new java.awt.Color(233, 209, 84));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
+            pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+        } else {
+            pnlDisco.setBackground(new java.awt.Color(87, 175, 80));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+        }
+        
+        if (medidasServices.getRam()>= (limiteAlertaRam * 0.75)) {
+            pnlRam.setBackground(new java.awt.Color(224, 52, 52));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
+            pnlRam.setBackground(new java.awt.Color(233, 209, 84));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
+            pnlRam.setBackground(new java.awt.Color(233, 173, 84));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+        } else {
+            pnlRam.setBackground(new java.awt.Color(87, 175, 80));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+        }
+        
+        if (medidasServices.getProcessador() >= (limiteAlertaCpu * 0.75)) {
+            pnlCpu.setBackground(new java.awt.Color(224, 52, 52));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+            
+        } else if (medidasServices.getProcessador() >= (limiteAlertaCpu * 0.5)) {
+            pnlCpu.setBackground(new java.awt.Color(233, 209, 84));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+        } else if (medidasServices.getProcessador() >= (limiteAlertaCpu * 0.25)) {
+            pnlCpu.setBackground(new java.awt.Color(233, 173, 84));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+        } else {
+            pnlCpu.setBackground(new java.awt.Color(87, 175, 80));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+        }
+        
+        
+        
         
         //Worbanch
         modalServices.inserirDisco(medidasServices);
@@ -435,7 +480,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuDash;
     private javax.swing.JMenu menuSair;
-    private javax.swing.JPanel pnlCpu1;
+    private javax.swing.JPanel pnlCpu;
     private javax.swing.JPanel pnlDisco;
     private javax.swing.JPanel pnlGeral;
     private javax.swing.JPanel pnlRam;
@@ -483,11 +528,7 @@ public class App extends javax.swing.JFrame {
             graphics.setColor(getForeground());
 //            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
 //             
-        }
-        
-        Color vinho = new Color(164, 22, 26);
-        
-        
+        }   
     }
 
 
