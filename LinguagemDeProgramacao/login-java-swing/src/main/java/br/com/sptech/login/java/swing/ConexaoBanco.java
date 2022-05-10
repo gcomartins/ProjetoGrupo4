@@ -18,13 +18,21 @@ public class ConexaoBanco {
 //        dataSource​.setUrl("jdbc:h2:file:./meu_banco");
 //        dataSource​.setUsername("sa");
 //        dataSource​.setPassword("");
+<<<<<<< HEAD
 //        
+=======
+        
+>>>>>>> b1ba13a9bbf056fdbcb30b09e3b540b2d338bbb3
         
 //        mySQL
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
         dataSource​.setUsername("root");
+<<<<<<< HEAD
         dataSource​.setPassword("leticia1998");
+=======
+        dataSource​.setPassword("Lucas7968");
+>>>>>>> b1ba13a9bbf056fdbcb30b09e3b540b2d338bbb3
         
 //        //AZURE
 //        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

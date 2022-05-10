@@ -126,14 +126,14 @@ function cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta, idEmpr
 //     return database.executar(instrucao);
 // }
 
-// function graficar() {
-//     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function graficar():",);
-//     var instrucao = `
-//         SELECT count(fkusuario) as QtdUsuarios FROM ranking group by pontos order by pontos;
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//     return database.executar(instrucao);
-// }
+function graficar() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function graficar():",);
+    var instrucao = `
+        select TOP 10 * from tbLogs join [dbo].[tbComponentes] on (fkComponente = idComponentes) where idComponentes = 9 order by idLog desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     entrar,
@@ -149,5 +149,5 @@ module.exports = {
     cadastrarFuncionario,
     // ranquear,
     // cadastrarConvite,
-    // graficar,
+    graficar,
 };

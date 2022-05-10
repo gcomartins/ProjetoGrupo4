@@ -77,17 +77,47 @@ switchMode.addEventListener('change', function () {
 
 function plotarGrafico(idGrafico) {
 		
+	var dados = [];
+	var datas = [];
+
+	fetch(`/usuarios/graficar`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                
+                for (let i = 0; i < resposta.length; i++) {
+                    
+                    dados.push(resposta[i].leituraDesempenho);
+                    datas.push(resposta[i].dataHora);
+                }
+                // resposta.reverse();
+				gerarGrafico(idGrafico, dados, datas);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+
+	
+}
+
+function gerarGrafico(idGrafico, dados, datas){
 	const ctx = document.getElementById(idGrafico).getContext('2d');
 	let myChart = new Chart(ctx, {
 		type: 'line',
 
 		data: {
-			labels: gerarDatas(),
+			labels: datas,
 			datasets: [{
 				label: 'Desempenho',
-				data: gerarDados(),
+				data: dados,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.12)',
+					
 				],
 				borderColor: [
 					'rgba(255, 99, 132, 1)',

@@ -13,6 +13,7 @@ br\com\sptech\login\java\swing\App$3.class
 br\com\sptech\login\java\swing\LoginGui.class
 data\cat\modal\Alertas.class
 br\com\sptech\login\java\swing\LoginGui$3.class
+data\cat\banco\Testes.class
 br\com\sptech\login\java\swing\ConexaoBanco.class
 br\com\sptech\login\java\swing\App.class
 data\cat\modal\Log.class
@@ -30,7 +31,7 @@ slack\Slack.class
 br\com\sptech\login\java\swing\App$4.class
 br\com\sptech\login\java\swing\App$2.class
 br\com\sptech\login\java\swing\LoginGui$5.class
-data\cat\banco\App.class
 br\com\sptech\login\java\swing\LoginGui$2.class
+data\cat\banco\H2.class
 data\cat\modal\Empresa.class
 data\cat\modal\TesteLog$1.class

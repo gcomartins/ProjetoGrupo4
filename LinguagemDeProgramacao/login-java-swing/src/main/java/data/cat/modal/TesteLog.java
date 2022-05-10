@@ -56,7 +56,7 @@ public class TesteLog {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                String caminho = "C:\\Users\\letic\\Desktop\\log.txt";
+                String caminho = "C:\\Users\\lmmelo1\\Desktop\\log.txt";
                 try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true))){
                     TesteLog newTesteLog = new TesteLog();
                     testeLogs.add(newTesteLog);
