@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
@@ -29,7 +28,7 @@ public class LoginGui extends javax.swing.JFrame {
         lblCredenciais = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        txtNome = new br.com.sptech.login.java.swing.JTextFieldHint(new JTextField(), "src\\main\\java\\icons\\user-icon", "Nome de Usúario");
+        txtNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();

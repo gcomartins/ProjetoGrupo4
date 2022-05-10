@@ -235,9 +235,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
           </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new br.com.sptech.login.java.swing.JTextFieldHint(new JTextField(), &quot;src\\main\\java\\icons\\user-icon&quot;, &quot;Nome de Us&#xfa;ario&quot;);"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
