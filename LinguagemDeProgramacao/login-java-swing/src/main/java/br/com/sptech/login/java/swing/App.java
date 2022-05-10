@@ -12,10 +12,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.net.UnknownHostException;
 import java.time.temporal.TemporalQueries;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -371,12 +374,16 @@ public class App extends javax.swing.JFrame {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
-                lerDados();
+                try {
+                    lerDados();
+                } catch (UnknownHostException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }, periodo, interval);
     }
 
-    private void lerDados() {
+    private void lerDados() throws UnknownHostException {
 
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();

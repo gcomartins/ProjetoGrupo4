@@ -1,20 +1,26 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package data.cat.banco;
 
 import br.com.sptech.login.java.swing.ConexaoBanco;
+import data.cat.modal.Componente;
+import data.cat.service.ModalServices;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 /**
  *
  * @author lmmelo1
  */
-public class App {
+public class H2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         ConexaoBanco conexao = new ConexaoBanco();
 
         conexao.getConexao().execute("drop table if exists tbEmpresas");
@@ -93,7 +99,7 @@ public class App {
                 + "('Banco do Brasil','4124563254862','Lucas','bdrasil@email.com.br','4532');");
 
         conexao.getConexao().update("insert into tbMaquinas (hostName,grupo, fkEmpresa) values \n"
-                + "('Lucas','GrupoA', 1),"
+                + "('STFSAOC046893-L','GrupoA', 1),"
                 + "('Mari','GrupoA',4),"
                 + "('Pieroni','grupoB',2),"
                 + "('Leticia','GrupoA',3),"
@@ -112,13 +118,13 @@ public class App {
                 + "('Danilo','danilo@email.com','1234', 1,false,true,true),"
                 + "('Vinicius','cavalcante@email.com','1234', 4,false,false,true);");
 
-        conexao.getConexao().update("insert into tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) values "
-                + "('Disco',1000,70,1),"
-                + "('Ram', 16,70,1),"
-                + "('Cpu', 64, 70,1),"
-                + "('Ram',8,70,3),"
-                + "('Disco',3000,85,3),"
-                + "('Cpu',64,70,3);");
+        conexao.getConexao().update("insert into tbComponentes (nome,limiteAlerta, fkMaquina) values "
+                + "('Disco',75,1),"
+                + "('Ram',55,1),"
+                + "('Cpu',90,1),"
+                + "('Ram',30,3),"
+                + "('Disco',85,3),"
+                + "('Cpu',64,3);");
 
         conexao.getConexao().update("insert into tbLogs (leituraDesempenho, leituraTemperatura, dataHora, fkComponente) values \n"
                 + "(100, 22.5, now(),1),"
@@ -135,11 +141,33 @@ public class App {
                 + "(4, 'Severo', '********'),"
                 + "(5, 'Severo', '*******'),"
                 + "(6, 'Moderado', '******');");
+        
+        List<Componente> listaComponentes = new ArrayList<>();
+        List<Componente> listaComponentes2 = new ArrayList<>();
+        
+//        List<Double> Disco = listaComponentes.forEach(((t) -> {
+//            t.limiteAlerta
+//        }));
 
-        List<Map<String, Object>> tbEmpresas = conexao
-                .getConexao()
-                .queryForList("select * from tbEmpresas");
+        listaComponentes = conexao.getConexao().query(
+                "select * from tbComponentes where fkMaquina = 1",
+                new BeanPropertyRowMapper<>(Componente.class));
+        
+         listaComponentes2 = conexao.getConexao().query(
+                "select C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+                        + "on C.fkMaquina = M.idMaquina where  hostName = 'STFSAOC046893-L'",
+                new BeanPropertyRowMapper<>(Componente.class));
+        
+        
+        ModalServices modalServices = new ModalServices();
+        
+        System.out.println(listaComponentes);
+        System.out.println(listaComponentes.get(2).getLimiteAlerta());
+        System.out.println(listaComponentes.get(0).getLimiteAlerta());
+        System.out.println(listaComponentes.get(0).getidComponentes());
+        System.out.println(InetAddress.getLocalHost().getHostName());
+        System.out.println(listaComponentes2);
+//        System.out.println(modalServices.getDiscoBanco());
 
-        System.out.println(tbEmpresas);
     }
 }

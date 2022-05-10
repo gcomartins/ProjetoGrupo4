@@ -14,17 +14,17 @@ public class ConexaoBanco {
         
         
 ////        //H2
-        dataSource​.setDriverClassName("org.h2.Driver");;
-        dataSource​.setUrl("jdbc:h2:file:./meu_banco");
-        dataSource​.setUsername("sa");
-        dataSource​.setPassword("");
+//        dataSource​.setDriverClassName("org.h2.Driver");;
+//        dataSource​.setUrl("jdbc:h2:file:./meu_banco");
+//        dataSource​.setUsername("sa");
+//        dataSource​.setPassword("");
         
         
 //        mySQL
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
-//        dataSource​.setUsername("root");
-//        dataSource​.setPassword("Lucas7968");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
+        dataSource​.setUsername("root");
+        dataSource​.setPassword("Lucas7968");
         
 //        //AZURE
 //        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

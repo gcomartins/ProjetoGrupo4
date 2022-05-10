@@ -12,29 +12,27 @@ import data.cat.modal.Maquina;
  */
 public class Componente {
 
-    private Long idComponente;
+    private int idComponentes;
     private String nome;
-    private Integer capacidade;
-    private Integer limiteAlerta;
-    private Long fkMaquina;
+    private Double limiteAlerta;
+    private int fkMaquina;
 
     public Componente() {
     }
 
-    public Componente(Long idComponente, String nome, Integer capacidade, Integer limiteAlerta, Long maquina) {
-        this.idComponente = idComponente;
+    public Componente(int idComponentes, String nome, Double limiteAlerta,int IdMaquina) {
+        this.idComponentes = idComponentes;
         this.nome = nome;
-        this.capacidade = capacidade;
         this.limiteAlerta = limiteAlerta;
-        this.fkMaquina = maquina;
+        this.fkMaquina = IdMaquina;
     }
 
-    public Long getIdComponente() {
-        return idComponente;
+    public int getidComponentes() {
+        return idComponentes;
     }
 
-    public void setIdComponente(Long idComponente) {
-        this.idComponente = idComponente;
+    public void setidComponentes(int idComponentes) {
+        this.idComponentes = idComponentes;
     }
 
     public String getNome() {
@@ -45,33 +43,25 @@ public class Componente {
         this.nome = nome;
     }
 
-    public Integer getCapacidade() {
-        return capacidade;
-    }
-
-    public void setCapacidade(Integer capacidade) {
-        this.capacidade = capacidade;
-    }
-
-    public Integer getLimiteAlerta() {
+    public Double getLimiteAlerta() {
         return limiteAlerta;
     }
 
-    public void setLimiteAlerta(Integer limiteAlerta) {
+    public void setLimiteAlerta(Double limiteAlerta) {
         this.limiteAlerta = limiteAlerta;
     }
 
-    public Long getMaquina() {
+    public int getFkMaquina() {
         return fkMaquina;
     }
 
-    public void setMaquina(Long maquina) {
+    public void setFkMaquina(int maquina) {
         this.fkMaquina = maquina;
     }
 
     @Override
     public String toString() {
-        return "Componente{" + "idComponente=" + idComponente + ", nome=" + nome + ", capacidade=" + capacidade + ", limiteAlerta=" + limiteAlerta + ", maquina=" + fkMaquina + '}';
+        return "Componente{" + "idComponentes=" + idComponentes + ", nome=" + nome + ", limiteAlerta=" + limiteAlerta + ", maquina=" + fkMaquina + '}';
     }
 
 }
