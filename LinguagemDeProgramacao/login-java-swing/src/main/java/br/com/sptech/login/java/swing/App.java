@@ -412,10 +412,10 @@ public class App extends javax.swing.JFrame {
         if (medidasServices.getRamEmUso()>= (limiteAlertaRam * 0.75)) {
             pnlRam.setBackground(new java.awt.Color(224, 52, 52));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
-        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
+        } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.5)) {
             pnlRam.setBackground(new java.awt.Color(233, 209, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
-        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
+        } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.25)) {
             pnlRam.setBackground(new java.awt.Color(233, 173, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
         } else {
