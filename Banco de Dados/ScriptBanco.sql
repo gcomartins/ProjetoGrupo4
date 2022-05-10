@@ -2,6 +2,7 @@ create database Grupo4;
 
 use Grupo4;
 
+drop database grupo4;
 
 create table tbEmpresas (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -31,7 +32,6 @@ inner join tbComponentes as C on M.idmaquina =  C.fkMaquina where hostName = "Lu
 create table tbUsuarios (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nomeUsuario VARCHAR(45),
-sobrenomeUsuario VARCHAR(45),
 email VARCHAR(45) unique,
 senha VARCHAR(45),
 cargo VARCHAR(45),
@@ -47,13 +47,11 @@ CREATE TABLE tbComponentes (
 idComponentes INT PRIMARY KEY AUTO_INCREMENT, 
 nome VARCHAR(45)
 check( nome = "Cpu" or nome = "Disco" or nome = "Ram"),
-capacidade DOUBLE,
 limiteAlerta DOUBLE,
 fkMaquina INT,
 constraint fkMaquina 
 foreign key (fkMaquina) references tbMaquinas (idMaquina)
 );
-
 
 
 
@@ -67,7 +65,6 @@ inner join tbAlertas as A on A.fkLog = L.idLog Where hostName = "Lucas" ;
 Create table tbLogs (
 idLog INT PRIMARY KEY AUTO_INCREMENT, 
 leituraDesempenho DOUBLE,
-leituraTemperatura DOUBLE,
 dataHora DATETIME,
 fkComponente INT,
 constraint fkComponente 
@@ -96,7 +93,7 @@ insert into tbEmpresas (nomeEmpresa, cnpj, representante, email, senha)values
 
 
 insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
-("Lucas","GrupoA", 1),
+("STFSAOC046893-L","GrupoA", 1),
 ("Mari","GrupoA",4),
 ("Pieroni","grupoB",2),
 ("Leticia","GrupoA",3),
@@ -116,38 +113,43 @@ insert into tbUsuarios (nomeUsuario, email, senha, fkempresa) values
 ("Vinicius","cavalcante@email.com","1234", 4);
 
 
-insert into tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) values 
-("Disco",1000,70,1),
-("Ram", 16,70,1),
-("Cpu", 64, 70,1),
-("Ram",8,70,3),
-("Disco",3000,85,3),
-("Cpu",64,70,3);
+insert into tbComponentes (nome,limiteAlerta, fkMaquina) values 
+("Disco",100,1),
+("Ram",100,1),
+("Cpu", 100,1),
+("Ram",59,3),
+("Disco",30,3),
+("Cpu",39,3);
 
 insert into tbLogs (leituraDesempenho, dataHora, fkComponente) values 
-(100, now(),7),
-(55, now(),8),
-(100, now(),9),
-(45, now(),10),
-(20, now(),11),
-(100, now(),12);
+(100, now(),1),
+(55, now(),2),
+(100, now(),3),
+(45, now(),4),
+(20, now(),5),
+(100, now(),6);
 
 
 insert into tbAlertas (fkLog, categoria, descrição) values
-(33, "Moderado", "*******"),
-(34, "Alto", "**********"),
-(35,"Moderado", "********"),
-(36, "Severo", "********"),
-(37, "Severo", "*******"),
-(38, "Moderado", "******");
+(1, "Moderado", "*******"),
+(2, "Alto", "**********"),
+(3,"Moderado", "********"),
+(4, "Severo", "********"),
+(5, "Severo", "*******"),
+(6, "Moderado", "******");
 
 
 
 
-
+select * from tbUsuarios where email = 'guilherme@email.com' and senha = 1234;
 select * from tbLogs;
 select * from tbMaquinas;
 select * from tbEmpresas;
-SELECT * FROM tbUsuarios;
-SELECT * FROM tbComponentes;
-SELECT * FROM tbMaquinasComponentes;
+select * from tbUsuarios;
+select * from tbComponentes;
+truncate table tbMaquinas;
+
+
+select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where hostName = 'STFSAOC046893-L';
+
+select * from tbComponentes;

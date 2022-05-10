@@ -70,18 +70,60 @@ public class ModalServices {
     LoginGui label = new LoginGui();
 
     public void inserirDisco(MedidasServices medidasServices) {
+        int disco = 1;
+
+        listaComponentes = conexao.getConexao().query(
+                "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+
+        for (int i = 0; i < listaComponentes.size(); i++) {
+            if (listaComponentes.get(i).getNome().equalsIgnoreCase("Disco")) {
+                disco = listaComponentes.get(i).getidComponentes();
+
+            }
+        }
+
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 7)", medidasServices.getDiscoEmUso(), dataHora);
+                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, disco);
     }
 
     public void inserirRAM(MedidasServices medidasServices) {
+        int ram = 2;
+
+        listaComponentes = conexao.getConexao().query(
+                "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina "
+                        + "from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+
+        for (int i = 0; i < listaComponentes.size(); i++) {
+            if (listaComponentes.get(i).getNome().equalsIgnoreCase("ram")) {
+                ram = listaComponentes.get(i).getidComponentes();
+
+            }
+        }
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 8)", medidasServices.getRamEmUso(), dataHora);
+                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, ram);
     }
 
     public void inserirProcessador(MedidasServices medidasServices) {
+       int cpu = 0;
+
+        listaComponentes = conexao.getConexao().query(
+                "select C.idComponentes,C.nome, C.limiteAlerta, C.fkMaquina "
+                        + "from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+
+        for (int i = 0; i < listaComponentes.size(); i++) {
+            if (listaComponentes.get(i).getNome().equalsIgnoreCase("Cpu")) {
+                cpu = listaComponentes.get(i).getidComponentes();
+
+            }
+        }
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 9)", medidasServices.getProcessadorEmUso(), dataHora);
+                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, cpu);
     }
 
     public double getDiscoBanco() {
@@ -97,8 +139,8 @@ public class ModalServices {
 
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (listaComponentes.get(i).getNome().equalsIgnoreCase("Disco")) {
-                 disco = listaComponentes.get(i).getLimiteAlerta();
-                 return disco;
+                disco = listaComponentes.get(i).getLimiteAlerta();
+                return disco;
             }
         }
         return 0.0;
@@ -106,42 +148,39 @@ public class ModalServices {
 
     public Double getRAMBanco() {
 
-       listaComponentes = conexao.getConexao().query(
+        listaComponentes = conexao.getConexao().query(
                 "select C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
         Double ram = 0.0;
 
-      
-
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (listaComponentes.get(i).getNome().equalsIgnoreCase("Ram")) {
-                 ram = listaComponentes.get(i).getLimiteAlerta();
-                 return ram;
+                ram = listaComponentes.get(i).getLimiteAlerta();
+                return ram;
             }
         }
         return 0.0;
     }
-    
+
     public Double getProcessadorBanco() {
-    
-    listaComponentes = conexao.getConexao().query(
+
+        listaComponentes = conexao.getConexao().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
         Double processador = 0.0;
 
-      
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (listaComponentes.get(i).getNome().equalsIgnoreCase("cpu")) {
-                  processador = listaComponentes.get(i).getLimiteAlerta();
-                 return processador;
+                processador = listaComponentes.get(i).getLimiteAlerta();
+                return processador;
             }
         }
-       
+
         return 0.0;
-}
+    }
 
 }

@@ -9,6 +9,7 @@ import com.github.britooo.looca.api.group.servicos.ServicosGroup;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import data.cat.modal.Componente;
 import data.cat.modal.TesteLog;
+import data.cat.service.MedidasServices;
 import data.cat.service.ModalServices;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -61,6 +62,7 @@ public class TesteLooca {
         
         
         ModalServices modalServices = new ModalServices();
+        MedidasServices medidasServices = new MedidasServices();
         System.out.println(listaComponentes);
         System.out.println(listaComponentes.get(0).getLimiteAlerta());
         System.out.println(listaComponentes.get(0).getLimiteAlerta());
@@ -72,6 +74,8 @@ public class TesteLooca {
         System.out.println(modalServices.getDiscoBanco());
         System.out.println(modalServices.getRAMBanco());
         System.out.println(modalServices.getProcessadorBanco());
+        
+        
 
 
 
