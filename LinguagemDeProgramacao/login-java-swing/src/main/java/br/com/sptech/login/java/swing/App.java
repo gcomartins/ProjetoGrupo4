@@ -388,9 +388,12 @@ public class App extends javax.swing.JFrame {
 
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
-        Double limiteAlertaRam = 80.0;
-        Double limiteAlertaCpu = 80.0;
-        Double limiteAlertaDisco = 80.0;
+        Double discoBanco = modalServices.getDiscoBanco();
+        Double ramBanco = modalServices.getRAMBanco();
+        Double processadorBanco = modalServices.getProcessadorBanco();
+        Double limiteAlertaRam = ramBanco;
+        Double limiteAlertaCpu = processadorBanco;
+        Double limiteAlertaDisco = discoBanco;
         
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
             pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
@@ -406,33 +409,33 @@ public class App extends javax.swing.JFrame {
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
         }
         
-        if (medidasServices.getRam()>= (limiteAlertaRam * 0.75)) {
+        if (medidasServices.getRamEmUso()>= (limiteAlertaRam * 0.75)) {
             pnlRam.setBackground(new java.awt.Color(224, 52, 52));
-            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
             pnlRam.setBackground(new java.awt.Color(233, 209, 84));
-            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
             pnlRam.setBackground(new java.awt.Color(233, 173, 84));
-            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
         } else {
             pnlRam.setBackground(new java.awt.Color(87, 175, 80));
-            lblRam.setText(String.format("%.2f%%", medidasServices.getRam()));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
         }
         
-        if (medidasServices.getProcessador() >= (limiteAlertaCpu * 0.75)) {
+        if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.75)) {
             pnlCpu.setBackground(new java.awt.Color(224, 52, 52));
-            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             
-        } else if (medidasServices.getProcessador() >= (limiteAlertaCpu * 0.5)) {
+        } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.5)) {
             pnlCpu.setBackground(new java.awt.Color(233, 209, 84));
-            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
-        } else if (medidasServices.getProcessador() >= (limiteAlertaCpu * 0.25)) {
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+        } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.25)) {
             pnlCpu.setBackground(new java.awt.Color(233, 173, 84));
-            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
         } else {
             pnlCpu.setBackground(new java.awt.Color(87, 175, 80));
-            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessador()));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
         }
         
         

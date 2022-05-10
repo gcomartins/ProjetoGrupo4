@@ -23,7 +23,7 @@ public class MedidasServices {
         return usoDisco;
     }
 
-    public Double getRam() {
+    public Double getRamEmUso() {
         Double memoriaEmUso = looca.getMemoria().getEmUso().doubleValue();
         Double memoriaTotal = looca.getMemoria().getTotal().doubleValue();
         Double memoriaUsada = memoriaEmUso * 100 / memoriaTotal;
@@ -31,7 +31,7 @@ public class MedidasServices {
         return memoriaUsada;
     }
 
-    public Double getProcessador() {
+    public Double getProcessadorEmUso() {
         Double usoProcessador = looca.getProcessador().getUso().doubleValue();
         return usoProcessador;
     }

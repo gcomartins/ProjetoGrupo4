@@ -13,7 +13,6 @@ br\com\sptech\login\java\swing\App$3.class
 br\com\sptech\login\java\swing\LoginGui.class
 data\cat\modal\Alertas.class
 br\com\sptech\login\java\swing\LoginGui$3.class
-data\cat\banco\Testes.class
 br\com\sptech\login\java\swing\ConexaoBanco.class
 br\com\sptech\login\java\swing\App.class
 data\cat\modal\Log.class

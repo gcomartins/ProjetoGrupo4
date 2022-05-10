@@ -58,8 +58,8 @@ public class ModalServices {
         this.limiteAlertaCpu = 80;
         this.limiteAlertaRam = 80;
         this.limiteAlertaDisco = 80;
-        this.leituraDesempenhoCpu = medidasServices.getProcessador();
-        this.leituraDesempenhoRam = medidasServices.getRam();
+        this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
+        this.leituraDesempenhoRam = medidasServices.getRamEmUso();
         this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
 
     }
@@ -76,12 +76,12 @@ public class ModalServices {
 
     public void inserirRAM(MedidasServices medidasServices) {
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 8)", medidasServices.getRam(), dataHora);
+                + "values(?, ?, 8)", medidasServices.getRamEmUso(), dataHora);
     }
 
     public void inserirProcessador(MedidasServices medidasServices) {
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, 9)", medidasServices.getProcessador(), dataHora);
+                + "values(?, ?, 9)", medidasServices.getProcessadorEmUso(), dataHora);
     }
 
     public double getDiscoBanco() {

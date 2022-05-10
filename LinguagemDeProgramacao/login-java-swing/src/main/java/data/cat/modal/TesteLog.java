@@ -44,8 +44,8 @@ public class TesteLog {
         this.limiteAlertaCpu = 80;
         this.limiteAlertaRam = 80;
         this.limiteAlertaDisco = 80;
-        this.leituraDesempenhoCpu = medidasServices.getProcessador();
-        this.leituraDesempenhoRam = medidasServices.getRam();
+        this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
+        this.leituraDesempenhoRam = medidasServices.getRamEmUso();
         this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
 
     }
