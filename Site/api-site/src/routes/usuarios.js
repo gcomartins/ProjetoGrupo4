@@ -69,4 +69,8 @@ router.get("/graficarCpu", function (req, res) {
     usuarioController.graficarCpu(req, res);
 });
 
+router.get("/graficarTemp", function (req, res) {
+    usuarioController.graficarTemp(req, res);
+});
+
 module.exports = router;

@@ -338,6 +338,26 @@ function graficarCpu(req, res) {
 
 }
 
+function graficarTemp(req, res) {
+    
+    usuarioModel.graficarTemp()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 function deletarUsuario(req, res) {
     var idUsuario = req.body.idUsuario;
     usuarioModel.deletarUsuario(idUsuario)
@@ -448,4 +468,5 @@ module.exports = {
     graficarDisco,
     graficarMemoria,
     graficarCpu,
+    graficarTemp,
 }

@@ -95,9 +95,9 @@ function plotarGrafico(idGrafico) {
 			caminho = `/usuarios/graficarCpu`;
 			break;
 		
-			case 'graficoTemp':
-				caminho = `/usuarios/graficar`;
-				break;
+		case 'graficoTemp':
+			caminho = `/usuarios/graficarTemp`;
+			break;
 			
 		default:
 			break;
@@ -109,8 +109,11 @@ function plotarGrafico(idGrafico) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 
                 for (let i = 0; i < resposta.length; i++) {
-                    
-                    dados.push(resposta[i].leituraDesempenho);
+                    if (idGrafico == 'graficoTemp') {
+						dados.push(resposta[i].leituraTemperatura);
+					}else {
+						dados.push(resposta[i].leituraDesempenho);
+					}
                     datas.push(resposta[i].dataHora);
                 }
 				
