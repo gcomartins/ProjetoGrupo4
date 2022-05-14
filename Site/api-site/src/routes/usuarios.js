@@ -56,4 +56,17 @@ router.post("/autenticar", function (req, res) {
 router.get("/graficar", function (req, res) {
     usuarioController.graficar(req, res);
 });
+
+router.get("/graficarDisco", function (req, res) {
+    usuarioController.graficarDisco(req, res);
+});
+
+router.get("/graficarMemoria", function (req, res) {
+    usuarioController.graficarMemoria(req, res);
+});
+
+router.get("/graficarCpu", function (req, res) {
+    usuarioController.graficarCpu(req, res);
+});
+
 module.exports = router;

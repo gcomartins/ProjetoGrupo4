@@ -80,8 +80,30 @@ function plotarGrafico(idGrafico) {
 	var dados = [];
 	var datas = [];
 	var datasFormatadas = [];
+	var caminho = '';
 
-	fetch(`/usuarios/graficar`, { cache: 'no-store' }).then(function (response) {
+	switch (idGrafico) {
+		case 'graficoDisco':
+			caminho = `/usuarios/graficarDisco`;
+			break;
+
+		case 'graficoMemoria':
+			caminho = `/usuarios/graficarMemoria`;
+			break;
+
+		case 'graficoCpu':
+			caminho = `/usuarios/graficarCpu`;
+			break;
+		
+			case 'graficoTemp':
+				caminho = `/usuarios/graficar`;
+				break;
+			
+		default:
+			break;
+	}
+
+	fetch(caminho, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -94,14 +116,10 @@ function plotarGrafico(idGrafico) {
 				
 				for (let index = 0; index < datas.length; index++) {
 					const e = datas[index];
-
 					var dataFormatada = new Date(e).getHours() + ':' + new Date(e).getMinutes();
-
 					datasFormatadas.push(dataFormatada);
 					
 				}
-				console.log(datasFormatadas);
-                // resposta.reverse();
 				gerarGrafico(idGrafico, dados, datasFormatadas);
             });
         } else {
@@ -144,19 +162,4 @@ function gerarGrafico(idGrafico, dados, datas){
 			}
 		}
 	});
-}
-
-function gerarDados() {
-	dados = [];
-	for (let index = 0; index < 30; index++) {
-		dados.push((Math.random() * 100).toFixed(0));
-	}
-	return dados;
-}
-function gerarDatas() {
-	datas = [];
-	for (let index = 0; index < 30; index++) {
-		datas.push((Math.random() * 23).toFixed(0) + ':' + (Math.random() * 59).toFixed(0) + ':' + (Math.random() * 59).toFixed(0));
-	}
-	return datas.sort();
 }

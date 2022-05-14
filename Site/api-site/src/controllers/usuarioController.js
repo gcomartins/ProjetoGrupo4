@@ -278,6 +278,66 @@ function graficar(req, res) {
 
 }
 
+function graficarDisco(req, res) {
+    
+    usuarioModel.graficarDisco()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function graficarMemoria(req, res) {
+    
+    usuarioModel.graficarMemoria()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function graficarCpu(req, res) {
+    
+    usuarioModel.graficarCpu()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 function deletarUsuario(req, res) {
     var idUsuario = req.body.idUsuario;
     usuarioModel.deletarUsuario(idUsuario)
@@ -385,4 +445,7 @@ module.exports = {
     // ranquear,
     // cadastrarConvite,
     graficar,
+    graficarDisco,
+    graficarMemoria,
+    graficarCpu,
 }
