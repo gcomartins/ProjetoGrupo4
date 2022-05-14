@@ -139,17 +139,17 @@ function plotarGrafico(idGrafico) {
 
 function gerarGrafico(idGrafico, dados, datas){
 	const ctx = document.getElementById(idGrafico).getContext('2d');
+
 	let myChart = new Chart(ctx, {
 		type: 'line',
 
 		data: {
 			labels: datas,
 			datasets: [{
-				label: 'Desempenho',
+				label: 'Uso (em %)',
 				data: dados,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.12)',
-					
 				],
 				borderColor: [
 					'rgba(255, 99, 132, 1)',
@@ -159,9 +159,13 @@ function gerarGrafico(idGrafico, dados, datas){
 		},
 		options: {
 			scales: {
-				y: {
-					beginAtZero: true
-				}
+				yAxes: [{
+					ticks: {
+						max: 100,
+						min: 0,
+						stepSize: 25
+					}
+				}],
 			}
 		}
 	});
