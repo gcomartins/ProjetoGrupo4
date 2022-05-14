@@ -79,6 +79,7 @@ function plotarGrafico(idGrafico) {
 		
 	var dados = [];
 	var datas = [];
+	var datasFormatadas = [];
 
 	fetch(`/usuarios/graficar`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -90,8 +91,18 @@ function plotarGrafico(idGrafico) {
                     dados.push(resposta[i].leituraDesempenho);
                     datas.push(resposta[i].dataHora);
                 }
+				
+				for (let index = 0; index < datas.length; index++) {
+					const e = datas[index];
+
+					var dataFormatada = new Date(e).getHours() + ':' + new Date(e).getMinutes();
+
+					datasFormatadas.push(dataFormatada);
+					
+				}
+				console.log(datasFormatadas);
                 // resposta.reverse();
-				gerarGrafico(idGrafico, dados, datas);
+				gerarGrafico(idGrafico, dados, datasFormatadas);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
