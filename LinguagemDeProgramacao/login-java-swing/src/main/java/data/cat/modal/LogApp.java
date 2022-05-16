@@ -5,7 +5,9 @@ import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.processos.ProcessosGroup;
+import data.cat.service.AlertasServices;
 import data.cat.service.MedidasServices;
+import data.cat.service.ModalServices;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.net.InetAddress;
@@ -14,68 +16,67 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+public class LogApp {
 
-public class TesteLog {
     private Integer idLog;
-    private Integer limiteAlertaCpu;
-    private Integer limiteAlertaRam;
-    private Integer limiteAlertaDisco;
+    private Double limiteAlertaCpu;
+    private Double limiteAlertaRam;
+    private Double limiteAlertaDisco;
     private Double leituraDesempenhoCpu;
     private Double leituraDesempenhoRam;
     private Double leituraDesempenhoDisco;
     private String idMaquina;
     private String nomeMaquina;
-    
+
     private static int log = 1;
-    
+
     Looca looca = new Looca();
     Memoria memoria = new Memoria();
     Processador processador = new Processador();
     DiscosGroup discosGroup = new DiscosGroup();
     ProcessosGroup processosGroup = new ProcessosGroup();
     MedidasServices medidasServices = new MedidasServices();
-    
+    AlertasServices alertasServices = new AlertasServices();
+    ModalServices modalServices = new ModalServices();
     Timer timer = new Timer();
-    
-    public TesteLog() throws UnknownHostException {
+
+    public LogApp() throws UnknownHostException {
         this.idLog = log++;
         this.idMaquina = InetAddress.getLocalHost().getHostAddress();
         this.nomeMaquina = InetAddress.getLocalHost().getHostName();
-        this.limiteAlertaCpu = 80;
-        this.limiteAlertaRam = 80;
-        this.limiteAlertaDisco = 80;
+        this.limiteAlertaCpu = modalServices.getLimiteBanco("cpu");
+        this.limiteAlertaRam = modalServices.getLimiteBanco("ram");
+        this.limiteAlertaDisco = modalServices.getLimiteBanco("disco");
         this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
         this.leituraDesempenhoRam = medidasServices.getRamEmUso();
         this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
 
     }
-    
-    
-    
-    public void gerarLog(List<TesteLog> testeLogs) {
+
+    public void gerarLog(List<LogApp> testeLogs) {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 String caminho = "C:\\Users\\lmmelo1\\Desktop\\log.txt";
-                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true))){
-                    TesteLog newTesteLog = new TesteLog();
+                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true))) {
+                    LogApp newTesteLog = new LogApp();
                     testeLogs.add(newTesteLog);
-                    
-                    for (TesteLog testeLog : testeLogs) {
+
+                    for (LogApp testeLog : testeLogs) {
                         bufferedWriter.write(testeLog.toString());
                         bufferedWriter.newLine();
                     }
-                    
-                    while (!testeLogs.isEmpty()) {                        
+
+                    while (!testeLogs.isEmpty()) {
                         testeLogs.remove(testeLogs.get(0));
                     }
-                    
+
                 } catch (Exception e) {
                     e.getMessage();
                 }
             }
         };
-             timer.scheduleAtFixedRate(timerTask, 0, 5000);
+        timer.scheduleAtFixedRate(timerTask, 0, 5000);
     }
 
     public Integer getIdLog() {
@@ -86,27 +87,27 @@ public class TesteLog {
         this.idLog = idLog;
     }
 
-    public Integer getLimiteAlertaCpu() {
+    public Double getLimiteAlertaCpu() {
         return limiteAlertaCpu;
     }
 
-    public void setLimiteAlertaCpu(Integer limiteAlertaCpu) {
+    public void setLimiteAlertaCpu(Double limiteAlertaCpu) {
         this.limiteAlertaCpu = limiteAlertaCpu;
     }
 
-    public Integer getLimiteAlertaRam() {
+    public Double getLimiteAlertaRam() {
         return limiteAlertaRam;
     }
 
-    public void setLimiteAlertaRam(Integer limiteAlertaRam) {
+    public void setLimiteAlertaRam(Double limiteAlertaRam) {
         this.limiteAlertaRam = limiteAlertaRam;
     }
 
-    public Integer getLimiteAlertaDisco() {
+    public Double getLimiteAlertaDisco() {
         return limiteAlertaDisco;
     }
 
-    public void setLimiteAlertaDisco(Integer limiteAlertaDisco) {
+    public void setLimiteAlertaDisco(Double limiteAlertaDisco) {
         this.limiteAlertaDisco = limiteAlertaDisco;
     }
 
@@ -152,50 +153,52 @@ public class TesteLog {
 
     @Override
     public String toString() {
-        
-        if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.75 ||
-                leituraDesempenhoDisco >= limiteAlertaDisco * 0.75 || 
-                leituraDesempenhoRam >= limiteAlertaRam * 0.75) {
-            return String.format("LOG: %d [ID MÁQUINA: %s;"
-                + "\nNOME MÁQUINA: %s;"
-                + "\nLIMITE CPU: %d; LEITURA DESEMPENHO CPU: %.2f;"
-                + "\nLIMITE RAM: %d; LEITURA DESEMPENHO RAM: %.2f;"
-                + "\nLIMITE DISCO: %d; LEITURA DESEMPENHO DISCO: %.2f -> CRÍTICO] ***\n\n", 
-                idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam, 
-                leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
-        }else if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.5 ||
-                leituraDesempenhoDisco >= limiteAlertaDisco * 0.5 || 
-                leituraDesempenhoRam >= limiteAlertaRam * 0.5) {
-            return String.format("LOG: %d [ID MÁQUINA: %s;"
-                + "\nNOME MÁQUINA: %s;"
-                + "\nLIMITE CPU: %d; LEITURA DESEMPENHO CPU: %.2f;"
-                + "\nLIMITE RAM: %d; LEITURA DESEMPENHO RAM: %.2f;"
-                + "\nLIMITE DISCO: %d; LEITURA DESEMPENHO DISCO: %.2f -> ALERTA] ***\n\n", 
-                idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam, 
-                leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
-        }else if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.25 ||
-                leituraDesempenhoDisco >= limiteAlertaDisco * 0.25 || 
-                leituraDesempenhoRam >= limiteAlertaRam * 0.25) {
-            return String.format("LOG: %d [ID MÁQUINA: %s;"
-                + "\nNOME MÁQUINA: %s;"
-                + "\nLIMITE CPU: %d; LEITURA DESEMPENHO CPU: %.2f;"
-                + "\nLIMITE RAM: %d; LEITURA DESEMPENHO RAM: %.2f;"
-                + "\nLIMITE DISCO: %d; LEITURA DESEMPENHO DISCO: %.2f -> ESTÁVEL] ***\n\n", 
-                idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam, 
-                leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
-        }
-        
-            return String.format("LOG: %d [ID MÁQUINA: %s;"
-                + "\nNOME MÁQUINA: %s;"
-                + "\nLIMITE CPU: %d; LEITURA DESEMPENHO CPU: %.2f;"
-                + "\nLIMITE RAM: %d; LEITURA DESEMPENHO RAM: %.2f;"
-                + "\nLIMITE DISCO: %d; LEITURA DESEMPENHO DISCO: %.2f -> PERFEITO] ***\n\n", 
-                idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam, 
-                leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
-        }
-        
-}
 
+        if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.75
+                || leituraDesempenhoDisco >= limiteAlertaDisco * 0.75
+                || leituraDesempenhoRam >= limiteAlertaRam * 0.75) {
+            alertasServices.inserirAlertas("Critico", idLog);
+            return String.format("LOG: %d [ID MÁQUINA: %s;"
+                    + "\nNOME MÁQUINA: %s;"
+                    + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"
+                    + "\nLIMITE RAM: %.2f; LEITURA DESEMPENHO RAM: %.2f;"
+                    + "\nLIMITE DISCO: %.2f; LEITURA DESEMPENHO DISCO: %.2f -> CRÍTICO] ***\n\n",
+                    idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam,
+                    leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
+        } else if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.5
+                || leituraDesempenhoDisco >= limiteAlertaDisco * 0.5
+                || leituraDesempenhoRam >= limiteAlertaRam * 0.5) {
+            alertasServices.inserirAlertas("Alerta", idLog);
+            return String.format("LOG: %d [ID MÁQUINA: %s;"
+                    + "\nNOME MÁQUINA: %s;"
+                    + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"
+                    + "\nLIMITE RAM: %.2f; LEITURA DESEMPENHO RAM: %.2f;"
+                    + "\nLIMITE DISCO: %.2f; LEITURA DESEMPENHO DISCO: %.2f -> ALERTA] ***\n\n",
+                    idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam,
+                    leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
+        } else if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.25
+                || leituraDesempenhoDisco >= limiteAlertaDisco * 0.25
+                || leituraDesempenhoRam >= limiteAlertaRam * 0.25) {
+            alertasServices.inserirAlertas("Estavel", idLog);
+            return String.format("LOG: %d [ID MÁQUINA: %s;"
+                    + "\nNOME MÁQUINA: %s;"
+                    + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"
+                    + "\nLIMITE RAM: %.2f; LEITURA DESEMPENHO RAM: %.2f;"
+                    + "\nLIMITE DISCO: %.2f; LEITURA DESEMPENHO DISCO: %.2f -> ESTÁVEL] ***\n\n",
+                    idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam,
+                    leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
+        }
+
+        return String.format("LOG: %d [ID MÁQUINA: %s;"
+                + "\nNOME MÁQUINA: %s;"
+                + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"
+                + "\nLIMITE RAM: %.2f; LEITURA DESEMPENHO RAM: %.2f;"
+                + "\nLIMITE DISCO: %.2f; LEITURA DESEMPENHO DISCO: %.2f -> PERFEITO] ***\n\n",
+                idLog, idMaquina, nomeMaquina, limiteAlertaCpu, leituraDesempenhoCpu, limiteAlertaRam,
+                leituraDesempenhoRam, limiteAlertaDisco, leituraDesempenhoDisco);
+    }
+
+}
 
 //    private Integer idLog;
 //    private Integer limiteAlertaCpu;

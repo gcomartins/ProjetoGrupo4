@@ -5,10 +5,9 @@ C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-jav
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\banco\H2.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\Maquina.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\Log.java
-C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\TesteLog.java
-C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\service\AvisoServices.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\Usuario.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\br\com\sptech\login\java\swing\ConexaoBanco.java
+C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\service\AlertasServices.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\br\com\sptech\login\java\swing\App.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\Componente.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\Alertas.java
@@ -17,4 +16,5 @@ C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-jav
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\br\com\sptech\login\java\swing\TesteLooca.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\slack\App.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\br\com\sptech\login\java\swing\LoginGui.java
+C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\modal\LogApp.java
 C:\Users\lmmelo1\Documents\GitHub\ProjetoGrupo4\LinguagemDeProgramacao\login-java-swing\src\main\java\data\cat\service\ModalServices.java
