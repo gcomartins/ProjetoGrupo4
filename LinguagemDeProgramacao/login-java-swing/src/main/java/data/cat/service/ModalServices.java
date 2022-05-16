@@ -108,7 +108,7 @@ public class ModalServices {
     }
 
     public void inserirProcessador(MedidasServices medidasServices) {
-       int cpu = 0;
+       int cpu = 3;
 
         listaComponentes = conexao.getConexao().query(
                 "select C.idComponentes,C.nome, C.limiteAlerta, C.fkMaquina "
@@ -123,8 +123,13 @@ public class ModalServices {
             }
         }
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, cpu);
+                + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, cpu);
     }
+<<<<<<< HEAD
+    
+    
+     public Double getLimiteBanco(String componente) {
+=======
 
     public double getDiscoBanco() {
 
@@ -163,6 +168,7 @@ public class ModalServices {
     }
 
     public Double getProcessadorBanco() {
+>>>>>>> ba056f6b198459baa76ece8dc6e828c7b24c6271
 
         listaComponentes = conexao.getConexao().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
@@ -172,7 +178,7 @@ public class ModalServices {
         Double processador = 0.0;
 
         for (int i = 0; i < listaComponentes.size(); i++) {
-            if (listaComponentes.get(i).getNome().equalsIgnoreCase("cpu")) {
+            if (listaComponentes.get(i).getNome().equalsIgnoreCase(componente)) {
                 processador = listaComponentes.get(i).getLimiteAlerta();
                 return processador;
             }

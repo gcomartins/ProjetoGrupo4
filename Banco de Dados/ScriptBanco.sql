@@ -79,7 +79,7 @@ fkLog int,
 constraint fkLog
 foreign key (fkLog) references tbLogs (idLog),
 categoria varchar(45) 
-check(categoria = "Moderado"  or categoria = "Alto" or categoria = "Severo" ),
+check(categoria = "Critico"  or categoria = "Alerta" or categoria = "Estavel" ),
 descrição varchar(255)
 );
 
@@ -147,6 +147,7 @@ select * from tbMaquinas;
 select * from tbEmpresas;
 select * from tbUsuarios;
 select * from tbComponentes;
+select * from tbAlertas;
 truncate table tbMaquinas;
 
 

@@ -4,7 +4,7 @@
 import br.com.sptech.login.java.swing.ConexaoBanco;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;
-import data.cat.modal.TesteLog;
+import data.cat.modal.LogApp;
 import data.cat.service.MedidasServices;
 import data.cat.service.ModalServices;
 import java.awt.Color;
@@ -15,7 +15,9 @@ import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.net.UnknownHostException;
 import java.time.temporal.TemporalQueries;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -389,9 +391,9 @@ public class App extends javax.swing.JFrame {
 
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
-        Double discoBanco = modalServices.getDiscoBanco();
-        Double ramBanco = modalServices.getRAMBanco();
-        Double processadorBanco = modalServices.getProcessadorBanco();
+        Double discoBanco = modalServices.getLimiteBanco("Disco");
+        Double ramBanco = modalServices.getLimiteBanco("Ram");
+        Double processadorBanco = modalServices.getLimiteBanco("Cpu");
         Double limiteAlertaRam = ramBanco;
         Double limiteAlertaCpu = processadorBanco;
         Double limiteAlertaDisco = discoBanco;
@@ -399,6 +401,16 @@ public class App extends javax.swing.JFrame {
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
             pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            
+            
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
+            pnlDisco.setBackground(new java.awt.Color(233, 209, 84));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
+            pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            
             lblUsoDisco.setText("Crítico");
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
             pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
@@ -449,9 +461,6 @@ public class App extends javax.swing.JFrame {
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Perfeito");
         }
-        
-        
-        
         
         //Worbanch
         modalServices.inserirDisco(medidasServices);
