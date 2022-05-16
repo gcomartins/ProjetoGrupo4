@@ -25,7 +25,7 @@ public class ConexaoBanco {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
         dataSource​.setUsername("root");
-        dataSource​.setPassword("Lucas7968");
+        dataSource​.setPassword("leticia1998");
         
 //        //AZURE
 //        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

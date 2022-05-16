@@ -135,8 +135,6 @@ public class ModalServices {
 
         Double disco = 0.0;
 
-        disco = listaComponentes.get(0).getLimiteAlerta();
-
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (listaComponentes.get(i).getNome().equalsIgnoreCase("Disco")) {
                 disco = listaComponentes.get(i).getLimiteAlerta();
