@@ -391,6 +391,8 @@ public class App extends javax.swing.JFrame {
 
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
+        LogApp log = new LogApp();
+        List<LogApp> logs = new ArrayList<>();
         
        
         Double discoBanco = modalServices.getLimiteBanco("Disco");
@@ -464,10 +466,16 @@ public class App extends javax.swing.JFrame {
             lblUsoCpu.setText("Perfeito");
         }
 
+        
         //Worbanch
         modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
+        
+        //Logs
+        log.gerarLog(logs);
+        
+        
 //        conexao.getConexao().execute("drop table if exists tbLogs");
 //
 //        conexao.getConexao().execute("Create table tbLogs ("
