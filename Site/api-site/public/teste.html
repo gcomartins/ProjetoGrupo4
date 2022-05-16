@@ -15,54 +15,51 @@
 </head>
 
 <body>
-
-                   <a href="#modalEditar"></a>
-                   <div id="modalEditar" class="modal">
-                       <div class="modalContent">
-                        <form action="" class="main-cadastro"id="form_upDate" class="main-cadastro" method="post" onsubmit="return upDate()">
-
-                        
-                            <div class="right_login">
-                              <div class="card-login">
-                                  <h1>Editar Funcionario</h1>
-                        
-                                <div class="textfield">
-                                    <Label>nomefuncionario</Label>
-                                    <input name="nomefuncionario" type="text" required len>
-                                </div>
-                        
-                                <div class="textfield">
-                                    <Label>cargo</Label>
-                                    <input name="cargo" type="text"  required >
-                                </div>
-                        
-                        
-                                <div class="textfield">
-                                    <Label>Email</Label>
-                                    <input name="email" type="text"  required >
-                                </div>
-
-
-                                <button class="btn-login">Editar</button>
-                        
-                              </div>
-                            </div>
-                          </form>
-                       </div>
-                       <a href="" class="modalLink">Ok</a>
-                   </div>
-
-
+<div class="wrapper">
+    <div class="advange">
+    <div class="advange_item face">
+        <div class="advange_content">
+            <div id="lista"></div>
+            teste
+        </div>
+    </div>
+    <div class="advange_item face2">
+        <div class="advange_content">
+            <br><br>
+            
+    
+            <form action="" id="form_upDateUsuario" method="post" onsubmit="return upDateUsuario()">
+                <label  for="">Id</label>
+                <input name="idUsuario" type="text"  maxlength="15">
+                <label  for="">Nome</label>
+                <input name="nomeUsuario" type="text"  maxlength="15">
+                <label for="">Permissão</label>
+                <select name="cargo" id="cargo"  maxlength="45">
+                    <option value="Técnico de Infraestrutura">Técnico de Infraestrutura</option>
+                    <option value="Gerente de Infraestrutura">Gerente de Infraestrutura</option>
+                    <option value="Gerente Bancário">Gerente Bancário</option>
+                    <option value="Bancário">Bancário</option>
+                </select> 
+                <label for="">Email</label>
+                <input name="email" id="email" type="email"  maxlength="45">
+                <label for="">Senha</label>
+                <input name="senha" id="senha" type="password"  maxlength="45">
+               
+                <a href="#" class="advange_link btn">Editar</a>
+                <br>
+            </form>
+            
+        </div>
+    </div>
+</div>
+</div>
                 
 
 </body>
 
 </html>
-
+<script src="./js/Listar.js"></script>
 <script>
-
-
-
     function upDate() {
 
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_upDate")));
