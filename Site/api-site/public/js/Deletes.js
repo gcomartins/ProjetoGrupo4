@@ -1,5 +1,8 @@
 function deletarUsuario(idUsuarioVar) {
     
+    var result = confirm('Deseja Deletar esse usuário?');
+    if(result == true){
+ 
     fetch("/usuarios/deletarUsuario", {
         method: "POST",
         headers: {
@@ -38,10 +41,10 @@ function deletarUsuario(idUsuarioVar) {
     }).catch(function (erro) {
         console.log(erro);
     })
-    
     return false;
     }
-    
+
+}
 
 function upDateMaquina() {
 

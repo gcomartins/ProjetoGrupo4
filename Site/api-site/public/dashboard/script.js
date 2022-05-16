@@ -81,7 +81,8 @@ function plotarGrafico(idGrafico) {
 	var datas = [];
 	var datasFormatadas = [];
 	var caminho = '';
-
+	var isTemp = false;
+	
 	switch (idGrafico) {
 		case 'graficoDisco':
 			caminho = `/usuarios/graficarDisco`;
@@ -97,6 +98,7 @@ function plotarGrafico(idGrafico) {
 		
 		case 'graficoTemp':
 			caminho = `/usuarios/graficarTemp`;
+			isTemp = true;
 			break;
 			
 		default:
@@ -123,7 +125,7 @@ function plotarGrafico(idGrafico) {
 					datasFormatadas.push(dataFormatada);
 					
 				}
-				gerarGrafico(idGrafico, dados, datasFormatadas);
+				gerarGrafico(idGrafico, dados, datasFormatadas, isTemp);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -137,7 +139,7 @@ function plotarGrafico(idGrafico) {
 	
 }
 
-function gerarGrafico(idGrafico, dados, datas){
+function gerarGrafico(idGrafico, dados, datas, isTemp){
 	const ctx = document.getElementById(idGrafico).getContext('2d');
 
 	let myChart = new Chart(ctx, {
@@ -146,7 +148,7 @@ function gerarGrafico(idGrafico, dados, datas){
 		data: {
 			labels: datas,
 			datasets: [{
-				label: 'Uso (em %)',
+				label: isTemp? "Graus celsius" : 'Uso (em %)',
 				data: dados,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.12)',
