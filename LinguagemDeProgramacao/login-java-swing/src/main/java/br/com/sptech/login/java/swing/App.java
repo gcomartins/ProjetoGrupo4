@@ -23,6 +23,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import org.apache.commons.math3.util.Precision;
 
 /**
  *
@@ -61,8 +62,8 @@ public class App extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblUsoDisco = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblUsoCpu = new javax.swing.JLabel();
+        lblUsoRam = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         menuDash = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
@@ -181,30 +182,30 @@ public class App extends javax.swing.JFrame {
         lblUsoDisco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUsoDisco.setText("Em Uso");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Em Uso");
-        jLabel1.setToolTipText("");
+        lblUsoCpu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblUsoCpu.setForeground(new java.awt.Color(51, 51, 51));
+        lblUsoCpu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsoCpu.setText("Em Uso");
+        lblUsoCpu.setToolTipText("");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Em Uso");
-        jLabel5.setToolTipText("");
+        lblUsoRam.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblUsoRam.setForeground(new java.awt.Color(51, 51, 51));
+        lblUsoRam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsoRam.setText("Em Uso");
+        lblUsoRam.setToolTipText("");
 
         javax.swing.GroupLayout pnlGeralLayout = new javax.swing.GroupLayout(pnlGeral);
         pnlGeral.setLayout(pnlGeralLayout);
         pnlGeralLayout.setHorizontalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
-                .addGap(185, 185, 185)
+                .addGap(210, 210, 210)
                 .addComponent(jLabel4)
-                .addGap(240, 240, 240)
-                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(222, 222, 222)
                 .addComponent(jLabel3)
-                .addGap(185, 185, 185))
+                .addGap(219, 219, 219))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +216,7 @@ public class App extends javax.swing.JFrame {
                     .addGroup(pnlGeralLayout.createSequentialGroup()
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlRam, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblUsoRam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(86, 86, 86)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblUsoDisco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,7 +224,7 @@ public class App extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblUsoCpu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(133, 133, 133))
         );
         pnlGeralLayout.setVerticalGroup(
@@ -242,8 +243,8 @@ public class App extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsoDisco)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5))
+                    .addComponent(lblUsoCpu)
+                    .addComponent(lblUsoRam))
                 .addGap(79, 79, 79)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,38 +411,55 @@ public class App extends javax.swing.JFrame {
             pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             
+            lblUsoDisco.setText("Crítico");
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
+            pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            lblUsoDisco.setText("Alerta");
+        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
+            pnlDisco.setBackground(new java.awt.Color(233, 209, 84));
+            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            lblUsoDisco.setText("Estável");
         } else {
             pnlDisco.setBackground(new java.awt.Color(87, 175, 80));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            lblUsoDisco.setText("Perfeito");
         }
         
         if (medidasServices.getRamEmUso()>= (limiteAlertaRam * 0.75)) {
             pnlRam.setBackground(new java.awt.Color(224, 52, 52));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
+            lblUsoRam.setText("Crítico");
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.5)) {
-            pnlRam.setBackground(new java.awt.Color(233, 209, 84));
-            lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
-        } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.25)) {
             pnlRam.setBackground(new java.awt.Color(233, 173, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
+            lblUsoRam.setText("Alerta");
+        } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.25)) {
+            pnlRam.setBackground(new java.awt.Color(233, 209, 84));
+            lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
+            lblUsoRam.setText("Estável");
         } else {
             pnlRam.setBackground(new java.awt.Color(87, 175, 80));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
+            lblUsoRam.setText("Perfeito");
         }
         
         if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.75)) {
             pnlCpu.setBackground(new java.awt.Color(224, 52, 52));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
-            
+            lblUsoCpu.setText("Crítico");
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.5)) {
-            pnlCpu.setBackground(new java.awt.Color(233, 209, 84));
-            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
-        } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.25)) {
             pnlCpu.setBackground(new java.awt.Color(233, 173, 84));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            lblUsoCpu.setText("Alerta");
+        } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.25)) {
+            pnlCpu.setBackground(new java.awt.Color(233, 209, 84));
+            lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            lblUsoCpu.setText("Estável");
         } else {
             pnlCpu.setBackground(new java.awt.Color(87, 175, 80));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            lblUsoCpu.setText("Perfeito");
         }
         
         //Worbanch
@@ -479,17 +497,17 @@ public class App extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnIniciar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblCpu;
     private javax.swing.JLabel lblDisco;
     private javax.swing.JLabel lblRam;
+    private javax.swing.JLabel lblUsoCpu;
     private javax.swing.JLabel lblUsoDisco;
+    private javax.swing.JLabel lblUsoRam;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuDash;
     private javax.swing.JMenu menuSair;
