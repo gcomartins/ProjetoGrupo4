@@ -152,16 +152,65 @@
 					<div class = "subscribe-right">
 						<form action="" id="form_cadastroMaquina" method="post" onsubmit="return cadastrarMaquina()">
 							<label for="">Identificador Máquina</label>
+							<input name="identPessoal" id="identPessoal" type="text" required maxlength="15">
+							<label for="">Hostname</label>
 							<input name="hostName" id="hostName" type="text" required maxlength="15">
 							<label for="">Grupo</label>
 							<input name="grupo" id="grupo" type="text" required maxlength="15">
-							<label for="">Componente</label>
-							<select name="nome" id="nome"  required maxlength="3">
-								<option value="Ram">RAM</option>
-								<option value="Cpu">CPU</option>
-								<option value="Disco">DISCO</option>
-							</select>
-							<label for="">Capacidade</label>
+
+							<div class="titulo-dados-componentes">
+								<label for="">Componente</label>
+								<label for="">Capacidade</label>
+								<label for="">Limite Alerta</label>
+							</div>
+
+							<div class="agrupamento-cadastro-componentes">
+								<div class="dados-componentes">
+									<select name="comp1" id="comp1"  required maxlength="5">
+										<option value="Ram">RAM</option>
+									</select>
+									<input name="capacidadeRam" id="capacidadeRam" type="number" required maxlength="45">
+									<select name="limiteAlertaRam" id="limiteAlertaRam" type="" required maxlength="15">
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+										<option value="100">100%</option>
+									</select>
+								</div>
+
+								<div class="dados-componentes">
+									<select name="comp2" id="comp2"  required maxlength="3">
+										<option value="Cpu">CPU</option>
+									</select>
+									<input name="capacidadeCpu" id="capacidadeCpu" type="number" required maxlength="45">
+									<select name="limiteAlertaCpu" id="limiteAlertaCpu" type="" required maxlength="15">
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+										<option value="100">100%</option>
+									</select>
+								</div>
+
+								<div class="dados-componentes">
+									<select name="comp3" id="comp3"  required maxlength="3">
+										<option value="Disco">DISCO</option>
+									</select>
+									<input name="capacidadeDisco" id="capacidadeDisco" type="number" required maxlength="45">
+									<select name="limiteAlertaDisco" id="limiteAlertaDisco" type="" required maxlength="15">
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+										<option value="100">100%</option>
+									</select>
+								</div>
+							</div>
+							<!-- <label for="">Capacidade</label>
 							<input name="capacidade" id="capacidade" type="number" required maxlength="45">
 							<label for="">Limite Alerta</label>
 							<select name="limiteAlerta" id="limiteAlerta" type="" required maxlength="15">
@@ -171,7 +220,7 @@
 								<option value="80">80%</option>
 								<option value="90">90%</option>
 								<option value="100">100%</option>
-							</select>
+							</select> -->
 							<input name="idEmpresa" id="idEmpresa" style="visibility: hidden;" >
 							<div class="space-btn">
 								<button class="btn"><h3><a>Cadastrar</a></h3></button>
@@ -306,7 +355,54 @@
 </body>
 
 </html>
-<script src="dashboard/script.js">
+<script>
+
+function cadastrarMaquina() {
+    var myInput = document.getElementById("idEmpresa");
+    myInput.value = sessionStorage.ID_EMPRESA;
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
+        
+        var identPessoal = formulario.get("identPessoal");
+        var hostName = formulario.get("hostName");
+        var grupo = formulario.get("grupo");
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        
+        
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (hostName == "" || grupo == "" || nome == "" || identPessoal == "" || idEmpresa == "" ) {
+        
+        window.alert("Preencha todos os campos para prosseguir!");
+            if (hostName == "" ) {
+                console.log("hostName está em branco!");
+            }
+            if (grupo == "") {
+                console.log('grupo está em branco')
+            }
+            if (nome == "") {
+                console.log("nome está em branco!");
+            }
+                return false;
+            }
+        
+        fetch("/usuarios/cadastrarMaquina", {
+        method: "POST",
+        body: formulario,
+        }).then(function (resposta) {
+        
+        console.log("resposta: ", resposta);
+        
+        if (resposta.ok) {
+            window.alert("Cadastro realizado com sucesso!");
+            limparFormulario2() 
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+        }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+    }
+
 // Get the modal
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
@@ -409,64 +505,15 @@ window.onclick = function(event) {
 		}
 	})
 
-
-
-	
-
-	function plotarGrafico(idGrafico) {
-
-		const ctx = document.getElementById(idGrafico).getContext('2d');
-		let myChart = new Chart(ctx, {
-			type: 'line',
-
-			data: {
-				labels: gerarDatas(),
-				datasets: [{
-					label: 'Desempenho',
-					data: gerarDados(),
-					backgroundColor: [
-						'rgba(255, 99, 132, 0.12)',
-					],
-					borderColor: [
-						'rgba(255, 99, 132, 1)',
-					],
-					borderWidth: 1
-				}]
-			},
-			options: {
-				scales: {
-					y: {
-						beginAtZero: true
-					}
-				}
-			}
-		});
-	}
-
-	function gerarDados() {
-		dados = [];
-		for (let index = 0; index < 30; index++) {
-			dados.push((Math.random() * 100).toFixed(0));
-		}
-		return dados;
-	}
-	function gerarDatas() {
-		datas = [];
-		for (let index = 0; index < 30; index++) {
-			datas.push((Math.random() * 23).toFixed(0) + ':' + (Math.random() * 59).toFixed(0) + ':' + (Math.random() * 59).toFixed(0));
-		}
-		return datas.sort();
-	}
-
 </script>
 
 <script src="./js/funcoes.js"></script>
 
-<script src="./js/Deletes.js"></script>
+<!-- <script src="./js/Deletes.js"></script> -->
 
-<script src="./js/upDates.js"></script>
+<!-- <script src="./js/upDates.js"></script> -->
 
 <script src="./js/Cadastrar.js"></script>
 
-<script src="./js/Listar.js"></script>
+<!-- <script src="./js/Listar.js"></script> -->
 
