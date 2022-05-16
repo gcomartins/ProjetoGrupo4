@@ -95,7 +95,7 @@ insert into tbEmpresas (nomeEmpresa, cnpj, representante, email, senha)values
 insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
 ("STFSAOC046893-L","GrupoA", 1),
 ("Mari","GrupoA",4),
-("LAPTOP-LU9R5MNA","grupoB",2),
+("Pieroni","grupoB",2),
 ("Leticia","GrupoA",3),
 ("Lara","grupoB",1),
 ("Larissa","GrupoB",3),

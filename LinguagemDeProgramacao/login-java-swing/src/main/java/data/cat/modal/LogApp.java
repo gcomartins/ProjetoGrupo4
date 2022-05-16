@@ -157,7 +157,10 @@ public class LogApp {
         if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.75
                 || leituraDesempenhoDisco >= limiteAlertaDisco * 0.75
                 || leituraDesempenhoRam >= limiteAlertaRam * 0.75) {
+            
+            // Inserir alerta
             alertasServices.inserirAlertas("Critico", idLog);
+            
             return String.format("LOG: %d [ID MÁQUINA: %s;"
                     + "\nNOME MÁQUINA: %s;"
                     + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"
@@ -168,6 +171,8 @@ public class LogApp {
         } else if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.5
                 || leituraDesempenhoDisco >= limiteAlertaDisco * 0.5
                 || leituraDesempenhoRam >= limiteAlertaRam * 0.5) {
+            
+            // Inserir alerta
             alertasServices.inserirAlertas("Alerta", idLog);
             return String.format("LOG: %d [ID MÁQUINA: %s;"
                     + "\nNOME MÁQUINA: %s;"
@@ -179,6 +184,8 @@ public class LogApp {
         } else if (leituraDesempenhoCpu >= limiteAlertaCpu * 0.25
                 || leituraDesempenhoDisco >= limiteAlertaDisco * 0.25
                 || leituraDesempenhoRam >= limiteAlertaRam * 0.25) {
+            
+            // Inserir alerta
             alertasServices.inserirAlertas("Estavel", idLog);
             return String.format("LOG: %d [ID MÁQUINA: %s;"
                     + "\nNOME MÁQUINA: %s;"

@@ -35,47 +35,47 @@ public class TesteLooca {
 //
 //        System.out.println(discosGroup.getVolumes());
 //
-        LogApp testeLog = new LogApp();
-        List<LogApp> logs = new ArrayList();
+//        LogApp log = new LogApp();
+//        List<LogApp> logs = new ArrayList();
+//        
+//        log.gerarLog(logs);
+//        
+//        System.out.println(logs);
+
+
+
+
+ ConexaoBanco conexao = new ConexaoBanco();
+        List<Componente> listaComponentes = new ArrayList<>();
+        List<Componente> listaComponentes2 = new ArrayList<>();
         
-        testeLog.gerarLog(logs);
+
+
+        listaComponentes = conexao.getConexao().query(
+                "select * from tbComponentes",
+                new BeanPropertyRowMapper<>(Componente.class));
         
-        System.out.println(logs);
-
-
-
-
-// ConexaoBanco conexao = new ConexaoBanco();
-//        List<Componente> listaComponentes = new ArrayList<>();
-//        List<Componente> listaComponentes2 = new ArrayList<>();
-//        
-//
-//
-//        listaComponentes = conexao.getConexao().query(
-//                "select * from tbComponentes",
-//                new BeanPropertyRowMapper<>(Componente.class));
-//        
-//         listaComponentes2 = conexao.getConexao().query(
-//                "select C.idComponentes ,C.nome, C.limiteAlerta, C.fkMaquina from "
-//                        + "tbComponentes as C join tbMaquinas as M "
-//                        + "on C.fkMaquina = M.idMaquina where  "
-//                        + "hostName = 'STFSAOC046893-L'",
-//                new BeanPropertyRowMapper<>(Componente.class));
-//        
-//        
-//        ModalServices modalServices = new ModalServices();
-//        MedidasServices medidasServices = new MedidasServices();
-//        System.out.println(listaComponentes);
-//        System.out.println(listaComponentes.get(0).getLimiteAlerta());
-//        System.out.println(listaComponentes.get(0).getLimiteAlerta());
-//        System.out.println(listaComponentes.get(0).getidComponentes());
-//        System.out.println(InetAddress.getLocalHost().getHostName());
-//        System.out.println(listaComponentes2);
-//        
-//        
-//        System.out.println(modalServices.getLimiteBanco("Disco"));
-//        System.out.println(modalServices.getLimiteBanco("Ram"));
-//        System.out.println(modalServices.getLimiteBanco("CPU"));
+         listaComponentes2 = conexao.getConexao().query(
+                "select C.idComponentes ,C.nome, C.limiteAlerta, C.fkMaquina from "
+                        + "tbComponentes as C join tbMaquinas as M "
+                        + "on C.fkMaquina = M.idMaquina where  "
+                        + "hostName = 'STFSAOC046893-L'",
+                new BeanPropertyRowMapper<>(Componente.class));
+        
+        
+        ModalServices modalServices = new ModalServices();
+        MedidasServices medidasServices = new MedidasServices();
+        System.out.println(listaComponentes);
+        System.out.println(listaComponentes.get(0).getLimiteAlerta());
+        System.out.println(listaComponentes.get(0).getLimiteAlerta());
+        System.out.println(listaComponentes.get(0).getidComponentes());
+        System.out.println(InetAddress.getLocalHost().getHostName());
+        System.out.println(listaComponentes2);
+        
+        
+        System.out.println(modalServices.getLimiteBanco("Disco"));
+        System.out.println(modalServices.getLimiteBanco("Ram"));
+        System.out.println(modalServices.getLimiteBanco("CPU"));
 //        
         
 
