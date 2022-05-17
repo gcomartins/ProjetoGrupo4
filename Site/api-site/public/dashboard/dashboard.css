@@ -196,6 +196,9 @@ body {
 	left: 60px;
 }
 
+#date{
+	margin-left: 2rem;
+}
 
 
 
@@ -253,7 +256,7 @@ body {
 	height: 100%;
 	border: none;
 	background: var(--grey);
-	border-radius: 36px 0 0 36px;
+	border-radius: 36px ;
 	outline: none;
 	width: 100%;
 	color: var(--dark);

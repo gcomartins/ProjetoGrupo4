@@ -47,6 +47,7 @@ function cadastrarUsuario() {
         window.alert("Cadastro realizado com sucesso!");
         limparFormulario1();
         finalizarAguardar();
+        listar();
     } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
     }
@@ -64,16 +65,14 @@ function cadastrarMaquina() {
     myInput.value = sessionStorage.ID_EMPRESA;
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
         
+        var identPessoal = formulario.get("identPessoal");
         var hostName = formulario.get("hostName");
         var grupo = formulario.get("grupo");
-        var nome = formulario.get("nome");
-        var capacidade = formulario.get("capacidade");
-        var limiteAlerta = formulario.get("limiteAlerta");
         var idEmpresa = sessionStorage.ID_EMPRESA;
         
         
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (hostName == "" || grupo == "" || nome == "" || capacidade == "" || limiteAlerta == "" ) {
+        if (hostName == "" || grupo == "" || nome == "" || identPessoal == "" || idEmpresa == "" ) {
         
         window.alert("Preencha todos os campos para prosseguir!");
             if (hostName == "" ) {
@@ -85,13 +84,6 @@ function cadastrarMaquina() {
             if (nome == "") {
                 console.log("nome está em branco!");
             }
-            if (capacidade == "") {
-                console.log('capacidade está em branco')
-            }
-            if (limiteAlerta == "" || grupo == "" ) {
-                console.log("limiteAlerta está em branco!");
-            }
-            
                 return false;
             }
         
@@ -111,6 +103,24 @@ function cadastrarMaquina() {
         }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
         });
+
+        fetch("/usuarios/cadastrarComponente", {
+            method: "POST",
+            body: formulario,
+            }).then(function (resposta) {
+            
+            console.log("resposta: ", resposta);
+            
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                limparFormulario2() 
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+            }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            });
+            
         return false;
     }
 

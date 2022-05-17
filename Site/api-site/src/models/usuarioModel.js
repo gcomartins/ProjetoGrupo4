@@ -99,32 +99,14 @@ function cadastrarFuncionario(nomeUsuario, email, senha, cargo, idEmpresa) {
     return database.executar(instrucao);
 }
 
-function cadastrarMaquina(hostName, grupo, nome, capacidade,limiteAlerta, idEmpresa) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, grupo, nome, capacidade,limiteAlerta, idEmpresa);
+function cadastrarMaquina(identPessoal, hostName, grupo, idEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, identPessoal, grupo, idEmpresa);
     var instrucao = `
-        INSERT INTO tbMaquinasComponentes (hostName, grupo, nome, capacidade,limiteAlerta) VALUES ('${hostName}', '${grupo}', '${nome}', '${capacidade}', '${limiteAlerta}', '${idEmpresa}');
+        INSERT INTO tbMaquinas (identPessoal, hostName, grupo, fkEmpresa) VALUES ('${identPessoal}', '${hostName}', '${grupo}', ${idEmpresa});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-
-// function cadastrarConvite(email, fkanfitriao) {
-//     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", email, fkanfitriao);
-//     var instrucao = `
-//         INSERT INTO usuario (email, fkanfitriao) VALUES ('${email}', ${fkanfitriao});
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//     return database.executar(instrucao);
-// }
-
-// function ranquear(id, pontos) {
-//     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function ranquear():", id, pontos);
-//     var instrucao = `
-//         INSERT INTO Ranking (fkusuario, pontos) VALUES ('${id}', '${pontos}');
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//     return database.executar(instrucao);
-// }
 
 function graficar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function graficar():",);

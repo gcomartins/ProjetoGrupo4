@@ -160,12 +160,34 @@ function cadastrarUsuario(req, res) {
 function cadastrarMaquina(req, res) {
     var hostName = req.body.hostName;
     var grupo = req.body.grupo;
-    var nome = req.body.nome;
-    var capacidade = req.body.capacidade;
-    var limiteAlerta = req.body.limiteAlerta;
+    var identPessoal = req.body.identPessoal;
     var idEmpresa = req.body.idEmpresa;
 
-        usuarioModel.cadastrarMaquina(hostName, grupo, nome, capacidade, limiteAlerta, idEmpresa)
+        usuarioModel.cadastrarMaquina(identPessoal, hostName, grupo, idEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    
+}
+
+function cadastrarComponente(req, res) {
+    var nome = req.body.componente;
+    var capacidade = req.body.capacidade;
+    var limiteAlerta = req.body.limiteAlerta;
+    var fkMaquina = req.body.idMaquina;
+
+        usuarioModel.cadastrarMaquina(identPessoal, hostName, grupo, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -469,4 +491,5 @@ module.exports = {
     graficarMemoria,
     graficarCpu,
     graficarTemp,
+    cadastrarComponente
 }

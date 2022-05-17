@@ -39,6 +39,9 @@ router.post("/upDateMaquina", function (req, res) {
 router.post("/cadastrarMaquina", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 });
+router.post("/cadastrarComponente", function (req, res) {
+    usuarioController.cadastrarMaquina(req, res);
+});
 
 
 // router.post("/cadastrarConvite", function (req, res) {

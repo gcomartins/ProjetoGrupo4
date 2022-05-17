@@ -5,6 +5,7 @@ package br.com.sptech.aplication;
 //import com.github.britooo.looca.api.group.discos.Disco;
 //import data.cat.modal.Alertas;
 //import data.cat.modal.LogApp;
+import data.cat.modal.LogApp;
 import data.cat.service.AlertasServices;
 import data.cat.service.MedidasServices;
 import data.cat.service.ModalServices;
@@ -15,6 +16,8 @@ import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 //import java.time.temporal.TemporalQueries;
 //import java.util.ArrayList;
 //import java.util.Date;
@@ -468,16 +471,29 @@ public class App extends javax.swing.JFrame {
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Perfeito");
         }
+
         
          
+
+
+        
+
         //Worbanch
         modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
 
-       
 
-//        log.gerarLog(logs);
+       
+        //Logs
+        //log.gerarLog(logs);
+
+        
+        
+
+        
+        
+
 //        conexao.getConexao().execute("drop table if exists tbLogs");
 //
 //        conexao.getConexao().execute("Create table tbLogs ("
