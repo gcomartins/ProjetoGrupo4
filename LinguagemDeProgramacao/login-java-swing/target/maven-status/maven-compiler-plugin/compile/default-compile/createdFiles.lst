@@ -17,7 +17,6 @@ br\com\sptech\login\java\swing\App.class
 data\cat\modal\Log.class
 data\cat\modal\Usuario.class
 br\com\sptech\login\java\swing\LoginGui$6.class
-.netbeans_automatic_build
 data\cat\modal\Componente.class
 br\com\sptech\login\java\swing\LoginGui$7.class
 data\cat\service\ModalServices.class

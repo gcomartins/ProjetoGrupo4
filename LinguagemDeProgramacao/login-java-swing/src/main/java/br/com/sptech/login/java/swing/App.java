@@ -23,7 +23,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
-import org.apache.commons.math3.util.Precision;
+// import org.apache.commons.math3.util.Precision;
 
 /**
  *
@@ -391,6 +391,10 @@ public class App extends javax.swing.JFrame {
 
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
+        LogApp log = new LogApp();
+        List<LogApp> logs = new ArrayList<>();
+        
+       
         Double discoBanco = modalServices.getLimiteBanco("Disco");
         Double ramBanco = modalServices.getLimiteBanco("Ram");
         Double processadorBanco = modalServices.getLimiteBanco("Cpu");
@@ -461,11 +465,17 @@ public class App extends javax.swing.JFrame {
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Perfeito");
         }
+
         
         //Worbanch
         modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
+        
+        //Logs
+        log.gerarLog(logs);
+        
+        
 //        conexao.getConexao().execute("drop table if exists tbLogs");
 //
 //        conexao.getConexao().execute("Create table tbLogs ("

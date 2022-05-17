@@ -124,63 +124,20 @@ public class ModalServices {
         }
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, cpu);
-    }
-<<<<<<< HEAD
-    
-    
-     public Double getLimiteBanco(String componente) {
-=======
-
-    public double getDiscoBanco() {
-
-        listaComponentes = conexao.getConexao().query(
-                "select C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
-                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
-                new BeanPropertyRowMapper<>(Componente.class));
-
-        Double disco = 0.0;
-
-        for (int i = 0; i < listaComponentes.size(); i++) {
-            if (listaComponentes.get(i).getNome().equalsIgnoreCase("Disco")) {
-                disco = listaComponentes.get(i).getLimiteAlerta();
-                return disco;
-            }
-        }
-        return 0.0;
-    }
-
-    public Double getRAMBanco() {
-
-        listaComponentes = conexao.getConexao().query(
-                "select C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
-                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
-                new BeanPropertyRowMapper<>(Componente.class));
-
-        Double ram = 0.0;
-
-        for (int i = 0; i < listaComponentes.size(); i++) {
-            if (listaComponentes.get(i).getNome().equalsIgnoreCase("Ram")) {
-                ram = listaComponentes.get(i).getLimiteAlerta();
-                return ram;
-            }
-        }
-        return 0.0;
-    }
-
-    public Double getProcessadorBanco() {
->>>>>>> ba056f6b198459baa76ece8dc6e828c7b24c6271
-
-        listaComponentes = conexao.getConexao().query(
+    }    
+    public Double getLimiteBanco(String componente)
+    {
+         listaComponentes = conexao.getConexao().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
-        Double processador = 0.0;
+        Double dado = 0.0;
 
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (listaComponentes.get(i).getNome().equalsIgnoreCase(componente)) {
-                processador = listaComponentes.get(i).getLimiteAlerta();
-                return processador;
+                dado = listaComponentes.get(i).getLimiteAlerta();
+                return dado;
             }
         }
 

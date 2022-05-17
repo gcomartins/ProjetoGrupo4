@@ -88,12 +88,13 @@
 			<!-- <span class="material-icons-sharp"> -->
 				
 				
-			<a href="#" class="nav-link">Categorias</a>
+			
 			<form action="#">
 				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-					
+				<select name="" id="maquinas_select">
+					<option value="">Pesquisar maquinas</option>
+				</select>	
+			<input type="date" id="date">		
 				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
@@ -351,6 +352,23 @@
 	<!-- <script src="script.js"></script> -->
 </body>
 </html>
+
+<script>
+	fetch(`/maquinas/listar-todas/${sessionStorage.ID_EMPRESA}`,{
+		method: "GET"
+	}).then((response) => {
+		if (response.ok) {
+			response.json().then((json) => {
+				console.log(json);
+				for (let i = 0; i < json.length; i++) {
+					maquinas_select.innerHTML += `<option value="">${json[i].hostName}</option>`
+					
+				}
+			})
+		}
+	})
+</script>
+ 
 <script src="script.js">
 	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
