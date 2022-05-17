@@ -47,6 +47,7 @@ function cadastrarUsuario() {
         window.alert("Cadastro realizado com sucesso!");
         limparFormulario1();
         finalizarAguardar();
+        listar();
     } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
     }

@@ -1160,6 +1160,22 @@ span #editar-div.icons{
 		position: relative;
 		left: 3rem;
 	}
+	#content .box-informacoes-cadastradas .title-id{
+		position: relative;
+		left: -3rem;
+	}
+	#content .box-informacoes-cadastradas .title-nome{
+		position: relative;
+		left: 3rem;
+	}
+	#content .box-informacoes-cadastradas .title-cargo{
+		position: relative;
+		left: 3rem;
+	}
+	#content .box-informacoes-cadastradas .title-email{
+		position: relative;
+		left: 3rem;
+	}
 
 	#content .box-informacoes-cadastradas .titulos .img-edit{
 		width: 35px;
