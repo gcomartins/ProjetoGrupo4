@@ -53,10 +53,8 @@ public class LogApp {
 
     }
 
-    public void gerarLog(List<LogApp> testeLogs) {
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
+    public void gerarLog(List<LogApp> testeLogs) {       
+            
                 String caminho = "C:\\Users\\lmmelo1\\Desktop\\log.txt";
                 try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true))) {
                     LogApp newTesteLog = new LogApp();
@@ -74,9 +72,7 @@ public class LogApp {
                 } catch (Exception e) {
                     e.getMessage();
                 }
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 5000);
+            
     }
 
     public Integer getIdLog() {
@@ -159,7 +155,7 @@ public class LogApp {
                 || leituraDesempenhoRam >= limiteAlertaRam * 0.75) {
             
             // Inserir alerta
-            alertasServices.inserirAlertas("Critico", idLog);
+//            alertasServices.inserirAlertas("Critico", idLog);
             
             return String.format("LOG: %d [ID MÁQUINA: %s;"
                     + "\nNOME MÁQUINA: %s;"
@@ -173,7 +169,7 @@ public class LogApp {
                 || leituraDesempenhoRam >= limiteAlertaRam * 0.5) {
             
             // Inserir alerta
-            alertasServices.inserirAlertas("Alerta", idLog);
+//            alertasServices.inserirAlertas("Alerta", idLog);
             return String.format("LOG: %d [ID MÁQUINA: %s;"
                     + "\nNOME MÁQUINA: %s;"
                     + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"
@@ -186,7 +182,7 @@ public class LogApp {
                 || leituraDesempenhoRam >= limiteAlertaRam * 0.25) {
             
             // Inserir alerta
-            alertasServices.inserirAlertas("Estavel", idLog);
+//            alertasServices.inserirAlertas("Estavel", idLog);
             return String.format("LOG: %d [ID MÁQUINA: %s;"
                     + "\nNOME MÁQUINA: %s;"
                     + "\nLIMITE CPU: %.2f; LEITURA DESEMPENHO CPU: %.2f;"

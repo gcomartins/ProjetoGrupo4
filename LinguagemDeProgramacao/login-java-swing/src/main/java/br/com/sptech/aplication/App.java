@@ -1,10 +1,11 @@
- package br.com.sptech.login.java.swing;
+package br.com.sptech.aplication;
 
-
-import br.com.sptech.login.java.swing.ConexaoBanco;
-import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.discos.Disco;
-import data.cat.modal.LogApp;
+//import data.cat.banco.ConexaoBanco;
+//import com.github.britooo.looca.api.core.Looca;
+//import com.github.britooo.looca.api.group.discos.Disco;
+//import data.cat.modal.Alertas;
+//import data.cat.modal.LogApp;
+import data.cat.service.AlertasServices;
 import data.cat.service.MedidasServices;
 import data.cat.service.ModalServices;
 import java.awt.Color;
@@ -14,10 +15,10 @@ import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.net.UnknownHostException;
-import java.time.temporal.TemporalQueries;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+//import java.time.temporal.TemporalQueries;
+//import java.util.ArrayList;
+//import java.util.Date;
+//import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -388,36 +389,31 @@ public class App extends javax.swing.JFrame {
     }
 
     private void lerDados() throws UnknownHostException {
-
+//        LogApp log = new LogApp();
+//        List<LogApp> logs = new ArrayList<>();
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
-        
-       
         Double discoBanco = modalServices.getLimiteBanco("Disco");
         Double ramBanco = modalServices.getLimiteBanco("Ram");
         Double processadorBanco = modalServices.getLimiteBanco("Cpu");
         Double limiteAlertaRam = ramBanco;
         Double limiteAlertaCpu = processadorBanco;
         Double limiteAlertaDisco = discoBanco;
+        AlertasServices alertas = new AlertasServices();
+        
         
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
             pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
-            
-            
-        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
-            pnlDisco.setBackground(new java.awt.Color(233, 209, 84));
-            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
-            
-        } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
-            pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
-            lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
-            
             lblUsoDisco.setText("Crítico");
+            //CRITICO
+            alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
             pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             lblUsoDisco.setText("Alerta");
+            //ALERTA
+            alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
             pnlDisco.setBackground(new java.awt.Color(233, 209, 84));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
@@ -427,15 +423,18 @@ public class App extends javax.swing.JFrame {
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             lblUsoDisco.setText("Perfeito");
         }
-        
-        if (medidasServices.getRamEmUso()>= (limiteAlertaRam * 0.75)) {
+        if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.75)) {
             pnlRam.setBackground(new java.awt.Color(224, 52, 52));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
             lblUsoRam.setText("Crítico");
+            //CRITICO
+            alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.5)) {
             pnlRam.setBackground(new java.awt.Color(233, 173, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
             lblUsoRam.setText("Alerta");
+            //ALERTA
+            alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.25)) {
             pnlRam.setBackground(new java.awt.Color(233, 209, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
@@ -445,29 +444,40 @@ public class App extends javax.swing.JFrame {
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
             lblUsoRam.setText("Perfeito");
         }
-        
         if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.75)) {
             pnlCpu.setBackground(new java.awt.Color(224, 52, 52));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Crítico");
+            //CRITICO
+            alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
+
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.5)) {
             pnlCpu.setBackground(new java.awt.Color(233, 173, 84));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Alerta");
+            //CRITICO
+            alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
+            
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.25)) {
             pnlCpu.setBackground(new java.awt.Color(233, 209, 84));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Estável");
+
         } else {
             pnlCpu.setBackground(new java.awt.Color(87, 175, 80));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Perfeito");
         }
-
+        
+         
         //Worbanch
         modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
+
+       
+
+//        log.gerarLog(logs);
 //        conexao.getConexao().execute("drop table if exists tbLogs");
 //
 //        conexao.getConexao().execute("Create table tbLogs ("
@@ -479,7 +489,6 @@ public class App extends javax.swing.JFrame {
 //                //            "constraint fkComponente " +
 //                //            "foreign key (fkComponente) references tbComponentes (idComponentes)" +
 //                ");");
-        
 //        //H2
 //        conexao.getConexao().update("insert into tbLogs "
 //                + "values(null, ?)", usoDisco);
@@ -487,13 +496,11 @@ public class App extends javax.swing.JFrame {
 //                + "values(null, ?)", memoriaUsada);
 //        conexao.getConexao().update("insert into tbLogs "
 //                + "values(null, ?)", usoProcessador);
-
 //        List<Map<String, Object>> tbLogs = conexao
 //                .getConexao()
 //                .queryForList("select * from tbLogs");
 //
 //        System.out.println(tbLogs);
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -518,31 +525,36 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel pnlGeral;
     private javax.swing.JPanel pnlRam;
     // End of variables declaration//GEN-END:variables
-    
-    class RoundedPanel extends JPanel
-    {
+
+    class RoundedPanel extends JPanel {
+
         private Color backgroundColor;
         private int cornerRadius = 15;
+
         public RoundedPanel(LayoutManager layout, int radius) {
             super(layout);
             cornerRadius = radius;
         }
+
         public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
             super(layout);
             cornerRadius = radius;
             backgroundColor = bgColor;
         }
+
         public RoundedPanel(int radius) {
             super();
             cornerRadius = radius;
-            
+
         }
+
         public RoundedPanel(int radius, Color bgColor) {
             super();
             cornerRadius = radius;
             backgroundColor = bgColor;
-            
+
         }
+
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -557,12 +569,11 @@ public class App extends javax.swing.JFrame {
             } else {
                 graphics.setColor(getBackground());
             }
-            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
+            graphics.fillRoundRect(0, 0, width - 1, height - 1, arcs.width, arcs.height); //paint background
             graphics.setColor(getForeground());
 //            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
 //             
-        }   
+        }
     }
-
 
 }

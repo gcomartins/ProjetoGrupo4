@@ -1,4 +1,4 @@
-package data.cat.applicattion;
+package br.com.sptech.aplication;
 
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.Disco;

@@ -4,9 +4,9 @@
  */
 package data.cat.service;
 
-import br.com.sptech.login.java.swing.App;
-import br.com.sptech.login.java.swing.ConexaoBanco;
-import br.com.sptech.login.java.swing.LoginGui;
+import br.com.sptech.aplication.App;
+import data.cat.banco.ConexaoBanco;
+import br.com.sptech.aplication.LoginGui;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
@@ -55,9 +55,6 @@ public class ModalServices {
         this.idLog = log++;
         this.idMaquina = InetAddress.getLocalHost().getHostAddress();
         this.nomeMaquina = InetAddress.getLocalHost().getHostName();
-        this.limiteAlertaCpu = 80;
-        this.limiteAlertaRam = 80;
-        this.limiteAlertaDisco = 80;
         this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
         this.leituraDesempenhoRam = medidasServices.getRamEmUso();
         this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
@@ -70,7 +67,7 @@ public class ModalServices {
     LoginGui label = new LoginGui();
 
     public void inserirDisco(MedidasServices medidasServices) {
-        int disco = 1;
+        int disco = 0;
 
         listaComponentes = conexao.getConexao().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
@@ -83,9 +80,10 @@ public class ModalServices {
 
             }
         }
-
         conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, disco);
+        
+        
     }
 
     public void inserirRAM(MedidasServices medidasServices) {

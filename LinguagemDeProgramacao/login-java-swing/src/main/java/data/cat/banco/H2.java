@@ -4,7 +4,6 @@
  */
 package data.cat.banco;
 
-import br.com.sptech.login.java.swing.ConexaoBanco;
 import data.cat.modal.Componente;
 import data.cat.service.ModalServices;
 import java.net.InetAddress;

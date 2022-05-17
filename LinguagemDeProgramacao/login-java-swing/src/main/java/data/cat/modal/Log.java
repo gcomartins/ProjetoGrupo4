@@ -12,26 +12,26 @@ import java.util.Date;
  */
 public class Log {
 
-    private Long idLog;
+    private Integer idLog;
     private Double leituraDesempenho;
     private Date dataHora;
-    private Long fkComponente;
+    private Integer fkComponente;
 
     public Log() {
     }
 
-    public Log(Long idLog, Double leituraDesempenho, Date dataHora, Long componente) {
+    public Log(Integer idLog, Double leituraDesempenho, Date dataHora, Integer componente) {
         this.idLog = idLog;
         this.leituraDesempenho = leituraDesempenho;
         this.dataHora = dataHora;
         this.fkComponente = componente;
     }
 
-    public Long getIdLog() {
+    public Integer getIdLog() {
         return idLog;
     }
 
-    public void setIdLog(Long idLog) {
+    public void setIdLog(Integer idLog) {
         this.idLog = idLog;
     }
 
@@ -51,11 +51,11 @@ public class Log {
         this.dataHora = dataHora;
     }
 
-    public Long getComponente() {
+    public Integer getComponente() {
         return fkComponente;
     }
 
-    public void setComponente(Long componente) {
+    public void setComponente(Integer componente) {
         this.fkComponente = componente;
     }
 
