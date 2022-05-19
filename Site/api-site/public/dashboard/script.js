@@ -76,6 +76,8 @@ switchMode.addEventListener('change', function () {
 })
 
 function plotarGrafico(idGrafico) {
+
+	
 		
 	var dados = [];
 	var datas = [];
@@ -127,6 +129,7 @@ function plotarGrafico(idGrafico) {
 				}
 				gerarGrafico(idGrafico, dados, datasFormatadas, isTemp);
             });
+			carregarDadosDoGrafico();
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
         }
@@ -140,35 +143,40 @@ function plotarGrafico(idGrafico) {
 }
 
 function gerarGrafico(idGrafico, dados, datas, isTemp){
-	const ctx = document.getElementById(idGrafico).getContext('2d');
+			const ctx = document.getElementById(idGrafico).getContext('2d');
 
-	let myChart = new Chart(ctx, {
-		type: 'line',
-
-		data: {
-			labels: datas,
-			datasets: [{
-				label: isTemp? "Graus celsius" : 'Uso (em %)',
-				data: dados,
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.12)',
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						max: 100,
-						min: 0,
-						stepSize: 25
+			let myChart = new Chart(ctx, {
+				type: 'line',
+		
+				data: {
+					labels: datas,
+					datasets: [{
+						label: isTemp? "Graus celsius" : 'Uso (em %)',
+						data: dados,
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.12)',
+						],
+						borderColor: [
+							'rgba(255, 99, 132, 1)',
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							ticks: {
+								max: 100,
+								min: 0,
+								stepSize: 25
+							}
+						}],
 					}
-				}],
-			}
-		}
-	});
+				}
+			});
+
+}
+
+function carregarDadosDoGrafico(){
+gerarGrafico();
 }

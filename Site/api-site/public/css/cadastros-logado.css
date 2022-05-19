@@ -1084,18 +1084,15 @@ span #editar-div.icons{
 	color: var(--dark);
 	cursor: pointer;
 }
+
+
  #deletar-div-func{
 	position: relative;
 	right: 5rem;
 	bottom: 1rem;
 }
-#content .icon-delete{
-	background-color: #A4161A;
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
-	position: relative;
-	left: 4rem;
+#content .box-informacoes-cadastradas span:hover{
+	color: #A4161A;
 	
 }
 /* #content .material-icons-sharp {
@@ -1247,17 +1244,29 @@ span #editar-div.icons{
 
 	#content main .box-subscribe{
 		height: 90vh;
-	}
+	}	
 	
-	#content .box-info-funcionario h1{
-		font-size: 100%;
-		text-align: left;
-	}
 
-	#content .box-info-funcionario h1{
+	#content .box-info-funcionario h1.id{
 		font-size: 90%;
 		text-align: left;
 	} 
+
+	#content .box-info-funcionario h1.nome{
+		font-size: 90%;
+		text-align: left;
+	} 
+
+	#content .box-info-funcionario h1.email{
+		font-size: 90%;
+		text-align: left;
+	} 
+
+	#content .box-info-funcionario h1.cargo{
+		font-size: 90%;
+		text-align: left;
+	} 
+
 
 	#content .box-info-funcionario .identificacao{
 		margin-left: 3rem;

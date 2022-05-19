@@ -47,10 +47,10 @@ function deletarMaquina(idMaquinaComponentes,nome) {
     return database.executar(instrucao);
 }
 
-function upDateUsuario(idUsuario,nomeUsuario, sobrenomeUsuario,email,senha,cargo) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function upDateUsuario(): ",idUsuario,nomeUsuario, sobrenomeUsuario,email,senha,cargo)
+function upDateUsuario(nomeUsuario,email,senha,cargo,idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function upDateUsuario(): ",nomeUsuario,email,senha,cargo,idUsuario)
     var instrucao = `
-    UPDATE tbUsuarios SET nomeUsuario = '${nomeUsuario}', sobrenomeUsuario = '${sobrenomeUsuario}', cargo = '${cargo}', email = '${email}',senha = '${senha}' WHERE idUsuario = ${idUsuario}; `
+    UPDATE tbUsuarios SET nomeUsuario = '${nomeUsuario}', cargo = '${cargo}', email = '${email}',senha = '${senha}' WHERE idUsuario = ${idUsuario}; `
     ;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
