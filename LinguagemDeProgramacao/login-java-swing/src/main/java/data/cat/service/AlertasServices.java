@@ -5,7 +5,8 @@
 package data.cat.service;
 
 import com.github.britooo.looca.api.core.Looca;
-import data.cat.banco.ConexaoBanco;
+import data.cat.banco.ConexaoAzure;
+import data.cat.banco.ConexaoMysql;
 import data.cat.modal.Componente;
 import data.cat.modal.Log;
 import data.cat.modal.LogApp;
@@ -21,7 +22,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
  * @author lmmelo1
  */
 public class AlertasServices {
-    ConexaoBanco conexao;
+    ConexaoAzure conexaoAzure;
+    ConexaoMysql conexaoMysql;
     MedidasServices medidaslServices;
     List<Log> logs;
 
@@ -29,7 +31,8 @@ public class AlertasServices {
 
     public AlertasServices() throws UnknownHostException {
         medidaslServices = new MedidasServices();
-        conexao = new ConexaoBanco();
+        conexaoAzure = new ConexaoAzure();
+        conexaoMysql = new ConexaoMysql();
         logs = new ArrayList<>();
         nomeMaquina = InetAddress.getLocalHost().getHostName();
     }
@@ -38,7 +41,7 @@ public class AlertasServices {
 
         Integer idLog;
 
-        logs = conexao.getConexao().query(""
+        logs = conexaoAzure.getConexaoAzure().query(""
                 + "select L.idLog, C.nome, C.idComponentes, M.hostName,"
                 + " M.idMaquina from[dbo].[tbComponentes]" 
                 + " as C  inner join[dbo].[tbLogs] as L" 
@@ -49,7 +52,11 @@ public class AlertasServices {
         
         idLog = logs.get(0).getIdLog();
 
-        conexao.getConexao().update("insert into tbAlertas"
+        conexaoAzure.getConexaoAzure().update("insert into tbAlertas"
+                + " (fkLog, categoria, descrição) values(?, ?, '*******')",
+                idLog, categoria);
+        
+        conexaoMysql.getConexaoMysql().update("insert into tbAlertas"
                 + " (fkLog, categoria, descrição) values(?, ?, '*******')",
                 idLog, categoria);
     }

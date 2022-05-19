@@ -1,6 +1,6 @@
 package br.com.sptech.login.java.swing;
 
-import data.cat.banco.ConexaoBanco;
+import data.cat.banco.ConexaoAzure;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
@@ -77,10 +77,10 @@ public class TesteLooca {
         
 
 
-        ConexaoBanco conexao = new ConexaoBanco();
+        ConexaoAzure conexao = new ConexaoAzure();
         List<Log> logs = new ArrayList<>();
         
-        logs = conexao.getConexao().query(""
+        logs = conexao.getConexaoAzure().query(""
                 + "select L.idLog, C.nome, C.idComponentes, M.hostName,"
                 + " M.idMaquina from[dbo].[tbComponentes]" 
                 + " as C  inner join[dbo].[tbLogs] as L" 

@@ -1,5 +1,6 @@
 package data.cat.modal;
 
+import br.com.sptech.aplication.App;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
@@ -15,6 +16,8 @@ import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LogApp {
 
@@ -54,7 +57,8 @@ public class LogApp {
     }
 
     public void gerarLog(List<LogApp> testeLogs) {       
-            
+             
+         
                 String caminho = "C:\\Users\\lmmelo1\\Desktop\\log.txt";
                 try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true))) {
                     LogApp newTesteLog = new LogApp();

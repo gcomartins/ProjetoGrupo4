@@ -20,16 +20,16 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 public class H2 {
 
     public static void main(String[] args) throws UnknownHostException {
-        ConexaoBanco conexao = new ConexaoBanco();
+        ConexaoAzure conexao = new ConexaoAzure();
 
-        conexao.getConexao().execute("drop table if exists tbEmpresas");
-        conexao.getConexao().execute("drop table if exists tbMaquinas");
-        conexao.getConexao().execute("drop table if exists tbUsuarios");
-        conexao.getConexao().execute("drop table if exists tbComponentes");
-        conexao.getConexao().execute("drop table if exists tbLogs");
-        conexao.getConexao().execute("drop table if exists tbAlertas");
+        conexao.getConexaoAzure().execute("drop table if exists tbEmpresas");
+        conexao.getConexaoAzure().execute("drop table if exists tbMaquinas");
+        conexao.getConexaoAzure().execute("drop table if exists tbUsuarios");
+        conexao.getConexaoAzure().execute("drop table if exists tbComponentes");
+        conexao.getConexaoAzure().execute("drop table if exists tbLogs");
+        conexao.getConexaoAzure().execute("drop table if exists tbAlertas");
 
-        conexao.getConexao().execute("create table tbEmpresas ("
+        conexao.getConexaoAzure().execute("create table tbEmpresas ("
                 + "idEmpresa INT PRIMARY KEY AUTO_INCREMENT,"
                 + "nomeEmpresa VARCHAR(45),"
                 + "cnpj VARCHAR(45),"
@@ -38,7 +38,7 @@ public class H2 {
                 + "senha VARCHAR(45)"
                 + ");");
 
-        conexao.getConexao().execute("create table tbMaquinas ("
+        conexao.getConexaoAzure().execute("create table tbMaquinas ("
                 + "idMaquina INT PRIMARY KEY AUTO_iNCREMENT,"
                 + "identPessoal varchar(15),"
                 + "hostName varchar(45),"
@@ -47,7 +47,7 @@ public class H2 {
                 + "constraint FKEmpresa\n"
                 + "foreign key (fkEmpresa) references tbEmpresas (idEmpresa));");
 
-        conexao.getConexao().execute("create table tbUsuarios ("
+        conexao.getConexaoAzure().execute("create table tbUsuarios ("
                 + "idUsuario INT PRIMARY KEY AUTO_INCREMENT,"
                 + "nomeUsuario VARCHAR(45),"
                 + "email VARCHAR(45) unique,"
@@ -60,7 +60,7 @@ public class H2 {
                 + "usuario TINYINT"
                 + ");");
 
-        conexao.getConexao().execute("CREATE TABLE tbComponentes ("
+        conexao.getConexaoAzure().execute("CREATE TABLE tbComponentes ("
                 + "idComponentes INT PRIMARY KEY AUTO_INCREMENT, "
                 + "nome VARCHAR(45),"
                 + "check( nome = 'Cpu' or nome = 'Disco' or nome = 'Ram'),"
@@ -71,7 +71,7 @@ public class H2 {
                 + "foreign key (fkMaquina) references tbMaquinas (idMaquina)"
                 + ");");
 
-        conexao.getConexao().execute("Create table tbLogs ("
+        conexao.getConexaoAzure().execute("Create table tbLogs ("
                 + "idLog INT PRIMARY KEY AUTO_INCREMENT, "
                 + "leituraDesempenho DOUBLE,"
                 + "leituraTemperatura DOUBLE,"
@@ -81,7 +81,7 @@ public class H2 {
                 + "foreign key (fkComponente) references tbComponentes (idComponentes)"
                 + "); ");
 
-        conexao.getConexao().execute("CREATE TABLE tbAlertas ("
+        conexao.getConexaoAzure().execute("CREATE TABLE tbAlertas ("
                 + "idAlerta int primary key auto_increment,"
                 + "fkLog int,"
                 + "constraint fkLog\n"
@@ -91,13 +91,13 @@ public class H2 {
                 + "descrição varchar(255)"
                 + ");");
 
-        conexao.getConexao().update("insert into tbEmpresas(nomeEmpresa, cnpj, representante, email, senha)values "
+        conexao.getConexaoAzure().update("insert into tbEmpresas(nomeEmpresa, cnpj, representante, email, senha)values "
                 + "('Bradesco','45245213652148','Guilherme','bradesco@email.com.br','1234'),"
                 + "('Santander','41256913652148','Leticia','santander@email.com.br','4321'),"
                 + "('Itau','32156485213549','Larissa','Itau@email.com.br','4215'),"
                 + "('Banco do Brasil','4124563254862','Lucas','bdrasil@email.com.br','4532');");
 
-        conexao.getConexao().update("insert into tbMaquinas (hostName,grupo, fkEmpresa) values \n"
+        conexao.getConexaoAzure().update("insert into tbMaquinas (hostName,grupo, fkEmpresa) values \n"
                 + "('STFSAOC046893-L','GrupoA', 1),"
                 + "('Mari','GrupoA',4),"
                 + "('Pieroni','grupoB',2),"
@@ -107,7 +107,7 @@ public class H2 {
                 + "('Gulherme','GrupoB',4),"
                 + "('Algusto','GrupoB',2);");
 
-        conexao.getConexao().update("insert into tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) values \n"
+        conexao.getConexaoAzure().update("insert into tbUsuarios (nomeUsuario, email, senha, fkempresa, sudo, administrador, usuario) values \n"
                 + "('Guilherme','guilherme@email.com','1234', 1,true,true,true),"
                 + "('Lara','lara@email.com','1234', 2,true,true,true),"
                 + "('Leticia','leticia@email.com','1234', 3,true,true,true),"
@@ -117,7 +117,7 @@ public class H2 {
                 + "('Danilo','danilo@email.com','1234', 1,false,true,true),"
                 + "('Vinicius','cavalcante@email.com','1234', 4,false,false,true);");
 
-        conexao.getConexao().update("insert into tbComponentes (nome,limiteAlerta, fkMaquina) values "
+        conexao.getConexaoAzure().update("insert into tbComponentes (nome,limiteAlerta, fkMaquina) values "
                 + "('Disco',75,1),"
                 + "('Ram',55,1),"
                 + "('Cpu',90,1),"
@@ -125,7 +125,7 @@ public class H2 {
                 + "('Disco',85,3),"
                 + "('Cpu',64,3);");
 
-        conexao.getConexao().update("insert into tbLogs (leituraDesempenho, leituraTemperatura, dataHora, fkComponente) values \n"
+        conexao.getConexaoAzure().update("insert into tbLogs (leituraDesempenho, leituraTemperatura, dataHora, fkComponente) values \n"
                 + "(100, 22.5, now(),1),"
                 + "(55, 30.25, now(),2),"
                 + "(100, 22.5, now(),3),"
@@ -133,7 +133,7 @@ public class H2 {
                 + "(20, 100.0, now(),5),"
                 + "(100, 22.0, now(),6);");
 
-        conexao.getConexao().update("insert into tbAlertas (fkLog, categoria, descrição) values\n"
+        conexao.getConexaoAzure().update("insert into tbAlertas (fkLog, categoria, descrição) values\n"
                 + "(1, 'Moderado', '*******'),"
                 + "(2, 'Alto', '**********'),"
                 + "(3,'Moderado', '********'),"
@@ -148,11 +148,11 @@ public class H2 {
 //            t.limiteAlerta
 //        }));
 
-        listaComponentes = conexao.getConexao().query(
+        listaComponentes = conexao.getConexaoAzure().query(
                 "select * from tbComponentes where fkMaquina = 1",
                 new BeanPropertyRowMapper<>(Componente.class));
         
-         listaComponentes2 = conexao.getConexao().query(
+         listaComponentes2 = conexao.getConexaoAzure().query(
                 "select C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                         + "on C.fkMaquina = M.idMaquina where  hostName = 'STFSAOC046893-L'",
                 new BeanPropertyRowMapper<>(Componente.class));

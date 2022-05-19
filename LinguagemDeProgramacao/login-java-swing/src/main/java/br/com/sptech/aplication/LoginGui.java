@@ -1,7 +1,7 @@
 package br.com.sptech.aplication;
 
 import br.com.sptech.aplication.App;
-import data.cat.banco.ConexaoBanco;
+import data.cat.banco.ConexaoAzure;
 import data.cat.modal.Usuario;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -208,7 +208,7 @@ public class LoginGui extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
-        ConexaoBanco conexao = new ConexaoBanco();
+        ConexaoAzure conexao = new ConexaoAzure();
 
         List<Usuario> listaUsuarios = new ArrayList<>();
 
@@ -220,7 +220,7 @@ public class LoginGui extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
         }
         try {
-            listaUsuarios = conexao.getConexao().query(
+            listaUsuarios = conexao.getConexaoAzure().query(
                     String.format("select * from tbUsuarios where email = '%s'",
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));

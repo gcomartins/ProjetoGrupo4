@@ -4,11 +4,11 @@ package data.cat.banco;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class ConexaoBanco {
-     private JdbcTemplate conexao;
+public class ConexaoAzure {
+     private JdbcTemplate conexaoAzure;
      
     
-    public  ConexaoBanco() {
+    public  ConexaoAzure() {
         BasicDataSource dataSource = new BasicDataSource();
         
         
@@ -33,10 +33,10 @@ public class ConexaoBanco {
         dataSource.setUsername("_admin");
         dataSource.setPassword("2ads$grupo4");
         
-        conexao = new JdbcTemplate(dataSource);
+        conexaoAzure = new JdbcTemplate(dataSource);
     }
 
-    public JdbcTemplate getConexao() {
-        return conexao;
+    public JdbcTemplate getConexaoAzure() {
+        return conexaoAzure;
     }
 }

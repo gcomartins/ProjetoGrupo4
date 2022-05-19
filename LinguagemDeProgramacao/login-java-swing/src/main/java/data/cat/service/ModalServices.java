@@ -5,13 +5,14 @@
 package data.cat.service;
 
 import br.com.sptech.aplication.App;
-import data.cat.banco.ConexaoBanco;
+import data.cat.banco.ConexaoAzure;
 import br.com.sptech.aplication.LoginGui;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.processos.ProcessosGroup;
+import data.cat.banco.ConexaoMysql;
 import data.cat.modal.Componente;
 import data.cat.modal.Usuario;
 import java.net.InetAddress;
@@ -61,7 +62,8 @@ public class ModalServices {
 
     }
 
-    ConexaoBanco conexao = new ConexaoBanco();
+    ConexaoAzure conexaoAzure = new ConexaoAzure();
+    ConexaoMysql conexaoMysql = new ConexaoMysql();
     Date dataHora = new Date();
     List<Componente> listaComponentes = new ArrayList<>();
     LoginGui label = new LoginGui();
@@ -69,7 +71,7 @@ public class ModalServices {
     public void inserirDisco(MedidasServices medidasServices) {
         int disco = 0;
 
-        listaComponentes = conexao.getConexao().query(
+        listaComponentes = conexaoAzure.getConexaoAzure().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
@@ -80,7 +82,10 @@ public class ModalServices {
 
             }
         }
-        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, disco);
+        
+        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, disco);
         
         
@@ -89,7 +94,7 @@ public class ModalServices {
     public void inserirRAM(MedidasServices medidasServices) {
         int ram = 2;
 
-        listaComponentes = conexao.getConexao().query(
+        listaComponentes = conexaoAzure.getConexaoAzure().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina "
                         + "from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
@@ -101,14 +106,18 @@ public class ModalServices {
 
             }
         }
-        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, ram);
+        
+        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, ram);
+        
     }
 
     public void inserirProcessador(MedidasServices medidasServices) {
        int cpu = 3;
 
-        listaComponentes = conexao.getConexao().query(
+        listaComponentes = conexaoAzure.getConexaoAzure().query(
                 "select C.idComponentes,C.nome, C.limiteAlerta, C.fkMaquina "
                         + "from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
@@ -120,12 +129,15 @@ public class ModalServices {
 
             }
         }
-        conexao.getConexao().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, cpu);
+        
+        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, cpu);
     }    
     public Double getLimiteBanco(String componente)
     {
-         listaComponentes = conexao.getConexao().query(
+         listaComponentes = conexaoAzure.getConexaoAzure().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
