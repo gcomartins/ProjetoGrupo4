@@ -423,14 +423,14 @@ function deletarMaquina(req, res) {
 
 function upDateUsuario(req, res) {
     
-    var idUsuario= req.body.idUsuario;
+    
     var nomeUsuario= req.body.nomeUsuario;
-    var sobrenomeUsuario= req.body.sobrenomeUsuario;
     var email = req.body.email;
     var senha = req.body.senha;
     var cargo= req.body.cargo;
+    var idUsuario= req.body.idUsuario;
 
-    usuarioModel.upDateUsuario(idUsuario,nomeUsuario, sobrenomeUsuario,email,senha,cargo)
+    usuarioModel.upDateUsuario(nomeUsuario,email,senha,cargo,idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);

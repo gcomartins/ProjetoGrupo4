@@ -21,7 +21,13 @@ function listar(){
                 <h4 class="title-nome">${obj[i].nomeUsuario}</h4>
                 <h4 class="title-email">${obj[i].email}</h4>
                 <h4 class="title-cargo">${obj[i].cargo}</h4>
-                
+                <div class="wrapper">
+                    <div class="icon editar">
+                        <span id="editar-div" class="icons">
+                        <i id="editar" class="material-symbols-sharp" onclick="formularioUpDate()">border_color</i>
+                    </span>
+                    </div>
+                </div>
                 <div class="wrapper">
                     <div class="icon excluir">
                         <span id="deletar-div" class="icons">
