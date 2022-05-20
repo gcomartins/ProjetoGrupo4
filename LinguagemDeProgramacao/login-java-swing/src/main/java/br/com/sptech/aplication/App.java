@@ -521,9 +521,7 @@ public class App extends javax.swing.JFrame {
             lblUsoCpu.setText("Perfeito");
         }
 
-        //Workbench
-        //Logs
-        //log.gerarLog(logs);
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
