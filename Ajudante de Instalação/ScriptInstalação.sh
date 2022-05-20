@@ -2,12 +2,10 @@
 
 #Usuário 
 echo "Adicionar usuário"
-sudo adduser
+sudo adduser datacat
 #senha
-echo "Colocar senha usuário"
-sudo passwd ubuntu
 
-
+sudo usermod -aG sudo datacat
 
 #Instalação do Java
 	
@@ -37,7 +35,7 @@ if [ $? -eq 0 ]
             sudo apt update && sudo apt upgrade -y
 			sleep 2
 		
-			if [ $VERSAO -eq 11 ]
+			if [ true ]
 				then
 					echo "$(tput setaf 10)[bot]:$(tput setaf 7) Preparando para instalar a versão 11 do Java. Confirme a instalação quando solicitado"
 
@@ -85,7 +83,8 @@ if [ \"$inst10\" == \"n\"  ]
     echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Aguarde um momento porfavor!"
 
     sleep 4
-    git clone https://github.com/gcomartins/DataCat-App.git
+    cd /home/ubuntu
+    wget -o  DataCatApp.jar https://raw.githubusercontent.com/gcomartins/DataCat-App/main/login-java-swing-1.0-SNAPSHOT-jar-with-dependencies.jar
     sleep 4
 
     echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Pronto! Repositório instalado com sucesso."
@@ -94,13 +93,9 @@ if [ \"$inst10\" == \"n\"  ]
     
     echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Agora estarei instalando a aplicação em seu ubuntu."
     
-    cd DataCat-App
-    
-    mv login-java-swing-1.0-SNAPSHOT-jar-with-dependencies.jar /home/ubuntu
+    # mv login-java-swing-1.0-SNAPSHOT-jar-with-dependencies.jar /home/Desktop/datacat
     sleep 4
     cd ..
-
-    rm -r DataCat-App -f
 
      else
 
@@ -114,5 +109,7 @@ echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Você já tem nossa aplicação"
 
 fi
 
- java -jar login-java-swing-1.0-SNAPSHOT-jar-with-dependencies.jar
+cd ..
+
+ java -jar DataCatApp.jar
 
