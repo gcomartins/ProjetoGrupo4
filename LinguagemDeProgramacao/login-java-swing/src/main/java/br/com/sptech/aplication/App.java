@@ -402,7 +402,7 @@ public class App extends javax.swing.JFrame {
         Double limiteAlertaDisco = discoBanco;
         AlertasServices alertas = new AlertasServices();
         
-         modalServices.inserirDisco(medidasServices);
+        modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
         
