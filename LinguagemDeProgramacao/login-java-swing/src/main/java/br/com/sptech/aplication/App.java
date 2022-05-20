@@ -430,7 +430,7 @@ public class App extends javax.swing.JFrame {
             alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
 
             //Envio ao Slack
-            json.put("text", "Máquina:\n" + nomeMaquina + "\nDisco:\nCritico: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            json.put("text", "Máquina:" + nomeMaquina + "\nDisco:\nCritico: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             Slack.enviarMensagem(json);
 
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
@@ -441,7 +441,7 @@ public class App extends javax.swing.JFrame {
             alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
 
             //Envio ao Slack
-            json.put("text", "Máquina:\n" + nomeMaquina + "\nDisco:\nAlerta: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            json.put("text", "Máquina:" + nomeMaquina + "\nDisco:\nAlerta: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             Slack.enviarMensagem(json);
 
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
@@ -463,7 +463,7 @@ public class App extends javax.swing.JFrame {
             alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
 
             //Envio ao Slack
-            json.put("text", "Máquina:\n" + nomeMaquina + "\nRAM:\nCritico: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
+            json.put("text", "Máquina:" + nomeMaquina + "\nRAM:\nCritico: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
             Slack.enviarMensagem(json);
 
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.5)) {
@@ -474,7 +474,7 @@ public class App extends javax.swing.JFrame {
             alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
 
             //Envio ao Slack
-            json.put("text", "Máquina:\n" + nomeMaquina + "\nRAM:\nAlerta: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
+            json.put("text", "Máquina:" + nomeMaquina + "\nRAM:\nAlerta: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
             Slack.enviarMensagem(json);
 
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.25)) {
@@ -496,7 +496,7 @@ public class App extends javax.swing.JFrame {
             alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
 
             //Envio ao Slack
-            json.put("text","Máquina:\n" + nomeMaquina + "\nCPU:\nCritico: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            json.put("text","Máquina:" + nomeMaquina + "\nCPU:\nCritico: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             Slack.enviarMensagem(json);
 
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.5)) {
@@ -507,7 +507,7 @@ public class App extends javax.swing.JFrame {
             alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
 
             //Envio ao Slack
-            json.put("text", nomeMaquina + "\nCPU:\nAlerta: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            json.put("text", "Máquina:" + nomeMaquina + "\nCPU:\nAlerta: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             Slack.enviarMensagem(json);
 
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.25)) {
