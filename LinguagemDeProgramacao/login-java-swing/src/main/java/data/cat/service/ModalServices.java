@@ -14,15 +14,12 @@ import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.processos.ProcessosGroup;
 import data.cat.banco.ConexaoMysql;
 import data.cat.modal.Componente;
-import data.cat.modal.Usuario;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
-import javax.swing.JOptionPane;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 /**
@@ -39,7 +36,7 @@ public class ModalServices {
     private Double leituraDesempenhoRam;
     private Double leituraDesempenhoDisco;
     private String idMaquina;
-    private String nomeMaquina;
+    private final String nomeMaquina;
 
     private static int log = 1;
 

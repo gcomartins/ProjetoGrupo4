@@ -409,14 +409,10 @@ public class App extends javax.swing.JFrame {
         Double limiteAlertaCpu = processadorBanco;
         Double limiteAlertaDisco = discoBanco;
         AlertasServices alertas = new AlertasServices();
-<<<<<<< HEAD
-        
-=======
 
         //Objeto para envio de alertas ao Slack
         JSONObject json = new JSONObject();
 
->>>>>>> c0c0dcd3893ea8094b0ba05d66c3ba6406a4a417
         modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
@@ -521,9 +517,7 @@ public class App extends javax.swing.JFrame {
             lblUsoCpu.setText("Perfeito");
         }
 
-        //Workbench
-        //Logs
-        //log.gerarLog(logs);
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
