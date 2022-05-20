@@ -17,7 +17,7 @@ public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONObject json = new JSONObject();
 
-        json.put("text", "Bem-vindos! :sunglasses:");
+        json.put("text", "Bem-vindos ao DataCat! :sunglasses:");
         Slack.enviarMensagem(json);
     }
 }

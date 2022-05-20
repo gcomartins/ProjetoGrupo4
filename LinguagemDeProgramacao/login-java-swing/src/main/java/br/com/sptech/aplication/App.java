@@ -15,6 +15,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
+import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import org.json.JSONObject;
+import slack.Slack;
 // import org.apache.commons.math3.util.Precision;
 
 /**
@@ -386,12 +389,17 @@ public class App extends javax.swing.JFrame {
                     lerDados();
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                    //Catch para tratamento de erros de requisição do Slack
+                } catch (IOException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }, periodo, interval);
     }
 
-    private void lerDados() throws UnknownHostException {
+    private void lerDados() throws UnknownHostException, IOException, InterruptedException {
         MedidasServices medidasServices = new MedidasServices();
         ModalServices modalServices = new ModalServices();
         Double discoBanco = modalServices.getLimiteBanco("Disco");
@@ -401,24 +409,41 @@ public class App extends javax.swing.JFrame {
         Double limiteAlertaCpu = processadorBanco;
         Double limiteAlertaDisco = discoBanco;
         AlertasServices alertas = new AlertasServices();
+<<<<<<< HEAD
         
+=======
+
+        //Objeto para envio de alertas ao Slack
+        JSONObject json = new JSONObject();
+
+>>>>>>> c0c0dcd3893ea8094b0ba05d66c3ba6406a4a417
         modalServices.inserirDisco(medidasServices);
         modalServices.inserirRAM(medidasServices);
         modalServices.inserirProcessador(medidasServices);
-        
-        
+
+        //DISCO
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
             pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             lblUsoDisco.setText("Crítico");
             //CRITICO
             alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
+
+            //Envio ao Slack
+            json.put("text", "Disco:\nCritico: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            Slack.enviarMensagem(json);
+
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.5)) {
             pnlDisco.setBackground(new java.awt.Color(233, 173, 84));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             lblUsoDisco.setText("Alerta");
             //ALERTA
             alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
+
+            //Envio ao Slack
+            json.put("text", "Disco:\nAlerta: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
+            Slack.enviarMensagem(json);
+
         } else if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.25)) {
             pnlDisco.setBackground(new java.awt.Color(233, 209, 84));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
@@ -428,18 +453,30 @@ public class App extends javax.swing.JFrame {
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
             lblUsoDisco.setText("Perfeito");
         }
+
+        //RAM
         if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.75)) {
             pnlRam.setBackground(new java.awt.Color(224, 52, 52));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
             lblUsoRam.setText("Crítico");
             //CRITICO
             alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
+
+            //Envio ao Slack
+            json.put("text", "RAM:\nCritico: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
+            Slack.enviarMensagem(json);
+
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.5)) {
             pnlRam.setBackground(new java.awt.Color(233, 173, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
             lblUsoRam.setText("Alerta");
             //ALERTA
             alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
+
+            //Envio ao Slack
+            json.put("text", "RAM:\nAlerta: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
+            Slack.enviarMensagem(json);
+
         } else if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.25)) {
             pnlRam.setBackground(new java.awt.Color(233, 209, 84));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
@@ -449,6 +486,8 @@ public class App extends javax.swing.JFrame {
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
             lblUsoRam.setText("Perfeito");
         }
+
+        //CPU
         if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.75)) {
             pnlCpu.setBackground(new java.awt.Color(224, 52, 52));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
@@ -456,13 +495,21 @@ public class App extends javax.swing.JFrame {
             //CRITICO
             alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
 
+            //Envio ao Slack
+            json.put("text", "CPU:\nCritico: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            Slack.enviarMensagem(json);
+
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.5)) {
             pnlCpu.setBackground(new java.awt.Color(233, 173, 84));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Alerta");
-            //CRITICO
+            //Alerta
             alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
-            
+
+            //Envio ao Slack
+            json.put("text", "CPU:\nAlerta: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
+            Slack.enviarMensagem(json);
+
         } else if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.25)) {
             pnlCpu.setBackground(new java.awt.Color(233, 209, 84));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
@@ -473,10 +520,8 @@ public class App extends javax.swing.JFrame {
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
             lblUsoCpu.setText("Perfeito");
         }
-        
-        //Worbanch
-       
 
+        //Workbench
         //Logs
         //log.gerarLog(logs);
     }
