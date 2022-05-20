@@ -26,6 +26,8 @@ public class AlertasServices {
     ConexaoMysql conexaoMysql;
     MedidasServices medidaslServices;
     List<Log> logs;
+    List<Log> logsSql;
+    
 
     private String nomeMaquina;
 
@@ -34,12 +36,14 @@ public class AlertasServices {
         conexaoAzure = new ConexaoAzure();
         conexaoMysql = new ConexaoMysql();
         logs = new ArrayList<>();
+        logsSql = new ArrayList<>();
         nomeMaquina = InetAddress.getLocalHost().getHostName();
     }
 
     public void inserirAlertas(String categoria, String componente) {
 
         Integer idLog;
+        Integer idLogSql;
 
         logs = conexaoAzure.getConexaoAzure().query(""
                 + "select L.idLog, C.nome, C.idComponentes, M.hostName,"
@@ -50,15 +54,26 @@ public class AlertasServices {
                 + " and nome = '" + componente +"' order by idLog desc ",
                 new BeanPropertyRowMapper<>(Log.class));
         
+        logsSql = conexaoMysql.getConexaoMysql().query(""
+                + "select L.idLog, C.nome, C.idComponentes, M.hostName,"
+                + " M.idMaquina from tbComponentes" 
+                + " as C inner join tbLogs as L" 
+                + " on C.idComponentes = L.fkComponente inner join tbMaquinas as M "
+                + " on C.fkMaquina = M.idMaquina  where hostName = '" +nomeMaquina+ "'"
+                + " and nome = '" + componente +"' order by idLog desc ",
+                new BeanPropertyRowMapper<>(Log.class));
+        
         idLog = logs.get(0).getIdLog();
+        idLogSql = logsSql.get(0).getIdLog();
 
         conexaoAzure.getConexaoAzure().update("insert into tbAlertas"
                 + " (fkLog, categoria, descrição) values(?, ?, '*******')",
                 idLog, categoria);
         
+        
         conexaoMysql.getConexaoMysql().update("insert into tbAlertas"
                 + " (fkLog, categoria, descrição) values(?, ?, '*******')",
-                idLog, categoria);
+                idLogSql, categoria);
     }
 
 }

@@ -4,16 +4,17 @@ br\com\sptech\login\java\swing\TesteLooca.class
 slack\App.class
 br\com\sptech\aplication\App$6.class
 br\com\sptech\aplication\LoginGui$3.class
+data\cat\banco\ConexaoAzure.class
 br\com\sptech\aplication\App$2.class
 br\com\sptech\aplication\App.class
 data\cat\modal\Maquina.class
 br\com\sptech\aplication\App$RoundedPanel.class
 br\com\sptech\aplication\LoginGui$5.class
-data\cat\banco\ConexaoBanco.class
 data\cat\modal\Alertas.class
 br\com\sptech\aplication\LoginGui.class
 data\cat\modal\Log.class
 data\cat\modal\Usuario.class
+.netbeans_automatic_build
 data\cat\modal\Componente.class
 br\com\sptech\aplication\LoginGui$2.class
 data\cat\service\ModalServices.class
@@ -28,6 +29,7 @@ slack\Slack.class
 br\com\sptech\aplication\App$7.class
 br\com\sptech\aplication\LoginGui$6.class
 br\com\sptech\aplication\Main.class
+data\cat\banco\ConexaoMysql.class
 br\com\sptech\aplication\App$1.class
 data\cat\service\AlertasServices.class
 br\com\sptech\aplication\LoginGui$4.class

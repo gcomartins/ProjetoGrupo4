@@ -402,6 +402,10 @@ public class App extends javax.swing.JFrame {
         Double limiteAlertaDisco = discoBanco;
         AlertasServices alertas = new AlertasServices();
         
+         modalServices.inserirDisco(medidasServices);
+        modalServices.inserirRAM(medidasServices);
+        modalServices.inserirProcessador(medidasServices);
+        
         
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
             pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
@@ -471,9 +475,7 @@ public class App extends javax.swing.JFrame {
         }
         
         //Worbanch
-        modalServices.inserirDisco(medidasServices);
-        modalServices.inserirRAM(medidasServices);
-        modalServices.inserirProcessador(medidasServices);
+       
 
         //Logs
         //log.gerarLog(logs);

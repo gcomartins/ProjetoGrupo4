@@ -85,22 +85,22 @@ descrição varchar(255)
 
 
 
-insert into tbEmpresas (nomeEmpresa, cnpj, representante, email, senha)values 
-("Bradesco","45245213652148","Guilherme","bradesco@email.com.br","1234"),
-("Santander","41256913652148","Leticia","santander@email.com.br","4321"),
-("Itau","32156485213549","Larissa","Itau@email.com.br","4215"),
-("Banco do Brasil","4124563254862","Lucas","bdrasil@email.com.br","4532");
+insert into tbEmpresas (idEmpresa,nomeEmpresa, cnpj, representante, email, senha)values 
+(34, "Bradesco","45245213652148","Guilherme","bradesco@email.com.br","1234"),
+(0,"Santander","41256913652148","Leticia","santander@email.com.br","4321"),
+(0,"Itau","32156485213549","Larissa","Itau@email.com.br","4215"),
+(0,"Banco do Brasil","4124563254862","Lucas","bdrasil@email.com.br","4532");
 
 
 insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
-("STFSAOC046893-L","GrupoA", 1),
-("Mari","GrupoA",4),
-("Pieroni","grupoB",2),
-("Leticia","GrupoA",3),
-("Lara","grupoB",1),
-("Larissa","GrupoB",3),
-("Gulherme","GrupoB",4),
-("Algusto","GrupoB",2);
+("STFSAOC046893-L","GrupoA", 34),
+("Mari","GrupoA",34),
+("Pieroni","grupoB",34),
+("Leticia","GrupoA",34),
+("Lara","grupoB",34),
+("Larissa","GrupoB",34),
+("Gulherme","GrupoB",34),
+("Algusto","GrupoB",34);
 
 insert into tbUsuarios (nomeUsuario, email, senha, fkempresa) values 
 ("Guilherme","guilherme@email.com","1234", 1),
@@ -149,8 +149,14 @@ select * from tbUsuarios;
 select * from tbComponentes;
 select * from tbAlertas;
 truncate table tbMaquinas;
-
+select * from tbLogs;
 
 select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where hostName = 'STFSAOC046893-L';
 
 select * from tbComponentes;
+
+select L.idLog, C.nome, C.idComponentes, M.hostName, M.idMaquina from tbComponentes 
+as C inner tbLogs as L 
+                + " on C.idComponentes = L.fkComponente inner join tbMaquinas as M "
+                + " on C.fkMaquina = M.idMaquina  where hostName = '" +nomeMaquina+ "'"
+                + " and nome = '" + componente +"' order by idLog desc ",
