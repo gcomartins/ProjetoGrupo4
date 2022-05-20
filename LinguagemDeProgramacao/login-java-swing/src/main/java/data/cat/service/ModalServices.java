@@ -4,7 +4,6 @@
  */
 package data.cat.service;
 
-import br.com.sptech.aplication.App;
 import data.cat.banco.ConexaoAzure;
 import br.com.sptech.aplication.LoginGui;
 import com.github.britooo.looca.api.core.Looca;
@@ -36,7 +35,7 @@ public class ModalServices {
     private Double leituraDesempenhoRam;
     private Double leituraDesempenhoDisco;
     private String idMaquina;
-    private final String nomeMaquina;
+    private String nomeMaquina;
 
     private static int log = 1;
 
