@@ -92,17 +92,17 @@ insert into tbEmpresas (idEmpresa,nomeEmpresa, cnpj, representante, email, senha
 (0,"Banco do Brasil","4124563254862","Lucas","bdrasil@email.com.br","4532");
 
 
-insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
-("STFSAOC046893-L","GrupoA", 34),
-("Mari","GrupoA",34),
-("Pieroni","grupoB",34),
-("Leticia","GrupoA",34),
-("Lara","grupoB",34),
-("Larissa","GrupoB",34),
-("Gulherme","GrupoB",34),
-("Algusto","GrupoB",34);
+insert into tbMaquinas (idMaquina, hostName,grupo, fkEmpresa) values 
+(8,"STFSAOC046893-L","GrupoA", 34),
+(9,"LAPTOP-LU9R5MNA","GrupoA",34),
+(0,"Pieroni","grupoB",34),
+(0,"Leticia","GrupoA",34),
+(0,"Lara","grupoB",34),
+(0,"Larissa","GrupoB",34),
+(0,"Gulherme","GrupoB",34),
+(0,"Algusto","GrupoB",34);
 
-insert into tbUsuarios (nomeUsuario, email, senha, fkempresa) values 
+insert into tbUsuarios ( nomeUsuario, email, senha, fkempresa) values 
 ("Guilherme","guilherme@email.com","1234", 1),
 ("Lara","lara@email.com","1234", 2),
 ("Leticia","leticia@email.com","1234", 3),
@@ -113,13 +113,13 @@ insert into tbUsuarios (nomeUsuario, email, senha, fkempresa) values
 ("Vinicius","cavalcante@email.com","1234", 4);
 
 
-insert into tbComponentes (nome,limiteAlerta, fkMaquina) values 
-("Disco",100,1),
-("Ram",100,1),
-("Cpu", 100,1),
-("Ram",59,3),
-("Disco",30,3),
-("Cpu",39,3);
+insert into tbComponentes (idComponentes, nome,limiteAlerta, fkMaquina) values 
+(18,"Disco",75,8),
+(19,"Ram",25,8),
+(20,"Cpu", 50,8),
+(21,"Ram",45,9),
+(22,"Disco",69,9),
+(23,"Cpu",20,9);
 
 insert into tbLogs (leituraDesempenho, dataHora, fkComponente) values 
 (100, now(),1),
@@ -155,8 +155,8 @@ select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquin
 
 select * from tbComponentes;
 
-select L.idLog, C.nome, C.idComponentes, M.hostName, M.idMaquina from tbComponentes 
+/*select L.idLog, C.nome, C.idComponentes, M.hostName, M.idMaquina from tbComponentes 
 as C inner tbLogs as L 
                 + " on C.idComponentes = L.fkComponente inner join tbMaquinas as M "
                 + " on C.fkMaquina = M.idMaquina  where hostName = '" +nomeMaquina+ "'"
-                + " and nome = '" + componente +"' order by idLog desc ",
+                + " and nome = '" + componente +"' order by idLog desc ",*\
