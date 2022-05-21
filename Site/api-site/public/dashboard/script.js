@@ -177,6 +177,140 @@ function gerarGrafico(idGrafico, dados, datas, isTemp){
 
 }
 
+function atualizarGrafico(idGrafico, hostname) {
+	var hostnameVar = hostname;
+	var dados = [];
+	var datas = [];
+	var datasFormatadas = [];
+	var caminho = '';
+	var isTemp = false;
+	
+	switch (idGrafico) {
+		case 'graficoDisco':
+			caminho = `/usuarios/graficarDisco`;
+			break;
+
+		case 'graficoMemoria':
+			caminho = `/usuarios/graficarMemoria`;
+			break;
+
+		case 'graficoCpu':
+			caminho = `/usuarios/graficarCpu`;
+			break;
+		
+		case 'graficoTemp':
+			caminho = `/usuarios/graficarTemp`;
+			isTemp = true;
+			break;
+			
+		default:
+			break;
+	}
+
+	fetch('/usuarios/atualizarGrafico', { 
+		method: "POST",
+		headers: {
+		"Content-Type": "application/json"
+	},
+	body: JSON.stringify({
+		hostname: hostnameVar,
+	}) }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                
+				var dadosDisco = [];
+				var datasDisco = [];
+				var dadosRam = [];
+				var datasRam = [];
+				var dadosCpu = [];
+				var dadosTemp = [];
+				var datasCpuTemp = [];
+
+				for (let i = 0; i < resposta.length; i++) {
+					const e = resposta[i];
+					switch (e.nome) {
+						case 'Disco':
+							dadosDisco.push(e.leituraDesempenho);
+							datasDisco.push(new Date(e.dataHora).getHours() + ':' + new Date(e.dataHora).getMinutes());
+							break;
+
+							case 'Ram':
+								dadosRam.push(e.leituraDesempenho);
+								datasRam.push(new Date(e.dataHora).getHours() + ':' + new Date(e.dataHora).getMinutes());
+							
+							break;
+
+							case 'Cpu':
+								dadosCpu.push(e.leituraDesempenho);
+								dadosTemp.push(e.leituraTemperatura);
+							datasCpuTemp.push(new Date(e.dataHora).getHours() + ':' + new Date(e.dataHora).getMinutes());
+
+							break;
+					
+						default:
+							break;
+					}
+					
+				}
+
+                // for (let i = 0; i < resposta.length; i++) {
+                //     if (idGrafico == 'graficoTemp') {
+				// 		dados.push(resposta[i].leituraTemperatura);
+				// 	}else {
+				// 		dados.push(resposta[i].leituraDesempenho);
+				// 	}
+                //     datas.push(resposta[i].dataHora);
+                // }
+				
+				// for (let index = 0; index < datas.length; index++) {
+				// 	const e = datas[index];
+				// 	var dataFormatada = new Date(e).getHours() + ':' + new Date(e).getMinutes();
+				// 	datasFormatadas.push(dataFormatada);
+					
+				// }
+
+				switch (idGrafico) {
+					case 'graficoDisco':
+						divGraficoDisco.innerHTML = '';
+						divGraficoDisco.innerHTML = '<canvas id="graficoDisco"></canvas>';
+						gerarGrafico(idGrafico, dadosDisco, datasDisco, isTemp);
+						break;
+			
+					case 'graficoMemoria':
+						divGraficoRam.innerHTML = '';
+						divGraficoRam.innerHTML = '<canvas id="graficoMemoria"></canvas>';
+						gerarGrafico(idGrafico, dadosRam, datasRam, isTemp);
+						break;
+			
+					case 'graficoCpu':
+						divGraficoCpu.innerHTML = '';
+						divGraficoCpu.innerHTML = '<canvas id="graficoCpu"></canvas>';
+						gerarGrafico(idGrafico, dadosCpu, datasCpuTemp, isTemp);
+						break;
+					
+					case 'graficoTemp':
+						divGraficoTemp.innerHTML = '';
+						divGraficoTemp.innerHTML = '<canvas id="graficoTemp"></canvas>';
+						gerarGrafico(idGrafico, dadosTemp, datasCpuTemp, isTemp);
+						break;
+						
+					default:
+						break;
+				}
+				// gerarGrafico(idGrafico, dados, datasFormatadas, isTemp);
+            });
+			carregarDadosDoGrafico();
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+	
+}
+
 function carregarDadosDoGrafico(){
 gerarGrafico();
 }

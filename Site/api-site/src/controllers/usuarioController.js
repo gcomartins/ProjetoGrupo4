@@ -375,6 +375,27 @@ function graficar(req, res) {
 
 }
 
+function atualizarGrafico(req, res) {
+    var hostname = req.body.hostname;
+
+    usuarioModel.atualizarGrafico(hostname)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 function graficarDisco(req, res) {
     
     usuarioModel.graficarDisco()
@@ -567,5 +588,6 @@ module.exports = {
     graficarCpu,
     graficarTemp,
     cadastrarComponente,
-    buscarMaquina
+    buscarMaquina,
+    atualizarGrafico
 }
