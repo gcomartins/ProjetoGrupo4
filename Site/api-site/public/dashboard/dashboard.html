@@ -361,7 +361,7 @@
 			response.json().then((json) => {
 				console.log(json);
 				for (let i = 0; i < json.length; i++) {
-					maquinas_select.innerHTML += `<option value="">${json[i].hostName}</option>`
+					maquinas_select.innerHTML += `<option value="${json[i].hostName}">${json[i].hostName}</option>`
 					
 				}
 			})
@@ -432,7 +432,6 @@ window.addEventListener('resize', function () {
 })
 
 </script>
-<script src="./js/funcoes.js"></script>
 
 
 	
