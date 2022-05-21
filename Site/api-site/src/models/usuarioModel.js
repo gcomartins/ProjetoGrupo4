@@ -108,6 +108,24 @@ function cadastrarMaquina(identPessoal, hostName, grupo, idEmpresa) {
     return database.executar(instrucao);
 }
 
+function buscarMaquina() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, identPessoal, grupo, idEmpresa);
+    var instrucao = `
+        SELECT TOP 1 idMaquina FROM [dbo].[tbMaquinas] ORDER BY IdMaquina DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function cadastrarComponente(nome, capacidade, limiteAlerta, fkMaquina) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", nome, capacidade, limiteAlerta, fkMaquina);
+    var instrucao = `
+        INSERT INTO tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) VALUES ('${nome}', ${capacidade}, ${limiteAlerta}, ${fkMaquina});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function graficar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function graficar():",);
     var instrucao = `
@@ -172,4 +190,6 @@ module.exports = {
     graficarMemoria,
     graficarCpu,
     graficarTemp,
+    cadastrarComponente,
+    buscarMaquina
 };
