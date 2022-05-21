@@ -104,6 +104,26 @@ function cadastrarMaquina() {
         console.log(`#ERRO: ${resposta}`);
         });
 
+        fetch("/usuarios/buscarMaquina", {
+            method: "GET",
+        }).then(function (resposta) {
+
+            console.log("resposta BUSCAR MAQUINA: ", resposta);
+
+            fkMaquina = resposta.idMaquina;
+
+            if (resposta.ok) {
+                window.alert("Máquina buscada com sucesso");
+            } else {
+
+                fkMaquina = 30;
+
+                throw ("Houve um erro ao tentar buscar a Máquina");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });        
+
         fetch("/usuarios/cadastrarComponente", {
             method: "POST",
             body: formulario,
@@ -123,6 +143,72 @@ function cadastrarMaquina() {
             
         return false;
     }
+
+    function cadastrarComponente() {
+        var myInput = document.getElementById("idEmpresa");
+        myInput.value = sessionStorage.ID_EMPRESA;
+            var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastroMaquina")));
+            
+            var comp1 = formulario.get("comp1");
+            var comp2 = formulario.get("comp2");
+            var comp3 = formulario.get("comp3");
+            var limiteAlertaRam = formulario.get("limiteAlertaRam");
+            var limiteAlertaCpu = formulario.get("limiteAlertaCpu");
+            var limiteAlertaDisco = formulario.get("limiteAlertaDisco");
+            var capacidadeRam = formulario.get("capacidadeRam");
+            var capacidadeCpu = formulario.get("capacidadeCpu");
+            var capacidadeDisco = formulario.get("capacidadeDisco");
+            var fkMaquina = null;
+
+            // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+            if (comp1 == "" || comp2 == "" || comp3 == "" ) {
+            
+            window.alert("Preencha todos os campos para prosseguir!");
+                if (comp1 == "" ) {
+                    console.log("comp1 está em branco!");
+                }
+                if (comp2 == "") {
+                    console.log('comp2 está em branco')
+                }
+                if (comp3 == "") {
+                    console.log("comp3 está em branco!");
+                }
+                    return false;
+                }
+            
+            fetch("/usuarios/cadastrarComponente", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ram: comp1,
+                cpu: comp2,
+                disco: comp3,
+                fkMaquina: fkMaquina,
+                limiteAlertaRam: limiteAlertaRam,
+                limiteAlertaCpu: limiteAlertaCpu,
+                limiteAlertaDisco: limiteAlertaDisco,
+                capacidadeRam : capacidadeRam,
+                capacidadeCpu : capacidadeCpu,
+                capacidadeDisco: capacidadeDisco,
+            })
+            }).then(function (resposta) {
+            
+            console.log("resposta: ", resposta);
+            
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                limparFormulario2() 
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+            }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            });
+    
+            return false;
+        }
 
 
 function cadastrar() {

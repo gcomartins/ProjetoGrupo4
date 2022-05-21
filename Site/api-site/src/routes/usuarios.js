@@ -14,6 +14,11 @@ router.get("/listarMaquina", function (req, res) {
     usuarioController.listarMaquina(req, res);
 });
 
+router.get("/buscarMaquina", function (req, res) {
+    console.log('ACESSEI USUARIOS BUSCAR MAQUINA');
+    usuarioController.buscarMaquina(req, res);
+});
+
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
@@ -40,7 +45,7 @@ router.post("/cadastrarMaquina", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 });
 router.post("/cadastrarComponente", function (req, res) {
-    usuarioController.cadastrarMaquina(req, res);
+    usuarioController.cadastrarComponente(req, res);
 });
 
 
