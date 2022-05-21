@@ -411,6 +411,8 @@ public class App extends javax.swing.JFrame {
         Double limiteAlertaDisco = discoBanco;
         AlertasServices alertas = new AlertasServices();
 
+        
+        
         //Variavel do slack
         String nomeMaquina = InetAddress.getLocalHost().getHostName();
         

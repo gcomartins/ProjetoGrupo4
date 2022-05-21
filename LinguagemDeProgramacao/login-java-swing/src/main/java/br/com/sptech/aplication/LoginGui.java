@@ -212,6 +212,10 @@ public class LoginGui extends javax.swing.JFrame {
 
         List<Usuario> listaUsuarios = new ArrayList<>();
 
+        
+        
+        
+        
         if (txtNome.getText().isEmpty()
                 || txtSenha.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email ou "
@@ -238,6 +242,12 @@ public class LoginGui extends javax.swing.JFrame {
             if (usuario.getEmail().equals(txtNome.getText())
                     && usuario.getSenha().equals(txtSenha.getText())) {
                 this.dispose();
+                
+                
+                
+                
+                
+                
                 new App().setVisible(true);
             } else {
                 System.out.println(usuario.getEmail());

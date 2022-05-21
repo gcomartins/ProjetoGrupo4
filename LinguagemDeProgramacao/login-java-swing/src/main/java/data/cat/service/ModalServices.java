@@ -64,6 +64,32 @@ public class ModalServices {
     List<Componente> listaComponentes = new ArrayList<>();
     LoginGui label = new LoginGui();
 
+    public void inserirComponenteBanco(MedidasServices medidasServices) {
+        int disco = 0;
+
+        listaComponentes = conexaoAzure.getConexaoAzure().query(
+                "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+
+        for (int i = 0; i < listaComponentes.size(); i++) {
+            if (listaComponentes.get(i).getNome().equalsIgnoreCase("Disco")) {
+                disco = listaComponentes.get(i).getidComponentes();
+
+            }
+        }
+        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, disco);
+        
+        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, disco);
+        
+        
+    }
+
+    
+    
+    
     public void inserirDisco(MedidasServices medidasServices) {
         int disco = 0;
 
