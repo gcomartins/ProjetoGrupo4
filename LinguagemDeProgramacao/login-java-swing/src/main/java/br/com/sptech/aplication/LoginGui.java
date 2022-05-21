@@ -212,10 +212,6 @@ public class LoginGui extends javax.swing.JFrame {
 
         List<Usuario> listaUsuarios = new ArrayList<>();
 
-        
-        
-        
-        
         if (txtNome.getText().isEmpty()
                 || txtSenha.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email ou "

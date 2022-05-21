@@ -416,10 +416,11 @@ public class App extends javax.swing.JFrame {
         
         //Objeto para envio de alertas ao Slack
         JSONObject json = new JSONObject();
-
-        modalServices.inserirDisco(medidasServices);
-        modalServices.inserirRAM(medidasServices);
-        modalServices.inserirProcessador(medidasServices);
+        
+        
+        modalServices.inserirComponenteBanco(medidasServices,"Disco");
+        modalServices.inserirComponenteBanco(medidasServices, "Ram");
+        modalServices.inserirComponenteBanco(medidasServices,"Cpu");
 
         //DISCO
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
@@ -584,6 +585,7 @@ public class App extends javax.swing.JFrame {
             int height = getHeight();
             Graphics2D graphics = (Graphics2D) g;
             graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            
             //Draws the rounded panel with borders.
             if (backgroundColor != null) {
                 graphics.setColor(backgroundColor);
