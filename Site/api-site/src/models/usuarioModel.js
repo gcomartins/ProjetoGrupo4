@@ -135,6 +135,20 @@ function graficar() {
     return database.executar(instrucao);
 }
 
+function atualizarGrafico(hostname) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostname);
+    var instrucao = `
+    select top 21 logs.idLog, components.idComponentes, components.nome, maquinas.hostName, logs.leituraDesempenho, logs.leituraTemperatura, logs.dataHora
+    from [dbo].[tbLogs] as logs
+    join [dbo].[tbComponentes] as components on logs.fkComponente = components.idComponentes
+    join [dbo].[tbMaquinas] as maquinas on  maquinas.idMaquina = components.fkMaquina 
+    where maquinas.hostName = '${hostname}'
+    order by logs.idLog desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function graficarDisco() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function graficar():",);
     var instrucao = `
@@ -191,5 +205,6 @@ module.exports = {
     graficarCpu,
     graficarTemp,
     cadastrarComponente,
-    buscarMaquina
+    buscarMaquina,
+    atualizarGrafico
 };

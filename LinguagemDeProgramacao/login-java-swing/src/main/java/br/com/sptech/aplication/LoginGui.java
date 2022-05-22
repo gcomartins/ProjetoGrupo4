@@ -371,11 +371,18 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+<<<<<<< HEAD
                 try {
                     new LoginGui().setVisible(true);
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
+=======
+//                new LoginGui().setVisible(true);
+                LoginGui loginGui = new LoginGui();
+                loginGui.setLocationRelativeTo(null);
+                loginGui.setVisible(true);
+>>>>>>> d92acbc76590fa71e042c4ca8efe6593b6678b75
             }
         });
     }
