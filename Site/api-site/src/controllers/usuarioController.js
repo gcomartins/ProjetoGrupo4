@@ -23,6 +23,26 @@ function listar(req, res) {
             }
         );
 }
+
+function buscarMaquina(req, res) {
+    console.log('ACESSEI CONTROLLERS BUSCAR MAQUINA');
+    usuarioModel.buscarMaquina()
+        .then(function (resultado) {
+            debugger
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listarMaquina(req, res) {
     usuarioModel.listarMaquina()
         .then(function (resultado) {
@@ -167,6 +187,7 @@ function cadastrarMaquina(req, res) {
             .then(
                 function (resultado) {
                     res.json(resultado);
+                    console.log(resultado.insertId);
                 }
             ).catch(
                 function (erro) {
@@ -182,12 +203,66 @@ function cadastrarMaquina(req, res) {
 }
 
 function cadastrarComponente(req, res) {
-    var nome = req.body.componente;
-    var capacidade = req.body.capacidade;
-    var limiteAlerta = req.body.limiteAlerta;
-    var fkMaquina = req.body.idMaquina;
+    var ram = req.body.comp1;
+    var cpu = req.body.comp2;
+    var disco = req.body.comp3;
+    var limiteAlertaRam = req.body.limiteAlertaRam;
+    var limiteAlertaCpu = req.body.limiteAlertaCpu;
+    var limiteAlertaDisco = req.body.limiteAlertaDisco;
+    var capacidadeRam = req.body.capacidadeRam;
+    var capacidadeCpu = req.body.capacidadeCpu;
+    var capacidadeDisco = req.body.capacidadeDisco;
+    var fkMaquina = req.body.fkMaquina;
+    
+    var nome;
+    var capacidade;
+    var limiteAlerta;
 
-        usuarioModel.cadastrarMaquina(identPessoal, hostName, grupo, idEmpresa)
+    nome = ram;
+    capacidade = capacidadeRam;
+    limiteAlerta = limiteAlertaRam;
+    
+        usuarioModel.cadastrarComponente(nome, capacidade, limiteAlerta, 34)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+
+            nome = cpu;
+    capacidade = capacidadeCpu;
+    limiteAlerta = limiteAlertaCpu;
+    
+        usuarioModel.cadastrarComponente(nome, capacidade, limiteAlerta, 34)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+
+            nome = disco;
+    capacidade = capacidadeDisco;
+    limiteAlerta = limiteAlertaDisco;
+    
+        usuarioModel.cadastrarComponente(nome, capacidade, limiteAlerta, 34)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -283,6 +358,27 @@ function cadastrarComponente(req, res) {
 function graficar(req, res) {
     
     usuarioModel.graficar()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function atualizarGrafico(req, res) {
+    var hostname = req.body.hostname;
+
+    usuarioModel.atualizarGrafico(hostname)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -491,5 +587,7 @@ module.exports = {
     graficarMemoria,
     graficarCpu,
     graficarTemp,
-    cadastrarComponente
+    cadastrarComponente,
+    buscarMaquina,
+    atualizarGrafico
 }

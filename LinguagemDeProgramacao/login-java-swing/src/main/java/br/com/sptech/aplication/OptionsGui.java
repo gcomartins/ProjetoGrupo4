@@ -51,7 +51,6 @@ public class OptionsGui extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1218, 680));
         setSize(new java.awt.Dimension(1218, 680));
 
         pnlBackground.setBackground(new java.awt.Color(249, 249, 249));
@@ -62,6 +61,11 @@ public class OptionsGui extends javax.swing.JFrame {
         btnIniciarApp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnIniciarApp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnIniciarApp.setPreferredSize(new java.awt.Dimension(150, 150));
+        btnIniciarApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarAppActionPerformed(evt);
+            }
+        });
 
         btnComponente.setBackground(new java.awt.Color(204, 255, 204));
         btnComponente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/engrenagens.png"))); // NOI18N
@@ -205,6 +209,10 @@ public class OptionsGui extends javax.swing.JFrame {
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnFinalizarActionPerformed
+
+    private void btnIniciarAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarAppActionPerformed
+            new App().setVisible(true); 
+    }//GEN-LAST:event_btnIniciarAppActionPerformed
 
     /**
      * @param args the command line arguments

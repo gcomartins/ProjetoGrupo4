@@ -108,10 +108,42 @@ function cadastrarMaquina(identPessoal, hostName, grupo, idEmpresa) {
     return database.executar(instrucao);
 }
 
+function buscarMaquina() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostName, identPessoal, grupo, idEmpresa);
+    var instrucao = `
+        SELECT TOP 1 idMaquina FROM [dbo].[tbMaquinas] ORDER BY IdMaquina DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function cadastrarComponente(nome, capacidade, limiteAlerta, fkMaquina) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", nome, capacidade, limiteAlerta, fkMaquina);
+    var instrucao = `
+        INSERT INTO tbComponentes (nome, capacidade, limiteAlerta, fkMaquina) VALUES ('${nome}', ${capacidade}, ${limiteAlerta}, ${fkMaquina});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function graficar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function graficar():",);
     var instrucao = `
         select TOP 10 * from tbLogs join [dbo].[tbComponentes] on (fkComponente = idComponentes) where idComponentes = 9 order by idLog desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function atualizarGrafico(hostname) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostname);
+    var instrucao = `
+    select top 21 logs.idLog, components.idComponentes, components.nome, maquinas.hostName, logs.leituraDesempenho, logs.leituraTemperatura, logs.dataHora
+    from [dbo].[tbLogs] as logs
+    join [dbo].[tbComponentes] as components on logs.fkComponente = components.idComponentes
+    join [dbo].[tbMaquinas] as maquinas on  maquinas.idMaquina = components.fkMaquina 
+    where maquinas.hostName = '${hostname}'
+    order by logs.idLog desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -172,4 +204,7 @@ module.exports = {
     graficarMemoria,
     graficarCpu,
     graficarTemp,
+    cadastrarComponente,
+    buscarMaquina,
+    atualizarGrafico
 };

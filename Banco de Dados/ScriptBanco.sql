@@ -92,6 +92,20 @@ insert into tbEmpresas (idEmpresa,nomeEmpresa, cnpj, representante, email, senha
 (0,"Banco do Brasil","4124563254862","Lucas","bdrasil@email.com.br","4532");
 
 
+<<<<<<< HEAD
+insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
+("STFSAOC046893-L","GrupoA", 34),
+("LAPTOP-LU9R5MNA","GrupoA",34),
+
+
+(0,"Pieroni","grupoB",34),
+(0,"Leticia","GrupoA",34),
+(0,"Lara","grupoB",34),
+(0,"Larissa","GrupoB",34),
+(0,"Gulherme","GrupoB",34),
+(0,"Algusto","GrupoB",34);
+
+=======
 insert into tbMaquinas (idMaquina, hostName,grupo, fkEmpresa) values 
 (8,"STFSAOC046893-L","GrupoA", 34),
 (9,"LAPTOP-LU9R5MNA","GrupoA",34),
@@ -102,6 +116,7 @@ insert into tbMaquinas (idMaquina, hostName,grupo, fkEmpresa) values
 (0,"Gulherme","GrupoB",34),
 (0,"Algusto","GrupoB",34);
 
+>>>>>>> da0e4d942a524fbb1dfda175cefd7ed935c5986f
 insert into tbUsuarios ( nomeUsuario, email, senha, fkempresa) values 
 ("Guilherme","guilherme@email.com","1234", 1),
 ("Lara","lara@email.com","1234", 2),
@@ -148,9 +163,18 @@ select * from tbEmpresas;
 select * from tbUsuarios;
 select * from tbComponentes;
 select * from tbAlertas;
-truncate table tbMaquinas;
 select * from tbLogs;
 
 select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where hostName = 'STFSAOC046893-L';
 
+<<<<<<< HEAD
 select * from tbComponentes;
+
+/*select L.idLog, C.nome, C.idComponentes, M.hostName, M.idMaquina from tbComponentes 
+as C inner tbLogs as L 
+                + " on C.idComponentes = L.fkComponente inner join tbMaquinas as M "
+                + " on C.fkMaquina = M.idMaquina  where hostName = '" +nomeMaquina+ "'"
+                + " and nome = '" + componente +"' order by idLog desc ",*\
+=======
+select * from tbComponentes;
+>>>>>>> da0e4d942a524fbb1dfda175cefd7ed935c5986f

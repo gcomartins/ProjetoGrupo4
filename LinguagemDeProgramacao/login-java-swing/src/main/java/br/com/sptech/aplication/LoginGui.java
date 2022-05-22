@@ -237,7 +237,7 @@ public class LoginGui extends javax.swing.JFrame {
 
             if (usuario.getEmail().equals(txtNome.getText())
                     && usuario.getSenha().equals(txtSenha.getText())) {
-                this.dispose();
+                this.dispose(); 
                 new App().setVisible(true);
             } else {
                 System.out.println(usuario.getEmail());

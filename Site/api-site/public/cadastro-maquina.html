@@ -400,6 +400,24 @@ function cadastrarMaquina() {
         }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
         });
+
+		fetch("/usuarios/cadastrarComponente", {
+        method: "POST",
+        body: formulario,
+        }).then(function (resposta) {
+        
+        console.log("resposta: ", resposta);
+        
+        if (resposta.ok) {
+            window.alert("Cadastro realizado com sucesso!");
+            limparFormulario2() 
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+        }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        });
+
         return false;
     }
 

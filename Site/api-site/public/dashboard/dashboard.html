@@ -91,7 +91,12 @@
 			
 			<form action="#">
 				<div class="form-input">
-				<select name="" id="maquinas_select">
+				<select onchange= '
+					atualizarGrafico("graficoDisco", maquinas_select.value),
+					atualizarGrafico("graficoMemoria", maquinas_select.value),
+					atualizarGrafico("graficoCpu", maquinas_select.value),
+					atualizarGrafico("graficoTemp", maquinas_select.value)
+					'name="" id="maquinas_select">
 					<option value="">Pesquisar maquinas</option>
 				</select>	
 			<input type="date" id="date">		
@@ -133,7 +138,7 @@
 			</div>
 
 			<ul class="box-info">
-				<li>
+				<li id="divRam">
 				
 					<span class="text">
 						<div class="div-title">
@@ -144,7 +149,9 @@
 					   </div>
 					  
 					</span>
+					<div id="divGraficoRam">
 					<canvas id="graficoMemoria"></canvas>
+					</div>
 				</li>
 				<li>
 					
@@ -154,7 +161,9 @@
 						<h3 class="cpuTitle">CPU</h3>
 						</div>
 					</span>
+					<div id="divGraficoCpu">
 					<canvas id="graficoCpu"></canvas>
+					</div>
 				</li>
 				<li>
 				
@@ -165,7 +174,9 @@
 						<h3>Disco rígido</h3>					
 					    </div>
 					</span>
+					<div id="divGraficoDisco">
 					<canvas id="graficoDisco"></canvas>
+					</div>
 				</li>
 				<li>
 				
@@ -176,7 +187,9 @@
 					<h3>Temperatura</h3>					
 				    </div>
 				</span>
+				<div id="divGraficoTemp">
 				<canvas id="graficoTemp"></canvas>
+				</div>
 			</li>
 			</ul>
 
@@ -361,7 +374,7 @@
 			response.json().then((json) => {
 				console.log(json);
 				for (let i = 0; i < json.length; i++) {
-					maquinas_select.innerHTML += `<option value="">${json[i].hostName}</option>`
+					maquinas_select.innerHTML += `<option value="${json[i].hostName}">${json[i].hostName}</option>`
 					
 				}
 			})
@@ -379,7 +392,6 @@ allSideMenu.forEach(item=> {
 		allSideMenu.forEach(i=> {
 			i.parentElement.classList.remove('active');
 		})
-		li.classList.add('active');
 	})
 });
 
@@ -432,7 +444,6 @@ window.addEventListener('resize', function () {
 })
 
 </script>
-<script src="./js/funcoes.js"></script>
 
 
 	
