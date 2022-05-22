@@ -6,6 +6,7 @@ package data.cat.service;
 
 import data.cat.banco.ConexaoAzure;
 import br.com.sptech.aplication.LoginGui;
+import br.com.sptech.aplication.OptionsGui;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.discos.DiscosGroup;
 import com.github.britooo.looca.api.group.memoria.Memoria;
@@ -13,6 +14,7 @@ import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.processos.ProcessosGroup;
 import data.cat.banco.ConexaoMysql;
 import data.cat.modal.Componente;
+import data.cat.modal.Maquina;
 import data.cat.modal.Usuario;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 /**
@@ -46,25 +50,30 @@ public class ModalServices {
 
     Timer timer = new Timer();
 
-    public ModalServices() throws UnknownHostException {
-        looca = new Looca();
-        medidasServices = new MedidasServices();
-        this.idLog = log++;
-        this.idMaquina = InetAddress.getLocalHost().getHostAddress();
-        this.nomeMaquina = InetAddress.getLocalHost().getHostName();
-        this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
-        this.leituraDesempenhoRam = medidasServices.getRamEmUso();
-        this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
+    public ModalServices() {
+        try {
+            looca = new Looca();
+            medidasServices = new MedidasServices();
+            this.idLog = log++;
+            this.idMaquina = InetAddress.getLocalHost().getHostAddress();
+            this.nomeMaquina = InetAddress.getLocalHost().getHostName();
+            this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
+            this.leituraDesempenhoRam = medidasServices.getRamEmUso();
+            this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(ModalServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
     ConexaoAzure conexaoAzure = new ConexaoAzure();
-//    ConexaoMysql conexaoMysql = new ConexaoMysql();
+    ConexaoMysql conexaoMysql = new ConexaoMysql();
     Date dataHora = new Date();
     List<Componente> listaComponentes = new ArrayList<>();
     List<Usuario> listaUsuarios = new ArrayList<>();
+    List<Maquina> listaMaquinas = new ArrayList<>();
 
-    LoginGui label = new LoginGui();
+    
 
     public void inserirComponenteBanco(MedidasServices medidasServices, String componente) {
         int comp = 0;
@@ -80,13 +89,12 @@ public class ModalServices {
 
             }
         }
+        
         conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
                 + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);
         
 //        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);
-        
-        
+//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);                
     }
  
     public Double getLimiteBanco(String componente)
@@ -108,13 +116,33 @@ public class ModalServices {
         return 0.0;
     }
     
-    public void cadastroMaquina(ModalServices modalServices, String email){
-        
-         listaUsuarios = conexaoAzure.getConexaoAzure().query(
-                    String.format("select * from tbUsuarios where email = '%s'",
-                            email),
-                    new BeanPropertyRowMapper<>(Usuario.class));         
-         for (Componente componente : listaComponentes) {              
-        }                
-    }
+//    public boolean cadastroMaquina(ModalServices modalServices, String email, 
+//            String hostName){
+//        
+//        Integer fkEmpresa;
+//        String hostExistente;
+//        
+//        listaMaquinas = conexaoMysql.getConexaoMysql().query(
+//                    String.format("select * from tbMaquinas where hostName = '%s'",
+//                            hostName),
+//                    new BeanPropertyRowMapper<>(Maquina.class));
+//        hostExistente = listaMaquinas.get(0).getHostName();
+//        
+//        if (hostExistente == null) {
+//           listaUsuarios = conexaoMysql.getConexaoMysql().query(
+//                    String.format("select * from tbUsuarios where email = '%s'",
+//                            email),
+//                    new BeanPropertyRowMapper<>(Usuario.class)); 
+//         
+//         fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
+//         
+//         conexaoMysql.getConexaoMysql().update("insert into tbMaquina (hostName,fkEmpresa)"
+//                 + "values(?,?)", hostName, fkEmpresa); 
+//         return true;
+//         
+//        }
+//        return false;
+//        
+//         
+//    }
 }
