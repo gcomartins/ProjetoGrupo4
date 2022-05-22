@@ -375,7 +375,10 @@ public class App extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new App().setVisible(true);
+//                new App().setVisible(true);                
+                App app = new App();
+                app.setLocationRelativeTo(null);
+                app.setVisible(true);
             }
         });
     }

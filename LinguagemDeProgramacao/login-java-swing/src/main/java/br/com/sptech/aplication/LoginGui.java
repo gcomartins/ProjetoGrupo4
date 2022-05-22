@@ -318,7 +318,10 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginGui().setVisible(true);
+//                new LoginGui().setVisible(true);
+                LoginGui loginGui = new LoginGui();
+                loginGui.setLocationRelativeTo(null);
+                loginGui.setVisible(true);
             }
         });
     }
