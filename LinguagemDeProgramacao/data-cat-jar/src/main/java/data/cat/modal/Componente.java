@@ -27,11 +27,11 @@ public class Componente {
         this.fkMaquina = IdMaquina;
     }
 
-    public int getidComponentes() {
+    public int getIdComponentes() {
         return idComponentes;
     }
 
-    public void setidComponentes(Integer idComponentes) {
+    public void setIdComponentes(Integer idComponentes) {
         this.idComponentes = idComponentes;
     }
 

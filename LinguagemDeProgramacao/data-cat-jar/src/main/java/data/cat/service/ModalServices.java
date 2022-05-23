@@ -67,7 +67,7 @@ public class ModalServices {
     }
 
     ConexaoAzure conexaoAzure = new ConexaoAzure();
-    ConexaoMysql conexaoMysql = new ConexaoMysql();
+//    ConexaoMysql conexaoMysql = new ConexaoMysql();
     Date dataHora = new Date();
     List<Componente> listaComponentes = new ArrayList<>();
     List<Usuario> listaUsuarios = new ArrayList<>();
@@ -85,16 +85,29 @@ public class ModalServices {
 
         for (int i = 0; i < listaComponentes.size(); i++) {
             if (listaComponentes.get(i).getNome().equalsIgnoreCase(componente)) {
-                comp = listaComponentes.get(i).getidComponentes();
-
+                comp = listaComponentes.get(i).getIdComponentes();
+                break;
             }
         }
         
+        if (componente.equalsIgnoreCase("Disco")) {
         conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);
+                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);    
+        }if (componente.equalsIgnoreCase("Ram")) {
+        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, comp);    
+        }if (componente.equalsIgnoreCase("Cpu")) {
+        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, comp);    
+        }
+        
         
 //        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);                
+//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);      
+
+
+
+
     }
  
     public Double getLimiteBanco(String componente)

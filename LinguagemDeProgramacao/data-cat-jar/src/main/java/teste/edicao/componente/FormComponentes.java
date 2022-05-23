@@ -98,7 +98,6 @@ public class FormComponentes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cadastro");
-        setPreferredSize(new java.awt.Dimension(1218, 680));
 
         pnlFundo.setBackground(new java.awt.Color(245, 243, 244));
         pnlFundo.setPreferredSize(new java.awt.Dimension(1218, 680));
@@ -315,10 +314,18 @@ public class FormComponentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       
+        
+        
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     private void txtFkMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFkMaquinaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFkMaquinaActionPerformed
 
+<<<<<<< HEAD
     private void menuDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDashActionPerformed
         new App().setVisible(true); 
     }//GEN-LAST:event_menuDashActionPerformed
@@ -330,9 +337,17 @@ public class FormComponentes extends javax.swing.JFrame {
     private void menuOptionGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOptionGUIActionPerformed
         new OptionsGui().setVisible(true);
     }//GEN-LAST:event_menuOptionGUIActionPerformed
+=======
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        
+        
+        
+        
+    }//GEN-LAST:event_btnAddActionPerformed
+>>>>>>> 04d3690bc672f670910308a43b5043e37efa6399
 
     public void preencherTabela(String Sql) {
-        ArrayList dados = new ArrayList();
+        List<Componente> dados = new ArrayList();
         String[] colunas = new String[]{"idFuncionario", "nomeFuncionario", "emailFuncionario", "cargo"};
         
         List<Maquina> listaMaquina = new ArrayList();
@@ -350,15 +365,11 @@ public class FormComponentes extends javax.swing.JFrame {
             listaComponentes = azure.getConexaoAzure().query("select * from tbComponentes where fkMaquina = ' " + idMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
                 for (int i = 0; i < listaComponentes.size(); i++) {
-                        dados.add(new Object[]{
-                            listaComponentes.get(i).getidComponentes(),
-                            listaComponentes.get(i).getNome(),
-                            listaComponentes.get(i).getLimiteAlerta(),
-                            listaComponentes.get(i).getFkMaquina()});
+                        dados.add(listaComponentes.get(i));
                 }
                 
                 
-        Tabela tabela = new Tabela(dados, colunas);
+        Tabela tabela = new Tabela((ArrayList) dados, colunas);
         
         tblComponentes.setModel((TableModel) tabela);
         
