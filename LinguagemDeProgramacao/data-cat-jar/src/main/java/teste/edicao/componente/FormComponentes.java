@@ -4,6 +4,7 @@
  */
 package teste.edicao.componente;
 
+import br.com.sptech.aplication.App;
 import br.com.sptech.aplication.OptionsGui;
 import data.cat.banco.ConexaoAzure;
 import data.cat.banco.ConexaoMysql;
@@ -76,9 +77,12 @@ public class FormComponentes extends javax.swing.JFrame {
         tblComponentes = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
+        menu = new javax.swing.JMenuBar();
+        menuGeral = new javax.swing.JMenu();
+        menuOptionGUI = new javax.swing.JMenuItem();
+        menuDash = new javax.swing.JMenuItem();
+        menuOpcoes = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -190,12 +194,15 @@ public class FormComponentes extends javax.swing.JFrame {
             .addGroup(pnlFundoLayout.createSequentialGroup()
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel5))
+                    .addGroup(pnlFundoLayout.createSequentialGroup()
+                        .addGap(144, 144, 144)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addGap(87, 87, 87)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLimiteAlerta)
                             .addComponent(lblNome)
@@ -206,11 +213,8 @@ public class FormComponentes extends javax.swing.JFrame {
                             .addComponent(txtFkMaquina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLimiteAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
@@ -218,13 +222,10 @@ public class FormComponentes extends javax.swing.JFrame {
             pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFundoLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(82, Short.MAX_VALUE))
+                .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(48, 48, 48)
+                        .addGap(59, 59, 59)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblId))
@@ -240,24 +241,56 @@ public class FormComponentes extends javax.swing.JFrame {
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtFkMaquina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblFkMaquina))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(70, 70, 70)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(119, 119, 119))))
+                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jMenuBar3.setBackground(new java.awt.Color(164, 22, 26));
-        jMenuBar3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuBar3.setPreferredSize(new java.awt.Dimension(70, 55));
+        menu.setBackground(new java.awt.Color(164, 22, 26));
+        menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        menu.setPreferredSize(new java.awt.Dimension(70, 55));
 
-        jMenu5.setText("File");
-        jMenuBar3.add(jMenu5);
+        menuGeral.setForeground(new java.awt.Color(245, 243, 244));
+        menuGeral.setText("Menu");
+        menuGeral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        jMenu6.setText("Edit");
-        jMenuBar3.add(jMenu6);
+        menuOptionGUI.setText("Menu");
+        menuOptionGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOptionGUIActionPerformed(evt);
+            }
+        });
+        menuGeral.add(menuOptionGUI);
 
-        setJMenuBar(jMenuBar3);
+        menuDash.setText("Dashboard");
+        menuDash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDashActionPerformed(evt);
+            }
+        });
+        menuGeral.add(menuDash);
+
+        menu.add(menuGeral);
+
+        menuOpcoes.setForeground(new java.awt.Color(245, 243, 244));
+        menuOpcoes.setText("Opções");
+        menuOpcoes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        menuSair.setText("Sair");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
+        menuOpcoes.add(menuSair);
+
+        menu.add(menuOpcoes);
+
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,9 +302,10 @@ public class FormComponentes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(pnlFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -284,6 +318,18 @@ public class FormComponentes extends javax.swing.JFrame {
     private void txtFkMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFkMaquinaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFkMaquinaActionPerformed
+
+    private void menuDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDashActionPerformed
+        new App().setVisible(true); 
+    }//GEN-LAST:event_menuDashActionPerformed
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_menuSairActionPerformed
+
+    private void menuOptionGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOptionGUIActionPerformed
+        new OptionsGui().setVisible(true);
+    }//GEN-LAST:event_menuOptionGUIActionPerformed
 
     public void preencherTabela(String Sql) {
         ArrayList dados = new ArrayList();
@@ -385,16 +431,19 @@ public class FormComponentes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFkMaquina;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblLimiteAlerta;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JMenuItem menuDash;
+    private javax.swing.JMenu menuGeral;
+    private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenuItem menuOptionGUI;
+    private javax.swing.JMenuItem menuSair;
     private javax.swing.JPanel pnlFundo;
     private javax.swing.JTable tblComponentes;
     private javax.swing.JTextField txtFkMaquina;
