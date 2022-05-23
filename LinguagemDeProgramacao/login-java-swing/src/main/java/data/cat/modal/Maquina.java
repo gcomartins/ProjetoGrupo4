@@ -10,7 +10,7 @@ package data.cat.modal;
  */
 public class Maquina {
 
-    private Long idMaquina;
+    private Integer idMaquina;
     private String indentPessoal;
     private String hostName;
     private String grupo;
@@ -19,7 +19,7 @@ public class Maquina {
     public Maquina() {
     }
 
-    public Maquina(Long idMaquina, String indentPessoal, String hostName, String grupo, Long empresa) {
+    public Maquina(Integer idMaquina, String indentPessoal, String hostName, String grupo, Long empresa) {
         this.idMaquina = idMaquina;
         this.indentPessoal = indentPessoal;
         this.hostName = hostName;
@@ -27,11 +27,11 @@ public class Maquina {
         this.fkEmpresa = empresa;
     }
 
-    public Long getIdMaquina() {
+    public Integer getIdMaquina() {
         return idMaquina;
     }
 
-    public void setIdMaquina(Long idMaquina) {
+    public void setIdMaquina(Integer idMaquina) {
         this.idMaquina = idMaquina;
     }
 
