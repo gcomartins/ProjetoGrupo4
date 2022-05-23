@@ -4,6 +4,7 @@
  */
 package teste.edicao.componente;
 
+import br.com.sptech.aplication.OptionsGui;
 import data.cat.banco.ConexaoAzure;
 import data.cat.banco.ConexaoMysql;
 import data.cat.modal.Componente;
@@ -58,6 +59,9 @@ public class FormComponentes extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         pnlFundo = new javax.swing.JPanel();
         lblId = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -70,11 +74,11 @@ public class FormComponentes extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblComponentes = new javax.swing.JTable();
-        btnEditar = new java.awt.Button();
-        btnAdd = new java.awt.Button();
-        menu = new javax.swing.JMenuBar();
-        menuDash = new javax.swing.JMenu();
-        menuSair = new javax.swing.JMenu();
+        btnAdd = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -82,24 +86,42 @@ public class FormComponentes extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cadastro");
         setPreferredSize(new java.awt.Dimension(1218, 680));
 
+        pnlFundo.setBackground(new java.awt.Color(245, 243, 244));
         pnlFundo.setPreferredSize(new java.awt.Dimension(1218, 680));
 
+        lblId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblId.setForeground(new java.awt.Color(22, 26, 29));
         lblId.setText("ID");
 
+        lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(22, 26, 29));
         lblNome.setText("Nome");
 
+        lblLimiteAlerta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblLimiteAlerta.setForeground(new java.awt.Color(22, 26, 29));
         lblLimiteAlerta.setText("Limite de Alerta");
 
+        lblFkMaquina.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblFkMaquina.setForeground(new java.awt.Color(22, 26, 29));
         lblFkMaquina.setText("Máquina");
 
+        txtLimiteAlerta.setForeground(new java.awt.Color(69, 73, 74));
         txtLimiteAlerta.setPreferredSize(new java.awt.Dimension(260, 30));
 
+        txtNome.setForeground(new java.awt.Color(69, 73, 74));
         txtNome.setPreferredSize(new java.awt.Dimension(260, 30));
 
+        txtId.setForeground(new java.awt.Color(69, 73, 74));
         txtId.setPreferredSize(new java.awt.Dimension(64, 30));
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +129,7 @@ public class FormComponentes extends javax.swing.JFrame {
             }
         });
 
+        txtFkMaquina.setForeground(new java.awt.Color(69, 73, 74));
         txtFkMaquina.setPreferredSize(new java.awt.Dimension(260, 30));
         txtFkMaquina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,8 +138,10 @@ public class FormComponentes extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(22, 26, 29));
         jLabel5.setText("Dados do Componente");
 
+        tblComponentes.setForeground(new java.awt.Color(69, 73, 74));
         tblComponentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -138,20 +163,25 @@ public class FormComponentes extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblComponentes);
 
-        btnEditar.setActionCommand("Editar");
-        btnEditar.setLabel("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
+        btnAdd.setBackground(new java.awt.Color(164, 22, 26));
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 238, 239));
+        btnAdd.setText("Adicionar");
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAdd.setMaximumSize(new java.awt.Dimension(81, 28));
+        btnAdd.setMinimumSize(new java.awt.Dimension(81, 28));
+        btnAdd.setPreferredSize(new java.awt.Dimension(100, 28));
 
-        btnAdd.setLabel("Adicionar");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
+        btnEditar.setBackground(new java.awt.Color(164, 22, 26));
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 238, 239));
+        btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditar.setMaximumSize(new java.awt.Dimension(81, 28));
+        btnEditar.setMinimumSize(new java.awt.Dimension(81, 28));
+        btnEditar.setPreferredSize(new java.awt.Dimension(100, 28));
 
         javax.swing.GroupLayout pnlFundoLayout = new javax.swing.GroupLayout(pnlFundo);
         pnlFundo.setLayout(pnlFundoLayout);
@@ -160,13 +190,18 @@ public class FormComponentes extends javax.swing.JFrame {
             .addGroup(pnlFundoLayout.createSequentialGroup()
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(145, 145, 145)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFundoLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLimiteAlerta)
                             .addComponent(lblNome)
                             .addComponent(lblId)
                             .addComponent(lblFkMaquina))
-                        .addGap(39, 39, 39)
+                        .addGap(37, 37, 37)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFkMaquina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,79 +209,55 @@ public class FormComponentes extends javax.swing.JFrame {
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addGap(177, 177, 177)
-                        .addComponent(jLabel5))
-                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
         pnlFundoLayout.setVerticalGroup(
             pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFundoLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(82, Short.MAX_VALUE))
+                    .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(80, 80, 80)
+                        .addGap(48, 48, 48)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblId))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNome)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLimiteAlerta)
-                            .addComponent(txtLimiteAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFkMaquina)
-                            .addComponent(txtFkMaquina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNome))
+                        .addGap(36, 36, 36)
+                        .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtLimiteAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLimiteAlerta))
+                        .addGap(35, 35, 35)
+                        .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFkMaquina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFkMaquina))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(pnlFundoLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(119, 119, 119))))
         );
 
-        menu.setBackground(new java.awt.Color(164, 22, 26));
-        menu.setBorder(null);
-        menu.setForeground(new java.awt.Color(228, 228, 228));
-        menu.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        menu.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        menu.setMinimumSize(new java.awt.Dimension(74, 70));
-        menu.setPreferredSize(new java.awt.Dimension(74, 60));
+        jMenuBar3.setBackground(new java.awt.Color(164, 22, 26));
+        jMenuBar3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuBar3.setPreferredSize(new java.awt.Dimension(70, 55));
 
-        menuDash.setText("Dashboard");
-        menuDash.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        menu.add(menuDash);
+        jMenu5.setText("File");
+        jMenuBar3.add(jMenu5);
 
-        menuSair.setText("Sair");
-        menuSair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                menuSairMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                menuSairMouseExited(evt);
-            }
-        });
-        menuSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSairActionPerformed(evt);
-            }
-        });
-        menu.add(menuSair);
+        jMenu6.setText("Edit");
+        jMenuBar3.add(jMenu6);
 
-        setJMenuBar(menu);
+        setJMenuBar(jMenuBar3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,39 +271,19 @@ public class FormComponentes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pnlFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
+                .addComponent(pnlFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseEntered
-
-    }//GEN-LAST:event_menuSairMouseEntered
-
-    private void menuSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseExited
-
-    }//GEN-LAST:event_menuSairMouseExited
-
-    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_menuSairActionPerformed
-
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void txtFkMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFkMaquinaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFkMaquinaActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
-    }//GEN-LAST:event_btnAddActionPerformed
 
     public void preencherTabela(String Sql) {
         ArrayList dados = new ArrayList();
@@ -387,20 +378,23 @@ public class FormComponentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnAdd;
-    private java.awt.Button btnEditar;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFkMaquina;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblLimiteAlerta;
     private javax.swing.JLabel lblNome;
-    private javax.swing.JMenuBar menu;
-    private javax.swing.JMenu menuDash;
-    private javax.swing.JMenu menuSair;
     private javax.swing.JPanel pnlFundo;
     private javax.swing.JTable tblComponentes;
     private javax.swing.JTextField txtFkMaquina;
