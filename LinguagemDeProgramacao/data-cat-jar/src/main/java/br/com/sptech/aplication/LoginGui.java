@@ -256,15 +256,9 @@ public class LoginGui extends javax.swing.JFrame {
                 Integer hostExistente;
                 Integer fkMaquina;
                 String disco = "Disco";
-<<<<<<< HEAD:LinguagemDeProgramacao/data-cat-jar/src/main/java/br/com/sptech/aplication/LoginGui.java
                 String ram = "Ram"; 
-                String cpu = "Cpu";       
-                listaMaquinas = conexaoazure.getConexaoAzure().query(
-=======
-                String ram = "Ram";
-                String cpu = "Cpu";
+                String cpu = "Cpu";               
                 listaMaquinas = conexaoMysql.getConexaoMysql().query(
->>>>>>> e3a9b3f869a2c0cf0d8ed7af561dc8d01883ee1e:LinguagemDeProgramacao/login-java-swing/src/main/java/br/com/sptech/aplication/LoginGui.java
                         String.format("select * from tbMaquinas where hostName = '%s'",
                                 nomeMaquina),
                         new BeanPropertyRowMapper<>(Maquina.class));
@@ -280,7 +274,7 @@ public class LoginGui extends javax.swing.JFrame {
 
                     conexaoazure.getConexaoAzure().update("insert into tbMaquinas (hostName,fkEmpresa)"
                             + "values(?,?)", nomeMaquina, fkEmpresa);
-<<<<<<< HEAD:LinguagemDeProgramacao/data-cat-jar/src/main/java/br/com/sptech/aplication/LoginGui.java
+
                     
                     listaMaquinas = conexaoazure.getConexaoAzure().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
@@ -296,7 +290,7 @@ public class LoginGui extends javax.swing.JFrame {
                             + "values(?,?);", ram,fkMaquina);
                     conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
                             + "values(?,?);", cpu,fkMaquina);
-=======
+
 
                     listaMaquinas = conexaoMysql.getConexaoMysql().query(
                             String.format("select * from tbMaquinas where hostName = '%s'",
@@ -311,13 +305,11 @@ public class LoginGui extends javax.swing.JFrame {
                             + "values(?,?);", ram, fkMaquina);
                     conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
                             + "values(?,?);", cpu, fkMaquina);
->>>>>>> e3a9b3f869a2c0cf0d8ed7af561dc8d01883ee1e:LinguagemDeProgramacao/login-java-swing/src/main/java/br/com/sptech/aplication/LoginGui.java
                     new OptionsGui().setVisible(true);
                 } else {
                     System.out.println("Seu hostName foi cadastrado");
                     new OptionsGui().setVisible(true);
                 }
-<<<<<<< HEAD:LinguagemDeProgramacao/data-cat-jar/src/main/java/br/com/sptech/aplication/LoginGui.java
             }else {
                     System.out.println(txtNome.getText());
                     System.out.println(usuario.getEmail());
@@ -328,18 +320,9 @@ public class LoginGui extends javax.swing.JFrame {
                             "Aviso",
                             JOptionPane.WARNING_MESSAGE);
                 }
-=======
-            } else {
-                System.out.println(usuario.getEmail());
-                System.out.println(usuario.getSenha());
-                System.out.println(listaUsuarios);
-                JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
-                        "Aviso",
-                        JOptionPane.WARNING_MESSAGE);
-            }
->>>>>>> e3a9b3f869a2c0cf0d8ed7af561dc8d01883ee1e:LinguagemDeProgramacao/login-java-swing/src/main/java/br/com/sptech/aplication/LoginGui.java
+            } 
 
-        }
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -408,10 +391,6 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-<<<<<<< HEAD:LinguagemDeProgramacao/data-cat-jar/src/main/java/br/com/sptech/aplication/LoginGui.java
-
-=======
->>>>>>> e3a9b3f869a2c0cf0d8ed7af561dc8d01883ee1e:LinguagemDeProgramacao/login-java-swing/src/main/java/br/com/sptech/aplication/LoginGui.java
                 try {
                     try {
                         new LoginGui().setVisible(true);
@@ -425,15 +404,13 @@ public class LoginGui extends javax.swing.JFrame {
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
-<<<<<<< HEAD:LinguagemDeProgramacao/data-cat-jar/src/main/java/br/com/sptech/aplication/LoginGui.java
+
 
 //                new LoginGui().setVisible(true);
 //                LoginGui loginGui = new LoginGui();
 //                loginGui.setLocationRelativeTo(null);
 //                loginGui.setVisible(true);
 
-=======
->>>>>>> e3a9b3f869a2c0cf0d8ed7af561dc8d01883ee1e:LinguagemDeProgramacao/login-java-swing/src/main/java/br/com/sptech/aplication/LoginGui.java
             }
         });}
     
