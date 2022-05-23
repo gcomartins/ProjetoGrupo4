@@ -10,34 +10,34 @@ package data.cat.modal;
  */
 public class Alertas {
 
-    private Long idAlertas;
-    private Long fkLog;
+    private Integer idAlertas;
+    private Integer fkLog;
     private String categoria;
     private String Descrição;
 
     public Alertas() {
     }
 
-    public Alertas(Long idAlertas, Long log, String categoria, String Descrição) {
+    public Alertas(Integer idAlertas, Integer log, String categoria, String Descrição) {
         this.idAlertas = idAlertas;
         this.fkLog = log;
         this.categoria = categoria;
         this.Descrição = Descrição;
     }
 
-    public Long getIdAlertas() {
+    public Integer getIdAlertas() {
         return idAlertas;
     }
 
-    public void setIdAlertas(Long idAlertas) {
+    public void setIdAlertas(Integer idAlertas) {
         this.idAlertas = idAlertas;
     }
 
-    public Long getLog() {
+    public Integer getLog() {
         return fkLog;
     }
 
-    public void setLog(Long log) {
+    public void setLog(Integer log) {
         this.fkLog = log;
     }
 

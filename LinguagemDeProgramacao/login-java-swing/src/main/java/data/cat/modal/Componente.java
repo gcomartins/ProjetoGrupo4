@@ -12,15 +12,15 @@ import data.cat.modal.Maquina;
  */
 public class Componente {
 
-    private int idComponentes;
+    private Integer idComponentes;
     private String nome;
     private Double limiteAlerta;
-    private int fkMaquina;
+    private Integer fkMaquina;
 
     public Componente() {
     }
 
-    public Componente(int idComponentes, String nome, Double limiteAlerta,int IdMaquina) {
+    public Componente(Integer idComponentes, String nome, Double limiteAlerta,Integer IdMaquina) {
         this.idComponentes = idComponentes;
         this.nome = nome;
         this.limiteAlerta = limiteAlerta;
@@ -31,7 +31,7 @@ public class Componente {
         return idComponentes;
     }
 
-    public void setidComponentes(int idComponentes) {
+    public void setidComponentes(Integer idComponentes) {
         this.idComponentes = idComponentes;
     }
 
@@ -55,7 +55,7 @@ public class Componente {
         return fkMaquina;
     }
 
-    public void setFkMaquina(int maquina) {
+    public void setFkMaquina(Integer maquina) {
         this.fkMaquina = maquina;
     }
 

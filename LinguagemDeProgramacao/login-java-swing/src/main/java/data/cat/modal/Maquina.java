@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package data.cat.modal;
 
 /**
@@ -14,12 +10,12 @@ public class Maquina {
     private String indentPessoal;
     private String hostName;
     private String grupo;
-    private Long fkEmpresa;
+    private Integer fkEmpresa;
 
     public Maquina() {
     }
 
-    public Maquina(Integer idMaquina, String indentPessoal, String hostName, String grupo, Long empresa) {
+    public Maquina(Integer idMaquina, String indentPessoal, String hostName, String grupo, Integer empresa) {
         this.idMaquina = idMaquina;
         this.indentPessoal = indentPessoal;
         this.hostName = hostName;
@@ -59,11 +55,11 @@ public class Maquina {
         this.grupo = grupo;
     }
 
-    public Long getEmpresa() {
+    public Integer getEmpresa() {
         return fkEmpresa;
     }
 
-    public void setEmpresa(Long empresa) {
+    public void setEmpresa(Integer empresa) {
         this.fkEmpresa = empresa;
     }
 

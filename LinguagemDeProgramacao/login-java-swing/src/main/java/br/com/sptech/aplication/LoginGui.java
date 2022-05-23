@@ -253,10 +253,10 @@ public class LoginGui extends javax.swing.JFrame {
                 this.dispose();
                 Integer fkEmpresa;
                 Integer hostExistente;
-                Long fkMaquina;
+                Integer fkMaquina;
                 String disco = "Disco";
-                String ram = "Ram"; 
-                String cpu = "Cpu";       
+                String ram = "Ram";
+                String cpu = "Cpu";
                 listaMaquinas = conexaoMysql.getConexaoMysql().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
                                 nomeMaquina),
@@ -273,34 +273,33 @@ public class LoginGui extends javax.swing.JFrame {
 
                     conexaoMysql.getConexaoMysql().update("insert into tbMaquinas (hostName,fkEmpresa)"
                             + "values(?,?)", nomeMaquina, fkEmpresa);
-                    
+
                     listaMaquinas = conexaoMysql.getConexaoMysql().query(
-                        String.format("select * from tbMaquinas where hostName = '%s'",
-                                nomeMaquina),
-                        new BeanPropertyRowMapper<>(Maquina.class));
-                    
+                            String.format("select * from tbMaquinas where hostName = '%s'",
+                                    nomeMaquina),
+                            new BeanPropertyRowMapper<>(Maquina.class));
+
                     fkMaquina = listaMaquinas.get(0).getIdMaquina();
-                    
-                    
+
                     conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", disco,fkMaquina);
+                            + "values(?,?);", disco, fkMaquina);
                     conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", ram,fkMaquina);
+                            + "values(?,?);", ram, fkMaquina);
                     conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", cpu,fkMaquina);
+                            + "values(?,?);", cpu, fkMaquina);
                     new OptionsGui().setVisible(true);
-                } else{
+                } else {
                     System.out.println("Seu hostName foi cadastrado");
                     new OptionsGui().setVisible(true);
                 }
-            }else {
-                    System.out.println(usuario.getEmail());
-                    System.out.println(usuario.getSenha());
-                    System.out.println(listaUsuarios);
-                    JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE);
-                }
+            } else {
+                System.out.println(usuario.getEmail());
+                System.out.println(usuario.getSenha());
+                System.out.println(listaUsuarios);
+                JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
+                        "Aviso",
+                        JOptionPane.WARNING_MESSAGE);
+            }
 
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
@@ -371,18 +370,19 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-<<<<<<< HEAD
                 try {
-                    new LoginGui().setVisible(true);
+                    try {
+                        new LoginGui().setVisible(true);
+                    } catch (UnknownHostException ex) {
+                        Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+//                new LoginGui().setVisible(true);
+                    LoginGui loginGui = new LoginGui();
+                    loginGui.setLocationRelativeTo(null);
+                    loginGui.setVisible(true);
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
-=======
-//                new LoginGui().setVisible(true);
-                LoginGui loginGui = new LoginGui();
-                loginGui.setLocationRelativeTo(null);
-                loginGui.setVisible(true);
->>>>>>> d92acbc76590fa71e042c4ca8efe6593b6678b75
             }
         });
     }

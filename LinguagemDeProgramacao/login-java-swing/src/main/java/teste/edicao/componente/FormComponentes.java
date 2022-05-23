@@ -340,27 +340,6 @@ public class FormComponentes extends javax.swing.JFrame {
         tblComponentes.getTableHeader().setReorderingAllowed(false);
         tblComponentes.setAutoResizeMode(tblComponentes.AUTO_RESIZE_OFF);
         tblComponentes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-//        BeansTabela beansTabela = new BeansTabela(dados, colunas);
-//
-//        jTableFuncionario.setModel(beansTabela);
-//
-//        jTableFuncionario.getColumnModel().getColumn(0).setPreferredWidth(35);
-//        jTableFuncionario.getColumnModel().getColumn(0).setResizable(false);
-//
-//        jTableFuncionario.getColumnModel().getColumn(1).setPreferredWidth(165);
-//        jTableFuncionario.getColumnModel().getColumn(1).setResizable(false);
-//
-//        jTableFuncionario.getColumnModel().getColumn(2).setPreferredWidth(180);
-//        jTableFuncionario.getColumnModel().getColumn(2).setResizable(false);
-//
-//        jTableFuncionario.getColumnModel().getColumn(3).setPreferredWidth(120);
-//        jTableFuncionario.getColumnModel().getColumn(3).setResizable(false);
-//
-//        jTableFuncionario.getTableHeader().setReorderingAllowed(false);
-//        jTableFuncionario.setAutoResizeMode(jTableFuncionario.AUTO_RESIZE_OFF);
-//        jTableFuncionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
     }
     
     /**
