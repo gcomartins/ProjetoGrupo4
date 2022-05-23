@@ -242,7 +242,7 @@ public class LoginGui extends javax.swing.JFrame {
         } catch (DataAccessException e) {
 
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Não foi possivel conectar ao banco",
+            JOptionPane.showMessageDialog(this, "Não foi possivel conetar ao banco",
                     "Aviso",
                     JOptionPane.WARNING_MESSAGE);
         }
@@ -257,8 +257,8 @@ public class LoginGui extends javax.swing.JFrame {
                 Integer fkMaquina;
                 String disco = "Disco";
                 String ram = "Ram"; 
-                String cpu = "Cpu";               
-                listaMaquinas = conexaoMysql.getConexaoMysql().query(
+                String cpu = "Cpu";       
+                listaMaquinas = conexaoazure.getConexaoAzure().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
                                 nomeMaquina),
                         new BeanPropertyRowMapper<>(Maquina.class));
@@ -274,7 +274,6 @@ public class LoginGui extends javax.swing.JFrame {
 
                     conexaoazure.getConexaoAzure().update("insert into tbMaquinas (hostName,fkEmpresa)"
                             + "values(?,?)", nomeMaquina, fkEmpresa);
-
                     
                     listaMaquinas = conexaoazure.getConexaoAzure().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
@@ -290,21 +289,6 @@ public class LoginGui extends javax.swing.JFrame {
                             + "values(?,?);", ram,fkMaquina);
                     conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
                             + "values(?,?);", cpu,fkMaquina);
-
-
-                    listaMaquinas = conexaoMysql.getConexaoMysql().query(
-                            String.format("select * from tbMaquinas where hostName = '%s'",
-                                    nomeMaquina),
-                            new BeanPropertyRowMapper<>(Maquina.class));
-
-                    fkMaquina = listaMaquinas.get(0).getIdMaquina();
-
-                    conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", disco, fkMaquina);
-                    conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", ram, fkMaquina);
-                    conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", cpu, fkMaquina);
                     new OptionsGui().setVisible(true);
                 } else {
                     System.out.println("Seu hostName foi cadastrado");
@@ -320,9 +304,8 @@ public class LoginGui extends javax.swing.JFrame {
                             "Aviso",
                             JOptionPane.WARNING_MESSAGE);
                 }
-            } 
 
-        
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -404,7 +387,6 @@ public class LoginGui extends javax.swing.JFrame {
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
 
 //                new LoginGui().setVisible(true);
 //                LoginGui loginGui = new LoginGui();
