@@ -13,24 +13,12 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarFuncionario() {
-    instrucaoSql = ` SELECT idUsuario, 
-                          nomeUsuario, 
-                          email, 
-                          administrador 
-                          FROM tbUsuarios;
-                        `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
 
-function buscarMedidasEmTempoReal(idAquario) {
-    instrucaoSql = `select 
-                        temperatura, 
-                        umidade, DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+
+function buscarMedidasEmTempoReal(idLog) {
+    instrucaoSql = `
+    select * from tbLogs join [dbo].[tbComponentes] on (fkComponente = idComponentes) where idComponentes = 9 order by ${idLog} desc;
+`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -40,5 +28,4 @@ function buscarMedidasEmTempoReal(idAquario) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarFuncionario
 }

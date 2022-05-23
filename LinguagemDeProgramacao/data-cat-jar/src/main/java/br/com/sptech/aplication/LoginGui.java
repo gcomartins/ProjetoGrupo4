@@ -223,6 +223,7 @@ public class LoginGui extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
         ConexaoMysql conexaoMysql = new ConexaoMysql();
+        ConexaoAzure conexaoazure = new ConexaoAzure();
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         if (txtNome.getText().isEmpty()
@@ -233,7 +234,7 @@ public class LoginGui extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
         }
         try {
-            listaUsuarios = conexaoMysql.getConexaoMysql().query(
+            listaUsuarios = conexaoazure.getConexaoAzure().query(
                     String.format("select * from tbUsuarios where email = '%s'",
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));
@@ -253,28 +254,28 @@ public class LoginGui extends javax.swing.JFrame {
                 this.dispose();
                 Integer fkEmpresa;
                 Integer hostExistente;
-                Long fkMaquina;
+                Integer fkMaquina;
                 String disco = "Disco";
                 String ram = "Ram"; 
                 String cpu = "Cpu";       
-                listaMaquinas = conexaoMysql.getConexaoMysql().query(
+                listaMaquinas = conexaoazure.getConexaoAzure().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
                                 nomeMaquina),
                         new BeanPropertyRowMapper<>(Maquina.class));
                 hostExistente = listaMaquinas.size();
 
                 if (hostExistente == 0) {
-                    listaUsuarios = conexaoMysql.getConexaoMysql().query(
+                    listaUsuarios = conexaoazure.getConexaoAzure().query(
                             String.format("select * from tbUsuarios where email = '%s'",
                                     txtNome.getText()),
                             new BeanPropertyRowMapper<>(Usuario.class));
 
                     fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
 
-                    conexaoMysql.getConexaoMysql().update("insert into tbMaquinas (hostName,fkEmpresa)"
+                    conexaoazure.getConexaoAzure().update("insert into tbMaquinas (hostName,fkEmpresa)"
                             + "values(?,?)", nomeMaquina, fkEmpresa);
                     
-                    listaMaquinas = conexaoMysql.getConexaoMysql().query(
+                    listaMaquinas = conexaoazure.getConexaoAzure().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
                                 nomeMaquina),
                         new BeanPropertyRowMapper<>(Maquina.class));
@@ -282,19 +283,21 @@ public class LoginGui extends javax.swing.JFrame {
                     fkMaquina = listaMaquinas.get(0).getIdMaquina();
                     
                     
-                    conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
+                    conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
                             + "values(?,?);", disco,fkMaquina);
-                    conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
+                    conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
                             + "values(?,?);", ram,fkMaquina);
-                    conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
+                    conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
                             + "values(?,?);", cpu,fkMaquina);
                     new OptionsGui().setVisible(true);
-                } else{
+                } else {
                     System.out.println("Seu hostName foi cadastrado");
                     new OptionsGui().setVisible(true);
                 }
             }else {
+                    System.out.println(txtNome.getText());
                     System.out.println(usuario.getEmail());
+                    System.out.println(txtSenha.getText());
                     System.out.println(usuario.getSenha());
                     System.out.println(listaUsuarios);
                     JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
@@ -371,21 +374,29 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-<<<<<<< HEAD
+
                 try {
-                    new LoginGui().setVisible(true);
+                    try {
+                        new LoginGui().setVisible(true);
+                    } catch (UnknownHostException ex) {
+                        Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+//                new LoginGui().setVisible(true);
+                    LoginGui loginGui = new LoginGui();
+                    loginGui.setLocationRelativeTo(null);
+                    loginGui.setVisible(true);
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
-=======
+
 //                new LoginGui().setVisible(true);
-                LoginGui loginGui = new LoginGui();
-                loginGui.setLocationRelativeTo(null);
-                loginGui.setVisible(true);
->>>>>>> d92acbc76590fa71e042c4ca8efe6593b6678b75
+//                LoginGui loginGui = new LoginGui();
+//                loginGui.setLocationRelativeTo(null);
+//                loginGui.setVisible(true);
+
             }
-        });
-    }
+        });}
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;

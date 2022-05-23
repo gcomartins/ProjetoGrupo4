@@ -5,25 +5,45 @@
 package teste.edicao.componente;
 
 import data.cat.banco.ConexaoAzure;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import data.cat.banco.ConexaoMysql;
+import data.cat.modal.Componente;
+import data.cat.modal.Maquina;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableModel;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
 
 /**
  *
  * @author letic
  */
 public class FormComponentes extends javax.swing.JFrame {
-
+    
+    int botaoEscolhido = 0;
+    
+    String nomeMaquina;
+    
     /**
      * Creates new form NewJFrame
      */
-    public FormComponentes() {
+    public FormComponentes() throws UnknownHostException {
+        this.nomeMaquina = InetAddress.getLocalHost().getHostName();
         initComponents();
+        
     }
     
-    ConexaoAzure conexao = new ConexaoAzure();
-    Connection con;
-    PreparedStatement pat;
+    ConexaoAzure azure = new ConexaoAzure();
+//    ConexaoMysql mysql = new ConexaoMysql();
     
 
     /**
@@ -274,6 +294,54 @@ public class FormComponentes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAddActionPerformed
 
+    public void preencherTabela(String Sql) {
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"idFuncionario", "nomeFuncionario", "emailFuncionario", "cargo"};
+        
+        List<Maquina> listaMaquina = new ArrayList();
+        
+        List<Componente> listaComponentes = new ArrayList();
+        
+        Integer idMaquina;
+
+                    listaMaquina = azure.getConexaoAzure().query("select idMaquina from tbMaquina where hostName = ' " + nomeMaquina + "'", 
+                    new BeanPropertyRowMapper<>(Maquina.class));
+            
+            idMaquina = listaMaquina.get(0).getIdMaquina();
+            
+            //Esse método espera que eu entre com uma String, que é justamente o comando SQL
+            listaComponentes = azure.getConexaoAzure().query("select * from tbComponentes where fkMaquina = ' " + idMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+                for (int i = 0; i < listaComponentes.size(); i++) {
+                        dados.add(new Object[]{
+                            listaComponentes.get(i).getidComponentes(),
+                            listaComponentes.get(i).getNome(),
+                            listaComponentes.get(i).getLimiteAlerta(),
+                            listaComponentes.get(i).getFkMaquina()});
+                }
+                
+                
+        Tabela tabela = new Tabela(dados, colunas);
+        
+        tblComponentes.setModel((TableModel) tabela);
+        
+        tblComponentes.getColumnModel().getColumn(0).setPreferredWidth(35);
+        tblComponentes.getColumnModel().getColumn(0).setResizable(false);
+        
+        tblComponentes.getColumnModel().getColumn(1).setPreferredWidth(165);
+        tblComponentes.getColumnModel().getColumn(1).setResizable(false);
+        
+        tblComponentes.getColumnModel().getColumn(2).setPreferredWidth(180);
+        tblComponentes.getColumnModel().getColumn(2).setResizable(false);
+        
+        tblComponentes.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tblComponentes.getColumnModel().getColumn(3).setResizable(false);
+        
+        tblComponentes.getTableHeader().setReorderingAllowed(false);
+        tblComponentes.setAutoResizeMode(tblComponentes.AUTO_RESIZE_OFF);
+        tblComponentes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -306,7 +374,12 @@ public class FormComponentes extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 //                new FormComponentes().setVisible(true);
-                FormComponentes form = new FormComponentes();
+                FormComponentes form = null;
+                try {
+                    form = new FormComponentes();
+                } catch (UnknownHostException ex) {
+                    Logger.getLogger(FormComponentes.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 form.setLocationRelativeTo(null);
                 form.setVisible(true);
             }

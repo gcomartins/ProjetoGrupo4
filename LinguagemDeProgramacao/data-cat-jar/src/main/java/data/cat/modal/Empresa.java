@@ -10,7 +10,7 @@ package data.cat.modal;
  */
 public class Empresa {
 
-    private Long idEmpresa;
+    private Integer idEmpresa;
     private String nomeEmpresa;
     private String cnpj;
     private String representante;
@@ -20,7 +20,7 @@ public class Empresa {
     public Empresa() {
     }
 
-    public Empresa(Long idEmpresa, String nomeEmpresa, String cnpj, String representante, String email, String senha) {
+    public Empresa(Integer idEmpresa, String nomeEmpresa, String cnpj, String representante, String email, String senha) {
         this.idEmpresa = idEmpresa;
         this.nomeEmpresa = nomeEmpresa;
         this.cnpj = cnpj;
@@ -29,11 +29,11 @@ public class Empresa {
         this.senha = senha;
     }
 
-    public Long getIdEmpresa() {
+    public Integer getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setIdEmpresa(Long idEmpresa) {
+    public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 

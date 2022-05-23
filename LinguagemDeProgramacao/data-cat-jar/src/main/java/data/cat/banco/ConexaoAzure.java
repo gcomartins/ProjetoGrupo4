@@ -13,10 +13,10 @@ public class ConexaoAzure {
 
         
         //AZURE
-//        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//        dataSource.setUrl("jdbc:sqlserver://datacat-db.database.windows.net:1433;database=datacat-db;user=_admin@datacat-db;password=2ads$grupo4;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
-//        dataSource.setUsername("_admin");
-//        dataSource.setPassword("2ads$grupo4");
+        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        dataSource.setUrl("jdbc:sqlserver://datacat-db.database.windows.net:1433;database=datacat-db;user=_admin@datacat-db;password=2ads$grupo4;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
+        dataSource.setUsername("_admin");
+        dataSource.setPassword("2ads$grupo4");
         
         conexaoAzure = new JdbcTemplate(dataSource);
     }
