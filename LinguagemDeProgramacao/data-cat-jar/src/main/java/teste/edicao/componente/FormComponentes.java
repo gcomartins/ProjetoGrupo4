@@ -84,7 +84,6 @@ public class FormComponentes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cadastro");
-        setPreferredSize(new java.awt.Dimension(1218, 680));
 
         pnlFundo.setPreferredSize(new java.awt.Dimension(1218, 680));
 
@@ -283,6 +282,9 @@ public class FormComponentes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+       
+        
+        
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -292,10 +294,13 @@ public class FormComponentes extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         
+        
+        
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     public void preencherTabela(String Sql) {
-        ArrayList dados = new ArrayList();
+        List<Componente> dados = new ArrayList();
         String[] colunas = new String[]{"idFuncionario", "nomeFuncionario", "emailFuncionario", "cargo"};
         
         List<Maquina> listaMaquina = new ArrayList();
@@ -313,15 +318,11 @@ public class FormComponentes extends javax.swing.JFrame {
             listaComponentes = azure.getConexaoAzure().query("select * from tbComponentes where fkMaquina = ' " + idMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
                 for (int i = 0; i < listaComponentes.size(); i++) {
-                        dados.add(new Object[]{
-                            listaComponentes.get(i).getidComponentes(),
-                            listaComponentes.get(i).getNome(),
-                            listaComponentes.get(i).getLimiteAlerta(),
-                            listaComponentes.get(i).getFkMaquina()});
+                        dados.add(listaComponentes.get(i));
                 }
                 
                 
-        Tabela tabela = new Tabela(dados, colunas);
+        Tabela tabela = new Tabela((ArrayList) dados, colunas);
         
         tblComponentes.setModel((TableModel) tabela);
         

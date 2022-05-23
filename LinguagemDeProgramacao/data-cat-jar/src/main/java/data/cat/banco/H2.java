@@ -140,33 +140,31 @@ public class H2 {
                 + "(4, 'Severo', '********'),"
                 + "(5, 'Severo', '*******'),"
                 + "(6, 'Moderado', '******');");
-        
+
         List<Componente> listaComponentes = new ArrayList<>();
         List<Componente> listaComponentes2 = new ArrayList<>();
-        
+
 //        List<Double> Disco = listaComponentes.forEach(((t) -> {
 //            t.limiteAlerta
 //        }));
-
         listaComponentes = conexao.getConexaoAzure().query(
                 "select * from tbComponentes where fkMaquina = 1",
                 new BeanPropertyRowMapper<>(Componente.class));
-        
-         listaComponentes2 = conexao.getConexaoAzure().query(
+
+        listaComponentes2 = conexao.getConexaoAzure().query(
                 "select C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
-                        + "on C.fkMaquina = M.idMaquina where  hostName = 'STFSAOC046893-L'",
+                + "on C.fkMaquina = M.idMaquina where  hostName = 'STFSAOC046893-L'",
                 new BeanPropertyRowMapper<>(Componente.class));
-        
-        
+
         ModalServices modalServices = new ModalServices();
-        
+
         System.out.println(listaComponentes);
         System.out.println(listaComponentes.get(2).getLimiteAlerta());
         System.out.println(listaComponentes.get(0).getLimiteAlerta());
-        System.out.println(listaComponentes.get(0).getidComponentes());
+//      System.out.println(listaComponentes.get(0).getidComponentes());
         System.out.println(InetAddress.getLocalHost().getHostName());
         System.out.println(listaComponentes2);
-//        System.out.println(modalServices.getDiscoBanco());
+//      System.out.println(modalServices.getDiscoBanco());
 
     }
 }

@@ -242,7 +242,7 @@ public class LoginGui extends javax.swing.JFrame {
         } catch (DataAccessException e) {
 
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Não foi possivel conetar ao banco",
+            JOptionPane.showMessageDialog(this, "Não foi possivel conectar ao banco",
                     "Aviso",
                     JOptionPane.WARNING_MESSAGE);
         }
