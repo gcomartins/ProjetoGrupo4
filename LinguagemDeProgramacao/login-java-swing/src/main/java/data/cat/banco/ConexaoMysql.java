@@ -20,10 +20,10 @@ public class ConexaoMysql {
         
         
         //mySQL
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
-//        dataSource​.setUsername("root");
-//        dataSource​.setPassword("Lucas7968");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
+        dataSource​.setUsername("root");
+        dataSource​.setPassword("Lucas7968");
         
          conexaoMysql = new JdbcTemplate(dataSource);
     }
