@@ -325,7 +325,7 @@ public class FormComponentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFkMaquinaActionPerformed
 
-<<<<<<< HEAD
+
     private void menuDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDashActionPerformed
         new App().setVisible(true); 
     }//GEN-LAST:event_menuDashActionPerformed
@@ -337,14 +337,13 @@ public class FormComponentes extends javax.swing.JFrame {
     private void menuOptionGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOptionGUIActionPerformed
         new OptionsGui().setVisible(true);
     }//GEN-LAST:event_menuOptionGUIActionPerformed
-=======
+
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         
         
         
         
     }//GEN-LAST:event_btnAddActionPerformed
->>>>>>> 04d3690bc672f670910308a43b5043e37efa6399
 
     public void preencherTabela(String Sql) {
         List<Componente> dados = new ArrayList();
