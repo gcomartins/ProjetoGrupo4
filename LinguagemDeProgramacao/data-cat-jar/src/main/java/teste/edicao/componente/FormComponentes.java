@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
@@ -175,6 +176,11 @@ public class FormComponentes extends javax.swing.JFrame {
         btnAdd.setMaximumSize(new java.awt.Dimension(81, 28));
         btnAdd.setMinimumSize(new java.awt.Dimension(81, 28));
         btnAdd.setPreferredSize(new java.awt.Dimension(100, 28));
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEditar.setBackground(new java.awt.Color(164, 22, 26));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -185,6 +191,11 @@ public class FormComponentes extends javax.swing.JFrame {
         btnEditar.setMaximumSize(new java.awt.Dimension(81, 28));
         btnEditar.setMinimumSize(new java.awt.Dimension(81, 28));
         btnEditar.setPreferredSize(new java.awt.Dimension(100, 28));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlFundoLayout = new javax.swing.GroupLayout(pnlFundo);
         pnlFundo.setLayout(pnlFundoLayout);
@@ -325,10 +336,6 @@ public class FormComponentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFkMaquinaActionPerformed
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 89bd928cc041c4c1d2f021a65992ff0517b4a746
     private void menuDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDashActionPerformed
         new App().setVisible(true); 
     }//GEN-LAST:event_menuDashActionPerformed
@@ -340,7 +347,6 @@ public class FormComponentes extends javax.swing.JFrame {
     private void menuOptionGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOptionGUIActionPerformed
         new OptionsGui().setVisible(true);
     }//GEN-LAST:event_menuOptionGUIActionPerformed
-<<<<<<< HEAD
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         
@@ -348,12 +354,10 @@ public class FormComponentes extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAddActionPerformed
-=======
->>>>>>> 89bd928cc041c4c1d2f021a65992ff0517b4a746
 
     public void preencherTabela(String Sql) {
-        List<Componente> dados = new ArrayList();
-        String[] colunas = new String[]{"idFuncionario", "nomeFuncionario", "emailFuncionario", "cargo"};
+        ArrayList dados = new ArrayList();
+        String[] colunas = new String[]{"limiteAlerta","idComponente", "fkMaquina", "nome"};
         
         List<Maquina> listaMaquina = new ArrayList();
         
@@ -361,20 +365,22 @@ public class FormComponentes extends javax.swing.JFrame {
         
         Integer idMaquina;
 
-                    listaMaquina = azure.getConexaoAzure().query("select idMaquina from tbMaquina where hostName = ' " + nomeMaquina + "'", 
+                    listaMaquina = azure.getConexaoAzure().query(Sql, 
                     new BeanPropertyRowMapper<>(Maquina.class));
             
             idMaquina = listaMaquina.get(0).getIdMaquina();
             
             //Esse método espera que eu entre com uma String, que é justamente o comando SQL
-            listaComponentes = azure.getConexaoAzure().query("select * from tbComponentes where fkMaquina = ' " + idMaquina + "'",
+            listaComponentes = azure.getConexaoAzure().query("select * from tbComponentes where fkMaquina = '" + idMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
                 for (int i = 0; i < listaComponentes.size(); i++) {
                         dados.add(listaComponentes.get(i));
                 }
                 
                 
-        Tabela tabela = new Tabela((ArrayList) dados, colunas);
+        Tabela tabela = new Tabela( dados, colunas);
+      
+        
         
         tblComponentes.setModel((TableModel) tabela);
         
@@ -398,7 +404,7 @@ public class FormComponentes extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws UnknownHostException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -425,6 +431,8 @@ public class FormComponentes extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
+             String nomeMaquina = InetAddress.getLocalHost().getHostName();
             public void run() {
 //                new FormComponentes().setVisible(true);
                 FormComponentes form = null;
@@ -433,6 +441,7 @@ public class FormComponentes extends javax.swing.JFrame {
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(FormComponentes.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                form.preencherTabela("select idMaquina from tbMaquinas where hostName = '" + nomeMaquina + "'");
                 form.setLocationRelativeTo(null);
                 form.setVisible(true);
             }
