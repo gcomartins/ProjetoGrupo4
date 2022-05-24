@@ -264,9 +264,14 @@ public class FormComponentes extends javax.swing.JFrame {
         menu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menu.setPreferredSize(new java.awt.Dimension(70, 55));
 
-        menuGeral.setForeground(new java.awt.Color(245, 243, 244));
+        menuGeral.setForeground(new java.awt.Color(164, 22, 26));
         menuGeral.setText("Menu");
         menuGeral.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        menuGeral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuGeralMouseClicked(evt);
+            }
+        });
 
         menuOptionGUI.setText("Menu");
         menuOptionGUI.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +291,7 @@ public class FormComponentes extends javax.swing.JFrame {
 
         menu.add(menuGeral);
 
-        menuOpcoes.setForeground(new java.awt.Color(245, 243, 244));
+        menuOpcoes.setForeground(new java.awt.Color(164, 22, 26));
         menuOpcoes.setText("Opções");
         menuOpcoes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
@@ -354,6 +359,10 @@ public class FormComponentes extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void menuGeralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuGeralMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuGeralMouseClicked
 
     public void preencherTabela(String Sql) {
         ArrayList dados = new ArrayList();
