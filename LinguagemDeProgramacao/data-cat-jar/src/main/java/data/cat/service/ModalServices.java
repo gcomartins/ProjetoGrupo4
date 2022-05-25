@@ -67,7 +67,7 @@ public class ModalServices {
     }
 
     ConexaoAzure conexaoAzure = new ConexaoAzure();
-//    ConexaoMysql conexaoMysql = new ConexaoMysql();
+    ConexaoMysql conexaoMysql = new ConexaoMysql();
     Date dataHora = new Date();
     List<Componente> listaComponentes = new ArrayList<>();
     List<Usuario> listaUsuarios = new ArrayList<>();
@@ -101,9 +101,18 @@ public class ModalServices {
                 + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, comp);    
         }
         
+//        if (componente.equalsIgnoreCase("Disco")) {
+//         conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);     
+//        }if (componente.equalsIgnoreCase("Ram")) {
+//         conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+//                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, comp);      
+//        }if (componente.equalsIgnoreCase("Cpu")) {
+//         conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+//                + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, comp);      
+//        }
         
-//        conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);      
+  
 
 
 
@@ -129,33 +138,4 @@ public class ModalServices {
         return 0.0;
     }
     
-//    public boolean cadastroMaquina(ModalServices modalServices, String email, 
-//            String hostName){
-//        
-//        Integer fkEmpresa;
-//        String hostExistente;
-//        
-//        listaMaquinas = conexaoMysql.getConexaoMysql().query(
-//                    String.format("select * from tbMaquinas where hostName = '%s'",
-//                            hostName),
-//                    new BeanPropertyRowMapper<>(Maquina.class));
-//        hostExistente = listaMaquinas.get(0).getHostName();
-//        
-//        if (hostExistente == null) {
-//           listaUsuarios = conexaoMysql.getConexaoMysql().query(
-//                    String.format("select * from tbUsuarios where email = '%s'",
-//                            email),
-//                    new BeanPropertyRowMapper<>(Usuario.class)); 
-//         
-//         fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
-//         
-//         conexaoMysql.getConexaoMysql().update("insert into tbMaquina (hostName,fkEmpresa)"
-//                 + "values(?,?)", hostName, fkEmpresa); 
-//         return true;
-//         
-//        }
-//        return false;
-//        
-//         
-//    }
 }

@@ -64,6 +64,7 @@ public class FormComponentes extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jButton1 = new javax.swing.JButton();
         pnlFundo = new javax.swing.JPanel();
         lblId = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -78,6 +79,7 @@ public class FormComponentes extends javax.swing.JFrame {
         tblComponentes = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         menuGeral = new javax.swing.JMenu();
         menuOptionGUI = new javax.swing.JMenuItem();
@@ -96,6 +98,8 @@ public class FormComponentes extends javax.swing.JFrame {
 
         jMenu4.setText("Edit");
         jMenuBar2.add(jMenu4);
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cadastro");
@@ -146,25 +150,6 @@ public class FormComponentes extends javax.swing.JFrame {
         jLabel5.setText("Dados do Componente");
 
         tblComponentes.setForeground(new java.awt.Color(69, 73, 74));
-        tblComponentes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "Limite de Alerta", "Máquina"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
         jScrollPane1.setViewportView(tblComponentes);
 
         btnAdd.setBackground(new java.awt.Color(164, 22, 26));
@@ -194,6 +179,13 @@ public class FormComponentes extends javax.swing.JFrame {
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -227,11 +219,17 @@ public class FormComponentes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFundoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(442, 442, 442))
         );
         pnlFundoLayout.setVerticalGroup(
             pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFundoLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addGap(17, 17, 17)
                 .addGroup(pnlFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlFundoLayout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -364,6 +362,10 @@ public class FormComponentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuGeralMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public void preencherTabela(String Sql) {
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"limiteAlerta","idComponente", "fkMaquina", "nome"};
@@ -387,7 +389,8 @@ public class FormComponentes extends javax.swing.JFrame {
                 }
                 
                 
-        Tabela tabela = new Tabela( dados, colunas);
+
+                Tabela tabela = new Tabela( dados, colunas);
       
         
         
@@ -460,6 +463,8 @@ public class FormComponentes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

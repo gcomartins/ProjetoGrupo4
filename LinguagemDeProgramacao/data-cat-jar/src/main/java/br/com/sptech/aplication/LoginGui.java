@@ -195,9 +195,9 @@ public class LoginGui extends javax.swing.JFrame {
                         .addGroup(pnlCorpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(81, 81, 81)
+                        .addGap(84, 84, 84)
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(26, 26, 26)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -304,7 +304,6 @@ public class LoginGui extends javax.swing.JFrame {
                             "Aviso",
                             JOptionPane.WARNING_MESSAGE);
                 }
-
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -374,24 +373,14 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
                     try {
                         new LoginGui().setVisible(true);
-                    } catch (UnknownHostException ex) {
-                        Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-//                new LoginGui().setVisible(true);
-                    LoginGui loginGui = new LoginGui();
-                    loginGui.setLocationRelativeTo(null);
-                    loginGui.setVisible(true);
+                    
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-//                new LoginGui().setVisible(true);
-//                LoginGui loginGui = new LoginGui();
-//                loginGui.setLocationRelativeTo(null);
-//                loginGui.setVisible(true);
+
 
             }
         });}

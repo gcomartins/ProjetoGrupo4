@@ -1,12 +1,14 @@
 package teste.edicao.componente;
 
 import java.util.ArrayList;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author letic
  */
-public class Tabela {
+public class Tabela{
         private ArrayList linhas = null;
     private String[] colunas = null;
 

@@ -73,6 +73,11 @@ public class OptionsGui extends javax.swing.JFrame {
         btnComponente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnComponente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnComponente.setPreferredSize(new java.awt.Dimension(150, 150));
+        btnComponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComponenteActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -213,6 +218,10 @@ public class OptionsGui extends javax.swing.JFrame {
     private void btnIniciarAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarAppActionPerformed
             new App().setVisible(true); 
     }//GEN-LAST:event_btnIniciarAppActionPerformed
+
+    private void btnComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnComponenteActionPerformed
 
     /**
      * @param args the command line arguments
