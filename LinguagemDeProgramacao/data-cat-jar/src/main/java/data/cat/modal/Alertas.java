@@ -25,11 +25,11 @@ public class Alertas {
         this.Descrição = Descrição;
     }
 
-    public Integer getIdAlertas() {
+    public Integer getIdAlerta() {
         return idAlertas;
     }
 
-    public void setIdAlertas(Integer idAlertas) {
+    public void setIdAlerta(Integer idAlertas) {
         this.idAlertas = idAlertas;
     }
 

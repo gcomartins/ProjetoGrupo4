@@ -32,7 +32,7 @@ public class MedidasServices {
     }
 
     public Double getProcessadorEmUso() {
-        Double usoProcessador = looca.getProcessador().getUso().doubleValue();
+        Double usoProcessador = looca.getProcessador().getUso();
         return usoProcessador;
     }
 

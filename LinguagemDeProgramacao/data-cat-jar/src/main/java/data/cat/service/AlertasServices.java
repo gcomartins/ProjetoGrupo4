@@ -75,10 +75,10 @@ public class AlertasServices {
 //                + " (fkLog, categoria, descrição) values(?, ?, '*******')",
 //                idLogSql, categoria);
         listaAlertas = conexaoAzure.getConexaoAzure().query("select * from "
-                + "tbAlertas",
+                + "tbAlertas order by idAlerta desc",
                 new BeanPropertyRowMapper<>(Alertas.class));
 
-        Integer idAlerta = listaAlertas.get(0).getIdAlertas();
+        Integer idAlerta = listaAlertas.get(0).getIdAlerta();
 
         return idAlerta;
     }
