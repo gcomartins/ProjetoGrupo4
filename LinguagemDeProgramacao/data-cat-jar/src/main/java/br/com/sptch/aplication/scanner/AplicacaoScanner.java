@@ -29,7 +29,7 @@ import slack.Slack;
  *
  * @author lmmelo1
  */
-public class AplicaçãoScanner {
+public class AplicacaoScanner {
 
     public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 
