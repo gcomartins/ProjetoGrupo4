@@ -138,7 +138,7 @@ function graficar() {
 function atualizarGrafico(hostname) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMaquina():", hostname);
     var instrucao = `
-    select top 21 logs.idLog, components.idComponentes, components.nome, maquinas.hostName, logs.leituraDesempenho, logs.leituraTemperatura, logs.dataHora
+    select top 99 logs.idLog, components.idComponentes, components.nome, maquinas.hostName, logs.leituraDesempenho, logs.leituraTemperatura, logs.dataHora
     from [dbo].[tbLogs] as logs
     join [dbo].[tbComponentes] as components on logs.fkComponente = components.idComponentes
     join [dbo].[tbMaquinas] as maquinas on  maquinas.idMaquina = components.fkMaquina 

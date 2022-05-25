@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- Boxicons -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" rel='stylesheet'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" rel="stylesheet" />
 	<!-- My CSS -->
-	<link rel="stylesheet" href="dashboard.css">
+	<link rel="stylesheet" href="dashboard.css" />
 	<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
-	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 	<title>DataCat</title>
 </head>
-<body onload='plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp"),validarSessao()'>
 
-
+<body
+	onload='plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp"),validarSessao()'>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
-			<img src="./img/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png" alt="">
+			<img src="./img/kisspng-whiskers-black-cat-logo-computer-icons-holding-cat-5b2478eb76bcb4.4233985815291169074864.png"
+				alt="" />
 			<span class="text">DataCat</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
 				<a href="./dashboard.html">
-					<span class="material-icons-sharp">
-						grid_view
-						</span>
+					<span class="material-icons-sharp"> grid_view </span>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
 				<a href="../cadastro-funcionario.html">
-					<span class="material-icons-sharp">
-						perm_identity
-						</span>
+					<span class="material-icons-sharp"> perm_identity </span>
 					<span class="text">Cadastrar usuário</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span class="material-icons-sharp">
-						notifications
-						</span>
+					<span class="material-icons-sharp"> notifications </span>
 					<span class="text">Notifições</span>
 				</a>
 			</li>
 			<li>
 				<a href="../cadastro-maquina.html">
 					<span class="material-icons-sharp">add_to_queue</span>
-				<span>Cadastrar máquina</span>	
+					<span>Cadastrar máquina</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span class="material-icons-sharp">
-						groups
-						</span>
+					<span class="material-icons-sharp"> groups </span>
 					<span class="text">Team</span>
 				</a>
 			</li>
@@ -64,13 +58,13 @@
 		<ul class="side-menu">
 			<li>
 				<a href="#">
-					<span class="material-icons-sharp">settings</span> 
+					<span class="material-icons-sharp">settings</span>
 					<span class="text">Configurações</span>
 				</a>
 			</li>
 			<li>
 				<a href="../login.html" class="logout" onclick="limparSessao()">
-					<span class="material-icons-sharp">logout</span> 
+					<span class="material-icons-sharp">logout</span>
 					<span class="text">Sair</span>
 				</a>
 			</li>
@@ -78,40 +72,31 @@
 	</section>
 	<!-- SIDEBAR -->
 
-
-
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
+			<i class="bx bx-menu"></i>
 			<!-- <span class="material-icons-sharp"> -->
-				
-				
-			
+
 			<form action="#">
 				<div class="form-input">
-				<select onchange= '
-					atualizarGrafico("graficoDisco", maquinas_select.value),
-					atualizarGrafico("graficoMemoria", maquinas_select.value),
-					atualizarGrafico("graficoCpu", maquinas_select.value),
-					atualizarGrafico("graficoTemp", maquinas_select.value)
-					'name="" id="maquinas_select">
-					<option value="">Pesquisar maquinas</option>
-				</select>	
-			<input type="date" id="date">		
+					<select onchange="
+					obterDadosGrafico(maquinas_select.value)
+					" name="" id="maquinas_select">
+						<option value="">Pesquisar maquinas</option>
+					</select>
+					<input type="date" id="date" />
 				</div>
 			</form>
-			<input type="checkbox" id="switch-mode" hidden>
+			<input type="checkbox" id="switch-mode" hidden />
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
-				<span class="material-icons-sharp">
-					notifications
-					</span>
+				<span class="material-icons-sharp"> notifications </span>
 				<span class="num">8</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="img/larissa.jpeg">
+				<img src="img/larissa.jpeg" />
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -125,81 +110,73 @@
 						<li>
 							<a href="#">Dashboard</a>
 						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
+						<li><i class="bx bx-chevron-right"></i></li>
 						<li>
 							<a class="active" href="#">Home</a>
 						</li>
 					</ul>
 				</div>
 				<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
+					<i class="bx bxs-cloud-download"></i>
 					<span class="text">Download PDF</span>
 				</a>
 			</div>
 
 			<ul class="box-info">
 				<li id="divRam">
-				
 					<span class="text">
 						<div class="div-title">
 							<div class="icon">
-						<span class="material-icons-sharp">	memory</span>
-					       </div>
-						   <h3>Memória ram</h3>
-					   </div>
-					  
+								<span class="material-icons-sharp"> memory</span>
+							</div>
+							<h3>Memória ram</h3>
+						</div>
 					</span>
 					<div id="divGraficoRam">
-					<canvas id="graficoMemoria"></canvas>
+						<canvas id="graficoMemoria"></canvas>
 					</div>
 				</li>
 				<li>
-					
 					<span class="text">
 						<div class="div-title">
-						<span class="material-icons-sharp">	memory</span>
-						<h3 class="cpuTitle">CPU</h3>
+							<span class="material-icons-sharp"> memory</span>
+							<h3 class="cpuTitle">CPU</h3>
 						</div>
 					</span>
 					<div id="divGraficoCpu">
-					<canvas id="graficoCpu"></canvas>
+						<canvas id="graficoCpu"></canvas>
 					</div>
 				</li>
 				<li>
-				
-						
 					<span class="text">
 						<div class="div-title">
-						<span class="material-icons-sharp">	memory</span>
-						<h3>Disco rígido</h3>					
-					    </div>
+							<span class="material-icons-sharp"> memory</span>
+							<h3>Disco rígido</h3>
+						</div>
 					</span>
 					<div id="divGraficoDisco">
-					<canvas id="graficoDisco"></canvas>
+						<canvas id="graficoDisco"></canvas>
 					</div>
 				</li>
 				<li>
-				
-						
-				<span class="text">
-					<div class="div-title">
-					<span class="material-icons-sharp">	memory</span>
-					<h3>Temperatura</h3>					
-				    </div>
-				</span>
-				<div id="divGraficoTemp">
-				<canvas id="graficoTemp"></canvas>
-				</div>
-			</li>
+					<span class="text">
+						<div class="div-title">
+							<span class="material-icons-sharp"> memory</span>
+							<h3>Temperatura</h3>
+						</div>
+					</span>
+					<div id="divGraficoTemp">
+						<canvas id="graficoTemp"></canvas>
+					</div>
+				</li>
 			</ul>
-
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>Histórico de alertas</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
+						<i class="bx bx-search"></i>
+						<i class="bx bx-filter"></i>
 					</div>
 					<table>
 						<thead>
@@ -214,10 +191,11 @@
 								<th>
 									<h4>Id do alerta</h4>
 									<h4>0120</h4>
-									
 								</th>
-								<th style="color: grey;">seu armazenamento está critico! <br>
-									O seu sistema está em perigo</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
 								<th><span class="status process">Urgente</span></th>
 							</tr>
 							<tr>
@@ -225,8 +203,10 @@
 									<h4>0120</h4>
 									<p>Id do alerta</p>
 								</th>
-								<th style="color: grey;">seu armazenamento está critico! <br>
-									O seu sistema está em perigo</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
 								<th><span class="status process">Urgente</span></th>
 							</tr>
 							<tr>
@@ -234,8 +214,10 @@
 									<h4>0120</h4>
 									<p>Id do alerta</p>
 								</th>
-								<th style="color: grey;">seu armazenamento está critico! <br>
-									O seu sistema está em perigo</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
 								<th><span class="status process"> Urgente </span></th>
 							</tr>
 							<tr>
@@ -243,8 +225,10 @@
 									<h4>0120</h4>
 									<p>Id do alerta</p>
 								</th>
-								<th style="color: grey;">seu armazenamento está critico! <br>
-									O seu sistema está em perigo</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
 								<th><span class="status process">Urgente</span></th>
 							</tr>
 							<tr>
@@ -252,8 +236,10 @@
 									<h4>0120</h4>
 									<p>Id do alerta</p>
 								</th>
-								<th style="color: grey;">seu armazenamento está critico! <br>
-									O seu sistema está em perigo</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
 								<th><span class="status process">Urgente</span></th>
 							</tr>
 							<tr>
@@ -261,41 +247,47 @@
 									<h4>0120</h4>
 									<p>Id do alerta</p>
 								</th>
-								<th style="color: grey;">seu armazenamento está critico! <br>
-									O seu sistema está em perigo</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
 								<th><span class="status process"> Urgente </span></th>
 							</tr>
-						
-								<tr>
-									<th>
-										<h4>0120</h4>
-										<p>Id do alerta</p>
-									</th>
-									<th style="color: grey;">seu armazenamento está critico! <br>
-										O seu sistema está em perigo</th>
-									<th><span class="status process"> Urgente </span></th>
-								</tr>
+
+							<tr>
+								<th>
+									<h4>0120</h4>
+									<p>Id do alerta</p>
+								</th>
+								<th style="color: grey">
+									seu armazenamento está critico! <br />
+									O seu sistema está em perigo
+								</th>
+								<th><span class="status process"> Urgente </span></th>
+							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="todo">
 					<div class="head">
 						<h3>Últimas operações</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
+						<i class="bx bx-plus"></i>
+						<i class="bx bx-filter"></i>
 					</div>
 					<ul class="todo-list">
 						<p><b>Larissa Alves</b></p>
 						<li class="completed">
-						
-							<img src="./img/larissa.jpeg" alt="">
-							<i class='bx bx-dots-vertical-rounded' ></i>
-							
-							<small>Componente: <br> Memoria Ram</small>	
-						<small>Categoria: <br> 
-							<span>Urgente</span></small>
-							<small>ID do alerta: <br> 0120</small>	
-							<small>Há 30 minutos <br> atrás</small>
+							<img src="./img/larissa.jpeg" alt="" />
+							<i class="bx bx-dots-vertical-rounded"></i>
+
+							<small>Componente: <br />
+								Memoria Ram</small>
+							<small>Categoria: <br />
+								<span>Urgente</span></small>
+							<small>ID do alerta: <br />
+								0120</small>
+							<small>Há 30 minutos <br />
+								atrás</small>
 							<!--  Ultima opração</p>
 								
 									  <p>Categoria:<span>Urgente</span>
@@ -303,55 +295,62 @@
 									<p>ID do alerta: 0120</p> 
 									
 									<small>Há 30 minutos atrás</small> -->
-							
 						</li>
 						<p><b>Guilherme Carneiro</b></p>
 						<li class="completed">
-						
-							<img src="./img/gui.jpeg" alt="">
-							<i class='bx bx-dots-vertical-rounded' ></i>
-							
-							<small>Componente: <br> Memoria Ram</small>	
-						<small>Categoria: <br> 
-							<span>Urgente</span></small>
-							<small>ID do alerta: <br> 0120</small>	
-							<small>Há 30 minutos <br> atrás</small>
+							<img src="./img/gui.jpeg" alt="" />
+							<i class="bx bx-dots-vertical-rounded"></i>
+
+							<small>Componente: <br />
+								Memoria Ram</small>
+							<small>Categoria: <br />
+								<span>Urgente</span></small>
+							<small>ID do alerta: <br />
+								0120</small>
+							<small>Há 30 minutos <br />
+								atrás</small>
 						</li>
 						<p><b>Leticia Marques</b></p>
 						<li class="completed">
-						
-							<img src="./img/leticia.jpeg" alt="">
-							<i class='bx bx-dots-vertical-rounded' ></i>
-							
-							<small>Componente: <br> Memoria Ram</small>	
-						<small>Categoria: <br> 
-							<span>Urgente</span></small>
-							<small>ID do alerta: <br> 0120</small>	
-							<small>Há 30 minutos <br> atrás</small>
+							<img src="./img/leticia.jpeg" alt="" />
+							<i class="bx bx-dots-vertical-rounded"></i>
+
+							<small>Componente: <br />
+								Memoria Ram</small>
+							<small>Categoria: <br />
+								<span>Urgente</span></small>
+							<small>ID do alerta: <br />
+								0120</small>
+							<small>Há 30 minutos <br />
+								atrás</small>
 						</li>
 						<p><b>Vinicius Pieroni</b></p>
 						<li class="completed">
-						
-							<img src="./img/vinicius.jpeg" alt="">
-							<i class='bx bx-dots-vertical-rounded' ></i>
-							
-							<small>Componente: <br> Memoria Ram</small>	
-						<small>Categoria: <br> 
-							<span>Urgente</span></small>
-							<small>ID do alerta: <br> 0120</small>	
-							<small>Há 30 minutos <br> atrás</small>
+							<img src="./img/vinicius.jpeg" alt="" />
+							<i class="bx bx-dots-vertical-rounded"></i>
+
+							<small>Componente: <br />
+								Memoria Ram</small>
+							<small>Categoria: <br />
+								<span>Urgente</span></small>
+							<small>ID do alerta: <br />
+								0120</small>
+							<small>Há 30 minutos <br />
+								atrás</small>
 						</li>
 						<p><b>Lucas Mastelini</b></p>
 						<li class="completed">
-						
-							<img src="./img/lucas.jpeg" alt="">
-							<i class='bx bx-dots-vertical-rounded' ></i>
-							
-							<small>Componente: <br> Memoria Ram</small>	
-						<small>Categoria: <br> 
-							<span>Urgente</span></small>
-							<small>ID do alerta: <br> 0120</small>	
-							<small>Há 30 minutos <br> atrás</small>
+							<img src="./img/lucas.jpeg" alt="" />
+							<i class="bx bx-dots-vertical-rounded"></i>
+
+							<small>Componente: <br />
+								Memoria Ram</small>
+							<small>Categoria: <br />
+								<span>Urgente</span></small>
+							<small>ID do alerta: <br />
+								0120</small>
+							<small>Há 30 minutos <br />
+								atrás</small>
 						</li>
 					</ul>
 				</div>
@@ -360,51 +359,50 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	
 
 	<!-- <script src="script.js"></script> -->
 </body>
+
 </html>
 
 <script>
-	fetch(`/maquinas/listar-todas/${sessionStorage.ID_EMPRESA}`,{
-		method: "GET"
+	fetch(`/maquinas/listar-todas/${sessionStorage.ID_EMPRESA}`, {
+		method: "GET",
 	}).then((response) => {
 		if (response.ok) {
 			response.json().then((json) => {
 				console.log(json);
 				for (let i = 0; i < json.length; i++) {
-					maquinas_select.innerHTML += `<option value="${json[i].hostName}">${json[i].hostName}</option>`
-					
+					maquinas_select.innerHTML += `<option value="${json[i].hostName}">${json[i].hostName}</option>`;
 				}
-			})
+			});
 		}
-	})
+	});
 </script>
- 
+
 <script src="script.js">
 	const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
-allSideMenu.forEach(item=> {
-	const li = item.parentElement;
+	allSideMenu.forEach(item => {
+		const li = item.parentElement;
 
-	item.addEventListener('click', function () {
-		allSideMenu.forEach(i=> {
-			i.parentElement.classList.remove('active');
+		item.addEventListener('click', function () {
+			allSideMenu.forEach(i => {
+				i.parentElement.classList.remove('active');
+			})
 		})
+	});
+
+
+
+
+	// TOGGLE SIDEBAR
+	const menuBar = document.querySelector('#content nav .bx.bx-menu');
+	const sidebar = document.getElementById('sidebar');
+
+	menuBar.addEventListener('click', function () {
+		sidebar.classList.toggle('hide');
 	})
-});
-
-
-
-
-// TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav .bx.bx-menu');
-const sidebar = document.getElementById('sidebar');
-
-menuBar.addEventListener('click', function () {
-	sidebar.classList.toggle('hide');
-})
 
 
 
@@ -412,39 +410,336 @@ menuBar.addEventListener('click', function () {
 
 
 
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
+	const searchButton = document.querySelector('#content nav form .form-input button');
+	const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+	const searchForm = document.querySelector('#content nav form');
 
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
+	searchButton.addEventListener('click', function (e) {
+		if (window.innerWidth < 576) {
+			e.preventDefault();
+			searchForm.classList.toggle('show');
+			if (searchForm.classList.contains('show')) {
+				searchButtonIcon.classList.replace('bx-search', 'bx-x');
+			} else {
+				searchButtonIcon.classList.replace('bx-x', 'bx-search');
+			}
 		}
-	}
-})
+	})
 
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
+	if (window.innerWidth < 768) {
+		sidebar.classList.add('hide');
+	} else if (window.innerWidth > 576) {
 		searchButtonIcon.classList.replace('bx-x', 'bx-search');
 		searchForm.classList.remove('show');
 	}
-})
 
+
+	window.addEventListener('resize', function () {
+		if (this.innerWidth > 576) {
+			searchButtonIcon.classList.replace('bx-x', 'bx-search');
+			searchForm.classList.remove('show');
+		}
+	})
 </script>
 
+<script>
+	let proximaAtualizacao = [];
 
-	
-	
+	verificar_autenticacao();
+
+	function alterarTitulo(idAquario) {
+		var tituloAquario = document.getElementById("tituloAquario");
+		tituloAquario.innerHTML =
+			"Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " +
+			idAquario +
+			"</span>";
+	}
+
+	// O gráfico é construído com três funções:
+	// 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+	// 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+	// 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+	// Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+	// para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+	// A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+	//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+	//     Para ajustar o "select", ajuste o comando sql em src/models
+
+	function obterDadosGrafico(hostname) {
+		// alterarTitulo(hostname);
+
+		if (proximaAtualizacao != undefined) {
+			for (let i = 0; i < proximaAtualizacao.length; i++) {
+				const element = proximaAtualizacao[i];
+				clearTimeout(element);
+			}
+		}
+
+		fetch(`/medidas/ultimas/${hostname}`, { cache: "no-store" })
+			.then(function (response) {
+				if (response.ok) {
+					response.json().then(function (resposta) {
+						console.log(`[OBTER DADOS] Dados recebidos: ${JSON.stringify(resposta)}`);
+						resposta.reverse();
+
+						plotarGrafico(resposta, hostname);
+					});
+				} else {
+					console.error("Nenhum dado encontrado ou erro na API");
+				}
+			})
+			.catch(function (error) {
+				console.error(
+					`Erro na obtenção dos dados p/ gráfico: ${error.message}`
+				);
+			});
+	}
+
+	// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+	// Configura o gráfico (cores, tipo, etc), materializa-o na página e,
+	// A função *plotarGrafico* também invoca a função *atualizarGrafico*
+	function plotarGrafico(resposta, hostname) {
+		console.log("iniciando plotagem do gráfico...");
+
+		var dadosDisco = {
+			labels: [],
+			datasets: [
+				{
+					yAxisID: "y-umidade",
+					label: "Uso (em %)",
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.12)',
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+					],
+					fill: true,
+					borderWidth: 1,
+					data: [],
+				},
+			],
+		};
+
+		var dadosRam = {
+			labels: [],
+			datasets: [
+				{
+					yAxisID: "y-umidade",
+					label: "Uso (em %)",
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.12)',
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+					],
+					fill: true,
+					borderWidth: 1,
+					data: [],
+				},
+			],
+		};
+
+		var dadosCpu = {
+			labels: [],
+			datasets: [
+				{
+					yAxisID: "y-umidade",
+					label: "Uso (em %)",
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.12)',
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+					],
+					fill: true,
+					borderWidth: 1,
+					data: [],
+				},
+			],
+		};
+
+		var dadosTemp = {
+			labels: [],
+			datasets: [
+				{
+					yAxisID: "y-umidade",
+					label: "Graus Celsius",
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.12)',
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+					],
+					fill: true,
+					borderWidth: 1,
+					data: [],
+				},
+			],
+		};
+
+		for (let i = 0; i < resposta.length; i++) {
+			const e = resposta[i];
+			switch (e.nome) {
+				case "Disco":
+					dadosDisco.labels.push(
+						new Date(e.dataHora).getHours() +
+						":" +
+						new Date(e.dataHora).getMinutes()
+					);
+					dadosDisco.datasets[0].data.push(e.leituraDesempenho);
+					break;
+
+				case "Ram":
+					dadosRam.labels.push(
+						new Date(e.dataHora).getHours() +
+						":" +
+						new Date(e.dataHora).getMinutes()
+					);
+					dadosRam.datasets[0].data.push(e.leituraDesempenho);
+
+					break;
+
+				case "Cpu":
+					dadosCpu.labels.push(
+						new Date(e.dataHora).getHours() +
+						":" +
+						new Date(e.dataHora).getMinutes()
+					);
+					dadosCpu.datasets[0].data.push(e.leituraDesempenho);
+
+					dadosTemp.labels.push(
+						new Date(e.dataHora).getHours() +
+						":" +
+						new Date(e.dataHora).getMinutes()
+					);
+					dadosTemp.datasets[0].data.push(e.leituraTemperatura);
+
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		var dadosArray = [dadosRam, dadosCpu, dadosDisco, dadosTemp];
+		console.log("Dados do Disco: " + dadosArray[0]);
+		console.log("Dados da Ram: " + dadosArray[1]);
+		console.log("Dados da Cpu: " + dadosArray[2]);
+		console.log("Dados da Temperatura: " + dadosArray[3]);
+
+		var idGraficos = [
+			"graficoMemoria",
+			"graficoCpu",
+			"graficoDisco",
+			"graficoTemp",
+		];
+
+		for (let i = 0; i < 4; i++) {
+			var ctx = document.getElementById(idGraficos[i]).getContext("2d");
+			window.grafico_linha = Chart.Line(ctx, {
+				data: dadosArray[i],
+				options: {
+					responsive: true,
+					animation: { duration: 500 },
+					hoverMode: "index",
+					stacked: false,
+					title: {
+						display: false,
+						text: "Dados capturados",
+					},
+					scales: {
+						yAxes: [
+							{
+								type: "linear",
+								display: true,
+								position: "left",
+								id: "y-temperatura",
+								ticks: {
+									beginAtZero: true,
+									max: 100,
+									min: 0,
+								},
+							},
+							{
+								type: "linear",
+								display: false,
+								position: "right",
+								id: "y-umidade",
+								ticks: {
+									beginAtZero: true,
+									max: 100,
+									min: 0,
+								},
+
+								gridLines: {
+									drawOnChartArea: false,
+								},
+							},
+						],
+					},
+				},
+			});
+		}
+
+		console.log("CONTEUDO DE DADOS: ");
+		console.log(dadosArray);
+		for (let i = 0; i < 4; i++) {
+			const e = dadosArray[i];
+			if (e != null) {
+				setTimeout(
+					() => atualizarGrafico(hostname, e),
+					5000
+				);
+			}
+		}
+		// setTimeout(() => atualizarGrafico(hostname, dados), 2000);
+	}
+
+	// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+	// buscando a última medida inserida em tabela contendo as capturas,
+
+	//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+	//     Para ajustar o "select", ajuste o comando sql em src/models
+	function atualizarGrafico(hostname, dados) {
+		fetch(`/medidas/tempo-real/${hostname}`, { cache: "no-store" })
+			.then(function (response) {
+				if (response.ok) {
+					response.json().then(function (novoRegistro) {
+						console.log(`[ATUALIZAR GRAFICO] Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+						console.log(`[ATUALIZAR GRAFICO] Dados atuais do gráfico: ${dados.datasets[0].data}`);
+
+						// tirando e colocando valores no gráfico
+						dados.labels.shift(); // apagar o primeiro
+						dados.labels.push(new Date(novoRegistro[0].dataHora).getHours() +
+							":" +
+							new Date(novoRegistro[0].dataHora).getMinutes()); // incluir um novo momento
+
+						dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+						dados.datasets[0].data.push(novoRegistro[0].leituraDesempenho); // incluir uma nova medida de temperatura
+
+						window.grafico_linha.update();
+
+						// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+						proximaAtualizacao.push(setTimeout(
+							() => atualizarGrafico(hostname, dados),
+							5000
+						));
+					});
+				} else {
+					console.error("Nenhum dado encontrado ou erro na API");
+					// Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+					proximaAtualizacao.push(setTimeout(
+						() => atualizarGrafico(hostname, dados),
+						5000
+					));
+				}
+			})
+			.catch(function (error) {
+				console.error(
+					`Erro na obtenção dos dados p/ gráfico: ${error.message}`
+				);
+			});
+	}
+</script>

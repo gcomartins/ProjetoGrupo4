@@ -75,7 +75,7 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-function plotarGrafico(idGrafico) {
+function plotarGrafico2(idGrafico) {
 
 	
 		
@@ -142,7 +142,7 @@ function plotarGrafico(idGrafico) {
 	
 }
 
-function gerarGrafico(idGrafico, dados, datas, isTemp){
+function gerarGrafico2(idGrafico, dados, datas, isTemp){
 			const ctx = document.getElementById(idGrafico).getContext('2d');
 
 			let myChart = new Chart(ctx, {
@@ -177,7 +177,7 @@ function gerarGrafico(idGrafico, dados, datas, isTemp){
 
 }
 
-function atualizarGrafico(idGrafico, hostname) {
+function atualizarGrafico2(idGrafico, hostname) {
 	var hostnameVar = hostname;
 	var dados = [];
 	var datas = [];
@@ -244,7 +244,7 @@ function atualizarGrafico(idGrafico, hostname) {
 							case 'Cpu':
 								dadosCpu.push(e.leituraDesempenho);
 								dadosTemp.push(e.leituraTemperatura);
-							datasCpuTemp.push(new Date(e.dataHora).getHours() + ':' + new Date(e.dataHora).getMinutes());
+								datasCpuTemp.push(new Date(e.dataHora).getHours() + ':' + new Date(e.dataHora).getMinutes());
 
 							break;
 					
@@ -254,51 +254,34 @@ function atualizarGrafico(idGrafico, hostname) {
 					
 				}
 
-                // for (let i = 0; i < resposta.length; i++) {
-                //     if (idGrafico == 'graficoTemp') {
-				// 		dados.push(resposta[i].leituraTemperatura);
-				// 	}else {
-				// 		dados.push(resposta[i].leituraDesempenho);
-				// 	}
-                //     datas.push(resposta[i].dataHora);
-                // }
-				
-				// for (let index = 0; index < datas.length; index++) {
-				// 	const e = datas[index];
-				// 	var dataFormatada = new Date(e).getHours() + ':' + new Date(e).getMinutes();
-				// 	datasFormatadas.push(dataFormatada);
-					
-				// }
-
 				switch (idGrafico) {
 					case 'graficoDisco':
 						divGraficoDisco.innerHTML = '';
 						divGraficoDisco.innerHTML = '<canvas id="graficoDisco"></canvas>';
-						gerarGrafico(idGrafico, dadosDisco, datasDisco, isTemp);
+						gerarGrafico(idGrafico, dadosDisco, datasDisco.reverse(), isTemp);
 						break;
 			
 					case 'graficoMemoria':
 						divGraficoRam.innerHTML = '';
 						divGraficoRam.innerHTML = '<canvas id="graficoMemoria"></canvas>';
-						gerarGrafico(idGrafico, dadosRam, datasRam, isTemp);
+						gerarGrafico(idGrafico, dadosRam, datasRam.reverse(), isTemp);
 						break;
 			
 					case 'graficoCpu':
 						divGraficoCpu.innerHTML = '';
 						divGraficoCpu.innerHTML = '<canvas id="graficoCpu"></canvas>';
-						gerarGrafico(idGrafico, dadosCpu, datasCpuTemp, isTemp);
+						gerarGrafico(idGrafico, dadosCpu, datasCpuTemp.reverse(), isTemp);
 						break;
 					
 					case 'graficoTemp':
 						divGraficoTemp.innerHTML = '';
 						divGraficoTemp.innerHTML = '<canvas id="graficoTemp"></canvas>';
-						gerarGrafico(idGrafico, dadosTemp, datasCpuTemp, isTemp);
+						gerarGrafico(idGrafico, dadosTemp, datasCpuTemp.reverse(), isTemp);
 						break;
 						
 					default:
 						break;
 				}
-				// gerarGrafico(idGrafico, dados, datasFormatadas, isTemp);
             });
 			carregarDadosDoGrafico();
         } else {
