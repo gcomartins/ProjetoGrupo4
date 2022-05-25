@@ -6,7 +6,8 @@ function buscarUltimasMedidas(hostname, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `
-        select top ${limite_linhas} logs.idLog, components.idComponentes, components.nome, maquinas.hostName, logs.leituraDesempenho, logs.leituraTemperatura, logs.dataHora
+        select top ${limite_linhas} logs.idLog, components.idComponentes, components.nome, maquinas.hostName,
+        logs.leituraDesempenho, logs.leituraTemperatura, convert(varchar, logs.dataHora, 108) as dataHora
     from [dbo].[tbLogs] as logs
     join [dbo].[tbComponentes] as components on logs.fkComponente = components.idComponentes
     join [dbo].[tbMaquinas] as maquinas on  maquinas.idMaquina = components.fkMaquina 
@@ -37,7 +38,8 @@ function buscarMedidasEmTempoReal(hostname) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `
-        select top 1 logs.idLog, components.idComponentes, components.nome, maquinas.hostName, logs.leituraDesempenho, logs.leituraTemperatura, logs.dataHora
+        select top 3 logs.idLog, components.idComponentes, components.nome, maquinas.hostName,
+        logs.leituraDesempenho, logs.leituraTemperatura, convert(varchar, logs.dataHora, 108) as dataHora
     from [dbo].[tbLogs] as logs
     join [dbo].[tbComponentes] as components on logs.fkComponente = components.idComponentes
     join [dbo].[tbMaquinas] as maquinas on  maquinas.idMaquina = components.fkMaquina 
