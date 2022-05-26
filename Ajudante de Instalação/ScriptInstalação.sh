@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #Usuário 
 echo "Adicionar usuário"
 sudo adduser datacat
@@ -84,7 +82,7 @@ if [ \"$inst10\" == \"n\"  ]
 
     sleep 4
     cd /home/ubuntu
-    wget -o  DataCatApp.jar https://raw.githubusercontent.com/gcomartins/DataCat-App/main/login-java-swing-1.0-SNAPSHOT-jar-with-dependencies.jar
+        git clone  https://github.com/gcomartins/DataCat-App.git
     sleep 4
 
     echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Pronto! Repositório instalado com sucesso."
@@ -95,8 +93,7 @@ if [ \"$inst10\" == \"n\"  ]
     
     # mv login-java-swing-1.0-SNAPSHOT-jar-with-dependencies.jar /home/Desktop/datacat
     sleep 4
-    cd ..
-
+   
      else
 
      echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Tudo bem, não irei instalar a nossa aplicação"
@@ -105,11 +102,11 @@ if [ \"$inst10\" == \"n\"  ]
      fi
    
 else
-echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Você já tem nossa aplicação"
+echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Você  já tem nossa aplicação"
 
 fi
 
-cd ..
+cd DataCat-App
+cd appAntigo 
 
- java -jar DataCatApp.jar
-
+ java -jar data-cat-jar-1.0-SNAPSHOT-jar-with-dependencies.jar
