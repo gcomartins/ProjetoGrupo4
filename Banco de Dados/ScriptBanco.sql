@@ -65,6 +65,7 @@ inner join tbAlertas as A on A.fkLog = L.idLog Where hostName = "Lucas" ;
 Create table tbLogs (
 idLog INT PRIMARY KEY AUTO_INCREMENT, 
 leituraDesempenho DOUBLE,
+leituraTemperatura Double,
 dataHora DATETIME,
 fkComponente INT,
 constraint fkComponente 
@@ -96,8 +97,6 @@ insert into tbEmpresas (idEmpresa,nomeEmpresa, cnpj, representante, email, senha
 insert into tbMaquinas (hostName,grupo, fkEmpresa) values 
 ("STFSAOC046893-L","GrupoA", 34),
 ("LAPTOP-LU9R5MNA","GrupoA",34),
-
-
 (0,"Pieroni","grupoB",34),
 (0,"Leticia","GrupoA",34),
 (0,"Lara","grupoB",34),
@@ -106,19 +105,10 @@ insert into tbMaquinas (hostName,grupo, fkEmpresa) values
 (0,"Algusto","GrupoB",34);
 
 
-insert into tbMaquinas (idMaquina, hostName,grupo, fkEmpresa) values 
-(8,"STFSAOC046893-L","GrupoA", 34),
-(9,"LAPTOP-LU9R5MNA","GrupoA",34),
-(0,"Pieroni","grupoB",34),
-(0,"Leticia","GrupoA",34),
-(0,"Lara","grupoB",34),
-(0,"Larissa","GrupoB",34),
-(0,"Gulherme","GrupoB",34),
-(0,"Algusto","GrupoB",34);
 
 
 insert into tbUsuarios ( nomeUsuario, email, senha, fkempresa) values 
-("Guilherme","guilherme@email.com","1234", 34),
+("Larissa","larissa.alvez@dacat.com.br","1234", 34),
 ("Lara","lara@email.com","1234", 35),
 ("Leticia","leticia@email.com","1234", 36),
 ("Larissa","larissa@email.com","1234", 37);
@@ -163,7 +153,8 @@ select * from tbLogs;
 select * from tbMaquinas where hostName = 'STFSAOC046893-L';
 
 select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where hostName = 'STFSAOC046893-L';
-
+update tbMaquinas set hostName = ' ' where idMaquina = 6;
+update tbComponentes set limiteAlerta = 100 where fkMaquina = 62 and nome = 'Disco';
 select * from tbComponentes;
 
 /*select L.idLog, C.nome, C.idComponentes, M.hostName, M.idMaquina from tbComponentes 

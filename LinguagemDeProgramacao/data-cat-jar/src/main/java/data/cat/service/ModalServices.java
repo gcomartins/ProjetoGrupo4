@@ -32,34 +32,18 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
  */
 public class ModalServices {
 
-    private Integer idLog;
-    private Integer limiteAlertaCpu;
-    private Integer limiteAlertaRam;
-    private Integer limiteAlertaDisco;
-    private Double leituraDesempenhoCpu;
-    private Double leituraDesempenhoRam;
-    private Double leituraDesempenhoDisco;
-    private String idMaquina;
     private String nomeMaquina;
 
     private static int log = 1;
 
-    private Looca looca;  
     private MedidasServices medidasServices;
-    
 
     Timer timer = new Timer();
 
     public ModalServices() {
         try {
-            looca = new Looca();
             medidasServices = new MedidasServices();
-            this.idLog = log++;
-            this.idMaquina = InetAddress.getLocalHost().getHostAddress();
             this.nomeMaquina = InetAddress.getLocalHost().getHostName();
-            this.leituraDesempenhoCpu = medidasServices.getProcessadorEmUso();
-            this.leituraDesempenhoRam = medidasServices.getRamEmUso();
-            this.leituraDesempenhoDisco = medidasServices.getDiscoEmUso();
         } catch (UnknownHostException ex) {
             Logger.getLogger(ModalServices.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,73 +53,149 @@ public class ModalServices {
     ConexaoAzure conexaoAzure = new ConexaoAzure();
     ConexaoMysql conexaoMysql = new ConexaoMysql();
     Date dataHora = new Date();
-    List<Componente> listaComponentes = new ArrayList<>();
+    List<Componente> listaComponentesAzure = new ArrayList<>();
+    List<Componente> listaComponentesMysql = new ArrayList<>();
     List<Usuario> listaUsuarios = new ArrayList<>();
     List<Maquina> listaMaquinas = new ArrayList<>();
 
-    
-
     public void inserirComponenteBanco(MedidasServices medidasServices, String componente) {
         int comp = 0;
+        int compMysql = 0;
 
-        listaComponentes = conexaoAzure.getConexaoAzure().query(
+        listaComponentesAzure = conexaoAzure.getConexaoAzure().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
-        for (int i = 0; i < listaComponentes.size(); i++) {
-            if (listaComponentes.get(i).getNome().equalsIgnoreCase(componente)) {
-                comp = listaComponentes.get(i).getIdComponentes();
+        for (int i = 0; i < listaComponentesAzure.size(); i++) {
+            if (listaComponentesAzure.get(i).getNome().equalsIgnoreCase(componente)) {
+                comp = listaComponentesAzure.get(i).getIdComponentes();
                 break;
             }
         }
-        
+
         if (componente.equalsIgnoreCase("Disco")) {
-        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);    
-        }if (componente.equalsIgnoreCase("Ram")) {
-        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, comp);    
-        }if (componente.equalsIgnoreCase("Cpu")) {
-        conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-                + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, comp);    
+            conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                    + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);
         }
-        
-//        if (componente.equalsIgnoreCase("Disco")) {
-//         conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-//                + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, comp);     
-//        }if (componente.equalsIgnoreCase("Ram")) {
-//         conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-//                + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, comp);      
-//        }if (componente.equalsIgnoreCase("Cpu")) {
-//         conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
-//                + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, comp);      
-//        }
-        
-  
+        if (componente.equalsIgnoreCase("Ram")) {
+            conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                    + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, comp);
+        }
+        if (componente.equalsIgnoreCase("Cpu")) {
+            conexaoAzure.getConexaoAzure().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                    + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, comp);
+        }
 
+        listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
+                "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
 
+        for (int i = 0; i < listaComponentesMysql.size(); i++) {
+            if (listaComponentesMysql.get(i).getNome().equalsIgnoreCase(componente)) {
+                compMysql = listaComponentesMysql.get(i).getIdComponentes();
+                break;
+            }
+        }
 
+        if (componente.equalsIgnoreCase("Disco")) {
+            conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                    + "values(?, ?, ?)", medidasServices.getDiscoEmUso(), dataHora, compMysql);
+        }
+        if (componente.equalsIgnoreCase("Ram")) {
+            conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                    + "values(?, ?, ?)", medidasServices.getRamEmUso(), dataHora, compMysql);
+        }
+        if (componente.equalsIgnoreCase("Cpu")) {
+            conexaoMysql.getConexaoMysql().update("insert into tbLogs(leituraDesempenho, dataHora, fkComponente) "
+                    + "values(?, ?, ?)", medidasServices.getProcessadorEmUso(), dataHora, compMysql);
+        }
 
     }
- 
-    public Double getLimiteBanco(String componente)
-    {
-         listaComponentes = conexaoAzure.getConexaoAzure().query(
+
+    public Double getLimiteBanco(String componente) {
+        listaComponentesAzure = conexaoAzure.getConexaoAzure().query(
                 "select C.idComponentes, C.nome, C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
         Double dado = 0.0;
 
-        for (int i = 0; i < listaComponentes.size(); i++) {
-            if (listaComponentes.get(i).getNome().equalsIgnoreCase(componente)) {
-                dado = listaComponentes.get(i).getLimiteAlerta();
+        for (int i = 0; i < listaComponentesAzure.size(); i++) {
+            if (listaComponentesAzure.get(i).getNome().equalsIgnoreCase(componente)) {
+                dado = listaComponentesAzure.get(i).getLimiteAlerta();
                 return dado;
             }
         }
 
         return 0.0;
     }
-    
+
+    public void cadastroMaquinaAzure(String email) {
+        Integer fkEmpresa;
+        Integer fkMaquina;
+        String disco = "Disco";
+        String ram = "Ram";
+        String cpu = "Cpu";
+
+        listaUsuarios = conexaoAzure.getConexaoAzure().query(
+                String.format("select * from tbUsuarios where email = '%s'",
+                        email),
+                new BeanPropertyRowMapper<>(Usuario.class));
+
+        fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
+
+        conexaoAzure.getConexaoAzure().update("insert into tbMaquinas (hostName,fkEmpresa)"
+                + "values(?,?)", nomeMaquina, fkEmpresa);
+
+        listaMaquinas = conexaoAzure.getConexaoAzure().query(
+                String.format("select * from tbMaquinas where hostName = '%s'",
+                        nomeMaquina),
+                new BeanPropertyRowMapper<>(Maquina.class));
+
+        fkMaquina = listaMaquinas.get(0).getIdMaquina();
+
+        conexaoAzure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
+                + "values(?,?);", disco, fkMaquina);
+        conexaoAzure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
+                + "values(?,?);", ram, fkMaquina);
+        conexaoAzure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
+                + "values(?,?);", cpu, fkMaquina);
+    }
+
+    public void cadastroMysql(String email) {
+
+        Integer fkEmpresa;
+        Integer fkMaquina;
+        String disco = "Disco";
+        String ram = "Ram";
+        String cpu = "Cpu";
+
+        listaUsuarios = conexaoAzure.getConexaoAzure().query(
+                String.format("select * from tbUsuarios where email = '%s'",
+                        email),
+                new BeanPropertyRowMapper<>(Usuario.class));
+
+        fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
+
+        conexaoMysql.getConexaoMysql().update("insert into tbMaquinas (hostName,fkEmpresa)"
+                + "values(?,?)", nomeMaquina, fkEmpresa);
+
+        listaMaquinas = conexaoMysql.getConexaoMysql().query(
+                String.format("select * from tbMaquinas where hostName = '%s'",
+                        nomeMaquina),
+                new BeanPropertyRowMapper<>(Maquina.class));
+
+        fkMaquina = listaMaquinas.get(0).getIdMaquina();
+
+        conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
+                + "values(?,?);", disco, fkMaquina);
+        conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
+                + "values(?,?);", ram, fkMaquina);
+        conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
+                + "values(?,?);", cpu, fkMaquina);
+
+    }
+
 }
