@@ -446,14 +446,6 @@
 
 	verificar_autenticacao();
 
-	function alterarTitulo(idAquario) {
-		var tituloAquario = document.getElementById("tituloAquario");
-		tituloAquario.innerHTML =
-			"Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " +
-			idAquario +
-			"</span>";
-	}
-
 	// O gráfico é construído com três funções:
 	// 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
 	// 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
