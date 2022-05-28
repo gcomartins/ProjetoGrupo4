@@ -1,15 +1,14 @@
 package teste.edicao.componente;
 
 import java.util.ArrayList;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author letic
  */
-public class Tabela{
-        private ArrayList linhas = null;
+public class Tabela extends AbstractTableModel{
+    private ArrayList linhas = null;
     private String[] colunas = null;
 
     public Tabela(ArrayList lin, String[] col) {
@@ -33,14 +32,17 @@ public class Tabela{
         this.colunas = colunas;
     }
 
+    @Override
     public int getRowCount() {
         return linhas.size();
     }
 
+    @Override
     public int getColumnCount() {
         return colunas.length;
     }
 
+    @Override
     public Object getValueAt(int numLin, int numCol) {
         Object[] linha = (Object[]) getLinhas().get(numLin);
 

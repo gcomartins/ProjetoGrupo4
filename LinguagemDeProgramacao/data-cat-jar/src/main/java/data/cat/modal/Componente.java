@@ -10,7 +10,7 @@ import data.cat.modal.Maquina;
  *
  * @author lmmelo1
  */
-public class Componente {
+public class Componente{
 
     private Integer idComponentes;
     private String nome;

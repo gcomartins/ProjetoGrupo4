@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -42,7 +43,7 @@ public class FormComponentes extends javax.swing.JFrame {
     public FormComponentes() throws UnknownHostException {
         this.nomeMaquina = InetAddress.getLocalHost().getHostName();
         initComponents();
-        
+        preencherTabela("select * from tbComponentes as C join tbMaquinas as M on ( C.fkMaquina = M.idMaquina ) where hostName = '" + nomeMaquina + "'");
     }
     
     ConexaoAzure azure = new ConexaoAzure();
@@ -368,7 +369,7 @@ public class FormComponentes extends javax.swing.JFrame {
 
     public void preencherTabela(String Sql) {
         ArrayList dados = new ArrayList();
-        String[] colunas = new String[]{"limiteAlerta","idComponente", "fkMaquina", "nome"};
+        String[] colunas = new String[]{"idComponente", "nome", "limiteAlerta", "fkMaquina"};
         
         List<Maquina> listaMaquina = new ArrayList();
         
@@ -394,7 +395,7 @@ public class FormComponentes extends javax.swing.JFrame {
       
         
         
-        tblComponentes.setModel((TableModel) tabela);
+        tblComponentes.setModel(tabela);
         
         tblComponentes.getColumnModel().getColumn(0).setPreferredWidth(35);
         tblComponentes.getColumnModel().getColumn(0).setResizable(false);
@@ -409,56 +410,56 @@ public class FormComponentes extends javax.swing.JFrame {
         tblComponentes.getColumnModel().getColumn(3).setResizable(false);
         
         tblComponentes.getTableHeader().setReorderingAllowed(false);
-        tblComponentes.setAutoResizeMode(tblComponentes.AUTO_RESIZE_OFF);
+        tblComponentes.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tblComponentes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) throws UnknownHostException {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            
-             String nomeMaquina = InetAddress.getLocalHost().getHostName();
-            public void run() {
-//                new FormComponentes().setVisible(true);
-                FormComponentes form = null;
-                try {
-                    form = new FormComponentes();
-                } catch (UnknownHostException ex) {
-                    Logger.getLogger(FormComponentes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                form.preencherTabela("select idMaquina from tbMaquinas where hostName = '" + nomeMaquina + "'");
-                form.setLocationRelativeTo(null);
-                form.setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) throws UnknownHostException {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FormComponentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            
+//             String nomeMaquina = InetAddress.getLocalHost().getHostName();
+//            public void run() {
+////                new FormComponentes().setVisible(true);
+//                FormComponentes form = null;
+//                try {
+//                    form = new FormComponentes();
+//                } catch (UnknownHostException ex) {
+//                    Logger.getLogger(FormComponentes.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                form.preencherTabela("select idMaquina from tbMaquinas where hostName = '" + nomeMaquina + "'");
+//                form.setLocationRelativeTo(null);
+//                form.setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
