@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import teste.edicao.componente.FormComponentes;
 
 /**
  *
@@ -224,12 +223,7 @@ public class OptionsGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIniciarAppActionPerformed
 
     private void btnComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponenteActionPerformed
-        try {
-            FormComponentes formComponentes = new FormComponentes();
-            formComponentes.setVisible(true);
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(OptionsGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         
     }//GEN-LAST:event_btnComponenteActionPerformed
 
