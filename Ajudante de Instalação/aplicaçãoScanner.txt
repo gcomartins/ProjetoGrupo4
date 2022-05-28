@@ -1,0 +1,121 @@
+#Usuário 
+echo "Adicionar usuário"
+sudo adduser datacat
+#senha
+
+sudo usermod -aG sudo datacat
+
+#Instalação do Java
+	
+echo  "$(tput setaf 10)[catDev]:$(tput setaf 7) Olá Usuário, serei seu assistente para instalação geral do ambiente e da aplicação da DataCat!"
+
+echo  "$(tput setaf 10)[bot]:$(tput setaf 7) Olá Usuário,vou verificar aqui se você possui o Java instalado."
+
+java -version
+if [ $? -eq 0 ]
+	then
+		echo "$(tput setaf 10)[bot]:$(tput setaf 7) Identifiquei que você já tem o java instalado."
+
+         echo "$(tput setaf 10)[bot]:$(tput setaf 7) Fique para continuar!"
+
+	else
+		echo "$(tput setaf 10)[bot]:$(tput setaf 7) Não identifiquei nenhuma versão do Java instalado, irei resolver para você agora mesmo!"
+
+		echo "$(tput setaf 10)[bot]:$(tput setaf 7) Confirme para mim se realmente deseja instalar o Java (s/n)?"
+
+#Atualização dos pacotes
+	read inst
+	if [ \"$inst\" == \"s\" ]
+		then
+			echo "$(tput setaf 10)[bot]:$(tput setaf 7) Você decidiu instalar o Java"
+			echo "$(tput setaf 10)[bot]:$(tput setaf 7) Vamos verificar seu pacote tá atualizado e intalado"
+			sleep 2
+            sudo apt update && sudo apt upgrade -y
+			sleep 2
+		
+			if [ true ]
+				then
+					echo "$(tput setaf 10)[bot]:$(tput setaf 7) Preparando para instalar a versão 11 do Java. Confirme a instalação quando solicitado"
+
+					sudo apt install default-jre ; apt install openjdk-11-jre; -y
+					clear
+
+					echo "$(tput setaf 10)[bot]:$(tput setaf 7) JAVA instalado com sucesso."
+				fi
+		else 	
+
+		echo "$(tput setaf 10)[bot]:$(tput setaf 7) Você optou por não instalar o Java por enquanto,não se esqueça de que precisará do Java para rodar a 7aplicação."
+
+        echo "$(tput setaf 10)[bot]:$(tput setaf 7) Fique com a DataCat para continuar."
+	fi
+fi
+            
+#Instalação da Aplicação Docker
+
+echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Agora irei ver se você possui o docker instalado...;"
+docker --version
+if [ $? -eq 0 ]
+	then
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Olá você já tem o docker instalado!!"
+        echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos baixar o nosso repositório primeiro!"
+		sleep 2
+        git clone https://github.com/gcomartins/DataCat-App.git
+        sleep 2
+        echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos entrar no repositório agora!"
+        sleep 2
+        cd DataCat-App/
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos preparar o Docker!"
+        sleep 2
+        sudo docker build -t data-cat-app .
+        sleep 2
+        sudo docker run -d data-cat-app
+        sleep 2
+        sudo docker ps
+        sleep 2
+        echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Insira o Id do conteiner"
+        read aleat
+        sudo docker exec -it $aleat bash
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Pronto! Agora vamos executar sua aplicação."
+         sleep 2
+        java -jar app-scanner.jar
+
+	else
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Opa! Não identifiquei nenhuma versão do Docker instalado, mas sem problemas, irei resolver isso agora!"
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Confirme para mim se realmente deseja instalar o Docker (S/N)?"
+	read inst
+	if [ \"$inst\" == \"s\" ]
+		then
+			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Ok! Você escolheu instalar o Docker ;D"
+            sleep 2
+            echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos instalar o Docker!"
+            sleep 2
+			sudo apt install docker.io -y
+			sleep 2
+            echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos baixar o nosso repositório primeiro!"
+			sleep 2
+            git clone https://github.com/gcomartins/DataCat-App.git
+            sleep 2
+            echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos entrar no repositório agora!"
+            sleep 2
+            cd DataCat-App/
+			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Vamos instalar e preparar o Docker!"
+			sleep 2
+			sudo apt install docker.io -y
+            sleep 2
+            sudo docker build -t data-cat-app .
+            sleep 2
+            sudo docker run -d data-cat-app
+            sleep 2
+            sudo docker ps
+            sleep 2
+            echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Insira o Id do conteiner"
+            read aleat
+            sudo docker exec -it $aleat bash
+			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Pronto! Agora vamos executar sua aplicação."
+            sleep 2
+            java -jar app-scanner.jar
+
+		else 	
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não instalar o Docker por enquanto, até a próxima então!"
+	fi
+fi
