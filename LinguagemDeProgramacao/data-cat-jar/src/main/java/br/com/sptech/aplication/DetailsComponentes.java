@@ -4,17 +4,42 @@
  */
 package br.com.sptech.aplication;
 
+import data.cat.banco.ConexaoAzure;
+import data.cat.banco.ConexaoMysql;
+import data.cat.modal.Componente;
+import data.cat.service.ModalServices;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
 /**
  *
  * @author letic
  */
 public class DetailsComponentes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DetailsComponentes
-     */
-    public DetailsComponentes() {
+    List<Componente> listaComponentes;
+    List<Componente>  listaComponentesMysql;
+    ModalServices modalService;
+    ConexaoAzure conexaoazure;
+    ConexaoMysql conexaoMysql;
+    String nomeMaquina;
+
+    public DetailsComponentes()  {
         initComponents();
+        listaComponentes = new ArrayList();
+        conexaoazure = new ConexaoAzure();
+        conexaoMysql = new ConexaoMysql();
+        modalService = new ModalServices();
+        try {
+            nomeMaquina = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(DetailsComponentes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -63,30 +88,50 @@ public class DetailsComponentes extends javax.swing.JFrame {
         jButton1.setText("Inserir");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setPreferredSize(new java.awt.Dimension(90, 35));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         comboRam.setBackground(new java.awt.Color(164, 22, 26));
         comboRam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboRam.setForeground(new java.awt.Color(245, 243, 244));
         comboRam.setMaximumRowCount(5);
-        comboRam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione --", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%" }));
+        comboRam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione --", "20", "30", "40", "50", "60", "70", "80", "90" }));
         comboRam.setMinimumSize(new java.awt.Dimension(150, 35));
         comboRam.setPreferredSize(new java.awt.Dimension(150, 35));
+        comboRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboRamActionPerformed(evt);
+            }
+        });
 
         comboDisco.setBackground(new java.awt.Color(164, 22, 26));
         comboDisco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboDisco.setForeground(new java.awt.Color(245, 243, 244));
         comboDisco.setMaximumRowCount(5);
-        comboDisco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione --", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%" }));
+        comboDisco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione --", "20", "30", "40", "50", "60", "70", "80", "90" }));
         comboDisco.setMinimumSize(new java.awt.Dimension(150, 35));
         comboDisco.setPreferredSize(new java.awt.Dimension(150, 35));
+        comboDisco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDiscoActionPerformed(evt);
+            }
+        });
 
         comboCpu.setBackground(new java.awt.Color(164, 22, 26));
         comboCpu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboCpu.setForeground(new java.awt.Color(245, 243, 244));
         comboCpu.setMaximumRowCount(5);
-        comboCpu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione --", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%" }));
+        comboCpu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione --", "20", "30", "40", "50", "60", "70", "80", "90" }));
         comboCpu.setMinimumSize(new java.awt.Dimension(150, 35));
         comboCpu.setPreferredSize(new java.awt.Dimension(150, 35));
+        comboCpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCpuActionPerformed(evt);
+            }
+        });
 
         lblLimite.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblLimite.setForeground(new java.awt.Color(22, 26, 29));
@@ -179,6 +224,45 @@ public class DetailsComponentes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDiscoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboDiscoActionPerformed
+
+    private void comboCpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCpuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCpuActionPerformed
+
+    private void comboRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboRamActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//        System.out.println(comboDisco.getSelectedItem());
+        Object ValorDisco = comboDisco.getSelectedItem();
+        Object ValorRam =  comboRam.getSelectedItem();
+        Object ValorCpu =  comboCpu.getSelectedItem();
+
+        listaComponentes = conexaoazure.getConexaoAzure().query(
+                "select C.nome , C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+
+        listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
+                "select C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+                new BeanPropertyRowMapper<>(Componente.class));
+
+        Integer fkMaquina = listaComponentes.get(0).getFkMaquina();
+        Integer fkMaquinaMysql = listaComponentesMysql.get(0).getFkMaquina();
+
+        modalService.insertLimite(ValorDisco, fkMaquina, fkMaquinaMysql, "Disco");
+        modalService.insertLimite(ValorRam, fkMaquina, fkMaquinaMysql, "Ram");
+        modalService.insertLimite(ValorCpu, fkMaquina, fkMaquinaMysql, "Cpu");
+        
+        System.out.println("Vlores cadastrados");
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

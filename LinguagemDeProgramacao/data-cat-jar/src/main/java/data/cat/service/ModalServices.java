@@ -120,7 +120,7 @@ public class ModalServices {
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
-        Double dado = 0.0;
+        Double dado;
 
         for (int i = 0; i < listaComponentesAzure.size(); i++) {
             if (listaComponentesAzure.get(i).getNome().equalsIgnoreCase(componente)) {
@@ -196,6 +196,17 @@ public class ModalServices {
         conexaoMysql.getConexaoMysql().update("insert into tbComponentes (nome,fkMaquina) "
                 + "values(?,?);", cpu, fkMaquina);
 
+    }
+
+    public void insertLimite(Object limiteAlerta, Integer fkMaquina, Integer fkMaquinaMysql, String comp) {
+
+        conexaoAzure.getConexaoAzure().update(
+                String.format("update tbComponentes set limiteAlerta = %s where fkMaquina = %d and nome = '%s'",
+                        limiteAlerta, fkMaquina, comp));
+
+        conexaoMysql.getConexaoMysql().update(
+                String.format("update tbComponentes set limiteAlerta = %s where fkMaquina = %d and nome = '%s'",
+                        limiteAlerta, fkMaquinaMysql, comp));
     }
 
 }
