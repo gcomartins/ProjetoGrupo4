@@ -153,8 +153,8 @@ select * from tbLogs;
 select * from tbMaquinas where hostName = 'STFSAOC046893-L';
 
 select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where hostName = 'STFSAOC046893-L';
-update tbMaquinas set hostName = ' ' where idMaquina = 6;
-update tbComponentes set limiteAlerta = 100 where fkMaquina = 62 and nome = 'Disco';
+update tbMaquinas set hostName = ' ' where idMaquina = 9;
+update tbComponentes set limiteAlerta = 100 where fkMaquina = 2 and nome = 'Disco';
 select * from tbComponentes;
 
 /*select L.idLog, C.nome, C.idComponentes, M.hostName, M.idMaquina from tbComponentes 

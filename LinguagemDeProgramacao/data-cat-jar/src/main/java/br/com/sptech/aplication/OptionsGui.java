@@ -4,10 +4,16 @@
  */
 package br.com.sptech.aplication;
 
+import data.cat.banco.ConexaoAzure;
+import data.cat.banco.ConexaoMysql;
+import data.cat.modal.Componente;
+import data.cat.service.ModalServices;
 import java.awt.Color;
 import java.net.UnknownHostException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +24,8 @@ public class OptionsGui extends javax.swing.JFrame {
     /**
      * Creates new form OptionsGui
      */
+    ModalServices modalService;
+
     public OptionsGui() {
         initComponents();
     }
@@ -193,7 +201,7 @@ public class OptionsGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseEntered
-        
+
     }//GEN-LAST:event_menuSairMouseEntered
 
     private void menuSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseExited
@@ -219,12 +227,13 @@ public class OptionsGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnIniciarAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarAppActionPerformed
-        new App().setVisible(true); 
+        new App().setVisible(true);
     }//GEN-LAST:event_btnIniciarAppActionPerformed
 
     private void btnComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponenteActionPerformed
-       
-        
+
+        new DetailsComponentes().setVisible(true);
+
     }//GEN-LAST:event_btnComponenteActionPerformed
 
     /**
