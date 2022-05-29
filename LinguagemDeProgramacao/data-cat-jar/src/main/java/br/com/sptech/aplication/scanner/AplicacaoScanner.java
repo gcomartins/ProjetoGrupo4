@@ -47,7 +47,7 @@ public class AplicacaoScanner {
         ConexaoAzure conexaoazure = new ConexaoAzure();
         List<Componente> listaComponentes = new ArrayList<>();
         List<Componente> listaComponentesMysql = new ArrayList<>();
-        
+
         List<Usuario> listaUsuarios = new ArrayList<>();
         List<Maquina> listaMaquinas = new ArrayList<>();
 
@@ -87,7 +87,7 @@ public class AplicacaoScanner {
                             "select C.nome , C.limiteAlerta, C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                             + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                             new BeanPropertyRowMapper<>(Componente.class));
-                    
+
                     listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
                             "select C.fkMaquina from tbComponentes as C join tbMaquinas as M "
                             + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
@@ -96,47 +96,30 @@ public class AplicacaoScanner {
                     if (listaComponentes.get(0).getLimiteAlerta() == null) {
                         System.out.println("\nVimos que Seus Componentes Não tem um limite cadastrado"
                                 + " então iremos cadastra-los agora");
-                        
-                        
+
                         Integer fkMaquina = listaComponentes.get(0).getFkMaquina();
                         Integer fkMaquinaMysql = listaComponentesMysql.get(0).getFkMaquina();
-                        
-                        
+
                         for (int i = 0; i < listaComponentes.size(); i++) {
 
                             if (listaComponentes.get(i).getNome().equalsIgnoreCase("Disco")) {
                                 System.out.println("\nColoque o limite para o Disco");
                                 Integer limiteDisco = sc.nextInt();
 
-                                conexaoazure.getConexaoAzure().update(
-                                        String.format("update tbComponentes set limiteAlerta = %d where fkMaquina = %d and nome = 'Disco'",
-                                                limiteDisco, fkMaquina));
-                                conexaoMysql.getConexaoMysql().update(
-                                        String.format("update tbComponentes set limiteAlerta = %d where fkMaquina = %d and nome = 'Disco'",
-                                                limiteDisco, fkMaquinaMysql));
+                                modalServices.insertLimite(limiteDisco, fkMaquina, fkMaquinaMysql, "Disco");
                             } else if (listaComponentes.get(i).getNome().equalsIgnoreCase("Ram")) {
                                 System.out.println("\nColoque o limite para o Ram");
                                 Integer limiteRam = sc.nextInt();
 
-                                conexaoazure.getConexaoAzure().update(
-                                        String.format("update tbComponentes set limiteAlerta = %d where fkMaquina = %d and nome = 'Ram'",
-                                                limiteRam, fkMaquina));
-                                 conexaoMysql.getConexaoMysql().update(
-                                        String.format("update tbComponentes set limiteAlerta = %d where fkMaquina = %d and nome = 'Ram'",
-                                                limiteRam, fkMaquinaMysql));
+                                modalServices.insertLimite(limiteRam, fkMaquina, fkMaquinaMysql, "Ram");
                             } else if (listaComponentes.get(i).getNome().equalsIgnoreCase("Cpu")) {
                                 System.out.println("\nColoque o limite para o Processador");
                                 Integer limiteCpu = sc.nextInt();
 
-                                conexaoazure.getConexaoAzure().update(
-                                        String.format("update tbComponentes set limiteAlerta = %d where fkMaquina = %d and nome = 'Cpu'",
-                                                limiteCpu, fkMaquina));
-                                 conexaoMysql.getConexaoMysql().update(
-                                        String.format("update tbComponentes set limiteAlerta = %d where fkMaquina = %d and nome = 'Cpu'",
-                                                limiteCpu, fkMaquinaMysql));
+                                modalServices.insertLimite(limiteCpu, fkMaquina, fkMaquinaMysql, "Cpu");
                             }
                         }
-                    } 
+                    }
 
                     for (int i = 0; i < 20000; i++) {
 

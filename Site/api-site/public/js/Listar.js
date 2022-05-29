@@ -12,7 +12,7 @@ function listar(){
             for(var i = 0; i < 1; i++) {
                 lista.innerHTML = `   `;
             }
-            for(var i = 1; i < 20; i++) {
+            for(var i = 0; i < 20; i++) {
                         lista.innerHTML += `
                 <div class="box-informacoes-cadastradas">
                 
@@ -22,19 +22,22 @@ function listar(){
                 <h4 class="title-email">${obj[i].email}</h4>
                 <h4 class="title-cargo">${obj[i].cargo}</h4>
                 <div class="wrapper">
-                    <div class="icon editar">
-                        <span id="editar-div" class="icons">
-                        <i id="editar" class="material-symbols-sharp" onclick="formularioUpDate()">border_color</i>
-                    </span>
-                    </div>
-                </div>
-                <div class="wrapper">
-                    <div class="icon excluir">
-                        <span id="deletar-div" class="icons">
-                        <i id="deletar" class="material-symbols-sharp" onclick="deletarUsuario(${obj[i].idUsuario})">delete</i>
+                        <div class="icon editar">
+                            <div  class="tooltip"></div>
+                            <span id="editar-div" class="icons">
+                            <i id="editar" class="material-symbols-sharp" onclick="formularioUpDate()">border_color</i>
                         </span>
+                        </div>
                     </div>
-                </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="icon excluir">
+                            <div  id="tooltip-excluir" class="tooltip"></div>
+                            <span id="deletar-div" class="icons">
+                            <i id="deletar" class="material-symbols-sharp"onclick="deletarUsuario(${obj[i].idUsuario})">delete</i>
+                            </span>
+                        </div>
+                    </div>
               </div>
             </div>
                         `
@@ -69,15 +72,15 @@ function listarMaquina(){
                     <div class="box-informacoes-cadastradas">
                     
                     <div class="titulos">
-                    <h4 class="title-ram">${obj[i].idMaquinaComponentes}</h4>
-                    <h4 class="title-alerta">${obj[i].nome}</h4>
-                    <h4 class="title-alerta">${obj[i].capacidade}</h4>
-                    <h4 class="title-alerta">${obj[i].limiteAlerta}%</h4>
+                    <h4 class="title-id">${obj[i].idComponentes}</h4>
+                    <h4 class="title-nome">${obj[i].hostName}</h4>
+                    <h4 class="title-nome">${obj[i].capacidade}</h4>
+                    <h4 class="title-nome">${obj[i].limiteAlerta}%</h4>
                     <div class="wrapper">
                         <div class="icon editar">
                             <div  class="tooltip">Editar</div>
                             <span id="editar-div" class="icons">
-                            <i id="editar" class="material-symbols-sharp">border_color</i>
+                            <i id="editar" class="material-symbols-sharp"onclick="formularioUpDateMaquina()">border_color</i>
                         </span>
                         </div>
                     </div>
@@ -91,7 +94,6 @@ function listarMaquina(){
                     </div>
                   </div>
                 </div>
-        
                             `
                         }
             }).catch((erro) => {
@@ -107,8 +109,8 @@ function listarMaquina(){
         });
     }
 
-    function listarLog(){
-        fetch(`/usuarios/listarLog`, {
+    function listarAlerta(){
+        fetch(`/usuarios/listarAlerta`, {
             method: "GET",
         }).then(function (resposta) {
         
@@ -116,35 +118,38 @@ function listarMaquina(){
             resposta.json().then((json) => {
                 var obj = (json);
                 console.log(obj)
-                for(var i = 1; i < 20; i++) {
-                            lista.innerHTML += `
-                    <div class="box-informacoes-cadastradas">
-                    
-                    <div class="titulos">
-                    <h4 class="title-ram">${obj[i].idUsuario}</h4>
-                    <h4 class="title-ram">${obj[i].nomeUsuario}</h4>
-                    <h4 class="title-ram">${obj[i].email}</h4>
-                    <h4 class="title-ram">${obj[i].cargo}</h4>
-                    <div class="wrapper">
-                        <div class="icon editar">
-                            <div  class="tooltip">Editar</div>
-                            <span id="editar-div" class="icons">
-                            <i id="editar" class="material-symbols-sharp">border_color</i>
-                        </span>
-                        </div>
-                    </div>
-                    <div class="wrapper">
-                        <div class="icon excluir">
-                            <div  id="tooltip-excluir" class="tooltip">Excluir</div>
-                            <span id="deletar-div" class="icons">
-                            <i id="deletar" class="material-symbols-sharp" onclick="deletarUsuario(${obj[i].idUsuario})">delete</i>
-                            </span>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-        
-                            `
+                for(var i = 0; i < 1; i++) {
+                    listaAlerta.innerHTML = `   `;
+                }
+                for(var i = 0; i < 7; i++) {
+                            listaAlerta.innerHTML += `
+                            
+                            <table>
+                                <thead>
+                                    <tr>
+                                    </tr>
+                                </thead>
+                                 <tbody>
+							
+							<tr>
+                            
+								<th>
+                                <p> Id do alerta </p>
+									<h4>${obj[i].idAlerta}</h4>
+								</th>
+								<th style="color: grey">
+                                <p style="color: Black"> Descrição </p>
+                                ${obj[i].descrição}
+								</th>
+								<th>
+                                <p> Status </p>
+                                <span class="status process">${obj[i].categoria}</span></th>
+							</tr>
+						</tbody>
+                            </table>
+                       
+                            ` 
+                             
                         }
             }).catch((erro) => {
         

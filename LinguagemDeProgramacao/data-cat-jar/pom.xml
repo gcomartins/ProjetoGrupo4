@@ -24,7 +24,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>br.com.sptech.aplication.scanner.AplicacaoScanner</mainClass>
+                            <mainClass>br.com.sptech.aplication.LoginGui</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -23,7 +23,7 @@ public class ConexaoMysql {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource​.setUrl("jdbc:mysql://localhost:3306/Grupo4?useSSL=false&useUnicode=true&serverTimezone=GMT-3");
         dataSource​.setUsername("root");
-        dataSource​.setPassword("Lucas7968");
+        dataSource​.setPassword("urubu100");
         
          conexaoMysql = new JdbcTemplate(dataSource);
     }
