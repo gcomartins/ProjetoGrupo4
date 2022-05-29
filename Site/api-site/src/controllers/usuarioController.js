@@ -24,6 +24,23 @@ function listar(req, res) {
         );
 }
 
+function listarAlerta(req, res) {
+    usuarioModel.listarAlerta()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function buscarMaquina(req, res) {
     console.log('ACESSEI CONTROLLERS BUSCAR MAQUINA');
     usuarioModel.buscarMaquina()
@@ -545,12 +562,10 @@ function upDateUsuario(req, res) {
 }
 function upDateMaquina(req, res) {
     
-    var idMaquinaComponentes= req.body.idMaquinaComponentes;
-    var nome= req.body.nome;
-    var capacidade = req.body.capacidade;
+    var idComponentes= req.body.idComponentes;
     var limiteAlerta = req.body.limiteAlerta;
 
-    usuarioModel.upDateMaquina(idMaquinaComponentes, nome,capacidade,limiteAlerta)
+    usuarioModel.upDateMaquina(idComponentes, limiteAlerta)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -572,6 +587,7 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
+    listarAlerta,
     listarMaquina,
     testar,
     deletarUsuario,

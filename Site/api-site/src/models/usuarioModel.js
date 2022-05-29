@@ -3,7 +3,7 @@ var database = require("../database/config")
 function listarMaquina() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquina()");
     var instrucao = `
-         SELECT * FROM tbMaquinas;
+    select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where fkEmpresa = '34';
          
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -14,6 +14,15 @@ function listar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
          SELECT * FROM tbUsuarios;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarAlerta() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarAlerta()");
+    var instrucao = `
+         SELECT * FROM tbAlertas order by idAlerta desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -56,10 +65,10 @@ function upDateUsuario(nomeUsuario,email,senha,cargo,idUsuario) {
     return database.executar(instrucao);
 }
 
-function upDateMaquina(idMaquinaComponentes,nome, capacidade,limiteAlerta) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function upDateUsuario(): ",idMaquinaComponentes,nome, capacidade,limiteAlerta)
+function upDateMaquina(idComponentes, limiteAlerta) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function upDateMaquina(): ",idComponentes,limiteAlerta)
     var instrucao = `
-    UPDATE tbMaquinasComponentes SET nome = '${nome}', capacidade = '${capacidade}', limiteAlerta = '${limiteAlerta}' WHERE idMaquinaComponentes = ${idMaquinaComponentes}; `
+    UPDATE tbComponentes SET limiteAlerta = '${limiteAlerta}' WHERE idComponentes = ${idComponentes}; `
     ;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -189,6 +198,7 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
+    listarAlerta,
     listarMaquina,
     deletarUsuario,
     deletarMaquina,

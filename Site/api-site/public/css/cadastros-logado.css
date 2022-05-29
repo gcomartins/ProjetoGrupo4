@@ -444,7 +444,26 @@ body {
 	justify-content: space-between;
 	padding: 0px, 0px, 0px, 30px;
 }
-
+.inp_up{
+	color: var(--dark);
+    font-size: larger;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+.space-btn_up{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+}
+.btn_up{
+	background-color: #b1a156;
+    color: var(--light);
+    padding: 9px;
+    border-radius: 10px;
+	width: 10vw;
+}
 #content main .box-subscribe .subscribe-right form .space-btn {
 	display: flex;
 	justify-content: center;
@@ -905,7 +924,7 @@ body {
 .wrapper{
 	display: inline-flex;
 	position: relative;
-	left: 9.5rem;
+	left: 5.5rem;
 	
 }
 
@@ -925,7 +944,7 @@ body {
 }
 .funcao {
 	position: relative;
-	right: 8rem;
+	right: 4rem;
 }
 
 .title-email{
@@ -1158,7 +1177,7 @@ span #editar-div.icons{
 @media screen and (max-width: 1600px){
 
 	#content .box-info-funcionario h1{
-		font-size: 20px;
+		font-size: 15px;
 		text-align: left;
 	} 
 
@@ -1185,17 +1204,17 @@ span #editar-div.icons{
 		left: 15rem;
 	}
 
-	#content .box-informacoes-cadastradas .title-ram{
+	#content .box-informacoes-cadastradas.title-ram{
 		position: relative;
 		left: 3rem;
 	}
-	#content .box-informacoes-cadastradas .title-id{
+	#content .box-informacoes-cadastradas.title-id{
 		position: relative;
-		left: -3rem;
+		left: 4rem;
 	}
-	#content .box-informacoes-cadastradas .title-nome{
+	#content .box-informacoes-cadastradas.title-nome{
 		position: relative;
-		left: 3rem;
+		left: 6rem;
 	}
 	#content .box-informacoes-cadastradas .title-cargo{
 		position: relative;
@@ -1203,7 +1222,7 @@ span #editar-div.icons{
 	}
 	#content .box-informacoes-cadastradas .title-email{
 		position: relative;
-		left: 3rem;
+		left: 2rem;
 	}
 
 	#content .box-informacoes-cadastradas .titulos .img-edit{
@@ -1221,7 +1240,7 @@ span #editar-div.icons{
 	#deletar{
 		width: 50%;
 		position: relative;
-		left: -1.5rem;
+		left: 0.1rem;
 	}
 
 	#editar{
@@ -1247,29 +1266,30 @@ span #editar-div.icons{
 	}	
 	
 
-	#content .box-info-funcionario h1.id{
+	#content h1.id{
 		font-size: 90%;
 		text-align: left;
 	} 
 
-	#content .box-info-funcionario h1.nome{
+	#content h1.nome{
 		font-size: 90%;
 		text-align: left;
 	} 
 
-	#content .box-info-funcionario h1.email{
+	#content h1.email{
 		font-size: 90%;
 		text-align: left;
 	} 
 
-	#content .box-info-funcionario h1.cargo{
+	#content h1.cargo{
 		font-size: 90%;
 		text-align: left;
 	} 
 
 
 	#content .box-info-funcionario .identificacao{
-		margin-left: 3rem;
+		font-size: 90%;
+		text-align: left;
 	}
 	#content .titulos h4{
 		font-size: 80%;
@@ -1316,7 +1336,7 @@ span #editar-div.icons{
 	#deletar{
 		width: 50%;
 		position: relative;
-		left: -1.5rem;
+		left: 0.1rem;
 	}
 
 	#editar{
@@ -1327,7 +1347,7 @@ span #editar-div.icons{
 
 	#content .box-informacoes-cadastradas .title-nome{
 		position: relative;
-		left: -4rem;
+		left: 4rem;
 	}
 	
 	#content main .box-subscribe {
@@ -1355,7 +1375,7 @@ span #editar-div.icons{
 
 	#content .box-informacoes-cadastradas .title-email{
 	  position: relative;
-	  left: -4rem;
+	  left: 3.8rem;
 	}
 
 	.nome{
@@ -1364,7 +1384,7 @@ span #editar-div.icons{
 	}
 	.Email{
 		position: relative;
-		left: -5rem;
+		left: -3rem;
 	}
 } 
 
@@ -1509,7 +1529,7 @@ span #editar-div.icons{
 
 	#content .box-informacoes-cadastradas h4{
 		position: relative;
-		left: 0.1rem;
+		left: 3.8rem;
 		font-size: 15px ;
 	}
 

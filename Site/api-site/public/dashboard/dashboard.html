@@ -13,9 +13,9 @@
 	<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 	<title>DataCat</title>
 </head>
-
+<script src="../js/Listar.js"></script>
 <body
-	onload='plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp"),validarSessao()'>
+	onload='listarAlerta(),plotarGrafico("graficoMemoria"),plotarGrafico("graficoCpu"),plotarGrafico("graficoDisco"),plotarGrafico("graficoTemp"),validarSessao()'>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
@@ -176,95 +176,8 @@
 						<i class="bx bx-search"></i>
 						<i class="bx bx-filter"></i>
 					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>Id do alerta</th>
-								<th>Descrição</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th>
-									<h4>Id do alerta</h4>
-									<h4>0120</h4>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process">Urgente</span></th>
-							</tr>
-							<tr>
-								<th>
-									<h4>0120</h4>
-									<p>Id do alerta</p>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process">Urgente</span></th>
-							</tr>
-							<tr>
-								<th>
-									<h4>0120</h4>
-									<p>Id do alerta</p>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process"> Urgente </span></th>
-							</tr>
-							<tr>
-								<th>
-									<h4>0120</h4>
-									<p>Id do alerta</p>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process">Urgente</span></th>
-							</tr>
-							<tr>
-								<th>
-									<h4>0120</h4>
-									<p>Id do alerta</p>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process">Urgente</span></th>
-							</tr>
-							<tr>
-								<th>
-									<h4>0120</h4>
-									<p>Id do alerta</p>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process"> Urgente </span></th>
-							</tr>
 
-							<tr>
-								<th>
-									<h4>0120</h4>
-									<p>Id do alerta</p>
-								</th>
-								<th style="color: grey">
-									seu armazenamento está critico! <br />
-									O seu sistema está em perigo
-								</th>
-								<th><span class="status process"> Urgente </span></th>
-							</tr>
-						</tbody>
-					</table>
+					<div id="listaAlerta"></div>
 				</div>
 				<div class="todo">
 					<div class="head">
