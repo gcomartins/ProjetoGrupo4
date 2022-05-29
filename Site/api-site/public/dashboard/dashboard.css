@@ -245,6 +245,24 @@ body {
 	width: 100%;
 	margin-right: auto;
 }
+
+#content nav form .input {
+	width: 60%;
+    border: var(--red) solid .5px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #F9F9F9;
+	color: var(--dark);
+    font-size: 12pt;
+	font-style: italic;
+    outline: none;
+    box-sizing: border-box;
+	appearance: none;
+	background: url(../assets/imagens/seta.svg) no-repeat center right;
+    font-size: 15px;
+    padding-right: 30px;
+}
+
 #content nav form .form-input {
 	display: flex;
 	align-items: center;

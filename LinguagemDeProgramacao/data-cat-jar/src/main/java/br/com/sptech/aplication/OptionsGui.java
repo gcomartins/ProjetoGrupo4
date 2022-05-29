@@ -5,6 +5,9 @@
 package br.com.sptech.aplication;
 
 import java.awt.Color;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -216,11 +219,12 @@ public class OptionsGui extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnIniciarAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarAppActionPerformed
-            new App().setVisible(true); 
+        new App().setVisible(true); 
     }//GEN-LAST:event_btnIniciarAppActionPerformed
 
     private void btnComponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComponenteActionPerformed
-        // TODO add your handling code here:
+       
+        
     }//GEN-LAST:event_btnComponenteActionPerformed
 
     /**

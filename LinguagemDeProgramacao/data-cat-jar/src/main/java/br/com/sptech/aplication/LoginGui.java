@@ -23,17 +23,18 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
  * @author letic
  */
 public class LoginGui extends javax.swing.JFrame {
-
+    
     private final String nomeMaquina;
+    ModalServices modalServices = new ModalServices();
     List<Componente> listaComponentes = new ArrayList<>();
     List<Usuario> listaUsuarios = new ArrayList<>();
     List<Maquina> listaMaquinas = new ArrayList<>();
-
+    
     public LoginGui() throws UnknownHostException {
         initComponents();
         nomeMaquina = InetAddress.getLocalHost().getHostName();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -221,11 +222,9 @@ public class LoginGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-
-        ConexaoMysql conexaoMysql = new ConexaoMysql();
+        
         ConexaoAzure conexaoazure = new ConexaoAzure();
-        List<Usuario> listaUsuarios = new ArrayList<>();
-
+        
         if (txtNome.getText().isEmpty()
                 || txtSenha.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email ou "
@@ -238,72 +237,49 @@ public class LoginGui extends javax.swing.JFrame {
                     String.format("select * from tbUsuarios where email = '%s'",
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));
-
+            
         } catch (DataAccessException e) {
-
+            
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Não foi possivel conetar ao banco",
                     "Aviso",
                     JOptionPane.WARNING_MESSAGE);
         }
-
+        
         for (Usuario usuario : listaUsuarios) {
-
+            
             if (usuario.getEmail().equals(txtNome.getText())
                     && usuario.getSenha().equals(txtSenha.getText())) {
                 this.dispose();
-                Integer fkEmpresa;
+                
                 Integer hostExistente;
-                Integer fkMaquina;
-                String disco = "Disco";
-                String ram = "Ram"; 
-                String cpu = "Cpu";       
+                
                 listaMaquinas = conexaoazure.getConexaoAzure().query(
                         String.format("select * from tbMaquinas where hostName = '%s'",
                                 nomeMaquina),
                         new BeanPropertyRowMapper<>(Maquina.class));
                 hostExistente = listaMaquinas.size();
-
+                
                 if (hostExistente == 0) {
-                    listaUsuarios = conexaoazure.getConexaoAzure().query(
-                            String.format("select * from tbUsuarios where email = '%s'",
-                                    txtNome.getText()),
-                            new BeanPropertyRowMapper<>(Usuario.class));
-
-                    fkEmpresa = listaUsuarios.get(0).getFkEmpresa();
-
-                    conexaoazure.getConexaoAzure().update("insert into tbMaquinas (hostName,fkEmpresa)"
-                            + "values(?,?)", nomeMaquina, fkEmpresa);
                     
-                    listaMaquinas = conexaoazure.getConexaoAzure().query(
-                        String.format("select * from tbMaquinas where hostName = '%s'",
-                                nomeMaquina),
-                        new BeanPropertyRowMapper<>(Maquina.class));
+                    modalServices.cadastroMaquinaAzure(txtNome.getText());
+//                    modalServices.cadastroMysql(txtNome.getText());
                     
-                    fkMaquina = listaMaquinas.get(0).getIdMaquina();
-                    
-                    
-                    conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", disco,fkMaquina);
-                    conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", ram,fkMaquina);
-                    conexaoazure.getConexaoAzure().update("insert into tbComponentes (nome,fkMaquina) "
-                            + "values(?,?);", cpu,fkMaquina);
                     new OptionsGui().setVisible(true);
                 } else {
                     System.out.println("Seu hostName foi cadastrado");
                     new OptionsGui().setVisible(true);
                 }
-            }else {
-                    System.out.println(txtNome.getText());
-                    System.out.println(usuario.getEmail());
-                    System.out.println(txtSenha.getText());
-                    System.out.println(usuario.getSenha());
-                    System.out.println(listaUsuarios);
-                    JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE);
-                }
+            } else {
+                System.out.println(txtNome.getText());
+                System.out.println(usuario.getEmail());
+                System.out.println(txtSenha.getText());
+                System.out.println(usuario.getSenha());
+                System.out.println(listaUsuarios);
+                JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
+                        "Aviso",
+                        JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -373,18 +349,17 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                    try {
-                        new LoginGui().setVisible(true);
+                try {
+                    new LoginGui().setVisible(true);
                     
                 } catch (UnknownHostException ex) {
                     Logger.getLogger(LoginGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-
-
+                
             }
-        });}
-    
+        });
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;

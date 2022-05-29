@@ -20,6 +20,7 @@ public class MedidasServices {
         Double discoTotal = looca.getGrupoDeDiscos().getVolumes().stream().findAny().get().getTotal().doubleValue();
         Double usoDisco = discoDisponivel * 100 / discoTotal;        
 
+        
         return usoDisco;
     }
 
