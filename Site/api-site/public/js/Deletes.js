@@ -71,9 +71,9 @@ function deletarMaquina(idMaquinaVar) {
                 console.log(JSON.stringify(json));
 
                 window.alert("Delete realizado com sucesso!");
-    
+             
             });
-            listar();
+            listarMaquina();
         } else {
     
             console.log("Houve um erro ao tentar deletar usuário!");
