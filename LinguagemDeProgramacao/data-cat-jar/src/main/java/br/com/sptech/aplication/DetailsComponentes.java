@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 /**
@@ -260,8 +261,14 @@ public class DetailsComponentes extends javax.swing.JFrame {
         modalService.insertLimite(ValorRam, fkMaquina, fkMaquinaMysql, "Ram");
         modalService.insertLimite(ValorCpu, fkMaquina, fkMaquinaMysql, "Cpu");
         
-        System.out.println("Vlores cadastrados");
+        System.out.println("Cadastro realizado com sucesso");
 
+        System.out.println();
+            JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+        new OptionsGui().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -120,6 +120,7 @@ public class AplicacaoScanner {
                             }
                         }
                     }
+                    System.out.println("Cadastro realizado com sucesso");
 
                     for (int i = 0; i < 20000; i++) {
 
