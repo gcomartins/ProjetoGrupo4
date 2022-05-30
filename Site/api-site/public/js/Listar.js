@@ -72,9 +72,9 @@ function listarMaquina(){
                     <div class="box-informacoes-cadastradas">
                     
                     <div class="titulos">
-                    <h4 class="title-id">${obj[i].idComponentes}</h4>
+                    <h4 class="title-id">${obj[i].idMaquina}</h4>
                     <h4 class="title-nome">${obj[i].hostName}</h4>
-                    <h4 class="title-nome">${obj[i].capacidade}</h4>
+                    <h4 class="title-nome">${obj[i].componente}</h4>
                     <h4 class="title-nome">${obj[i].limiteAlerta}%</h4>
                     <div class="wrapper">
                         <div class="icon editar">
@@ -88,7 +88,7 @@ function listarMaquina(){
                         <div class="icon excluir">
                             <div  id="tooltip-excluir" class="tooltip">Excluir</div>
                             <span id="deletar-div" class="icons">
-                            <i id="deletar" class="material-symbols-sharp"onclick="deletarMaquina(${obj[i].idComponentes})">delete</i>
+                            <i id="deletar" class="material-symbols-sharp"onclick="deletarMaquina(${obj[i].idMaquina})">delete</i>
                             </span>
                         </div>
                     </div>

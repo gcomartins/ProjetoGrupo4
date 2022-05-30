@@ -46,9 +46,9 @@ function deletarUsuario(idUsuarioVar) {
 
 }
 
-function deletarMaquina(idComponentesVar) {
+function deletarMaquina(idMaquinaVar) {
   
-    var result = confirm('Deseja Deletar esse usuário?');
+    var result = confirm('Deseja Deletar essa Maquina?');
     if(result == true){
  
     fetch("/usuarios/deletarMaquina", {
@@ -57,11 +57,11 @@ function deletarMaquina(idComponentesVar) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            idComponentes: idComponentesVar,
+            idMaquina: idMaquinaVar,
         })
     }).then(function (resposta) {
         console.log(resposta.body);
-        console.log("ESTOU NO THEN DO deletarUsuario()!")
+        console.log("ESTOU NO THEN DO deletarMaquina()!")
     
         if (resposta.ok) {
             console.log(resposta);

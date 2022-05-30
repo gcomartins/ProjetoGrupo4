@@ -513,8 +513,8 @@ function deletarUsuario(req, res) {
 
 }
 function deletarMaquina(req, res) {
-    var idComponentes= req.body.idComponentes;
-    usuarioModel.deletarMaquina(idComponentes,)
+    var idMaquina= req.body.idMaquina;
+    usuarioModel.deletarMaquina(idMaquina)
         .then(
             function (resultado) {
                 res.json(resultado);
