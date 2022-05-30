@@ -238,10 +238,18 @@ public class LoginGui extends javax.swing.JFrame {
                             txtNome.getText()),
                     new BeanPropertyRowMapper<>(Usuario.class));
             
+            if(listaUsuarios.isEmpty()){
+                System.out.println();
+            JOptionPane.showMessageDialog(this, "Email incorreto",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
         } catch (DataAccessException e) {
             
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(this, "Não foi possivel conetar ao banco",
+            JOptionPane.showMessageDialog(this, "Sem conexão com o banco",
                     "Aviso",
                     JOptionPane.WARNING_MESSAGE);
         }
@@ -267,7 +275,7 @@ public class LoginGui extends javax.swing.JFrame {
                     
                     new OptionsGui().setVisible(true);
                 } else {
-                    System.out.println("Seu hostName foi cadastrado");
+                    System.out.println("Seu hostName já está cadastrado");
                     new OptionsGui().setVisible(true);
                 }
             } else {
@@ -276,7 +284,7 @@ public class LoginGui extends javax.swing.JFrame {
                 System.out.println(txtSenha.getText());
                 System.out.println(usuario.getSenha());
                 System.out.println(listaUsuarios);
-                JOptionPane.showMessageDialog(this, "Email ou Senha são invalidos",
+                JOptionPane.showMessageDialog(this, "Senha incorreta",
                         "Aviso",
                         JOptionPane.WARNING_MESSAGE);
             }

@@ -80,7 +80,7 @@ public class AplicacaoScanner {
 
                     if (hostExistente == 0) {
                         modalServices.cadastroMaquinaAzure(email);
-                        modalServices.cadastroMysql(email);
+//                        modalServices.cadastroMysql(email);
                         System.out.println("\nSua Maquina foi Cadastrada no sistema");
                     }
                     listaComponentes = conexaoazure.getConexaoAzure().query(
@@ -88,17 +88,17 @@ public class AplicacaoScanner {
                             + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                             new BeanPropertyRowMapper<>(Componente.class));
 
-                    listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
-                            "select C.fkMaquina from tbComponentes as C join tbMaquinas as M "
-                            + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
-                            new BeanPropertyRowMapper<>(Componente.class));
+//                    listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
+//                            "select C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+//                            + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+//                            new BeanPropertyRowMapper<>(Componente.class));
 
                     if (listaComponentes.get(0).getLimiteAlerta() == null) {
                         System.out.println("\nVimos que Seus Componentes Não tem um limite cadastrado"
                                 + " então iremos cadastra-los agora");
 
                         Integer fkMaquina = listaComponentes.get(0).getFkMaquina();
-                        Integer fkMaquinaMysql = listaComponentesMysql.get(0).getFkMaquina();
+//                        Integer fkMaquinaMysql = listaComponentesMysql.get(0).getFkMaquina();
 
                         for (int i = 0; i < listaComponentes.size(); i++) {
 
@@ -106,17 +106,20 @@ public class AplicacaoScanner {
                                 System.out.println("\nColoque o limite para o Disco");
                                 Integer limiteDisco = sc.nextInt();
 
-                                modalServices.insertLimite(limiteDisco, fkMaquina, fkMaquinaMysql, "Disco");
+                                modalServices.insertLimite(limiteDisco, fkMaquina, "Disco");
+//                                modalService.insertLimiteMysql(limiteAlertaDisco, fkMaquinaMysql, "Disco");
                             } else if (listaComponentes.get(i).getNome().equalsIgnoreCase("Ram")) {
                                 System.out.println("\nColoque o limite para o Ram");
                                 Integer limiteRam = sc.nextInt();
 
-                                modalServices.insertLimite(limiteRam, fkMaquina, fkMaquinaMysql, "Ram");
+                                modalServices.insertLimite(limiteRam, fkMaquina, "Ram");
+//                                modalService.insertLimiteMysql(limiteAlertaRam, fkMaquinaMysql, "Ram");
                             } else if (listaComponentes.get(i).getNome().equalsIgnoreCase("Cpu")) {
                                 System.out.println("\nColoque o limite para o Processador");
                                 Integer limiteCpu = sc.nextInt();
 
-                                modalServices.insertLimite(limiteCpu, fkMaquina, fkMaquinaMysql, "Cpu");
+                                modalServices.insertLimite(limiteCpu, fkMaquina, "Cpu");
+//                                modalServices.insertLimiteMysql(limiteAlertaCpu, fkMaquinaMysql, "Cpu");
                             }
                         }
                     }
@@ -137,7 +140,7 @@ public class AplicacaoScanner {
                             System.out.println("\nDisco");
                             System.out.println(medidasServices.getDiscoEmUso());
                             System.out.println("Critico");
-                            System.out.println(alertas.inserirAlertas("Crítico", "Disco"));
+                            System.out.println(alertas.inserirAlertas("Critico", "Disco"));
 
                             //Envio ao Slack
                             json.put("text", "Máquina:" + nomeMaquina + "\nDisco:\nCritico: " + String.format("%.2f%%", medidasServices.getDiscoEmUso()));
@@ -169,8 +172,8 @@ public class AplicacaoScanner {
                             //CRITICO
                             System.out.println("\nRam");
                             System.out.println(medidasServices.getRamEmUso());
-                            System.out.println("Crítico");
-                            System.out.println(alertas.inserirAlertas("Crítico", "Ram"));
+                            System.out.println("Critico");
+                            System.out.println(alertas.inserirAlertas("Critico", "Ram"));
 
                             //Envio ao Slack
                             json.put("text", "Máquina:" + nomeMaquina + "\nRAM:\nCritico: " + String.format("%.2f%%", medidasServices.getRamEmUso()));
@@ -202,8 +205,8 @@ public class AplicacaoScanner {
                             //CRITICO
                             System.out.println("\n Processador");
                             System.out.println(medidasServices.getProcessadorEmUso());
-                            System.out.println("Crítico");
-                            alertas.inserirAlertas("Crítico", "Cpu");
+                            System.out.println("Critico");
+                            alertas.inserirAlertas("Critico", "Cpu");
 
                             //Envio ao Slack
                             json.put("text", "Máquina:" + nomeMaquina + "\nCPU:\nCritico: " + String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
