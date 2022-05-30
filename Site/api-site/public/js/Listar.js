@@ -1,7 +1,7 @@
 
 function listar(){
   for( i=0 ;i<1;i++){
-    fetch(`/usuarios/listar`, {
+    fetch(`/usuarios/listar/${sessionStorage.ID_EMPRESA}`, {
         method: "GET",
     }).then(function (resposta) {
     
@@ -59,7 +59,7 @@ function listar(){
 
 
 function listarMaquina(){
-        fetch(`/usuarios/listarMaquina`, {
+        fetch(`/usuarios/listarMaquina/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         }).then(function (resposta) {
         
@@ -88,7 +88,7 @@ function listarMaquina(){
                         <div class="icon excluir">
                             <div  id="tooltip-excluir" class="tooltip">Excluir</div>
                             <span id="deletar-div" class="icons">
-                            <i id="deletar" class="material-symbols-sharp">delete</i>
+                            <i id="deletar" class="material-symbols-sharp"onclick="deletarMaquina(${obj[i].idComponentes})">delete</i>
                             </span>
                         </div>
                     </div>
@@ -110,7 +110,7 @@ function listarMaquina(){
     }
 
     function listarAlerta(){
-        fetch(`/usuarios/listarAlerta`, {
+        fetch(`/usuarios/listarAlerta/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
         }).then(function (resposta) {
         

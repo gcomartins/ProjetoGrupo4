@@ -8,7 +8,7 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    usuarioModel.listar()
+    usuarioModel.listar(req.params.fkEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -25,7 +25,7 @@ function listar(req, res) {
 }
 
 function listarAlerta(req, res) {
-    usuarioModel.listarAlerta()
+    usuarioModel.listarAlerta(req.params.fkEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -61,7 +61,7 @@ function buscarMaquina(req, res) {
 }
 
 function listarMaquina(req, res) {
-    usuarioModel.listarMaquina()
+    usuarioModel.listarMaquina(req.params.fkEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -513,9 +513,8 @@ function deletarUsuario(req, res) {
 
 }
 function deletarMaquina(req, res) {
-    var idMaquinaComponentes= req.body.idMaquinaComponentes;
-    var nome = req.body.nome;
-    usuarioModel.deletarMaquina(idMaquinaComponentes, nome)
+    var idComponentes= req.body.idComponentes;
+    usuarioModel.deletarMaquina(idComponentes,)
         .then(
             function (resultado) {
                 res.json(resultado);

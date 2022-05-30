@@ -1,28 +1,30 @@
 var database = require("../database/config")
 
-function listarMaquina() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquina()");
+function listarMaquina(fkEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMaquina()",fkEmpresa);
     var instrucao = `
-    select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where fkEmpresa = '34';
+    select *from tbComponentes as C join tbMaquinas as M on C.fkMaquina = M.idMaquina where fkEmpresa = ${fkEmpresa};
          
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function listar() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+function listar(fkEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()",fkEmpresa);
     var instrucao = `
-         SELECT * FROM tbUsuarios;
+         SELECT * FROM tbUsuarios where fkEmpresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function listarAlerta() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarAlerta()");
-    var instrucao = `
-         SELECT * FROM tbAlertas order by idAlerta desc;
+function listarAlerta(fkEmpresa) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarAlerta()",fkEmpresa);
+    var instrucao = `    
+    select A.idAlerta, A.descrição, A.categoria from tbAlertas as A inner join tbLogs as L on (A.fkLog = L.idLog)
+    inner join tbComponentes as C on (C.idComponentes = L.fkComponente) inner join
+    tbMaquinas as M on (M.idMaquina = C.fkMaquina) Where M.fkEmpresa = '${fkEmpresa}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -47,10 +49,12 @@ function deletarUsuario(idUsuario) {
 }
 
 
-function deletarMaquina(idMaquinaComponentes,nome) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletarMaquina(): ", idMaquinaComponentes,nome)
+function deletarMaquina(idComponentes) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletarMaquina(): ", idComponentes)
     var instrucao = `
-    DELETE FROM tbMaquinasComponentes WHERE idMaquinaComponentes = '${idMaquinaComponentes}' AND nome = '${nome}';
+    DELETE tbComponentes, tbMaquinas FROM tbComponentes
+    LEFT JOIN tbMaquinas ON tbComponentes.idComponentes = tbMaquinas.hostName
+    WHERE tbComponentes.idComponentes = ${idComponentes};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
