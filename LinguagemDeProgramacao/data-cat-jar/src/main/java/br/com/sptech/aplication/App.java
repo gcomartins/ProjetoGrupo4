@@ -429,7 +429,7 @@ public class App extends javax.swing.JFrame {
         if (medidasServices.getDiscoEmUso() >= (limiteAlertaDisco * 0.75)) {
             pnlDisco.setBackground(new java.awt.Color(224, 52, 52));
             lblDisco.setText(String.format("%.2f%%", medidasServices.getDiscoEmUso()));
-            lblUsoDisco.setText("Crítico");
+            lblUsoDisco.setText("Critico");
             //CRITICO
             alertas.inserirAlertas(lblUsoDisco.getText(), "Disco");
 
@@ -462,7 +462,7 @@ public class App extends javax.swing.JFrame {
         if (medidasServices.getRamEmUso() >= (limiteAlertaRam * 0.75)) {
             pnlRam.setBackground(new java.awt.Color(224, 52, 52));
             lblRam.setText(String.format("%.2f%%", medidasServices.getRamEmUso()));
-            lblUsoRam.setText("Crítico");
+            lblUsoRam.setText("Critico");
             //CRITICO
             alertas.inserirAlertas(lblUsoRam.getText(), "Ram");
 
@@ -495,7 +495,7 @@ public class App extends javax.swing.JFrame {
         if (medidasServices.getProcessadorEmUso() >= (limiteAlertaCpu * 0.75)) {
             pnlCpu.setBackground(new java.awt.Color(224, 52, 52));
             lblCpu.setText(String.format("%.2f%%", medidasServices.getProcessadorEmUso()));
-            lblUsoCpu.setText("Crítico");
+            lblUsoCpu.setText("Critico");
             //CRITICO
             alertas.inserirAlertas(lblUsoCpu.getText(), "Cpu");
 

@@ -46,5 +46,50 @@ function deletarUsuario(idUsuarioVar) {
 
 }
 
+function deletarMaquina(idMaquinaVar) {
+  
+    var result = confirm('Deseja Deletar essa Maquina?');
+    if(result == true){
+ 
+    fetch("/usuarios/deletarMaquina", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idMaquina: idMaquinaVar,
+        })
+    }).then(function (resposta) {
+        console.log(resposta.body);
+        console.log("ESTOU NO THEN DO deletarMaquina()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+             
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                window.alert("Delete realizado com sucesso!");
+             
+            });
+            listarMaquina();
+        } else {
+    
+            console.log("Houve um erro ao tentar deletar usuário!");
+    
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+    return false;
+    }
+
+}
+
 
     

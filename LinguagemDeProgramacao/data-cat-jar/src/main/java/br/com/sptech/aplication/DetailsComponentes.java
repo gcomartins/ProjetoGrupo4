@@ -249,17 +249,20 @@ public class DetailsComponentes extends javax.swing.JFrame {
                 + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
                 new BeanPropertyRowMapper<>(Componente.class));
 
-        listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
-                "select C.fkMaquina from tbComponentes as C join tbMaquinas as M "
-                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
-                new BeanPropertyRowMapper<>(Componente.class));
+//        listaComponentesMysql = conexaoMysql.getConexaoMysql().query(
+//                "select C.fkMaquina from tbComponentes as C join tbMaquinas as M "
+//                + "on C.fkMaquina = M.idMaquina where  hostName = '" + nomeMaquina + "'",
+//                new BeanPropertyRowMapper<>(Componente.class));
 
         Integer fkMaquina = listaComponentes.get(0).getFkMaquina();
-        Integer fkMaquinaMysql = listaComponentesMysql.get(0).getFkMaquina();
+//        Integer fkMaquinaMysql = listaComponentesMysql.get(0).getFkMaquina();
 
-        modalService.insertLimite(ValorDisco, fkMaquina, fkMaquinaMysql, "Disco");
-        modalService.insertLimite(ValorRam, fkMaquina, fkMaquinaMysql, "Ram");
-        modalService.insertLimite(ValorCpu, fkMaquina, fkMaquinaMysql, "Cpu");
+        modalService.insertLimite(ValorDisco, fkMaquina, "Disco");
+//        modalService.insertLimiteMysql(ValorDisco, fkMaquinaMysql, "Disco");
+        modalService.insertLimite(ValorRam, fkMaquina, "Ram");
+//        modalService.insertLimiteMysql(ValorRam, fkMaquinaMysql, "Ram");
+        modalService.insertLimite(ValorCpu, fkMaquina, "Cpu");
+//        modalService.insertLimiteMysql(ValorCpu, fkMaquinaMysql, "Cpu");
         
         System.out.println("Cadastro realizado com sucesso");
 

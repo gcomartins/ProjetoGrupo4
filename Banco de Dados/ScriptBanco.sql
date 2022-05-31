@@ -51,6 +51,7 @@ limiteAlerta DOUBLE,
 fkMaquina INT,
 constraint fkMaquina 
 foreign key (fkMaquina) references tbMaquinas (idMaquina)
+on delete cascade
 );
 
 
@@ -78,7 +79,8 @@ CREATE TABLE tbAlertas (
 idAlerta int primary key auto_increment,
 fkLog int,
 constraint fkLog
-foreign key (fkLog) references tbLogs (idLog),
+foreign key (fkLog) references tbLogs (idLog)
+on delete cascade,
 categoria varchar(45) 
 check(categoria = "Critico"  or categoria = "Alerta" or categoria = "Estavel" ),
 descrição varchar(255)
