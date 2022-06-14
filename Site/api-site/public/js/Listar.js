@@ -74,7 +74,7 @@ function listarMaquina(){
                     <div class="titulos">
                     <h4 class="title-id">${obj[i].idMaquina}</h4>
                     <h4 class="title-nome">${obj[i].hostName}</h4>
-                    <h4 class="title-nome">${obj[i].componente}</h4>
+                    <h4 class="title-nome">${obj[i].nome}</h4>
                     <h4 class="title-nome">${obj[i].limiteAlerta}%</h4>
                     <div class="wrapper">
                         <div class="icon editar">

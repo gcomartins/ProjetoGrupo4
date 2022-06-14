@@ -1,6 +1,14 @@
 function formularioUpDate(){
+    idcadastrofun.style.display = "none";
     div_formulario_upDate.innerHTML = `
-	<div class="box-informacoes-cadastradas">	
+	<div class="box-subscribe">	
+    <div class="subscribe-left">
+						<div class="title-subscribe">
+							<h3>Edite aqui as infomados do usuario desejado</h3>
+							<i>Editar agora</i>
+						</div>
+						<img src="./assets/imagens/filing-system-amico.png" alt="">
+					</div>
     <div class = "subscribe-right">			
     <form  action="" id="form_upDateUsuario" method="post" onsubmit="return upDateUsuario()">
                         <label class="inp_up" for="">ID</label> 
@@ -24,15 +32,24 @@ function formularioUpDate(){
 					</form>	
                     </div>
                     </div>
+                    </div>
     `
 }
 
 function formularioUpDateMaquina(){
+    idcadastromaq.style.display = "none";
     div_formulario_upDateMaquina.innerHTML = `
-	<div class="box-informacoes-cadastradas">	
+	<div class="box-subscribe">	
+    <div class="subscribe-left">
+						<div class="title-subscribe">
+							<h3>Edite aqui a Maquina desejada</h3>
+							<i>Editar agora</i>
+						</div>
+						<img src="./assets/imagens/filing-system-amico.png" alt="">
+					</div>
     <div class = "subscribe-right">			
     <form action="" id="form_upDateMaquina" method="post" onsubmit="return upDateMaquina()">
-                          <label class="inp_up" for="">ID</label> 
+                          <label class="inp_up" for="">ID do usuario que deseja editar</label> 
                           <input id="idComponentes" name="idComponentes" type="text"  maxlength="15">
 						  <label class="inp_up" for="">Limite Alerta</label>
 						  <select name="limiteAlerta" id="limiteAlerta" type="text" required maxlength="15">
@@ -47,6 +64,7 @@ function formularioUpDateMaquina(){
 							<button class="btn_up"><h3><a>Editar</a></h3></button>
 							</div>
 					  </form>
+                    </div>
                     </div>
                     </div>
     `
@@ -101,6 +119,7 @@ function upDateUsuario() {
         if (resposta.ok) {
             window.alert("upDate realizado com sucesso!");
             div_formulario_upDate.style.display = "none";
+            idcadastrofun.style.display = "block";
             listar();
         } else {
             throw ("Houve um erro ao tentar realizar o upDate!");
