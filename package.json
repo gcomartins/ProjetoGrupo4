@@ -1,9 +1,9 @@
 {
-  "nome": "ProjetoGrupo4", 
+  "nome": "Site", 
   "version": "0.0.1",
   "private": "true",
   "scripts": {
-      "start": "node ./Site/bin/www",
+      "start": "node ./Site/app.js",
       "postinstall": "cd Site && npm install"
   } 
 }
